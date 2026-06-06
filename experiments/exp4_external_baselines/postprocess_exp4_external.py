@@ -23,7 +23,13 @@ import numpy as np
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 EXP4 = os.path.dirname(__file__)
 
-NEGATIVE_WEIGHT_INSTANCES = {"k3_3", "ku", "peterson", "peterson1", "peterson2"}
+# From EXP3: explicitly identified as negative-weight
+# From EXP4: weighted_eades returned 'negative_weights_detected' and all
+#            algorithms return negative backward_weight for these instances
+NEGATIVE_WEIGHT_INSTANCES = {
+    "k3_3", "ku", "peterson", "peterson1", "peterson2",  # identified in EXP3
+    "gerez", "howard-max", "stg0",                        # identified in EXP4
+}
 
 ALGO_ORDER = [
     "ipsns_full", "lrta_full", "wmsf_seed",
@@ -57,9 +63,19 @@ def main():
         sys.exit(1)
 
     df = pd.read_csv(args.summary)
-    df["instance_name"] = df["instance"].apply(
-        lambda x: os.path.splitext(os.path.basename(str(x)))[0]
-    )
+
+    # Deduplicate: if the same (instance, algorithm) appears more than once
+    # (e.g., instance appeared twice in the input list), keep only the first row.
+    n_before = len(df)
+    df = df.drop_duplicates(subset=["instance", "algorithm"], keep="first").copy()
+    n_dedup = n_before - len(df)
+    if n_dedup > 0:
+        print(f"[dedup] Removed {n_dedup} duplicate rows "
+              f"(kept first of each (instance, algorithm) pair).")
+
+    # instance_name: use the 'instance' column directly, replacing dots with
+    # underscores so that 'example.new' → 'example_new' (no collision with 'example').
+    df["instance_name"] = df["instance"].str.replace(".", "_", regex=False)
 
     # Flag negative-weight and unavailable
     df["is_negative_weight"] = df["instance_name"].isin(NEGATIVE_WEIGHT_INSTANCES)

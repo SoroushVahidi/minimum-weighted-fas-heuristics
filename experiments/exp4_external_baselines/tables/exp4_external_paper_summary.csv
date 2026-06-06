@@ -1,0 +1,9 @@
+algorithm,source_type,n_complete,n_total,n_unavailable,n_errors,mean_bw,median_bw,mean_fw_ratio,mean_runtime_s,n_times_best,n_times_ipsns_equal,n_ipsns_improves,mean_abs_gain_ipsns,mean_rel_gain_ipsns_pct
+ipsns_full,in-repo (ours),97,97,0,0,37697.5052,5118.0,0.840773,21.9243,96,97,0,0.0,0.0
+lrta_full,in-repo (ours),97,97,0,0,38326.9381,5118.0,0.840198,0.08,80,81,16,629.433,0.7133
+wmsf_seed,in-repo (ours),97,97,0,0,40005.0619,5118.0,0.839857,1.3118,61,61,36,2307.5567,2.059
+borda_net_score,in-repo baseline,97,97,0,0,512276.8144,12394.0,0.709586,0.0027,27,27,70,474579.3093,55.548
+weighted_eades,in-repo baseline,97,97,0,0,99689.2784,6343.0,0.821114,0.1122,42,42,55,61991.7732,30.4783
+random_multistart,in-repo baseline,97,97,0,0,1075258.4124,8860.0,0.65322,0.0269,42,42,55,1037560.9072,49.7646
+igraph_approx_eades,external wrapper,97,97,0,0,95920.1856,6120.0,0.818669,0.0059,40,40,57,58222.6804,30.5445
+drmaciver_fas,external wrapper,93,97,0,4,53173.3763,5649.0,0.827824,3.9985,56,55,37,23587.129,21.6076
