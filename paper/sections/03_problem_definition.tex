@@ -1,0 +1,17 @@
+\section{Problem definition}
+\label{sec:problem-definition}
+
+Let \(G=(V,A,w)\) be a directed graph with nonnegative arc weights \(w:A\to \mathbb{R}_{\ge 0}\). A feedback arc set is a set of arcs whose removal makes the graph acyclic. The minimum weighted feedback arc set problem asks for a feedback arc set of minimum total weight.
+
+TODO: Define ordering-induced backward weight. Use numbered display equations for all formulas.
+
+\begin{equation}
+    \operatorname{bw}(\pi)
+    =
+    \sum_{(u,v)\in A:\ \pi(u)>\pi(v)} w(u,v).
+    \label{eq:backward-weight}
+\end{equation}
+
+TODO: Explain relation between backward arcs and an ordering-induced feedback arc set.
+
+TODO: Define the dense LOLIB forward-weight relation separately and carefully.

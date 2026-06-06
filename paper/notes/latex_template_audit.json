@@ -1,0 +1,132 @@
+[
+  {
+    "path": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/elsarticle-template-num.tex",
+    "size": 8424,
+    "sha16": "63fed3f76cd7638d",
+    "flags": [
+      "elsarticle",
+      "documentclass",
+      "bibliographystyle",
+      "abstract"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/elsarticle-template-harv.tex",
+    "size": 58823,
+    "sha16": "987beb2206550766",
+    "flags": [
+      "elsarticle",
+      "documentclass",
+      "bibliographystyle",
+      "abstract",
+      "DAM",
+      "FAS",
+      "local-ratio",
+      "IPSNS/SCC"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/elsarticle-template-num-names.tex",
+    "size": 8428,
+    "sha16": "8307419d5daf4478",
+    "flags": [
+      "elsarticle",
+      "documentclass",
+      "bibliographystyle",
+      "abstract"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO/main.tex",
+    "size": 47260,
+    "sha16": "f2c2d23696fc483b",
+    "flags": [
+      "documentclass",
+      "bibliographystyle",
+      "abstract",
+      "FAS",
+      "local-ratio",
+      "IPSNS/SCC"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/references.bib",
+    "size": 7896,
+    "sha16": "cf3bbf8a90a0b2f7",
+    "flags": [
+      "FAS"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/cas-refs.bib",
+    "size": 8294,
+    "sha16": "7ec709bfcf2e25dc",
+    "flags": []
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO/references.bib",
+    "size": 6856,
+    "sha16": "b7a31ad07c0d9c24",
+    "flags": [
+      "FAS"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/elsarticle-num-names.bst",
+    "size": 28896,
+    "sha16": "db48a4f76e232063",
+    "flags": [
+      "elsarticle"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/elsarticle-num.bst",
+    "size": 29462,
+    "sha16": "08d06d24a533fbe0",
+    "flags": [
+      "elsarticle"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/elsarticle-harv.bst",
+    "size": 30002,
+    "sha16": "000723ab2e12516d",
+    "flags": [
+      "elsarticle"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO/spbasic.bst",
+    "size": 33237,
+    "sha16": "efae5bb0a6dec6f9",
+    "flags": []
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO/spmpsci.bst",
+    "size": 30130,
+    "sha16": "ad80c3ef28c671ef",
+    "flags": []
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO/spphys.bst",
+    "size": 28636,
+    "sha16": "d644cecf4961e979",
+    "flags": []
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/elsarticle.cls",
+    "size": 45216,
+    "sha16": "ba7a1f25626a79fb",
+    "flags": [
+      "elsarticle"
+    ]
+  },
+  {
+    "path": "paper/source_material/extracted_archives/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO/svjour3.cls",
+    "size": 47679,
+    "sha16": "7334bcfda97ba34d",
+    "flags": [
+      "documentclass"
+    ]
+  }
+]

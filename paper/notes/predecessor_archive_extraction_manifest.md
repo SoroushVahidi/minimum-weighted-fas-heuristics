@@ -1,0 +1,4 @@
+# Predecessor Archive Extraction Manifest
+
+- `archive/predecessor_projects/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO.zip` -> `paper/source_material/extracted_archives/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO`: 12 files
+- `archive/predecessor_projects/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem.zip` -> `paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem`: 10 files
