@@ -1,0 +1,4 @@
+/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad1.d
+/home/soroush/benchmark_sources/graph-benchmarks/core/complete3.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-big/grid.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-big/r1000.d

@@ -23,3 +23,4 @@ experiments/*/raw/
 *.log
 venv/
 .venv/
+experiments/*/external_tools/
