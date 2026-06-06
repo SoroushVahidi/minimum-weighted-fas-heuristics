@@ -22,7 +22,7 @@
 
 | Item | Notes |
 |---|---|
-| **EXP5 LOLIB benchmark** | Dense tournament instances from LOLIB. Tests scalability and quality on denser/harder instances. Not yet run. |
+| **EXP5 LOLIB benchmark** | ✅ Complete. 50 instances, 0 errors. DRMaciver wins 45/50; IPSNS wins 5/50 (competitive on IO family). Incumbent protection holds. See `experiments/exp5_lolib_dense/summary/exp5_final_report.md`. |
 | **Final table consolidation** | Merge EXP1b, EXP2, EXP3, EXP4 into clean manuscript tables. Pending EXP5. |
 | **Make repo public** | Must be done before or upon submission. |
 
@@ -71,7 +71,7 @@
 
 ## Pre-submission Checklist
 
-- [ ] EXP5 LOLIB completed
+- [x] EXP5 LOLIB completed
 - [ ] Manuscript tables finalized
 - [ ] Repo made public
 - [ ] GitHub release/Zenodo DOI created

@@ -1,0 +1,9 @@
+algorithm,n_complete,n_errors,n_global_best,n_instances,mean_backward_weight,median_backward_weight,mean_forward_weight,mean_forward_ratio,mean_runtime_s,incumbent_violations_vs_lrta,incumbent_violations_vs_wmsf
+ipsns_full,50,0,5,50,582353.56,631835.0,1528354.78,0.72551,37.9224,0,0
+lrta_full,50,0,2,50,582948.16,635038.5,1527760.18,0.724764,0.2196,0,0
+wmsf_seed,50,0,1,50,585925.68,643038.5,1524782.66,0.718013,0.1866,0,0
+drmaciver_fas,50,0,45,50,571687.14,617278.5,1539021.2,0.737349,1.0122,0,0
+igraph_approx_eades,50,0,0,50,659569.78,716728.0,1451138.56,0.691096,0.0084,0,0
+weighted_eades,50,0,0,50,675235.08,732943.5,1435473.26,0.685362,0.0056,0,0
+borda_net_score,50,0,0,50,1066045.14,1128752.5,1044663.2,0.565858,0.0044,0,0
+random_multistart,50,0,0,50,883664.28,1044003.0,1227044.06,0.57819,0.0227,0,0

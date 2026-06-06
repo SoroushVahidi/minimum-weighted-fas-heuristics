@@ -76,7 +76,7 @@ See [`experiments/README.md`](experiments/README.md) for the full experiment tab
 | **EXP2** | Ablation: 8 component variants, 10 instances | Complete |
 | **EXP3** | Exact small-instance optimality check (n ≤ 20) | Complete |
 | **EXP4** | External baseline comparison: 8 algorithms, 97 standard instances | Complete |
-| **EXP5** | LOLIB dense benchmark | In Progress |
+| **EXP5** | LOLIB dense benchmark | Complete |
 
 ### Key headline results (EXP4, 97 standard non-negative instances)
 

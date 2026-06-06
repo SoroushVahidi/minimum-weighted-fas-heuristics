@@ -15,7 +15,7 @@ Raw outputs and logs are **gitignored** (regenerable). Summary CSVs/JSONs/MDs an
 | **EXP2** | Ablation study: 8 component variants | Complete | `exp2_ablation/summary/` |
 | **EXP3** | Exact small-instance optimality check | Complete | `exp3_exact_small/summary/` |
 | **EXP4** | External baseline comparison | Complete | `exp4_external_baselines/summary/` |
-| **EXP5** | LOLIB dense benchmark | In Progress | `exp5_lolib_dense/summary/` |
+| **EXP5** | LOLIB dense benchmark | Complete | `exp5_lolib_dense/summary/` |
 | EXP1 | Legacy core benchmark (superseded) | Archived | `exp1_core_benchmark/summary/` |
 
 ---
@@ -121,9 +121,14 @@ set and test scalability on difficult dense instances.
 **Algorithms:** lrta_full, wmsf_seed, ipsns_full, borda_net_score, weighted_eades,
 random_multistart, igraph_approx_eades, drmaciver_fas
 
-**Status:** Running in tmux session `mwfas_exp5_lolib` (~35 min expected). Smoke test
-(5 instances, 40/40 ok) confirmed all algorithms work. Preliminary finding: DRMaciver
-is competitive or better than IPSNS on large dense tournament instances.
+**Status:** Complete. 50 instances, 400 rows, 0 errors.
+
+**Key result:** DRMaciver achieves global best on **45/50** instances (−3.88% vs IPSNS mean BW).
+IPSNS is best on 5/50 (4 IO + 1 SGB). On sparse structured IO instances, IPSNS is competitive (4/10).
+DRMaciver dominates on random dense instances (RandA1, 15/15). IPSNS retains incumbent protection
+(0 violations) and improves over LR-TA on 19/50 instances.
+Scope finding: IPSNS is designed for sparse digraphs; tournament-native algorithms outperform
+it on LOLIB. Primary claim (sparse DIMACS, EXP4) is unaffected.
 
 **Outputs (after run):**
 - `summary/exp5_lolib_raw_summary.csv`
