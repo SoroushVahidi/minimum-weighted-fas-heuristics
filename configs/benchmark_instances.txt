@@ -1,0 +1,10 @@
+# Benchmark instances for the MWFAS experiment suite.
+#
+# List one DIMACS instance file per line (absolute path or relative to --dataset-dir).
+# Lines starting with '#' are ignored.
+# Instances are available from: https://github.com/alidasdan/graph-benchmarks
+#
+# Example entries (uncomment and adjust paths):
+# s27.d
+# s38417.d
+# s38584.d

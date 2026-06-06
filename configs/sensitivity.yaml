@@ -1,0 +1,11 @@
+# Parameter grid for sensitivity / ablation experiments.
+
+ipsns:
+  iters: [100, 200, 400, 600]
+  destroy_addback_frac: [0.15, 0.25, 0.35]
+  destroy_remove_frac: [0.01, 0.02, 0.05]
+  topk_scc: [5, 10, 15, 20]
+  rng_seeds: [1, 2, 3]
+
+wmsf:
+  ordering: [L1, L2]

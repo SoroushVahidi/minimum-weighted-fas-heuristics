@@ -1,0 +1,4 @@
+# Default parameters for the LR-TA algorithm.
+# See scripts/run_lrta.py --help for descriptions.
+
+tol: 1.0e-12

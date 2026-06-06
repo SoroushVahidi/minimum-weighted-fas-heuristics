@@ -1,0 +1,11 @@
+# Default parameters for the IPSNS algorithm.
+# See scripts/run_ipsns.py --help for descriptions.
+
+seed_ordering: L2
+iters: 400
+topk_scc: 15
+destroy_addback_frac: 0.30
+destroy_remove_frac: 0.02
+tol: 1.0e-12
+rng_seed: 1
+log_every: 10
