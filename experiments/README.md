@@ -15,7 +15,7 @@ Raw outputs and logs are **gitignored** (regenerable). Summary CSVs/JSONs/MDs an
 | **EXP2** | Ablation study: 8 component variants | Complete | `exp2_ablation/summary/` |
 | **EXP3** | Exact small-instance optimality check | Complete | `exp3_exact_small/summary/` |
 | **EXP4** | External baseline comparison | Complete | `exp4_external_baselines/summary/` |
-| **EXP5** | LOLIB dense benchmark | Planned | — |
+| **EXP5** | LOLIB dense benchmark | In Progress | `exp5_lolib_dense/summary/` |
 | EXP1 | Legacy core benchmark (superseded) | Archived | `exp1_core_benchmark/summary/` |
 
 ---
@@ -108,13 +108,31 @@ Only loss: `r20_60`, DRMaciver wins by 3 units (0.18%) — same instance as EXP3
 
 ---
 
-## EXP5 — LOLIB Dense Benchmark (Planned)
+## EXP5 — LOLIB Dense Benchmark (In Progress)
 
 **Purpose:** Evaluate LR-TA, WMSF, and IPSNS on dense tournament graphs from the
 LOLIB benchmark set. LOLIB instances are denser than the alidasdan graph-benchmarks
 set and test scalability on difficult dense instances.
 
-**Status:** Not yet started. Next cloud task after this cleanup pass.
+**Instance set:** 50 instances — 25 SGB (n=75), 10 IO (n=44-79), 15 RandA1 (n=100/150/200)
+
+**Data source:** LOLIB 2010 archive (Dropbox, 10.7 MB; grafo.etsii.urjc.es ZIPs return 404)
+
+**Algorithms:** lrta_full, wmsf_seed, ipsns_full, borda_net_score, weighted_eades,
+random_multistart, igraph_approx_eades, drmaciver_fas
+
+**Status:** Running in tmux session `mwfas_exp5_lolib` (~35 min expected). Smoke test
+(5 instances, 40/40 ok) confirmed all algorithms work. Preliminary finding: DRMaciver
+is competitive or better than IPSNS on large dense tournament instances.
+
+**Outputs (after run):**
+- `summary/exp5_lolib_raw_summary.csv`
+- `summary/exp5_lolib_stats.json`
+- `summary/exp5_lolib_summary.md`
+- `tables/exp5_lolib_paper_summary.csv`
+- `tables/exp5_lolib_wide_summary.csv`
+
+**See also:** `exp5_lolib_dense/summary/exp5_lolib_access_report.md`
 
 ---
 
