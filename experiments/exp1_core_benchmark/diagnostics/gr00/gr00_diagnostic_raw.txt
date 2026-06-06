@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "<stdin>", line 26, in <module>
+  File "/home/soroush/minimum-weighted-fas-heuristics/src/mwfas/ipsns.py", line 787, in lns_merge_wmsf_lr_best_incumbent
+    print(f"Forward Ratio: {fw/total_w:.6f}")
+                            ~~^~~~~~~~
+ZeroDivisionError: float division by zero
+=== Graph contents ===
+n=0, m=0, edges=[]
+
+=== Standalone LR-TA ===
+bw=0.0, fw=0.0, total_w=0.0
+
+=== IPSNS with log_every=0 (reproducing EXP1 crash) ===
+
+  Wrote ranking: /tmp/gr00_ipsns.csv
+Graph: n=0 nodes, m=0 edges (after aggregation)
+Total Weight: 0.000000
+Forward Weight: 0.000000
+Backward Weight: 0.000000
+ZeroDivisionError caught: float division by zero

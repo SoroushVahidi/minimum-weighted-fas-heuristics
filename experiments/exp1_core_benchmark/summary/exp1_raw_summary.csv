@@ -88,7 +88,7 @@ good,wmsf,4.0,4.0,4.0,3.0,1.0,0.75,0.000407779123634,experiments/exp1_core_bench
 good,ipsns,4.0,4.0,4.0,3.0,1.0,0.75,0.0038564559072256,experiments/exp1_core_benchmark/raw/full_benchmark/raw/good_ipsns_ranking.csv,
 gr00,lrta,0.0,0.0,0.0,0.0,0.0,0.0,0.0001832218840718,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr00_lrta_ranking.csv,
 gr00,wmsf,0.0,0.0,0.0,0.0,0.0,0.0,0.0001573767513036,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr00_wmsf_ranking.csv,
-gr00,ipsns,,,,,,,0.0001659728586673,,float division by zero
+gr00,ipsns,0.0,0.0,0.0,0.0,0.0,0.0,0.0001659728586673,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr00_ipsns_ranking.csv,
 gr0,lrta,1.0,1.0,6410.0,0.0,6410.0,0.0,0.0003909822553396,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr0_lrta_ranking.csv,
 gr0,wmsf,1.0,1.0,6410.0,0.0,6410.0,0.0,0.0003691320307552,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr0_wmsf_ranking.csv,
 gr0,ipsns,1.0,1.0,6410.0,0.0,6410.0,0.0,0.0003952011466026,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr0_ipsns_ranking.csv,
@@ -139,7 +139,7 @@ gr6,wmsf,3.0,6.0,35970.0,21304.0,14666.0,0.5922713372254657,0.0004558921791613,e
 gr6,ipsns,3.0,6.0,35970.0,21873.0,14097.0,0.6080900750625521,0.0051445947028696,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr6_ipsns_ranking.csv,
 gr7,lrta,0.0,0.0,0.0,0.0,0.0,0.0,0.0001719179563224,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr7_lrta_ranking.csv,
 gr7,wmsf,0.0,0.0,0.0,0.0,0.0,0.0,0.0001618908718228,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr7_wmsf_ranking.csv,
-gr7,ipsns,,,,,,,0.0001613269560039,,float division by zero
+gr7,ipsns,0.0,0.0,0.0,0.0,0.0,0.0,0.0001613269560039,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr7_ipsns_ranking.csv,
 gr8,lrta,2.0,2.0,14930.0,9812.0,5118.0,0.6572002679169457,0.0003851410001516,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr8_lrta_ranking.csv,
 gr8,wmsf,2.0,2.0,14930.0,9812.0,5118.0,0.6572002679169457,0.0003934139385819,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr8_wmsf_ranking.csv,
 gr8,ipsns,2.0,2.0,14930.0,9812.0,5118.0,0.6572002679169457,0.0004133870825171,experiments/exp1_core_benchmark/raw/full_benchmark/raw/gr8_ipsns_ranking.csv,

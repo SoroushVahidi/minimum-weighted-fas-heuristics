@@ -1,0 +1,23 @@
+=== Standalone WMSF (L1+L2 best, full pipeline) ===
+n=47, m=83
+SCCs: 13, whole_single_scc=False
+  WMSF L1: bw=58708
+  WMSF L2: bw=58481
+  WMSF best (standalone): bw=58481
+
+=== IPSNS internal WMSF seed (L2 only, global removeArcs+minimize, no stabilize) ===
+  IPSNS internal WMSF seed: bw=58839, fw=353508
+
+=== IPSNS internal LR-TA seed ===
+  IPSNS internal LR seed:   bw=62435, fw=349912
+
+=== Incumbent selection ===
+  best internal seed bw = 58839 (starting from WMSF)
+
+=== EXP1 recorded values ===
+  EXP1 IPSNS final bw = 58839
+  EXP1 WMSF standalone bw = 58481
+
+=== Violation analysis ===
+  IPSNS final (58839) vs internal best seed (58839): OK
+  IPSNS final (58839) vs standalone WMSF (58481): worse (comparison mismatch)

@@ -784,7 +784,7 @@ def lns_merge_wmsf_lr_best_incumbent(
     print(f"Total Weight: {total_w:.6f}")
     print(f"Forward Weight: {fw:.6f}")
     print(f"Backward Weight: {bw:.6f}")
-    print(f"Forward Ratio: {fw/total_w:.6f}")
+    print(f"Forward Ratio: {fw/total_w:.6f}" if total_w > tol else "Forward Ratio: 0.000000 (empty graph)")
     print(f"Removed edges (count): {len(F_best)}")
     print(f"Total time: {elapsed:.3f} sec ({elapsed/60.0:.3f} min)")
 

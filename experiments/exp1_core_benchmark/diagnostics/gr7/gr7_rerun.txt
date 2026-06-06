@@ -1,0 +1,12 @@
+=== gr7 IPSNS rerun after fix ===
+
+  Wrote ranking: experiments/exp1_core_benchmark/diagnostics/gr7/gr7_ipsns_ranking.csv
+Graph: n=0 nodes, m=0 edges (after aggregation)
+Total Weight: 0.000000
+Forward Weight: 0.000000
+Backward Weight: 0.000000
+Forward Ratio: 0.000000 (empty graph)
+Removed edges (count): 0
+Total time: 0.001 sec (0.000 min)
+RESULT: n=0, m=0, total_w=0.0, fw=0.0, bw=0.0
+STATUS: SUCCESS
