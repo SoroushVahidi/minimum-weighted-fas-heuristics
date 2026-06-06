@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Sparse external-baseline comparison on 97 standard nonnegative instances. Lower backward weight is better. Source: \texttt{experiments/combined/tables/manuscript\_table\_external\_sparse.csv}.}
+\label{tab:sparse-external-baselines}
+\begin{tabular}{lrrrr}
+\toprule
+Method & Complete & Mean BW & Median BW & Best \\
+\midrule
+IPSNS (ours) & 97/97 & 37,698 & 5,118 & 96 \\
+LR-TA (ours) & 97/97 & 38,327 & 5,118 & 80 \\
+WMSF seed & 97/97 & 40,005 & 5,118 & 61 \\
+DRMaciver & 93/97 & 53,173 & 5,649 & 56 \\
+igraph Eades & 97/97 & 95,920 & 6,120 & 40 \\
+Weighted Eades & 97/97 & 99,689 & 6,343 & 42 \\
+Borda net score & 97/97 & 512,277 & 12,394 & 27 \\
+Random multistart & 97/97 & 1,075,258 & 8,860 & 42 \\
+\bottomrule
+\end{tabular}
+\end{table}

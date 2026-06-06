@@ -19,6 +19,8 @@ The archived JOCO/local-ratio predecessor package uses Springer `svjour3` files 
 - `main.tex`: top-level manuscript skeleton.
 - `sections/`: section stubs with TODOs tied to EXP1b--EXP5.
 - `references.bib`: merged predecessor bibliography requiring verification.
+- `tables/`: compact manuscript table drafts sourced from the combined experiment summaries.
+- `notes/manuscript_writing_plan.md`: first-pass writing plan, claim boundaries, reuse rules, and citation TODOs.
 - `notes/latex_template_audit.md`: template and LaTeX source audit.
 - `notes/bibliography_extraction_report.md`: extracted BibTeX source map and reference checklist.
 - `notes/reusable_material_audit.md`: candidate predecessor sections with reuse warnings.

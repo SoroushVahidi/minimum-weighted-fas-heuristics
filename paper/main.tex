@@ -24,11 +24,11 @@
 \address[inst1]{Department of Computer Science, New Jersey Institute of Technology, Newark, NJ, USA}
 
 \begin{abstract}
-TODO: Write a self-contained abstract after the main results tables are finalized. Do not use unexplained acronyms. Mention the problem, the local-ratio implementation, incumbent-protected SCC refinement, sparse benchmark dominance, exact validation, external baselines, and dense LOLIB scope boundary.
+Weighted directed graphs provide a natural model for precedence conflicts, cyclic dependencies, and pairwise ordering data in engineering and decision systems. This paper studies the minimum weighted feedback arc set problem on nonnegative weighted directed graphs, equivalently the problem of finding an ordering with minimum total backward edge weight. We present a reproducible heuristic framework that combines an engineered local-ratio cycle-reduction method with topological add-back, a weighted seed construction, and an incumbent-protected refinement over strongly connected components. The refinement is designed to improve local cyclic substructures while preserving a simple non-worsening invariant relative to the best seed solution. The computational study combines sparse public graph benchmarks, an ablation study, exact validation on small instances, external baseline comparisons, and a dense linear-ordering transfer test. On small nonnegative instances where exact optimization is feasible, the proposed refinement is optimal on 56 of 57 standard instances, with a mean relative gap of about 0.0006 percent. On 97 standard nonnegative sparse benchmark instances, it attains the best observed backward weight on 96 instances and outperforms all tested internal and external baselines, including the strongest external heuristic. Dense LOLIB linear-ordering instances define an important scope boundary: a tournament-native external method is stronger on that benchmark, while the proposed framework remains a general weighted-digraph heuristic rather than a dense-native linear-ordering solver.
 \end{abstract}
 
 \begin{keyword}
-Minimum weighted feedback arc set \sep weighted ordering \sep local-ratio algorithm \sep strongly connected components \sep heuristic optimization \sep algorithm engineering
+Minimum weighted feedback arc set \sep weighted ordering \sep local-ratio algorithm \sep strongly connected components \sep incumbent-protected refinement \sep linear ordering problem \sep computational heuristics
 \end{keyword}
 
 \end{frontmatter}

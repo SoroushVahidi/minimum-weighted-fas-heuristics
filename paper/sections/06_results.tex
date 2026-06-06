@@ -1,16 +1,24 @@
 \section{Computational results}
 \label{sec:results}
 
-TODO: Insert manuscript tables from \texttt{experiments/combined/tables/} and EXP1b--EXP5 summaries.
+This section will report the main computational evidence using compact manuscript tables. The current draft records the planned tables and the claims they support; the final version should add per-instance detail only in an appendix or repository artifact.
 
 \subsection{Sparse weighted graph benchmarks}
-TODO: Main EXP4 result: IPSNS best on 96/97 standard instances; DRMacIver strongest external but worse on average.
+Table~\ref{tab:sparse-external-baselines} summarizes the sparse external-baseline comparison on 97 standard nonnegative instances. The intended narrative is that the incumbent-protected refinement attains the best observed backward weight on 96 of 97 instances, while the strongest external baseline is substantially worse in mean backward weight on this sparse benchmark.
+
+\input{tables/table_sparse_external_baselines}
 
 \subsection{Exact validation on small instances}
-TODO: EXP3 result: IPSNS optimal on 56/57 standard small instances, mean relative gap around 0.0006 percent.
+Table~\ref{tab:exact-validation} summarizes the exact small-instance validation. The intended narrative is near-optimality rather than a formal approximation guarantee: the proposed refinement is optimal on 56 of 57 standard small nonnegative instances and has a mean relative gap of about 0.0006 percent.
+
+\input{tables/table_exact_validation}
 
 \subsection{Ablation study}
-TODO: EXP2 result: add-back improves LR; IPSNS improves seeds; SCC priority has little impact on the 10-instance subset.
+Table~\ref{tab:ablation} records the component ablation. The intended narrative is that topological add-back is the dominant component on this subset, incumbent-protected refinement provides an additional improvement, and the observed SCC-priority effect is negligible on these 10 instances without implying a universal parameter conclusion.
+
+\input{tables/table_ablation}
 
 \subsection{Dense LOLIB transfer test}
-TODO: EXP5 result: DRMacIver best on 45/50; IPSNS best on 5/50; DRMacIver advantage about 3.88 percent mean backward weight. Present as scope boundary.
+Table~\ref{tab:lolib-scope} reports the dense LOLIB transfer test. The intended narrative is a scope boundary: a tournament-native external heuristic is stronger on complete dense linear-ordering instances, while incumbent protection still holds for the proposed general weighted-digraph framework.
+
+\input{tables/table_lolib_scope}

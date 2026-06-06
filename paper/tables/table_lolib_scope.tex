@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\caption{Dense LOLIB transfer test on 50 complete weighted ordering instances. Lower backward weight is better. Source: \texttt{experiments/exp5\_lolib\_dense/summary/exp5\_final\_report.md}.}
+\label{tab:lolib-scope}
+\begin{tabular}{lrrr}
+\toprule
+Method & Mean BW & Best & Mean runtime (s) \\
+\midrule
+DRMaciver & 571,688 & 45/50 & 1.01 \\
+IPSNS (ours) & 582,354 & 5/50 & 37.9 \\
+LR-TA (ours) & 582,948 & 2/50 & 0.22 \\
+WMSF seed & 585,926 & 1/50 & 0.19 \\
+igraph Eades & 659,570 & 0/50 & 0.008 \\
+Weighted Eades & 675,235 & 0/50 & 0.006 \\
+Random multistart & 883,664 & 0/50 & 0.023 \\
+Borda net score & 1,066,045 & 0/50 & 0.004 \\
+\bottomrule
+\end{tabular}
+\end{table}

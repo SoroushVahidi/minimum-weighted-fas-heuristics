@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Component ablation on 10 representative instances. Lower backward weight is better. Source: \texttt{experiments/combined/tables/manuscript\_table\_ablation.csv}.}
+\label{tab:ablation}
+\begin{tabular}{lrrr}
+\toprule
+Variant & Mean BW & Median BW & Runtime (s) \\
+\midrule
+LR without add-back & 4,525.1 & 1,025.0 & 0.0166 \\
+LR-TA add-back & 4,271.5 & 823.5 & 0.0467 \\
+WMSF seed only & 4,332.5 & 823.5 & 0.0404 \\
+Best seed, no refinement & 4,271.5 & 823.5 & 0.0691 \\
+IPSNS, 50 iterations & 4,239.2 & 823.5 & 0.7780 \\
+IPSNS, 200 iterations & 4,239.2 & 823.5 & 5.7336 \\
+IPSNS, no SCC priority & 4,239.1 & 823.5 & 5.7274 \\
+\bottomrule
+\end{tabular}
+\end{table}
