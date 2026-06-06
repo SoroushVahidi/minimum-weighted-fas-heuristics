@@ -1,0 +1,24 @@
+# EXP1b Core Benchmark Summary (Full WMSF Seed)
+
+- **n_instances**: 105
+- **n_complete_triplets**: 105
+- **n_lrta_runs**: 105
+- **n_wmsf_runs**: 105
+- **n_ipsns_runs**: 105
+- **n_nonempty_errors**: 0
+- **ipsns_improves_lrta**: 16
+- **ipsns_improves_wmsf**: 36
+- **ipsns_no_worse_than_lrta_count**: 105
+- **ipsns_no_worse_than_wmsf_count**: 105
+- **incumbent_protection_violations_external**: 0
+- **mean_gain_over_best_seed**: 595.4194
+- **median_gain_over_best_seed**: 0.0
+- **mean_relative_gain_over_best_seed**: 0.004196
+- **median_relative_gain_over_best_seed**: 0.0
+- **total_runtime_by_algorithm**: {'ipsns': 2122.3496, 'lrta': 7.7717, 'wmsf': 129.9483}
+- **mean_runtime_by_algorithm**: {'ipsns': 20.2129, 'lrta': 0.074, 'wmsf': 1.2376}
+
+Raw summary (long):  `experiments/exp1b_core_benchmark_full_wmsf_seed/summary/exp1b_raw_summary.csv`
+Wide summary:        `experiments/exp1b_core_benchmark_full_wmsf_seed/tables/exp1b_core_benchmark_wide_summary.csv`
+Paper summary:       `experiments/exp1b_core_benchmark_full_wmsf_seed/tables/exp1b_core_benchmark_paper_summary.csv`
+Stats JSON:          `experiments/exp1b_core_benchmark_full_wmsf_seed/summary/exp1b_core_benchmark_stats.json`
