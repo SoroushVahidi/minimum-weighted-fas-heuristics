@@ -294,7 +294,11 @@ def wmsf_stabilizeFas_scc(n_nodes, U, V, W0, active, out_adj, in_adj, F, tol=1e-
 
     max_passes = max(1, int(math.log2(max(2, n_nodes))))
     for _ in range(max_passes):
-        order, _ = topo_order_active(n_nodes, out_adj, V, active)
+        try:
+            order, rank = topo_order_active(n_nodes, out_adj, V, active)
+        except RuntimeError:
+            # A previous swap created a cycle; stop stabilising.
+            break
         changed = False
 
         for v in order:
@@ -312,9 +316,12 @@ def wmsf_stabilizeFas_scc(n_nodes, U, V, W0, active, out_adj, in_adj, F, tol=1e-
                         changed = True
                 for eid in in_adj[v]:
                     if (not active[eid]) and (eid in F):
-                        active[eid] = 1
-                        F.discard(eid)
-                        changed = True
+                        # Only restore u→v when u ranks before v; adding a
+                        # backward edge would create a cycle in the active DAG.
+                        if rank[U[eid]] < rank[v]:
+                            active[eid] = 1
+                            F.discard(eid)
+                            changed = True
 
             elif removed_out > WinStar + tol:
                 for eid in in_adj[v]:
@@ -324,9 +331,11 @@ def wmsf_stabilizeFas_scc(n_nodes, U, V, W0, active, out_adj, in_adj, F, tol=1e-
                         changed = True
                 for eid in out_adj[v]:
                     if (not active[eid]) and (eid in F):
-                        active[eid] = 1
-                        F.discard(eid)
-                        changed = True
+                        # Only restore v→w when v ranks before w.
+                        if rank[v] < rank[V[eid]]:
+                            active[eid] = 1
+                            F.discard(eid)
+                            changed = True
 
         if not changed:
             break
@@ -338,9 +347,10 @@ def wmsf_stabilizeFas_scc(n_nodes, U, V, W0, active, out_adj, in_adj, F, tol=1e-
 # SCC pipeline helpers
 # ---------------------------------------------------------------------------
 
-def _sync_active_from_F(active, m, F):
+def _sync_active_from_F(active, m, F, W0, tol=1e-12):
+    # Never activate zero-weight edges; they are outside the algorithm's domain.
     for eid in range(m):
-        active[eid] = 0 if (eid in F) else 1
+        active[eid] = 0 if (eid in F or W0[eid] <= tol) else 1
 
 
 def _wmsf_pipeline_scc(k, U2, V2, W02, active2, out2, in2, ordering, tol=1e-12):
@@ -350,13 +360,13 @@ def _wmsf_pipeline_scc(k, U2, V2, W02, active2, out2, in2, ordering, tol=1e-12):
         active2[e] = 0
 
     F2 = wmsf_minimizeFas_scc(k, U2, V2, W02, active2, out2, F2, tol=tol)
-    _sync_active_from_F(active2, len(U2), F2)
+    _sync_active_from_F(active2, len(U2), F2, W02, tol)
 
     F2 = wmsf_stabilizeFas_scc(k, U2, V2, W02, active2, out2, in2, F2, tol=tol)
-    _sync_active_from_F(active2, len(U2), F2)
+    _sync_active_from_F(active2, len(U2), F2, W02, tol)
 
     F2 = wmsf_minimizeFas_scc(k, U2, V2, W02, active2, out2, F2, tol=tol)
-    _sync_active_from_F(active2, len(U2), F2)
+    _sync_active_from_F(active2, len(U2), F2, W02, tol)
 
     return F2, active2
 

@@ -38,11 +38,23 @@ def run_all(instances_file, dataset_dir, results_dir, ipsns_iters=400, rng_seed=
         ]:
             out_csv = os.path.join(results_dir, "raw", f"{stem}_{algo}_ranking.csv")
             t0 = time.perf_counter()
-            edges_indexed, node_to_index, _, scores, _ = run_fn(
-                dimacs_path=input_path,
-                output_ranking_csv_path=out_csv,
-                **kwargs,
-            )
+            try:
+                edges_indexed, node_to_index, _, scores, _ = run_fn(
+                    dimacs_path=input_path,
+                    output_ranking_csv_path=out_csv,
+                    **kwargs,
+                )
+            except Exception as exc:
+                elapsed = time.perf_counter() - t0
+                print(f"  {algo}: ERROR after {elapsed:.2f}s — {exc}")
+                summary_rows.append({
+                    "instance": stem, "algorithm": algo,
+                    "n": None, "m": None, "total_weight": None,
+                    "forward_weight": None, "backward_weight": None,
+                    "forward_ratio": None, "time_sec": elapsed,
+                    "output_csv": None, "error": str(exc),
+                })
+                continue
             elapsed = time.perf_counter() - t0
             total_w, fw, bw = compute_forward_backward(edges_indexed, scores)
             ratio = fw / total_w if total_w > 0 else 0.0
@@ -58,6 +70,7 @@ def run_all(instances_file, dataset_dir, results_dir, ipsns_iters=400, rng_seed=
                 "forward_ratio": ratio,
                 "time_sec": elapsed,
                 "output_csv": out_csv,
+                "error": None,
             })
 
     try:
