@@ -13,7 +13,10 @@ results/raw/
 results/processed/
 results/tables/*.csv
 !results/tables/unified_reproducibility_summary.csv
+experiments/*/raw/
 *.csv
 !configs/
+!experiments/*/tables/*.csv
+!experiments/*/summary/*.csv
 .DS_Store
 .env
