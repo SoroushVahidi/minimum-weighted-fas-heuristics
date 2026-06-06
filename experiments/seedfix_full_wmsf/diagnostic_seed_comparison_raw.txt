@@ -1,0 +1,70 @@
+
+============================================================
+Instance: gr10  (/home/soroush/benchmark_sources/graph-benchmarks/core/gr10.d)
+============================================================
+  Standalone LR-TA BW       = 62435
+  Standalone WMSF BW        = 58481
+
+  Wrote ranking: /tmp/gr10_ipsns_full.csv
+Graph: n=47 nodes, m=83 edges (after aggregation)
+Total Weight: 412347.000000
+Forward Weight: 353866.000000
+Backward Weight: 58481.000000
+Forward Ratio: 0.858175
+Removed edges (count): 22
+Total time: 0.016 sec (0.000 min)
+  IPSNS internal LR seed BW = 62435
+  IPSNS internal WMSF seed BW= 58481
+  IPSNS best seed BW         = 58481
+  IPSNS final BW             = 58481
+  LNS improved seed?         = False
+  IPSNS <= min(LRTA,WMSF)?   = True  (min=58481)
+
+============================================================
+Instance: gr00  (/home/soroush/benchmark_sources/graph-benchmarks/core/gr00.d)
+============================================================
+  Standalone LR-TA BW       = 0
+  Standalone WMSF BW        = 0
+
+  Wrote ranking: /tmp/gr00_ipsns_full.csv
+Graph: n=0 nodes, m=0 edges (after aggregation)
+Total Weight: 0.000000
+Forward Weight: 0.000000
+Backward Weight: 0.000000
+Forward Ratio: 0.000000 (empty graph)
+Removed edges (count): 0
+Total time: 0.000 sec (0.000 min)
+  IPSNS internal LR seed BW = 0
+  IPSNS internal WMSF seed BW= 0
+  IPSNS best seed BW         = 0
+  IPSNS final BW             = 0
+  LNS improved seed?         = False
+  IPSNS <= min(LRTA,WMSF)?   = True  (min=0)
+
+============================================================
+Instance: gr7  (/home/soroush/benchmark_sources/graph-benchmarks/core/gr7.d)
+============================================================
+  Standalone LR-TA BW       = 0
+  Standalone WMSF BW        = 0
+
+  Wrote ranking: /tmp/gr7_ipsns_full.csv
+Graph: n=0 nodes, m=0 edges (after aggregation)
+Total Weight: 0.000000
+Forward Weight: 0.000000
+Backward Weight: 0.000000
+Forward Ratio: 0.000000 (empty graph)
+Removed edges (count): 0
+Total time: 0.000 sec (0.000 min)
+  IPSNS internal LR seed BW = 0
+  IPSNS internal WMSF seed BW= 0
+  IPSNS best seed BW         = 0
+  IPSNS final BW             = 0
+  LNS improved seed?         = False
+  IPSNS <= min(LRTA,WMSF)?   = True  (min=0)
+
+Diagnostic CSV written: experiments/seedfix_full_wmsf/diagnostic_seed_comparison.csv
+
+=== SUMMARY ===
+  [OK  ] gr10    IPSNS=58481  LRTA=62435  WMSF=58481  seed=58481
+  [OK  ] gr00    IPSNS=0  LRTA=0  WMSF=0  seed=0
+  [OK  ] gr7     IPSNS=0  LRTA=0  WMSF=0  seed=0

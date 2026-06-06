@@ -1,0 +1,127 @@
+Smoke test: 10 instances  (wmsf_seed_mode=full)
+
+--- bad1 ---
+
+  Wrote ranking: /tmp/sft_bad1_ip.csv
+Graph: n=13 nodes, m=14 edges (after aggregation)
+Total Weight: 21821.000000
+Forward Weight: 21727.000000
+Backward Weight: 94.000000
+Forward Ratio: 0.995692
+Removed edges (count): 1
+Total time: 0.010 sec (0.000 min)
+  [OK  ] LRTA=94  WMSF=94  seed_wmsf=94  IPSNS_final=94  improved=False
+
+--- bad2 ---
+
+  Wrote ranking: /tmp/sft_bad2_ip.csv
+Graph: n=11 nodes, m=12 edges (after aggregation)
+Total Weight: 13129.000000
+Forward Weight: 12949.000000
+Backward Weight: 180.000000
+Forward Ratio: 0.986290
+Removed edges (count): 1
+Total time: 0.010 sec (0.000 min)
+  [OK  ] LRTA=180  WMSF=180  seed_wmsf=180  IPSNS_final=180  improved=False
+
+--- bad3 ---
+
+  Wrote ranking: /tmp/sft_bad3_ip.csv
+Graph: n=4 nodes, m=5 edges (after aggregation)
+Total Weight: 8287.000000
+Forward Weight: 6768.000000
+Backward Weight: 1519.000000
+Forward Ratio: 0.816701
+Removed edges (count): 1
+Total time: 0.006 sec (0.000 min)
+  [OK  ] LRTA=1519  WMSF=1632  seed_wmsf=1632  IPSNS_final=1519  improved=False
+
+--- bad4 ---
+
+  Wrote ranking: /tmp/sft_bad4_ip.csv
+Graph: n=10 nodes, m=11 edges (after aggregation)
+Total Weight: 22216.000000
+Forward Weight: 21339.000000
+Backward Weight: 877.000000
+Forward Ratio: 0.960524
+Removed edges (count): 1
+Total time: 0.009 sec (0.000 min)
+  [OK  ] LRTA=877  WMSF=877  seed_wmsf=877  IPSNS_final=877  improved=False
+
+--- bad5 ---
+
+  Wrote ranking: /tmp/sft_bad5_ip.csv
+Graph: n=10 nodes, m=11 edges (after aggregation)
+Total Weight: 20886.000000
+Forward Weight: 20116.000000
+Backward Weight: 770.000000
+Forward Ratio: 0.963133
+Removed edges (count): 1
+Total time: 0.009 sec (0.000 min)
+  [OK  ] LRTA=770  WMSF=770  seed_wmsf=770  IPSNS_final=770  improved=False
+
+--- bad6 ---
+
+  Wrote ranking: /tmp/sft_bad6_ip.csv
+Graph: n=9 nodes, m=10 edges (after aggregation)
+Total Weight: 11262.000000
+Forward Weight: 11044.000000
+Backward Weight: 218.000000
+Forward Ratio: 0.980643
+Removed edges (count): 1
+Total time: 0.008 sec (0.000 min)
+  [OK  ] LRTA=218  WMSF=218  seed_wmsf=218  IPSNS_final=218  improved=False
+
+--- bad7 ---
+
+  Wrote ranking: /tmp/sft_bad7_ip.csv
+Graph: n=19 nodes, m=21 edges (after aggregation)
+Total Weight: 34295.000000
+Forward Weight: 32571.000000
+Backward Weight: 1724.000000
+Forward Ratio: 0.949730
+Removed edges (count): 3
+Total time: 0.013 sec (0.000 min)
+  [OK  ] LRTA=1724  WMSF=1724  seed_wmsf=1724  IPSNS_final=1724  improved=False
+
+--- bad ---
+
+  Wrote ranking: /tmp/sft_bad_ip.csv
+Graph: n=4 nodes, m=4 edges (after aggregation)
+Total Weight: 4.000000
+Forward Weight: 3.000000
+Backward Weight: 1.000000
+Forward Ratio: 0.750000
+Removed edges (count): 1
+Total time: 0.004 sec (0.000 min)
+  [OK  ] LRTA=1  WMSF=1  seed_wmsf=1  IPSNS_final=1  improved=False
+
+--- grid ---
+
+  Wrote ranking: /tmp/sft_grid_ip.csv
+Graph: n=1001 nodes, m=3000 edges (after aggregation)
+Total Weight: 5616947.000000
+Forward Weight: 5583993.000000
+Backward Weight: 32954.000000
+Forward Ratio: 0.994133
+Removed edges (count): 974
+Total time: 0.302 sec (0.005 min)
+  [OK  ] LRTA=32957  WMSF=33294  seed_wmsf=33294  IPSNS_final=32954  improved=True
+
+--- r1000 ---
+
+  Wrote ranking: /tmp/sft_r1000_ip.csv
+Graph: n=999 nodes, m=3960 edges (after aggregation)
+Total Weight: 41238.000000
+Forward Weight: 37183.000000
+Backward Weight: 4055.000000
+Forward Ratio: 0.901668
+Removed edges (count): 637
+Total time: 55.651 sec (0.928 min)
+  [OK  ] LRTA=4375  WMSF=4535  seed_wmsf=4535  IPSNS_final=4055  improved=True
+
+============================================================
+Total time: 57.6s
+Instances: 10  Errors: 0  Guarantee OK: 10/10
+ALL PASS: IPSNS_final <= min(LRTA, WMSF) holds for every instance.
+CSV: experiments/seedfix_full_wmsf/diagnostic_seed_comparison.csv

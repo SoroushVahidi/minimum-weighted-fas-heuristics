@@ -24,6 +24,10 @@ def main():
     parser.add_argument("--rng-seed", type=int, default=1, help="Random seed (default: 1)")
     parser.add_argument("--log-every", type=int, default=10,
                         help="Log progress every N iterations; 0 to disable (default: 10)")
+    parser.add_argument("--wmsf-seed-mode", choices=["full", "legacy"], default="full",
+                        help="WMSF seed algorithm: 'full' (default) matches standalone WMSF "
+                             "(per-SCC, Stabilize, L1+L2 for single-SCC); "
+                             "'legacy' uses global removeArcs+minimize, L2-only.")
     args = parser.parse_args()
 
     lns_merge_wmsf_lr_best_incumbent(
@@ -37,6 +41,7 @@ def main():
         tol=args.tol,
         rng_seed=args.rng_seed,
         log_every=args.log_every,
+        wmsf_seed_mode=args.wmsf_seed_mode,
     )
 
 

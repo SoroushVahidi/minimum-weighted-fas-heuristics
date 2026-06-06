@@ -15,7 +15,10 @@ from collections import defaultdict, deque
 from .io import read_graph_dimacs_agg
 from .evaluation import compute_forward_backward
 from .lrta import topo_order_active, make_reachability_checker
-from .wmsf import build_eid_graph_inout, kosaraju_scc, edges_by_scc, _is_acyclic_active
+from .wmsf import (
+    build_eid_graph_inout, kosaraju_scc, edges_by_scc, _is_acyclic_active,
+    _build_local_scc_graph, _wmsf_pipeline_scc,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -424,6 +427,55 @@ def wmsf_seed_solution(n_nodes, U, V, W0, active, out_adj, in_adj, ordering="L2"
     return F, active
 
 
+def wmsf_seed_solution_full(
+    n_nodes, edges_indexed, V, active_init, out_adj,
+    comps, by_scc, ordering="L2", tol=1e-12,
+):
+    """
+    Full WMSF seed using the same pipeline as standalone wmsf_ranking_from_dimacs_fast:
+    per-SCC removeArcs -> Minimize -> Stabilize -> Minimize.
+    For whole-single-SCC graphs, tries both L1 and L2 and keeps the better result.
+
+    This guarantees IPSNS never starts from a seed weaker than the standalone WMSF.
+    """
+    nontrivial = [c for c in comps if len(c) > 1]
+    whole_single_scc = len(nontrivial) == 1 and len(nontrivial[0]) == n_nodes
+
+    def run_one(ordering_choice):
+        active_glob = bytearray(active_init)
+        F_global = set()
+        for scc_idx, verts in enumerate(comps):
+            e_list = by_scc.get(scc_idx, [])
+            if len(verts) <= 1:
+                for (u, v, w, eid) in e_list:
+                    if u == v and w > tol:
+                        F_global.add(eid)
+                        active_glob[eid] = 0
+                continue
+            if not e_list:
+                continue
+            k, U2, V2, W02, eidG, active2, out2, in2 = _build_local_scc_graph(verts, e_list, tol=tol)
+            F2, _ = _wmsf_pipeline_scc(k, U2, V2, W02, active2, out2, in2, ordering=ordering_choice, tol=tol)
+            for eid2 in F2:
+                F_global.add(eidG[eid2])
+                active_glob[eidG[eid2]] = 0
+        _, rank = topo_order_active(n_nodes, out_adj, V, active_glob)
+        scores = {i: int(rank[i]) for i in range(n_nodes)}
+        _, _, bw = compute_forward_backward(edges_indexed, scores)
+        return bw, F_global, active_glob
+
+    if whole_single_scc:
+        bw1, F1, active1 = run_one("L1")
+        bw2, F2, active2 = run_one("L2")
+        if bw1 <= bw2:
+            return F1, active1
+        else:
+            return F2, active2
+    else:
+        _, F_global, active_glob = run_one(ordering)
+        return F_global, active_glob
+
+
 # ---------------------------------------------------------------------------
 # Base solution B: LR-TA seed (global cycle reduction + minimize)
 # ---------------------------------------------------------------------------
@@ -625,6 +677,8 @@ def lns_merge_wmsf_lr_best_incumbent(
     tol=1e-12,
     rng_seed=1,
     log_every=10,
+    wmsf_seed_mode="full",
+    return_info=False,
 ):
     """
     Run IPSNS: seed with WMSF and LR-TA, keep the better incumbent, then
@@ -635,7 +689,7 @@ def lns_merge_wmsf_lr_best_incumbent(
     Args:
         dimacs_path              : path to the DIMACS input file
         output_ranking_csv_path  : path to write the ranking CSV
-        seed_ordering            : "L1" or "L2" for the WMSF seed
+        seed_ordering            : "L1" or "L2" for the WMSF seed (legacy mode only)
         iters                    : number of LNS iterations
         topK_scc                 : candidate pool size for SCC selection
         destroy_addback_frac     : fraction of removed SCC edges to reactivate
@@ -643,9 +697,18 @@ def lns_merge_wmsf_lr_best_incumbent(
         tol                      : numerical zero tolerance
         rng_seed                 : random seed for reproducibility
         log_every                : print progress every N iterations (0 = silent)
+        wmsf_seed_mode           : "full" (default) uses the same per-SCC pipeline
+                                   as standalone wmsf_ranking_from_dimacs_fast
+                                   (removeArcs->Minimize->Stabilize->Minimize, L1+L2
+                                   for single-SCC graphs); "legacy" uses the simpler
+                                   global removeArcs+minimize, L2-only seed.
+        return_info              : if True, also return a diagnostic dict as the
+                                   sixth element with keys lr_seed_bw, wmsf_seed_bw,
+                                   best_seed_bw, final_bw, improved, n_iters, status.
 
     Returns:
         edges_indexed, node_to_index, index_to_node, scores, F_removed_pairs
+        (and info dict if return_info=True)
     """
     import pandas as pd
 
@@ -667,8 +730,14 @@ def lns_merge_wmsf_lr_best_incumbent(
     ]
 
     # Base solution A: WMSF seed
-    active_A = bytearray(active_init)
-    F_A, active_A = wmsf_seed_solution(n, U, V, W0, active_A, out_adj, in_adj, ordering=seed_ordering)
+    if wmsf_seed_mode == "full":
+        F_A, active_A = wmsf_seed_solution_full(
+            n, edges_indexed, V, active_init, out_adj,
+            comps, by_scc, ordering=seed_ordering, tol=tol,
+        )
+    else:
+        active_A = bytearray(active_init)
+        F_A, active_A = wmsf_seed_solution(n, U, V, W0, active_A, out_adj, in_adj, ordering=seed_ordering)
     _, rank_A = topo_order_active(n, out_adj, V, active_A)
     scores_A = {i: int(rank_A[i]) for i in range(n)}
     total_w, fw_A, bw_A = compute_forward_backward(edges_indexed, scores_A)
@@ -695,6 +764,9 @@ def lns_merge_wmsf_lr_best_incumbent(
 
     _, rank = topo_order_active(n, out_adj, V, active)
 
+    best_bw_initial = best_bw  # for return_info: best seed BW before LNS
+    n_iters_done = 0
+
     t_start = time.perf_counter()
     if log_every:
         print(f"[base WMSF] BW={bw_A:.6f} FW={fw_A:.6f} ratio={fw_A/total_w:.6f} |F|={len(F_A)}")
@@ -705,6 +777,7 @@ def lns_merge_wmsf_lr_best_incumbent(
 
     # LNS loop (pure improving; best_snapshot always protected)
     for it in range(1, iters + 1):
+        n_iters_done = it
         scored = [
             (score_scc_backward_weight(e_list, rank), verts, e_list)
             for verts, e_list in scc_list
@@ -788,4 +861,16 @@ def lns_merge_wmsf_lr_best_incumbent(
     print(f"Removed edges (count): {len(F_best)}")
     print(f"Total time: {elapsed:.3f} sec ({elapsed/60.0:.3f} min)")
 
-    return edges_indexed, node_to_index, index_to_node, scores_best, {(U[eid], V[eid]) for eid in F_best}
+    F_removed_pairs = {(U[eid], V[eid]) for eid in F_best}
+    if return_info:
+        info = {
+            "lr_seed_bw": float(bw_B),
+            "wmsf_seed_bw": float(bw_A),
+            "best_seed_bw": float(best_bw_initial),
+            "final_bw": float(bw),
+            "improved": bw < best_bw_initial - 1e-12,
+            "n_iters": n_iters_done,
+            "status": "ok",
+        }
+        return edges_indexed, node_to_index, index_to_node, scores_best, F_removed_pairs, info
+    return edges_indexed, node_to_index, index_to_node, scores_best, F_removed_pairs
