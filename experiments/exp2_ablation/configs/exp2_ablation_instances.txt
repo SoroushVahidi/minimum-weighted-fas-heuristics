@@ -1,0 +1,10 @@
+/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad1.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad2.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad3.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad4.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad5.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad6.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad7.d
+/home/soroush/benchmark_sources/graph-benchmarks/core/bad.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-big/grid.d
+/home/soroush/benchmark_sources/graph-benchmarks/core-big/r1000.d
