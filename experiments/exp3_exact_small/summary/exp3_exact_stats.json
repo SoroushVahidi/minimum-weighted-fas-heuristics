@@ -1,0 +1,11 @@
+{
+  "n_instances_total": 67,
+  "n_instances_exact_ok": 64,
+  "n_instances_nontrivial": 62,
+  "lrta_optimal": "56/62 (90.3%)",
+  "wmsf_optimal": "52/62 (83.9%)",
+  "ipsns_optimal": "57/62 (91.9%)",
+  "lrta_mean_gap_pct": "0.8771%",
+  "wmsf_mean_gap_pct": "0.9112%",
+  "ipsns_mean_gap_pct": "0.8233%"
+}
