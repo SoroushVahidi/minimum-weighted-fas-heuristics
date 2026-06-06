@@ -1,0 +1,6 @@
+instance,family,lolib_source,dimacs_path,metadata_path,n,total_weight,bks_forward_if_available
+N-sgb75_01,SGB,N-sgb75.01,experiments/exp5_lolib_dense/converted/SGB/N-sgb75_01.d,experiments/exp5_lolib_dense/converted/SGB/N-sgb75_01.meta.json,75,3766702,
+N_be75eec,IO,N-be75eec,experiments/exp5_lolib_dense/converted/IO/N_be75eec.d,experiments/exp5_lolib_dense/converted/IO/N_be75eec.meta.json,50,244250,
+N_t1d100_01,RandA1,N-t1d100.01,experiments/exp5_lolib_dense/converted/RandA1/N_t1d100_01.d,experiments/exp5_lolib_dense/converted/RandA1/N_t1d100_01.meta.json,100,163151,
+N_t1d150_01,RandA1,N-t1d150.01,experiments/exp5_lolib_dense/converted/RandA1/N_t1d150_01.d,experiments/exp5_lolib_dense/converted/RandA1/N_t1d150_01.meta.json,150,377711,
+N_t1d200_01,RandA1,N-t1d200.01,experiments/exp5_lolib_dense/converted/RandA1/N_t1d200_01.d,experiments/exp5_lolib_dense/converted/RandA1/N_t1d200_01.meta.json,200,672568,

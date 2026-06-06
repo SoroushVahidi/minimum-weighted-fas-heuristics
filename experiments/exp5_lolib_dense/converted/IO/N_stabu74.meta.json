@@ -1,0 +1,11 @@
+{
+  "source_file": "/tmp/mwfas_lolib_inspect/IO/N-stabu74",
+  "n": 60,
+  "total_off_diagonal_weight": 574775,
+  "arcs_written": 1502,
+  "zero_weight_arcs_omitted": 2038,
+  "min_weight": 1,
+  "max_weight": 29650,
+  "conversion_mode": "nonzero_arcs_only",
+  "note": "Zero-weight off-diagonal arcs are omitted; they contribute 0 to objective."
+}

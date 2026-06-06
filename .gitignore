@@ -24,3 +24,5 @@ experiments/*/raw/
 venv/
 .venv/
 experiments/*/external_tools/
+experiments/*/downloads/
+experiments/*/logs/

@@ -1,0 +1,11 @@
+{
+  "source_file": "/tmp/mwfas_lolib_inspect/RandA1/N-t1d150.03",
+  "n": 150,
+  "total_off_diagonal_weight": 378390,
+  "arcs_written": 11068,
+  "zero_weight_arcs_omitted": 11282,
+  "min_weight": 1,
+  "max_weight": 100,
+  "conversion_mode": "nonzero_arcs_only",
+  "note": "Zero-weight off-diagonal arcs are omitted; they contribute 0 to objective."
+}

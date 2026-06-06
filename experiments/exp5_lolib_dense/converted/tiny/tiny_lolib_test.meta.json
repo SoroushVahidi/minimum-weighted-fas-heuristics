@@ -1,0 +1,11 @@
+{
+  "source_file": "experiments/exp5_lolib_dense/configs/tiny_lolib_test.lop",
+  "n": 4,
+  "total_off_diagonal_weight": 60,
+  "arcs_written": 12,
+  "zero_weight_arcs_omitted": 0,
+  "min_weight": 1,
+  "max_weight": 10,
+  "conversion_mode": "nonzero_arcs_only",
+  "note": "Zero-weight off-diagonal arcs are omitted; they contribute 0 to objective."
+}

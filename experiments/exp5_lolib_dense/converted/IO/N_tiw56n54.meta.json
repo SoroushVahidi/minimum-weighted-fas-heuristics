@@ -1,0 +1,11 @@
+{
+  "source_file": "/tmp/mwfas_lolib_inspect/IO/N-tiw56n54",
+  "n": 56,
+  "total_off_diagonal_weight": 96280,
+  "arcs_written": 1237,
+  "zero_weight_arcs_omitted": 1843,
+  "min_weight": 1,
+  "max_weight": 4306,
+  "conversion_mode": "nonzero_arcs_only",
+  "note": "Zero-weight off-diagonal arcs are omitted; they contribute 0 to objective."
+}

@@ -1,0 +1,11 @@
+{
+  "source_file": "/tmp/mwfas_lolib_inspect/SGB/N-sgb75.13",
+  "n": 75,
+  "total_off_diagonal_weight": 3741516,
+  "arcs_written": 2517,
+  "zero_weight_arcs_omitted": 3033,
+  "min_weight": 1,
+  "max_weight": 248693,
+  "conversion_mode": "nonzero_arcs_only",
+  "note": "Zero-weight off-diagonal arcs are omitted; they contribute 0 to objective."
+}
