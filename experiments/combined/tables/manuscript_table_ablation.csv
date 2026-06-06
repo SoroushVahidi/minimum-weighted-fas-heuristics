@@ -1,0 +1,9 @@
+variant,label,n_ok,mean_bw,median_bw,mean_runtime_s,rel_vs_lrta_pct,rel_vs_ipsns_pct
+lr_no_addback,LR (no add-back),10,4525.1,1025.0,0.0166,5.937,6.744
+lrta_full,"LR-TA (add-back, no LNS)",10,4271.5,823.5,0.0467,0.0,0.762
+wmsf_seed,WMSF seed only,10,4332.5,823.5,0.0404,1.428,2.201
+best_seed_no_lns,Best seed (no LNS),10,4271.5,823.5,0.0691,0.0,0.762
+ipsns_50iters,IPSNS 50 iters,10,4239.2,823.5,0.778,-0.756,0.0
+ipsns_100iters,IPSNS 100 iters,10,4239.2,823.5,1.5002,-0.756,0.0
+ipsns_full,IPSNS full (200 iters),10,4239.2,823.5,5.7336,-0.756,0.0
+ipsns_no_scc_priority,IPSNS no SCC priority,10,4239.1,823.5,5.7274,-0.759,-0.002

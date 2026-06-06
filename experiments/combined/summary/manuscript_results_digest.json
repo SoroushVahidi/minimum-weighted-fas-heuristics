@@ -1,0 +1,185 @@
+{
+  "generated_by": "experiments/combined/build_manuscript_results_digest.py",
+  "date": "2026-06-06",
+  "head_commit": "e5b5b96",
+  "experiments_complete": [
+    "EXP1b",
+    "EXP2",
+    "EXP3",
+    "EXP4",
+    "EXP5"
+  ],
+  "n_instances_total": {
+    "EXP1b": 105,
+    "EXP2": 10,
+    "EXP3_standard": 57,
+    "EXP4_standard": 97,
+    "EXP5": 50
+  },
+  "source_files": {
+    "EXP1b_stats": "experiments/exp1b_core_benchmark_full_wmsf_seed/summary/exp1b_core_benchmark_stats.json",
+    "EXP1b_table": "experiments/exp1b_core_benchmark_full_wmsf_seed/tables/exp1b_core_benchmark_paper_summary.csv",
+    "EXP2_stats": "experiments/exp2_ablation/summary/exp2_ablation_stats.json",
+    "EXP2_table": "experiments/exp2_ablation/tables/exp2_ablation_summary.csv",
+    "EXP3_stats": "experiments/exp3_exact_small/summary/exp3_exact_stats.json",
+    "EXP3_table": "experiments/exp3_exact_small/tables/exp3_exact_summary.csv",
+    "EXP4_stats": "experiments/exp4_external_baselines/summary/exp4_external_stats.json",
+    "EXP4_table": "experiments/exp4_external_baselines/tables/exp4_external_paper_summary.csv",
+    "EXP5_stats": "experiments/exp5_lolib_dense/summary/exp5_lolib_stats.json",
+    "EXP5_table": "experiments/exp5_lolib_dense/tables/exp5_lolib_paper_summary.csv"
+  },
+  "missing_or_unparsed_sources": [],
+  "experimental_pillars": [
+    {
+      "pillar": 1,
+      "name": "Sparse weighted graph-benchmarks",
+      "experiments": [
+        "EXP1b",
+        "EXP4"
+      ],
+      "dataset": "alidasdan/graph-benchmarks (DIMACS .d)",
+      "n_instances": {
+        "EXP1b": 105,
+        "EXP4": 97
+      },
+      "algorithms": [
+        "IPSNS",
+        "LR-TA",
+        "WMSF",
+        "DRMaciver",
+        "igraph Eades",
+        "Weighted Eades",
+        "Borda",
+        "Random"
+      ],
+      "main_metric": "backward_weight",
+      "main_result": "IPSNS achieves global minimum BW on 96/97 standard non-negative instances. DRMaciver (external) is closest competitor at +21.6% mean BW. IPSNS has 0 incumbent-protection violations on 105 EXP1b instances.",
+      "key_numbers": {
+        "EXP1b_n_instances": 105,
+        "EXP1b_incumbent_violations": 0,
+        "EXP1b_ipsns_improves_lrta": 16,
+        "EXP1b_ipsns_improves_wmsf": 36,
+        "EXP1b_mean_rel_gain_pct": 0.42,
+        "EXP4_n_standard": 97,
+        "EXP4_ipsns_mean_bw": 37697.51,
+        "EXP4_lrta_mean_bw": 38326.94,
+        "EXP4_wmsf_mean_bw": 40005.06,
+        "EXP4_drmaciver_mean_bw": 53173.38,
+        "EXP4_ipsns_n_best": 96,
+        "EXP4_drmaciver_rel_gap_pct": 21.61
+      },
+      "claim_allowed": "On standard non-negative sparse weighted graph-benchmarks, IPSNS outperforms all tested internal and external baselines and achieves the global minimum backward weight on 96/97 standard instances.",
+      "claim_not_allowed": "IPSNS is universally state-of-the-art for all FAS/LOP instances."
+    },
+    {
+      "pillar": 2,
+      "name": "Exact small-instance validation",
+      "experiments": [
+        "EXP3"
+      ],
+      "dataset": "alidasdan/graph-benchmarks, n<=20 subset",
+      "n_instances": {
+        "EXP3": 57
+      },
+      "algorithms": [
+        "IPSNS",
+        "LR-TA",
+        "WMSF",
+        "Exact DP"
+      ],
+      "main_metric": "gap_from_optimal_pct",
+      "main_result": "IPSNS achieves exact optimality on 56/57 (98.2%) standard non-negative instances. Only near-miss: r20_60 (n=20), 0.0006% mean relative gap. LR-TA: 55/57 (96.5%), WMSF: 51/57 (89.5%).",
+      "key_numbers": {
+        "n_standard": 57,
+        "ipsns_optimal": "56/57",
+        "ipsns_pct_optimal": 98.2,
+        "ipsns_mean_gap_pct": 0.0006,
+        "lrta_optimal": "55/57",
+        "lrta_pct_optimal": 96.5,
+        "lrta_mean_gap_pct": 0.059,
+        "wmsf_optimal": "51/57",
+        "wmsf_pct_optimal": 89.5,
+        "wmsf_mean_gap_pct": 0.0961
+      },
+      "claim_allowed": "On small non-negative instances where exact optimization is feasible, IPSNS is near-optimal (98.2% exact, mean gap 0.0006%).",
+      "claim_not_allowed": "IPSNS has an approximation guarantee or always reaches optimum."
+    },
+    {
+      "pillar": 3,
+      "name": "Ablation study",
+      "experiments": [
+        "EXP2"
+      ],
+      "dataset": "alidasdan/graph-benchmarks (10 representative instances)",
+      "n_instances": {
+        "EXP2": 10
+      },
+      "algorithms": [
+        "lr_no_addback",
+        "lrta_full",
+        "wmsf_seed",
+        "best_seed_no_lns",
+        "ipsns_50iters",
+        "ipsns_100iters",
+        "ipsns_full",
+        "ipsns_no_scc_priority"
+      ],
+      "main_metric": "mean_backward_weight",
+      "main_result": "Add-back phase reduces mean BW by 5.9% (lr_no_addback 4525.1 -> lrta_full 4271.5). IPSNS full reduces further by 0.75% (lrta_full 4271.5 -> ipsns_full 4239.2). Convergence reached at 50 iterations (ipsns_50iters == ipsns_full on this subset). SCC priority has negligible effect on 10-instance subset.",
+      "key_numbers": {
+        "lr_no_addback_mean_bw": 4525.1,
+        "lrta_full_mean_bw": 4271.5,
+        "wmsf_seed_mean_bw": 4332.5,
+        "ipsns_full_mean_bw": 4239.2,
+        "ipsns_no_scc_priority_mean_bw": 4239.1,
+        "addback_reduction_pct": 5.9,
+        "lns_further_reduction_pct": 0.75,
+        "convergence_iters": 50
+      },
+      "claim_allowed": "EXP2 supports the contribution of the add-back phase (\u22125.9% BW) and incumbent-protected refinement (\u22120.75% further).",
+      "claim_not_allowed": "All design choices are universally optimal or generalize beyond the 10-instance subset."
+    },
+    {
+      "pillar": 4,
+      "name": "Dense LOLIB transfer test",
+      "experiments": [
+        "EXP5"
+      ],
+      "dataset": "LOLIB 2010 (SGB n=75, IO n=44-79, RandA1 n=100/150/200)",
+      "n_instances": {
+        "EXP5": 50
+      },
+      "algorithms": [
+        "IPSNS",
+        "LR-TA",
+        "WMSF",
+        "DRMaciver",
+        "igraph Eades",
+        "Weighted Eades",
+        "Borda",
+        "Random"
+      ],
+      "main_metric": "backward_weight",
+      "main_result": "DRMaciver (tournament-native) achieves global best on 45/50 instances. IPSNS best on 5/50 (4 IO + 1 SGB). DRMaciver mean BW 571,688 vs IPSNS 582,354 (\u22123.88% advantage for DRMaciver). IPSNS retains 0 incumbent violations. Per-family: SGB DRMaciver 24/25, IO IPSNS 4/10 vs DRMaciver 6/10, RandA1 DRMaciver 15/15. Scope boundary: IPSNS is not a dense-native LOP algorithm.",
+      "key_numbers": {
+        "n_instances": 50,
+        "ipsns_n_best": 5,
+        "drmaciver_n_best": 45,
+        "ipsns_mean_bw": 582353.56,
+        "drmaciver_mean_bw_gap_vs_ipsns_pct": -3.88,
+        "incumbent_violations": 0,
+        "SGB_ipsns_best": 1,
+        "SGB_drmaciver_best": 24,
+        "IO_ipsns_best": 4,
+        "IO_drmaciver_best": 6,
+        "RandA1_ipsns_best": 0,
+        "RandA1_drmaciver_best": 15
+      },
+      "claim_allowed": "LOLIB shows IPSNS transfers reasonably as a general weighted digraph heuristic but is not a dense-native LOP state-of-the-art method. Incumbent protection holds. IPSNS is competitive on structured IO instances (4/10).",
+      "claim_not_allowed": "IPSNS beats dense-native ordering solvers on complete dense LOP benchmarks."
+    }
+  ],
+  "strongest_allowed_claim": "On standard non-negative sparse weighted directed graph benchmarks (alidasdan/graph-benchmarks), IPSNS achieves the global minimum backward weight on 96/97 instances, surpassing all tested external baselines including DRMaciver (+21.6% mean BW), with guaranteed non-worsening against both LR-TA and WMSF seeds.",
+  "strongest_not_allowed_claim": "IPSNS is universally state-of-the-art for all weighted feedback arc set or linear ordering problem instances, including dense tournament benchmarks.",
+  "scope_boundary": "All claims apply to non-negative-weight instances only. On dense LOLIB tournaments (EXP5), DRMaciver (tournament-native) outperforms IPSNS overall. IPSNS is designed for sparse directed graphs; EXP5 is a scope test, not the primary claim."
+}

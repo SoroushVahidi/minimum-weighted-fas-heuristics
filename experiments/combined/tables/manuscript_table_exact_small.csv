@@ -1,0 +1,4 @@
+algorithm,label,n_instances,n_optimal,pct_optimal,mean_gap_pct,note
+IPSNS,IPSNS (ours),57,56,98.2%,0.0006%,"only near-miss: r20_60 (n=20, 0.03% gap)"
+LR-TA,LR-TA (ours),57,55,96.5%,0.0590%,
+WMSF,"WMSF (ours, seed)",57,51,89.5%,0.0961%,

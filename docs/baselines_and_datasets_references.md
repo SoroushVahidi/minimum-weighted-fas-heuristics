@@ -78,6 +78,7 @@ due to randomized initialization. This matches standard practice for heuristic c
 | Package | python-igraph |
 | Version | 1.0.0 |
 | Install | `pip install python-igraph` |
+| Docs | https://python.igraph.org/en/stable/api/igraph.Graph.html#feedback_arc_set |
 | Method used | `Graph.feedback_arc_set(weights=..., method="eades")` |
 | Algorithm | Eades heuristic — score-based greedy ordering |
 | Used in | EXP4, EXP5 |
@@ -98,6 +99,13 @@ The `method="ip"` (ILP exact) was not used in heuristic comparisons.
 **Reference:**
 Eades, P., Lin, X., & Smyth, W. F. (1993). A fast and effective heuristic for the
 feedback arc set problem. *Information Processing Letters*, 47(6), 319–323.
+
+**Weighted adaptation caveat:** The original Eades (1993) method is defined for
+unweighted digraphs. Our `weighted_eades_ordering_from_dimacs` implementation
+(in `src/mwfas/baselines.py`) adapts the node-score formula to use net weighted
+out-degree (Σw_out − Σw_in). This weighted adaptation is **not** from the original
+paper and should be described as "a weighted adaptation of Eades (1993)" in the
+manuscript, not attributed to the original authors.
 
 ### Borda Net Score
 
@@ -167,7 +175,7 @@ updates only if a strictly improving solution is found.
 |------|--------|
 | fas-smartAE | Requires `networkit` (not installed); unweighted only |
 | R igraph `feedback_arc_set` | R not installed on this machine |
-| LOP_MA-EDM | Accessible (https://github.com/carlossegurag/LOP_MA-EDM) but not built; DRMaciver used instead |
+| LOP_MA-EDM | Accessible at https://github.com/carlossegurag/LOP_MA-EDM (checked 2026-06-06); **not built or run**; DRMaciver used instead as the strong external FAS baseline |
 | GNNRank | Not started; optional comparison for future work |
 | SNAP graphs | Excluded by design (unweighted, different problem setting) |
 | PrefLib instances | Excluded by design |
@@ -189,3 +197,34 @@ transfer/generalization test. On LOLIB, DRMaciver (a tournament-native algorithm
 is competitive or stronger than IPSNS on larger instances. This is not a failure of
 IPSNS — it reflects the different structure of the problem. The paper's primary claims
 remain grounded in the sparse DIMACS benchmark where IPSNS dominates external baselines.
+
+---
+
+## Exact Manuscript Fairness Wording
+
+Use the following exact wording in the manuscript when describing external baselines:
+
+- **DRMaciver:** "We use the open-source DRMaciver/Feedback-Arc-Set heuristic
+  (commit 16ff24a, https://github.com/DRMaciver/Feedback-Arc-Set), a tournament-native
+  FAS algorithm. We invoke it via a single-run wrapper (`scripts/run_drmaciver_fas.py`);
+  multi-restart results may differ."
+
+- **igraph Eades:** "We use the Eades heuristic as implemented in python-igraph v1.0.0
+  (`Graph.feedback_arc_set(weights=..., method='eades')`), a deterministic score-based
+  greedy ordering method."
+
+- **Weighted Eades:** "We implement a weighted adaptation of Eades et al. (1993),
+  using net weighted out-degree as the node score. This adaptation is our own and is
+  not from the original paper."
+
+- **Borda:** "Borda net score orders nodes by Σw_out − Σw_in (net weighted out-degree).
+  This is a standard ranking heuristic used as a simple baseline."
+
+- **WMSF:** "WMSF is a reimplementation of the removeArcs/Minimize/Stabilize pipeline
+  from our predecessor work. It is used as a seed and baseline, not as a novel
+  contribution of this paper."
+
+- **Negative-weight instances:** "Instances with negative-weight edges
+  (k3_3, ku, peterson, peterson1, peterson2, gerez, howard-max, stg0) are excluded
+  from all standard comparisons; the local-ratio decomposition is not defined for
+  negative weights and the incumbent protection guarantee does not apply."

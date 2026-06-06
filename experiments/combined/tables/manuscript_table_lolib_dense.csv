@@ -1,0 +1,13 @@
+algorithm,label,n_complete,n_total,mean_bw,n_times_best,mean_rel_gap_vs_ipsns_pct,note
+ipsns_full,IPSNS (ours),50,50,,,,
+lrta_full,LR-TA (ours),50,50,,,,
+wmsf_seed,"WMSF (ours, seed)",50,50,,,,
+drmaciver_fas,"DRMaciver [external, tournament-native]",50,50,,,,tournament-native; wins 45/50 overall
+igraph_approx_eades,igraph Eades [external],50,50,,,,
+weighted_eades,Weighted Eades [external],50,50,,,,
+borda_net_score,Borda net score [external],50,50,,,,
+random_multistart,Random multistart [external],50,50,,,,
+--- per-family breakdown ---,,,,,,,
+ipsns_full [SGB],IPSNS (ours) — SGB family,25,25,1048055.68,1,0.0,DRMaciver best: 24/25
+ipsns_full [IO],IPSNS (ours) — IO family,10,10,36996.0,4,0.0,DRMaciver best: 6/10
+ipsns_full [RandA1],IPSNS (ours) — RandA1 family,15,15,169755.07,0,0.0,DRMaciver best: 15/15
