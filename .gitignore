@@ -11,7 +11,8 @@ build/
 .ipynb_checkpoints/
 results/raw/
 results/processed/
-results/tables/
+results/tables/*.csv
+!results/tables/unified_reproducibility_summary.csv
 *.csv
 !configs/
 .DS_Store
