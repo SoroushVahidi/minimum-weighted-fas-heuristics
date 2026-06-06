@@ -678,6 +678,7 @@ def lns_merge_wmsf_lr_best_incumbent(
     rng_seed=1,
     log_every=10,
     wmsf_seed_mode="full",
+    scc_select_mode="weighted",
     return_info=False,
 ):
     """
@@ -702,6 +703,11 @@ def lns_merge_wmsf_lr_best_incumbent(
                                    (removeArcs->Minimize->Stabilize->Minimize, L1+L2
                                    for single-SCC graphs); "legacy" uses the simpler
                                    global removeArcs+minimize, L2-only seed.
+        scc_select_mode          : "weighted" (default) selects SCCs by BW-weighted
+                                   random choice from the top-K highest-BW SCCs;
+                                   "random" uses uniform random selection from all
+                                   non-zero-BW SCCs (ablation: isolates contribution
+                                   of the priority heuristic).
         return_info              : if True, also return a diagnostic dict as the
                                    sixth element with keys lr_seed_bw, wmsf_seed_bw,
                                    best_seed_bw, final_bw, improved, n_iters, status.
@@ -787,8 +793,12 @@ def lns_merge_wmsf_lr_best_incumbent(
             break
 
         scored.sort(key=lambda x: -x[0])
-        pool = scored[: min(topK_scc, len(scored))]
-        picked_bw_scc, verts, e_list = random.choices(pool, weights=[x[0] for x in pool], k=1)[0]
+        if scc_select_mode == "random":
+            # Ablation: uniform random selection from all non-zero-BW SCCs.
+            picked_bw_scc, verts, e_list = random.choices(scored, k=1)[0]
+        else:
+            pool = scored[: min(topK_scc, len(scored))]
+            picked_bw_scc, verts, e_list = random.choices(pool, weights=[x[0] for x in pool], k=1)[0]
 
         active_before = bytearray(active)
         F_before = set(F)

@@ -213,9 +213,9 @@ def make_reachability_checker(n_nodes, adj, V, active):
 # Core LR-TA algorithm
 # ---------------------------------------------------------------------------
 
-def local_ratio_fas_fast(edges_indexed, n_nodes, tol=1e-12):
+def local_ratio_fas_fast(edges_indexed, n_nodes, tol=1e-12, add_back=True):
     """
-    Compute a minimal weighted FAS via local-ratio cycle reductions + add-back.
+    Compute a weighted FAS via local-ratio cycle reductions, optionally with add-back.
 
     Phase 1 (cycle reductions): repeatedly find a cycle, subtract the minimum
     edge weight from all edges on the cycle; edges reduced to zero are removed.
@@ -223,6 +223,7 @@ def local_ratio_fas_fast(edges_indexed, n_nodes, tol=1e-12):
     Phase 2 (add-back): attempt to restore removed edges, heaviest first,
     accepting each edge that does not create a new cycle (tested via topo
     rank O(1) fast path, then reachability with rank-interval pruning).
+    Skipped when add_back=False (ablation: isolates Phase 1 contribution).
 
     Returns:
         removed_eids : set of edge IDs in the final FAS
@@ -257,6 +258,9 @@ def local_ratio_fas_fast(edges_indexed, n_nodes, tol=1e-12):
                 W[eid] = 0.0
                 removed_eids.add(eid)
 
+    if not add_back:
+        return removed_eids, U, V, W0, active, adj
+
     # Phase 2: add-back (heavy first)
     removed_list = sorted(removed_eids, key=lambda eid: (-W0[eid], U[eid], V[eid]))
     _, rank = topo_order_active(n_nodes, adj, V, active)
@@ -285,7 +289,7 @@ def local_ratio_fas_fast(edges_indexed, n_nodes, tol=1e-12):
 
 def paper_fas_ranking_from_dimacs_fast(dimacs_path, output_ranking_csv_path, tol=1e-12):
     """
-    Run LR-TA on a DIMACS instance and write a ranking CSV.
+    Run LR-TA (Phase 1 + Phase 2 add-back) on a DIMACS instance and write a ranking CSV.
 
     The CSV has columns: Node ID, Order.
 
@@ -297,7 +301,39 @@ def paper_fas_ranking_from_dimacs_fast(dimacs_path, output_ranking_csv_path, tol
     edges_indexed, node_to_index, index_to_node = read_graph_dimacs_agg(dimacs_path)
     n = len(node_to_index)
 
-    removed_eids, U, V, W0, active, adj = local_ratio_fas_fast(edges_indexed, n, tol=tol)
+    removed_eids, U, V, W0, active, adj = local_ratio_fas_fast(
+        edges_indexed, n, tol=tol, add_back=True
+    )
+
+    order, rank = topo_order_active(n, adj, V, active)
+
+    rows = [{"Node ID": str(index_to_node[i]).strip(), "Order": int(rank[i])} for i in range(n)]
+    rows.sort(key=lambda r: r["Order"])
+    pd.DataFrame(rows).to_csv(output_ranking_csv_path, index=False)
+
+    F_removed_pairs = {(U[eid], V[eid]) for eid in removed_eids}
+    scores = {i: int(rank[i]) for i in range(n)}
+    return edges_indexed, node_to_index, index_to_node, scores, F_removed_pairs
+
+
+def lr_no_addback_ranking_from_dimacs_fast(dimacs_path, output_ranking_csv_path, tol=1e-12):
+    """
+    Run LR cycle reduction only (Phase 1, no add-back) on a DIMACS instance.
+
+    Ablation variant: isolates the contribution of the topological add-back step.
+    The CSV has columns: Node ID, Order.
+
+    Returns:
+        edges_indexed, node_to_index, index_to_node, scores, F_removed_pairs
+    """
+    import pandas as pd
+
+    edges_indexed, node_to_index, index_to_node = read_graph_dimacs_agg(dimacs_path)
+    n = len(node_to_index)
+
+    removed_eids, U, V, W0, active, adj = local_ratio_fas_fast(
+        edges_indexed, n, tol=tol, add_back=False
+    )
 
     order, rank = topo_order_active(n, adj, V, active)
 

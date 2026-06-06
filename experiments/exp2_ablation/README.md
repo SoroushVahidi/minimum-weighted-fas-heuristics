@@ -8,11 +8,11 @@ This experiment is part of the merged Minimum Weighted Feedback Arc Set (MWFAS) 
 
 | Variant | Status | Description |
 |---|---|---|
-| `lr_no_addback` | **TODO** | LR cycle reduction only (Phase 1), without the topological add-back (Phase 2). Isolates the contribution of add-back. |
+| `lr_no_addback` | **Runnable** | LR cycle reduction only (Phase 1), without the topological add-back (Phase 2). Isolates the contribution of add-back. |
 | `lrta_full` | **Runnable** | Full LR-TA: Phase 1 cycle reduction + Phase 2 add-back. |
 | `wmsf_seed` | **Runnable** | WMSF pipeline only (removeArcs + minimize + stabilize). |
 | `best_seed_no_lns` | **Runnable** | Best of LR-TA and WMSF seeds with no LNS refinement. Shows the ceiling for seed quality. |
-| `ipsns_no_scc_priority` | **TODO** | IPSNS with uniform random SCC selection (no BW-weighted top-K priority). Isolates the contribution of the SCC selection heuristic. |
+| `ipsns_no_scc_priority` | **Runnable** | IPSNS with uniform random SCC selection (no BW-weighted top-K priority). Isolates the contribution of the SCC selection heuristic. |
 | `ipsns_50iters` | **Runnable** | IPSNS with 50 iterations instead of 400. |
 | `ipsns_100iters` | **Runnable** | IPSNS with 100 iterations instead of 400. |
 | `ipsns_full` | **Runnable** | Full IPSNS with default 400 iterations. |

@@ -34,7 +34,7 @@ def run_all(instances_file, dataset_dir, results_dir, ipsns_iters=400, rng_seed=
         for algo, run_fn, kwargs in [
             ("lrta",  paper_fas_ranking_from_dimacs_fast,       {}),
             ("wmsf",  wmsf_ranking_from_dimacs_fast,            {"ordering": "L2"}),
-            ("ipsns", lns_merge_wmsf_lr_best_incumbent,         {"iters": ipsns_iters, "rng_seed": rng_seed, "log_every": 0}),
+            ("ipsns", lns_merge_wmsf_lr_best_incumbent,         {"iters": ipsns_iters, "rng_seed": rng_seed, "log_every": 0, "wmsf_seed_mode": "full"}),
         ]:
             out_csv = os.path.join(results_dir, "raw", f"{stem}_{algo}_ranking.csv")
             t0 = time.perf_counter()

@@ -16,7 +16,7 @@ variants:
   # Status: TODO — requires code change in src/mwfas/lrta.py
   # ---------------------------------------------------------------
   lr_no_addback:
-    status: todo
+    status: runnable
     description: >
       Local-ratio Phase 1 only: repeatedly find a cycle, subtract its
       minimum edge weight from all cycle edges; edges reduced to zero are
@@ -83,7 +83,7 @@ variants:
   # Status: TODO — requires code change in src/mwfas/ipsns.py
   # ---------------------------------------------------------------
   ipsns_no_scc_priority:
-    status: todo
+    status: runnable
     description: >
       IPSNS with uniform random SCC selection from all non-zero-BW SCCs,
       instead of weighted random from the top-K highest-BW SCCs. Isolates

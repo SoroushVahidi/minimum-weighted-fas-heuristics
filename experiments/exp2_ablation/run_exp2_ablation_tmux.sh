@@ -122,16 +122,16 @@ def run():
             iters=iters_map[variant], rng_seed=1, log_every=0)
 
     elif variant == "lr_no_addback":
-        raise NotImplementedError(
-            "lr_no_addback requires add_back=False parameter in "
-            "local_ratio_fas_fast() (src/mwfas/lrta.py line 216). "
-            "See experiments/exp2_ablation/README.md for the required change.")
+        from mwfas.lrta import lr_no_addback_ranking_from_dimacs_fast
+        edges, n2i, i2n, scores, _ = lr_no_addback_ranking_from_dimacs_fast(
+            dimacs_path=inst_path, output_ranking_csv_path=out_csv)
 
     elif variant == "ipsns_no_scc_priority":
-        raise NotImplementedError(
-            "ipsns_no_scc_priority requires scc_select_mode='random' parameter in "
-            "lns_merge_wmsf_lr_best_incumbent() (src/mwfas/ipsns.py line 617). "
-            "See experiments/exp2_ablation/README.md for the required change.")
+        from mwfas.ipsns import lns_merge_wmsf_lr_best_incumbent
+        edges, n2i, i2n, scores, _ = lns_merge_wmsf_lr_best_incumbent(
+            dimacs_path=inst_path, output_ranking_csv_path=out_csv,
+            iters=400, rng_seed=1, log_every=0,
+            wmsf_seed_mode="full", scc_select_mode="random")
 
     else:
         raise ValueError(f"Unknown variant: {variant}")
@@ -233,14 +233,16 @@ for inst_path in instances:
                     iters=ITERS_MAP[variant], rng_seed=1, log_every=0)
 
             elif variant == "lr_no_addback":
-                raise NotImplementedError(
-                    "Requires add_back=False in local_ratio_fas_fast(); "
-                    "see README.md")
+                from mwfas.lrta import lr_no_addback_ranking_from_dimacs_fast
+                edges, n2i, i2n, scores, _ = lr_no_addback_ranking_from_dimacs_fast(
+                    dimacs_path=inst_path, output_ranking_csv_path=out_csv)
 
             elif variant == "ipsns_no_scc_priority":
-                raise NotImplementedError(
-                    "Requires scc_select_mode='random' in lns_merge_wmsf_lr_best_incumbent(); "
-                    "see README.md")
+                from mwfas.ipsns import lns_merge_wmsf_lr_best_incumbent
+                edges, n2i, i2n, scores, _ = lns_merge_wmsf_lr_best_incumbent(
+                    dimacs_path=inst_path, output_ranking_csv_path=out_csv,
+                    iters=400, rng_seed=1, log_every=0,
+                    wmsf_seed_mode="full", scc_select_mode="random")
 
             else:
                 raise ValueError(f"Unknown variant: {variant}")

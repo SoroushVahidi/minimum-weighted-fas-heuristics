@@ -28,6 +28,10 @@ def main():
                         help="WMSF seed algorithm: 'full' (default) matches standalone WMSF "
                              "(per-SCC, Stabilize, L1+L2 for single-SCC); "
                              "'legacy' uses global removeArcs+minimize, L2-only.")
+    parser.add_argument("--scc-select-mode", choices=["weighted", "random"], default="weighted",
+                        help="SCC selection in LNS: 'weighted' (default) uses BW-weighted "
+                             "random from top-K SCCs; 'random' uses uniform random from all "
+                             "non-zero-BW SCCs (ablation variant).")
     args = parser.parse_args()
 
     lns_merge_wmsf_lr_best_incumbent(
@@ -42,6 +46,7 @@ def main():
         rng_seed=args.rng_seed,
         log_every=args.log_every,
         wmsf_seed_mode=args.wmsf_seed_mode,
+        scc_select_mode=args.scc_select_mode,
     )
 
 
