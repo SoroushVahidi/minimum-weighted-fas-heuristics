@@ -347,16 +347,19 @@ def wmsf_removeArcs_global(n_nodes, U, V, W0, active, out_adj, in_adj, ordering=
         since += 1
         if since >= alpha:
             since = 0
-            if _is_acyclic_active(n_nodes, out_adj, V, active):
+            ok, _ = _is_acyclic_active(n_nodes, out_adj, V, active)
+            if ok:
                 break
 
-    if not _is_acyclic_active(n_nodes, out_adj, V, active):
+    ok, _ = _is_acyclic_active(n_nodes, out_adj, V, active)
+    if not ok:
         for eid in eids:
             if not active[eid]:
                 continue
             active[eid] = 0
             F.add(eid)
-            if _is_acyclic_active(n_nodes, out_adj, V, active):
+            ok, _ = _is_acyclic_active(n_nodes, out_adj, V, active)
+            if ok:
                 break
 
     for eid in safe_tmp:
