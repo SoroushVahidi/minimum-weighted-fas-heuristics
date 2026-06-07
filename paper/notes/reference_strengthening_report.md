@@ -34,11 +34,12 @@ Pre-CAIE pass to increase curated bibliography coverage from 11 to 23 unique cit
 | `Pavone` standalone entry | No verified standalone bibliographic entry beyond `CC25` in local files |
 | Additional scatter-search LOLIB references | `MRD12` and `lolib_library` already cover LOLIB provenance sufficiently |
 
-## Ending point (post-integration target)
+## Ending point (post-integration)
 
 - **Unique keys cited:** 23
-- **Bib entries:** 24
-- **Unused bib keys:** none expected after integration
+- **Total citation commands:** 56
+- **Bib entries:** 23
+- **Unused bib keys:** none
 
 ## Integration summary
 
