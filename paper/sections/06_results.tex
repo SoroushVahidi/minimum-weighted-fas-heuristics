@@ -70,6 +70,10 @@ A supplementary time-capped MIP baseline (EXP8) extends this exact-validation ev
 
 \input{tables/table_medium_mip_baseline}
 
+The application-facing Wikipedia vote case study (EXP9) gives a deliberately different picture: on the dense vote-degree subgraph ($n{=}50$, $m{=}752$, density $= 0.307$), DRMacIver/FAS achieves backward weight 135 while IPSNS ties LR-TA at 141, consistent with the structural boundary observed on LOLIB (Table~\ref{tab:application-case}).
+
+\input{tables/table_application_case}
+
 The ablation study explains where the framework's gains come from. The add-back phase is the dominant contributor among the tested design choices. Removing it raises mean BW from 4,271.5 for LR-TA to 4,525.1 for the no-add-back variant, a degradation of about 5.94\%. This is the clearest experimental support for treating topological add-back as a substantive engineering contribution rather than a decorative post-processing step.
 
 The refinement stage then provides a smaller but still measurable gain. Moving from LR-TA to IPSNS with 50 iterations reduces mean BW from 4,271.5 to 4,239.2, about 0.76\%. In absolute terms that gain is much smaller than the add-back gain, but it is still meaningful because it is obtained after starting from a strong seed and while preserving the non-degradation invariant. This is the kind of marginal improvement one expects from a bounded refinement layer: it does not re-invent the seed; it improves the hard residue that remains after seeding.
