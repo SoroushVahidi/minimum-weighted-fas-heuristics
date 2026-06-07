@@ -1,0 +1,124 @@
+{
+  "n_sparse_with_features": 103,
+  "n_gain_lrta": 103,
+  "n_gain_drm": 101,
+  "correlations_ipsns_vs_lrta_gain": [
+    {
+      "feature": "n (vertices)",
+      "n": 103,
+      "spearman_r": 0.5338,
+      "p_value": 0.0
+    },
+    {
+      "feature": "m (arcs)",
+      "n": 103,
+      "spearman_r": 0.5346,
+      "p_value": 0.0
+    },
+    {
+      "feature": "density",
+      "n": 103,
+      "spearman_r": -0.5062,
+      "p_value": 0.0
+    },
+    {
+      "feature": "largest SCC fraction",
+      "n": 103,
+      "spearman_r": -0.0777,
+      "p_value": 0.4355
+    },
+    {
+      "feature": "fraction in nontrivial SCCs",
+      "n": 103,
+      "spearman_r": -0.0538,
+      "p_value": 0.5894
+    },
+    {
+      "feature": "fraction arcs internal to SCCs",
+      "n": 103,
+      "spearman_r": -0.0349,
+      "p_value": 0.7265
+    },
+    {
+      "feature": "n nontrivial SCCs",
+      "n": 103,
+      "spearman_r": 0.2694,
+      "p_value": 0.0059
+    }
+  ],
+  "correlations_ipsns_vs_drmaciver_gain": [
+    {
+      "feature": "n (vertices)",
+      "n": 101,
+      "spearman_r": 0.7689,
+      "p_value": 0.0
+    },
+    {
+      "feature": "m (arcs)",
+      "n": 101,
+      "spearman_r": 0.7638,
+      "p_value": 0.0
+    },
+    {
+      "feature": "density",
+      "n": 101,
+      "spearman_r": -0.7625,
+      "p_value": 0.0
+    },
+    {
+      "feature": "largest SCC fraction",
+      "n": 101,
+      "spearman_r": -0.218,
+      "p_value": 0.0285
+    },
+    {
+      "feature": "fraction in nontrivial SCCs",
+      "n": 101,
+      "spearman_r": -0.2437,
+      "p_value": 0.0141
+    },
+    {
+      "feature": "fraction arcs internal to SCCs",
+      "n": 101,
+      "spearman_r": -0.2393,
+      "p_value": 0.0159
+    },
+    {
+      "feature": "n nontrivial SCCs",
+      "n": 101,
+      "spearman_r": 0.6812,
+      "p_value": 0.0
+    }
+  ],
+  "quantile_by_scc_frac": [
+    {
+      "label": "Q1 (low SCC frac)",
+      "n": 25,
+      "mean_scc_frac": 0.0611,
+      "mean_gain_lrta": 174.24,
+      "median_gain_lrta": 0.0
+    },
+    {
+      "label": "Q2",
+      "n": 25,
+      "mean_scc_frac": 0.4117,
+      "mean_gain_lrta": 271.2,
+      "median_gain_lrta": 0.0
+    },
+    {
+      "label": "Q3",
+      "n": 25,
+      "mean_scc_frac": 0.8864,
+      "mean_gain_lrta": 1996.72,
+      "median_gain_lrta": 0.0
+    },
+    {
+      "label": "Q4 (high SCC frac)",
+      "n": 28,
+      "mean_scc_frac": 1.0,
+      "mean_gain_lrta": 0.04,
+      "median_gain_lrta": 0.0
+    }
+  ],
+  "note": "Spearman correlation of IPSNS improvement over baseline against graph features. Improvement = baseline_BW - IPSNS_BW; positive = IPSNS better."
+}

@@ -1,0 +1,24 @@
+{
+  "sparse_benchmark": {
+    "n_instances": 103,
+    "mean_n": 802.0,
+    "mean_m": 1404.5,
+    "median_density": 0.166667,
+    "mean_density": 0.353544,
+    "mean_largest_scc_frac": 0.6018,
+    "mean_frac_in_nontrivial_sccs": 0.7271,
+    "mean_n_nontrivial_sccs": 10.31,
+    "n_acyclic_instances": 11
+  },
+  "lolib_dense_benchmark": {
+    "n_instances": 50,
+    "mean_n": 93.9,
+    "mean_m": 5082.6,
+    "median_density": 0.450991,
+    "mean_density": 0.454233,
+    "mean_largest_scc_frac": 0.9867,
+    "mean_frac_in_nontrivial_sccs": 0.9867,
+    "mean_n_nontrivial_sccs": 1.0
+  },
+  "interpretation": "Sparse benchmark instances have low density (mean ~0.3535) and localized cyclic substructures (mean fraction of vertices in nontrivial SCCs: ~72.71%). LOLIB instances, by contrast, have near-complete density (mean ~0.4542) with essentially all vertices in one large SCC (mean fraction: ~98.67%). This structural contrast is consistent with the observed performance: SCC-local refinement (IPSNS) targets isolated cyclic subgraphs effectively on sparse instances, while matrix-based pairwise-ordering (DRMacIver/FAS) aligns naturally with fully dense complete-ordering instances."
+}

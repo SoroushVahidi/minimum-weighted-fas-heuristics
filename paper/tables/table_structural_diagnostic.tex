@@ -1,0 +1,27 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Structural comparison between the standard sparse benchmark and the
+dense LOLIB transfer benchmark. Density is $m / n(n{-}1)$ for directed graphs.
+Largest-SCC fraction is the fraction of vertices belonging to the largest
+strongly connected component. All statistics are computed from the
+converted DIMACS instance files used in the experiments.}
+\label{tab:structural_diagnostic}
+\begin{tabular}{lrr}
+\toprule
+Feature & Sparse benchmark & Dense LOLIB \\
+\midrule
+Instances & 103 & 50 \\
+Mean $n$ (vertices) & 802 & 94 \\
+Mean $m$ (arcs) & 1404 & 5083 \\
+Mean density & 0.3535 & 0.4542 \\
+Mean largest-SCC frac. & 0.6018 & 0.9867 \\
+Mean frac. in nontrivial SCCs & 0.7271 & 0.9867 \\
+Mean nontrivial SCC count & 10.3 & 1.0 \\
+\bottomrule
+\multicolumn{3}{p{0.9\linewidth}}{\footnotesize
+Sparse benchmark uses the \texttt{graph-benchmarks} collection (standard 97-instance nonnegative subset after exclusions).
+LOLIB dense benchmark uses 50 converted DIMACS instances across three families (SGB, RandA1, IO).
+SCC features computed from converted DIMACS instance files.} \\
+\end{tabular}
+\end{table}
