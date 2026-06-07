@@ -35,6 +35,17 @@ The full internal benchmark strengthens this interpretation by showing that the 
 
 The runtime pattern also clarifies the engineering tradeoff. LR-TA is the fastest strong method in the study: its mean sparse-benchmark runtime is only 0.08 seconds per instance, yet its mean BW is within about 1.7\% of IPSNS. That makes LR-TA a credible low-latency choice when refinement time is limited. IPSNS then occupies the higher-quality point on the tradeoff curve, paying more runtime to secure the best observed solutions on almost every instance. The study therefore provides a fast seed heuristic, a stronger refinement framework, and a clear statement of what the extra computation buys.
 
+A supplementary budget study (EXP6) tests how IPSNS quality varies with the iteration budget on a 20-instance representative sparse subset (instances with EXP4 IPSNS runtime exceeding 60 s or fewer than 10 vertices excluded). Across six budgets from 10 to 400 iterations, the mean backward weight on this subset is identical (84,614 BW units) and no losses to LR-TA occur at any budget. The improvement over LR-TA is concentrated on 7 of the 20 instances and is secured within the first 10 iterations; additional budget does not change the outcome on this subset. Runtime scales approximately linearly: mean per-instance time rises from 0.28\,s at 10 iterations to 4.40\,s at 400 iterations. Table~\ref{tab:ipsns_budget_curve} and Figure~\ref{fig:ipsns_budget_curve} summarize these results.
+
+\input{tables/table_ipsns_budget_curve}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figures/exp6_ipsns_budget_curve.pdf}
+\caption{IPSNS quality and saturation on the 20-instance representative sparse subset (EXP6). \textit{Left:} mean backward weight versus iteration budget; LR-TA (dashed) is the low-latency reference. \textit{Right:} mean relative excess above the 400-iteration result; zero at all tested budgets indicates complete quality saturation from the first budget tested on this subset.}
+\label{fig:ipsns_budget_curve}
+\end{figure}
+
 The sparse results cover a broad but intentionally scoped benchmark. The comparison uses 97 standard nonnegative sparse instances after exclusions and includes eight algorithms in total. The claim remains limited to this setting and does not extend to negative-weight cases or dense complete ordering benchmarks.
 
 \subsection{Exact validation and ablation evidence}
