@@ -1,4 +1,4 @@
-\section{Algorithmic framework}
+\section{Proposed methodology}
 \label{sec:algorithmic-framework}
 
 The framework combines three layers: a local-ratio topological add-back seed, a complementary weighted seed, and an incumbent-protected refinement over strongly connected components. Figure~\ref{fig:framework-overview} summarizes the data flow, while Tables~\ref{tab:algorithm-components} and~\ref{tab:algorithm-invariants} isolate the roles of each component and the invariants that the implementation preserves.
@@ -27,7 +27,7 @@ In Phase II, LR-TA attempts to reinsert removed arcs without recreating cyclicit
     \label{eq:lrta-fast-accept}
 \end{equation}
 because the current topological order already certifies that the insertion is forward. Otherwise the algorithm checks whether \(v\) can reach \(u\) in the current active graph, using a reachability search pruned by the topological rank interval. The arc is reinserted if and only if no such path exists. Whenever a backward candidate is accepted, the topological order is recomputed so that future admissibility tests remain exact.
-% TODO(rejection-audit): Add one sentence that the extracted topological order is deterministic but not unique, so the paper studies one engineering choice rather than a canonical linear extension.
+The extracted topological order is deterministic under the implementation used here, but it is not mathematically unique: different linear extensions of the same DAG can exist. The paper therefore treats the chosen extraction rule as an engineering convention rather than as a canonical ordering of an acyclic state.
 
 Algorithm~\ref{alg:lrta} summarizes the implementation.
 
@@ -66,7 +66,7 @@ The add-back phase is where this implementation departs most clearly from a bare
 \subsection{WMSF-style seed construction}
 \label{subsec:wmsf}
 
-The second seed is a weighted removeArcs--minimize--stabilize pipeline implemented in the repository as an internal baseline. The role of this component in the manuscript is pragmatic: it broadens the seed space available to the refinement stage and helps define the incumbent-protection guarantee. It should not be presented as the main novelty of the paper.
+The second seed is a weighted removeArcs--minimize--stabilize pipeline implemented locally as an internal baseline. The role of this component in the manuscript is pragmatic: it broadens the seed space available to the refinement stage and helps define the incumbent-protection guarantee. It should not be presented as the main novelty of the paper.
 
 At a high level, the WMSF-style seed decomposes the graph into strongly connected components and processes each nontrivial component separately. Within a component, it first removes arcs according to a prescribed weight-based ordering. Two orderings are supported in code: \(L1\), which sorts arcs primarily by weight, and \(L2\), which normalizes arc weight by a weighted in/out-degree denominator. The resulting removed set is then minimized by heavy-first add-back, followed by a stabilization step and a second minimization pass. When the entire graph is a single nontrivial strongly connected component, both \(L1\) and \(L2\) are tried and the lower-backward-weight seed is kept. Otherwise the configured ordering is used componentwise.
 
@@ -116,8 +116,7 @@ Algorithm~\ref{alg:ipsns} summarizes the IPSNS driver at manuscript level.
 \end{algorithmic}
 \end{algorithm}
 
-Two implementation details are especially important for interpretation. First, the default WMSF seed mode inside IPSNS is the full per-SCC pipeline, not a weaker legacy approximation; this is required so that the refinement never starts from a seed weaker than the standalone WMSF baseline. Second, the randomization in IPSNS is controlled entirely by a fixed seed. The resulting sequence of SCC choices and destroy fractions is therefore reproducible given the same input and parameter settings.
-% TODO(rejection-audit): Tie the fixed IPSNS defaults back to EXP2 as subset-level parameter support, not a universal tuning claim.
+Two implementation details are especially important for interpretation. First, the default WMSF seed mode inside IPSNS is the full per-SCC pipeline, not a weaker legacy approximation; this is required so that the refinement never starts from a seed weaker than the standalone WMSF baseline. Second, the randomization in IPSNS is controlled entirely by a fixed seed. The resulting sequence of SCC choices and destroy fractions is therefore reproducible given the same input and parameter settings. The parameter choices themselves are interpreted conservatively later in the paper: the ablation study supports them as reasonable defaults on the tested subset, not as universally optimal settings.
 
 \subsection{Algorithmic invariants}
 \label{subsec:invariants}
