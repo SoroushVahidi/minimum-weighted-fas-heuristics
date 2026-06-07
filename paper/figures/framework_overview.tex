@@ -25,8 +25,8 @@
 \draw[arrow] (destroy) -- (accept);
 \draw[arrow] (repair) -- (accept);
 \draw[arrow] (accept) -- (output);
-\path (accept.east) ++(1.9,0) coordinate (restoreA);
-\path (bestseed.east) ++(1.9,0) coordinate (restoreB);
+\path (bestseed.east) ++(3.4,0) coordinate (restoreB);
+\path (restoreB |- accept.east) coordinate (restoreA);
 \draw[arrow] (accept.east) -- (restoreA) -- node[right, font=\scriptsize] {restore} (restoreB) -- (bestseed.east);
 \end{tikzpicture}
 \caption{Conceptual overview of the integrated framework. Two constructive seeds are evaluated first; IPSNS then applies incumbent-protected SCC-local destroy-and-repair moves to the better seed only when they improve the global objective.}
