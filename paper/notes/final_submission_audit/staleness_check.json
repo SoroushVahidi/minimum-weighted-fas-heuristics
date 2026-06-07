@@ -1,0 +1,14 @@
+{
+  "main_anonymized_pdf_exists": true,
+  "main_anonymized_inputs_newer_than_pdf": [],
+  "title_page.pdf": {
+    "pdf_exists": true,
+    "source_exists": true,
+    "source_newer_than_pdf": false
+  },
+  "cover_letter_draft.pdf": {
+    "pdf_exists": true,
+    "source_exists": true,
+    "source_newer_than_pdf": false
+  }
+}

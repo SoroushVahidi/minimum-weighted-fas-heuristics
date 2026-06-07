@@ -1,0 +1,17 @@
+{
+  "tracked_file_count": 518,
+  "large_tracked_files_over_5mb": [],
+  "tracked_submission_package_files": [
+    "submission_package/main.pdf"
+  ],
+  "tracked_submission_files_for_download_count": 7,
+  "tracked_submission_files_for_download": [
+    "submission_files_for_download/README.md",
+    "submission_files_for_download/cover_letter_draft.pdf",
+    "submission_files_for_download/highlights.txt",
+    "submission_files_for_download/main_anonymized.pdf",
+    "submission_files_for_download/manifest.json",
+    "submission_files_for_download/mwfas_reproducibility_artifact_anonymous.zip",
+    "submission_files_for_download/title_page.pdf"
+  ]
+}

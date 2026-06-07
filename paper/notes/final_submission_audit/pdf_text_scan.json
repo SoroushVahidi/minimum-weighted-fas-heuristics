@@ -1,0 +1,21 @@
+{
+  "main_anonymized": {
+    "identity_hits": [],
+    "placeholder_hits": [],
+    "bad_style_hits": [],
+    "bad_term_hits": [
+      "WMSFstyle"
+    ],
+    "contains_references": true,
+    "contains_acknowledgment": false
+  },
+  "title_page": {
+    "author_info_present": true,
+    "placeholder_hits": []
+  },
+  "cover_letter": {
+    "author_info_present": true,
+    "dear_editor_present": true,
+    "placeholder_hits": []
+  }
+}
