@@ -27,7 +27,7 @@ In Phase II, LR-TA attempts to reinsert removed arcs without recreating cyclicit
     \label{eq:lrta-fast-accept}
 \end{equation}
 because the current topological order already certifies that the insertion is forward. Otherwise the algorithm checks whether \(v\) can reach \(u\) in the current active graph, using a reachability search pruned by the topological rank interval. The arc is reinserted if and only if no such path exists. Whenever a backward candidate is accepted, the topological order is recomputed so that future admissibility tests remain exact.
-The extracted topological order is deterministic under the implementation used here, but it is not mathematically unique: different linear extensions of the same DAG can exist. The paper therefore treats the chosen extraction rule as an engineering convention rather than as a canonical ordering of an acyclic state.
+The extracted topological order is deterministic under the implementation used here, but it is not mathematically unique: different linear extensions of the same DAG can exist. The chosen extraction rule is therefore an engineering convention rather than a canonical ordering of an acyclic state.
 
 Algorithm~\ref{alg:lrta} summarizes the implementation.
 
@@ -61,16 +61,18 @@ Algorithm~\ref{alg:lrta} summarizes the implementation.
 \end{algorithmic}
 \end{algorithm}
 
-The add-back phase is where this implementation departs most clearly from a bare local-ratio reduction. It is also the component with the strongest ablation signal in the current experiments. The manuscript should therefore treat LR-TA as a two-phase engineered seed rather than as a one-step local-ratio routine.
+The add-back phase is where this implementation departs most clearly from a bare local-ratio reduction. It is also the component with the strongest ablation signal in the current experiments. LR-TA should therefore be understood as a two-phase engineered seed rather than as a one-step local-ratio routine.
 
 \subsection{WMSF-style seed construction}
 \label{subsec:wmsf}
 
-The second seed is a weighted removeArcs--minimize--stabilize pipeline implemented locally as an internal baseline. The role of this component in the manuscript is pragmatic: it broadens the seed space available to the refinement stage and helps define the incumbent-protection guarantee. It should not be presented as the main novelty of the paper.
+The second seed is a weighted removeArcs--minimize--stabilize pipeline implemented locally as an internal baseline. It broadens the seed space available to the refinement stage and helps define the incumbent-protection guarantee.
 
 At a high level, the WMSF-style seed decomposes the graph into strongly connected components and processes each nontrivial component separately. Within a component, it first removes arcs according to a prescribed weight-based ordering. Two orderings are supported in code: \(L1\), which sorts arcs primarily by weight, and \(L2\), which normalizes arc weight by a weighted in/out-degree denominator. The resulting removed set is then minimized by heavy-first add-back, followed by a stabilization step and a second minimization pass. When the entire graph is a single nontrivial strongly connected component, both \(L1\) and \(L2\) are tried and the lower-backward-weight seed is kept. Otherwise the configured ordering is used componentwise.
 
 The point of carrying this seed into IPSNS is not to establish a separate literature claim about WMSF. Instead, it provides a complementary structural bias to LR-TA. LR-TA is driven by cycle reductions in the active graph. The WMSF-style seed is driven by ordered arc removals and subsequent minimization. Because the two constructions fail differently on some instances, taking the better of them before refinement produces a stronger and more robust incumbent than either seed alone.
+
+IPSNS is the main refinement contribution. It combines SCC-local destroy-and-repair moves, restricted local-ratio repair, and restricted heavy-first add-back with a strict incumbent-protection rule. Refinement is therefore concentrated on cyclic regions where ordering uncertainty remains, while the global objective can only improve or stay unchanged.
 
 \subsection{Incumbent-protected SCC-neighborhood search}
 \label{subsec:ipsns}
@@ -81,7 +83,7 @@ Within the chosen component, IPSNS applies a destroy-and-repair move. The destro
 
 If the repaired candidate fails to admit a valid topological order, the entire SCC-local state is reverted. If the candidate is valid, the full incumbent objective is recomputed. The incumbent is updated only if the new backward weight is strictly smaller than the current best value. Otherwise the move is rejected and the previous incumbent is restored exactly. This is what makes the method incumbent-protected: refinement never commits a worsening move.
 
-Algorithm~\ref{alg:ipsns} summarizes the IPSNS driver at manuscript level.
+Algorithm~\ref{alg:ipsns} summarizes the IPSNS driver.
 
 \begin{algorithm}[t]
 \caption{IPSNS with incumbent protection}
@@ -133,4 +135,4 @@ The most important invariant in the framework belongs to IPSNS rather than to LR
 \end{equation}
 This monotone non-degradation property is not an approximation guarantee, but it is a concrete algorithmic promise: the final IPSNS solution is never worse than the better internal seed under the same objective and nonnegative-weight assumptions.
 
-LR-TA and the WMSF-style seed have their own feasibility invariants. LR-TA always exits its reduction stage with an acyclic active graph, and its add-back phase only reactivates arcs that preserve acyclicity. The WMSF-style seed similarly alternates removal and minimization steps while checking acyclic feasibility. IPSNS inherits those feasibility properties locally during SCC repair and adds the stronger incumbent-protection rule globally. That combination explains why the paper can make a narrow but defensible guarantee about refinement quality without claiming any new theoretical approximation ratio.
+LR-TA and the WMSF-style seed have their own feasibility invariants. LR-TA always exits its reduction stage with an acyclic active graph, and its add-back phase only reactivates arcs that preserve acyclicity. The WMSF-style seed similarly alternates removal and minimization steps while checking acyclic feasibility. IPSNS inherits those feasibility properties locally during SCC repair and adds the stronger incumbent-protection rule globally. That combination supports a narrow guarantee about refinement quality without claiming any new theoretical approximation ratio.

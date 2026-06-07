@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Comparison on the 97 standard nonnegative sparse instances used for the primary claim-bearing benchmark. BW denotes backward weight; lower values are better. Relative excess is the mean percentage by which an algorithm's BW exceeds IPSNS on completed instances.}
+\caption{Comparison on the 97 standard nonnegative sparse instances. BW denotes backward weight; lower values are better. Relative excess is the mean percentage by which an algorithm's BW exceeds IPSNS on completed instances.}
 \label{tab:sparse-external-baselines}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{lrrrrr}
@@ -19,5 +19,4 @@ Random multistart & 97/97 & 1,075,258 & 0.03 & 42 & 49.76\% \\
 \bottomrule
 \end{tabular}
 }
-\par\vspace{2pt}\parbox{0.94\linewidth}{\footnotesize\raggedright DRMacIver/FAS is the strongest external comparator on this benchmark, but it completes 93 of 97 instances because two DAG cases return empty-tournament errors and two large sparse instances time out in the wrapper used here.}
 \end{table}
