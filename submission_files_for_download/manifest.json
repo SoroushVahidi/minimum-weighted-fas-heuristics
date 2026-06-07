@@ -1,8 +1,8 @@
 [
   {
     "file": "cover_letter_draft.pdf",
-    "size": 13292,
-    "sha256": "e2be34bb67e25da5093d52debf754b942e330a984e39c377e060f5479f609223",
+    "size": 13714,
+    "sha256": "23b95dd5349c37faa06386e15dc0d7251cd4f5782820c8e23922187a2c31ad36",
     "pages": 1
   },
   {
@@ -13,9 +13,9 @@
   },
   {
     "file": "main_anonymized.pdf",
-    "size": 238883,
-    "sha256": "0c9193d657534063dd58e229605c491769230a3da80389c7979d5fb8c66b390d",
-    "pages": 45
+    "size": 244651,
+    "sha256": "3798d6d401fd054f6bc61f0ac51f92b7b50f4979c116ca362ff39d79df298020",
+    "pages": 47
   },
   {
     "file": "mwfas_reproducibility_artifact_anonymous.zip",
