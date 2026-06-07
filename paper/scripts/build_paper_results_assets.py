@@ -432,17 +432,25 @@ EXP5 & Dense transfer test and scope boundary analysis & 50 & LOLIB complete wei
     dr_best = [int(exp5_families[f]["drmaciver_best"]) for f in families]
     x = range(len(families))
     width = 0.36
-    fig, ax = plt.subplots(figsize=(5.6, 3.2))
+    fig, ax = plt.subplots(figsize=(5.6, 3.35))
     ax.bar([i - width / 2 for i in x], ipsns_best, width=width, label="IPSNS", color="0.65", edgecolor="black", linewidth=0.5)
     ax.bar([i + width / 2 for i in x], dr_best, width=width, label="DRMacIver/FAS", color="0.25", edgecolor="black", linewidth=0.5)
     ax.set_xticks(list(x))
     ax.set_xticklabels(families)
     ax.set_ylabel("Global-best instances")
     ax.set_ylim(0, 26)
-    ax.legend(frameon=False, loc="upper left")
+    ax.legend(
+        frameon=False,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 1.16),
+        ncol=2,
+        columnspacing=1.2,
+        handletextpad=0.6,
+        borderaxespad=0.0,
+    )
     ax.set_axisbelow(True)
     ax.grid(axis="y", color="0.88", linewidth=0.6)
-    fig.tight_layout()
+    fig.tight_layout(rect=(0.0, 0.0, 1.0, 0.92))
     fig.savefig(FIGURES_DIR / "exp5_lolib_scope.pdf")
     plt.close(fig)
 
