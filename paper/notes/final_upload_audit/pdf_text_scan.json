@@ -1,0 +1,29 @@
+{
+  "submission_package/files_for_upload/main_anonymized.pdf": {
+    "identity_hits": [],
+    "placeholder_hits": [],
+    "double_question_marks": 0
+  },
+  "submission_package/files_for_upload/title_page.pdf": {
+    "identity_hits": [
+      "Soroush",
+      "Vahidi",
+      "New Jersey Institute of Technology"
+    ],
+    "placeholder_hits": [
+      "[Corresponding Author Contact]"
+    ],
+    "double_question_marks": 0
+  },
+  "submission_package/files_for_upload/cover_letter_draft.pdf": {
+    "identity_hits": [
+      "Soroush",
+      "Vahidi"
+    ],
+    "placeholder_hits": [
+      "[Editor Name]",
+      "[Corresponding Author Contact]"
+    ],
+    "double_question_marks": 0
+  }
+}

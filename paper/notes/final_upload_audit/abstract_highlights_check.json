@@ -1,0 +1,20 @@
+{
+  "highlight_count": 5,
+  "highlight_lengths": [
+    68,
+    65,
+    61,
+    54,
+    49
+  ],
+  "highlight_lines": [
+    "Reproducible heuristics for weighted directed ordering are developed",
+    "Strongly connected refinement improves local-ratio seed solutions",
+    "Exact small-instance tests show near-optimal ordering quality",
+    "Sparse benchmarks outperform tested external baselines",
+    "Dense LOLIB results define a clear scope boundary"
+  ],
+  "highlight_ok": true,
+  "abstract_words": 209,
+  "abstract_ok": true
+}
