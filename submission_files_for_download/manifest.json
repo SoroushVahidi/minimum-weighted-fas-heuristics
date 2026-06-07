@@ -1,8 +1,8 @@
 [
   {
     "file": "cover_letter_draft.pdf",
-    "size": 13287,
-    "sha256": "1fe0b25c9344408f14cd79164ffcec12507c768c4cee12e8880cff2ed0593bdb",
+    "size": 13292,
+    "sha256": "e2be34bb67e25da5093d52debf754b942e330a984e39c377e060f5479f609223",
     "pages": 1
   },
   {
@@ -13,8 +13,8 @@
   },
   {
     "file": "main_anonymized.pdf",
-    "size": 201357,
-    "sha256": "e15c0876353dee3a29080effd487fea78290332017951257e07bf5833f2f0985",
+    "size": 201352,
+    "sha256": "b2408fe7cbd1a8de77591cf1664b1861caa564275e37aba01eaf392f03b01651",
     "pages": 39
   },
   {

@@ -1,0 +1,1662 @@
+A Reproducible Local-Ratio and SCC-Reﬁnement
+Framework
+for Weighted Ordering in Directed Graphs
+
+Abstract
+Weighted directed graphs model precedence conﬂicts, cyclic dependencies,
+and pairwise ordering data in engineering and decision systems. This paper studies the minimum weighted feedback arc set problem on nonnegative weighted directed graphs, equivalently the problem of ﬁnding an ordering with minimum total backward edge weight. We present a reproducible heuristic framework that combines an engineered local-ratio cyclereduction method with topological add-back, a weighted seed construction,
+and incumbent-protected reﬁnement over strongly connected components.
+The reﬁnement improves local cyclic substructures while preserving a nonworsening invariant relative to the best seed solution.
+The computational study combines sparse public graph benchmarks, an
+ablation study, exact validation on small instances, external baseline comparisons, and a dense linear-ordering transfer test. On the exact-validation
+subset, where bitmask dynamic programming certiﬁes optima, the proposed
+reﬁnement matches the optimum on 56 of 57 standard instances, with a
+mean relative gap of about 0.0006 percent. On 97 standard nonnegative
+sparse benchmark instances, it attains the best observed backward weight
+among the tested methods on 96 instances and outperforms all tested baselines, including the strongest external heuristic. For instances outside the
+exact-validation subset, “best” refers to the minimum backward weight observed among the compared algorithms, not a proof of optimality. Dense
+LOLIB instances are analyzed separately as a transfer regime; a matrix-based
+pairwise-ordering external method is stronger on that benchmark, while the
+proposed framework remains a general weighted-digraph heuristic.
+Keywords: Minimum weighted feedback arc set, weighted ordering,
+local-ratio algorithm, strongly connected components, incumbent-protected
+reﬁnement, linear ordering problem, computational heuristics
+
+1. Introduction
+Many engineering and decision systems require a linear order to be extracted from directed, weighted, and internally inconsistent information. A
+precedence graph may encode that task u should precede task v, that a circuit signal should be routed before a dependent component is evaluated, that
+a package should be installed before another package can be conﬁgured, or
+that an alternative is preferred to another alternative in paired-comparison
+data. Rank aggregation from inconsistent pairwise information is a standard
+motivation for ordering heuristics Ailon et al. (2008). In practice these directed relations are often cyclic. Cycles can arise from noisy measurements,
+conﬂicting expert judgments, reciprocal dependencies, approximate model
+reductions, or competing design objectives. A useful ordering method must
+therefore decide which directed constraints to respect and which constraints
+to place backward in the ﬁnal order. When arcs carry weights, the backward
+constraints are not interchangeable: violating a high-weight precedence relation should be more costly than violating a weak or noisy relation. This
+leads naturally to the minimum weighted feedback arc set (MWFAS) problem, a weighted ordering problem on directed graphs with direct relevance to
+cyclic-dependency resolution, ranking, scheduling, and other computational
+decision workﬂows in industrial engineering.
+Informally, the minimum weighted feedback arc set problem asks for a
+minimum-weight set of arcs whose removal makes a directed graph acyclic.
+Equivalently, it asks for a vertex ordering that minimizes the total weight of
+arcs directed backward with respect to that order. The unweighted problem
+is NP-hard in general Karp (1972), and weighted variants have a long heuristic and exact-method literature Flood (1990); Baharev et al. (2021). Exact
+methods are practical only for small instances or special structures. Naive
+score heuristics can be very fast, but they may ignore local cyclic structure;
+random multistart heuristics can provide a broad baseline, but they do not
+exploit graph decomposition; and specialized dense-ordering solvers may perform well on complete pairwise-comparison instances while being less directly
+aligned with sparse, irregular directed graphs. The computational question
+addressed here is not whether one heuristic dominates every possible ordering instance. Instead, it is whether a carefully engineered and reproducible
+framework can deliver strong performance on nonnegative sparse weighted
+2
+
+digraphs while making its scope limits explicit.
+The local-ratio perspective is an important starting point for feedback
+arc set heuristics and approximation-oriented reasoning. We do not claim
+local-ratio as new. Broader local-ratio foundations appear in Bar-Yehuda
+et al. (1998), and directed feedback problems were treated algorithmically in
+Demetrescu and Finocchi (2003). The contribution in this paper is algorithmengineering rather than a new approximation theorem: we study a reproducible local-ratio cycle-reduction implementation that records cycle-removal
+decisions, reconstructs an acyclic topological order, and then performs a topological add-back phase to recover arcs whenever doing so does not reintroduce cyclicity. This method is referred to as local-ratio topological add-back
+(LR-TA) after the components are deﬁned in Section 4. The emphasis is on
+deterministic data handling, measurable component eﬀects, and integration
+with a reﬁnement stage that is evaluated against exact and external baselines.
+The integrated framework combines three components. First, the localratio topological add-back procedure produces a feasible ordering from
+weighted cycle reductions and a reconstruction step. Second, a WMSF-style
+weighted seed construction provides a complementary initial ordering and
+internal baseline. Third, incumbent-protected reﬁnement searches within
+strongly connected components (SCCs). We refer to this reﬁnement as
+incumbent-protected SCC neighborhood search (IPSNS). IPSNS updates
+the incumbent only when a candidate ordering has strictly smaller backward
+weight. This protection gives a simple invariant: the ﬁnal solution cannot be
+worse than the best internal seed under the same objective and nonnegativeweight assumptions. The invariant is not an approximation guarantee, but
+it prevents reﬁnement from degrading the seed and makes the local search
+behavior traceable instance by instance.
+The computational study is organized around ﬁve evidence streams. The
+main sparse benchmark evaluates public weighted directed graph instances
+derived from graph-benchmark collections, with negative-weight instances
+separated from the standard nonnegative comparisons. An ablation study
+isolates the eﬀect of the topological add-back phase, the use of the best
+seed, the incumbent-protected reﬁnement, and the SCC-priority choice on a
+representative subset. An exact small-instance validation compares heuristic orderings against a bitmask dynamic-programming optimum where exact
+optimization is feasible. A sparse external-baseline study compares the proposed framework with the open-source DRMacIver/FAS heuristic, the Eades
+heuristic as implemented in python-igraph, a weighted adaptation of Eades
+3
+
+et al. Eades et al. (1993), a Borda net-score ordering, and random multistart. Finally, a dense transfer study evaluates whether the framework
+carries over to complete weighted linear-ordering instances from the Linear
+Ordering Problem Library (LOLIB).
+The results support a deliberately bounded claim. On 105 sparse benchmark instances, the incumbent-protected reﬁnement has no incumbent violations relative to either internal seed. In the ablation study, the add-back
+phase reduces mean backward weight by 5.9 percent relative to local-ratio
+without add-back, and the reﬁnement gives an additional 0.75 percent mean
+reduction on the tested subset. On the exact-validation subset of 57 standard
+nonnegative instances with n ≤ 20, the reﬁnement matches the dynamicprogramming optimum on 56 instances, with mean relative gap about 0.0006
+percent. On 97 standard nonnegative sparse instances in the external comparison, it achieves the best observed backward weight among the tested
+methods on 96 instances; the strongest external baseline, DRMacIver, is
+about 21.6 percent worse in mean backward weight on this sparse benchmark. These numbers support strong performance on sparse nonnegative
+weighted digraphs, but they do not support a universal dominance claim.
+The dense LOLIB study is reported as a scope boundary rather than
+as primary evidence. LOLIB instances are complete weighted ordering instances, closely related to the linear ordering problem and structurally different from the sparse directed graphs that motivate the framework. On
+50 dense LOLIB instances, the matrix-based pairwise-ordering baseline DRMacIver/FAS obtains the best observed solution on 45 instances, while the
+proposed reﬁnement is best on 5 instances and has about 3.88 percent higher
+mean backward weight. This outcome is consistent with the structural distinction: SCC-local reﬁnement is useful when sparse cyclic subgraphs provide meaningful neighborhoods, whereas dense complete ordering instances
+favor matrix-based pairwise-ordering heuristics. The method is therefore positioned as a reproducible general weighted-digraph framework with strong
+sparse performance and an explicitly documented dense-ordering limitation.
+The contributions of this paper are as follows:
+• We present an engineered local-ratio topological add-back heuristic for
+nonnegative weighted feedback arc set instances, separating inherited
+local-ratio ideas from the implementation and add-back choices studied
+here.
+• We introduce incumbent-protected SCC neighborhood reﬁnement, a
+4
+
+local-search framework that preserves non-worsening relative to the
+best internal seed and can be checked for incumbent violations.
+• We provide a multi-part computational evaluation covering sparse public benchmarks, component ablation, exact small-instance validation,
+external sparse baselines, and dense LOLIB transfer testing.
+• We state explicit claim boundaries for negative-weight exclusions, dense
+linear-ordering instances, weighted Eades adaptation, reproducibility,
+and the absence of a new approximation guarantee.
+The remainder of the paper is organized as follows. Section 2 reviews
+feedback arc set heuristics, local-ratio methods, ordering heuristics, exact
+methods, and linear-ordering benchmarks. Section 3 deﬁnes the minimum
+weighted feedback arc set objective, the ordering-induced backward weight,
+and the relation to dense linear-ordering notation. Section 4 describes
+the local-ratio topological add-back procedure, the weighted seed, and the
+incumbent-protected SCC reﬁnement. Section 5 presents datasets, baselines,
+metrics, and reproducibility controls. Section 6 summarizes the computational results. Section 7 discusses limitations, including the dense LOLIB
+boundary, and Section 8 concludes.
+2. Related work
+2.1. Feedback arc set and local-ratio methods
+The feedback arc set problem and its weighted variants sit at the intersection of graph optimization, ordering, and ranking. In directed graphs, the
+problem can be phrased either as deleting a minimum-weight set of arcs to
+obtain an acyclic graph or as ﬁnding an ordering with minimum backward
+weight. That equivalence makes the problem relevant both to graph-theoretic
+cycle breaking and to applications that begin from pairwise precedence or
+preference data. Classical digraph formulations identiﬁed minimum feedback arc sets as a central cyclic-structure question Lempel and Cederbaum
+(1966), early weighted treatments framed the problem as an ordering objective Flood (1990), and the general decision problem is computationally hard
+Karp (1972). The approximation literature is broader for vertex-deletion or
+undirected variants than for the weighted directed setting considered here,
+but it still provides important methodological context. Even et al. (1998)
+study approximation algorithms for minimum feedback sets and multicuts
+5
+
+in directed graphs, while Hecht et al. (2021) analyze tight localizations of
+feedback sets in more recent algorithm-engineering work. In particular, BarYehuda et al. (1998) place local-ratio reasoning in a general approximation
+framework, showing how weighted combinatorial objectives can be decomposed while preserving feasible improvement structure. Their setting is not
+the same as minimum weighted feedback arc set on directed graphs, and we
+do not rely on their theorem to obtain a new approximation guarantee here.
+However, the paper is directly relevant to the design logic of iterative weight
+reductions on conﬂict structures.
+For directed feedback problems, Demetrescu and Finocchi (2003) provide
+the closest methodological antecedent to the cycle-reduction component used
+here. Their contribution is important for two reasons. First, it treats directed
+feedback problems algorithmically rather than only as ordering formulations.
+Second, it shows how local-ratio reductions can be applied to directed cycles
+in a way that is compatible with practical heuristics. The local-ratio step
+in the present work is inherited in spirit from that line of research: when a
+directed cycle is found, all arcs on the cycle are reduced by the minimum
+weight on the cycle, at least one arc becomes tight, and the active graph
+is simpliﬁed. What is new here is not the local-ratio principle itself, but an
+engineered sparse-graph implementation that records removed arcs explicitly,
+reconstructs a deterministic topological order once the active graph becomes
+acyclic, and then runs a heavy-ﬁrst add-back step to reduce unnecessary
+deletions.
+The contribution is therefore best understood as an algorithm-engineering
+framework built around a known reduction principle. The emphasis is on
+deterministic data handling, compatibility with sparse weighted digraphs,
+and integration with a second-stage reﬁnement process that improves only
+when the global objective decreases.
+2.2. Heuristics and software baselines
+Heuristic work on feedback arc set and related ordering tasks spans greedy
+graph rules, local search, and software packages that expose ordering or arcdeletion primitives. A classical baseline is the greedy heuristic of Eades
+et al. (1993). Their method is attractive because it is fast, interpretable, and
+structurally simple: it repeatedly extracts sources, sinks, or high net-score
+vertices to construct an order. An earlier denser-graph variant in the same
+heuristic family appears in Eades and Lin (1995). Even when a modern
+
+6
+
+study ultimately outperforms such a heuristic, it remains an essential reference point because many later practical systems either implement that rule
+directly or build on the same score-based intuition. In the present paper,
+Eades-style ideas appear in two places: as the historical baseline that motivates fast greedy ordering, and as the conceptual starting point for external
+and adapted software baselines used in the experiments.
+The external-baseline design intentionally mixes library-grade and
+specialized open-source tools.
+The python-igraph documentation for
+Graph.feedback_arc_set python-igraph developers (2026) exposes both
+an Eades-style heuristic and exact integer-programming modes. It is a
+useful baseline because it reﬂects what a practitioner could call from a
+general-purpose graph library. In contrast, the DRMacIver/FAS tool DRMacIver (2026) is a matrix-based pairwise-ordering heuristic rather than a
+general graph-analysis package. Its documentation formulates the input as
+a nonnegative n × n matrix W , where Wij represents evidence that item i
+should precede
+item j, and seeks a permutation maximizing the total forward
+∑
+weight
+pi <pj Wij . The repository describes the method as deterministic
+and reports a local-optimality property with respect to single-element moves;
+it does not present the tool as an exact optimizer. Because the documented
+model is matrix-based and has O(n2 ) complexity in the number of items, it
+is especially natural as a dense pairwise-ordering baseline, while remaining
+usable in our experiments through the sparse entry-list interface. Empirically, it is the strongest external baseline on the sparse standard benchmark
+and the dominant method on the dense LOLIB transfer test.
+The remaining baselines in the experiments are deliberately simple and
+interpretable. Weighted net-score ordering and random multistart are not
+intended to represent state of the art; they provide calibration points. Netscore and win-based tournament rules are classical ranking ideas with theoretical support in the weighted tournament literature Coppersmith et al. (2010).
+The weighted Eades adaptation used here should also be interpreted carefully.
+The original Eades–Lin–Smyth paper Eades et al. (1993) does not deﬁne the
+weighted adaptation used in this study, so that baseline is described as a local
+adaptation rather than as the original authors’ algorithm. That distinction
+is part of the methodological hygiene of the study: external baselines should
+be credited as external when they are external, and local adaptations should
+be labeled as such even when they are inspired by well-known methods.
+There is a broader family of learning-based ranking methods that could
+be discussed without entering the experimental comparison set. GNNRank
+7
+
+He et al. (2022), for example, frames ranking from pairwise comparisons as
+a trainable graph-neural ranking problem. It is relevant as a signal that the
+ranking literature has moved beyond purely combinatorial heuristics, but it
+is not used as a baseline here because the present study focuses on deterministic, training-free graph heuristics rather than learned ranking models.
+Recent weighted feedback arc set heuristics such as the minimal-and-stable
+construction of Cavallaro and Cutello Cavallaro and Cutello (2025) are likewise outside the comparison set because they were not rerun for this study,
+but they illustrate continued heuristic interest in weighted feedback arc deletion.
+2.3. Exact methods and ordering formulations
+The exact side of the literature serves two diﬀerent roles in this paper.
+First, it sets expectations about computational hardness. Second, it provides
+the reference standard for the small-instance validation experiment. Baharev
+et al. (2021) give a modern exact treatment of minimum feedback arc set
+through formulations that connect the problem to broader combinatorial
+optimization machinery. Their work is not the computational baseline for
+the full sparse benchmark in this paper; the sparse benchmark is too large for
+exact optimization to be the main comparison mode. Instead, exact methods
+enter the study through a limited validation regime on small instances, where
+the question is not whether exact optimization scales globally, but whether
+the heuristic framework is near-optimal when exact answers are available.
+This distinction also helps separate feedback arc set from the larger family
+of ordering models. Dense linear ordering formulations are often written as
+forward-weight maximization on complete matrices, whereas sparse directed
+graph formulations arise more naturally as backward-weight minimization on
+incomplete digraphs. The two are mathematically linked, but they are not
+computationally identical in practice.
+The present study deliberately moves between the two views. The sparse
+benchmark is the main claim-bearing environment and is presented in graph
+terms. The LOLIB transfer test is presented in linear-ordering terms because
+those instances are dense complete ordering problems. Keeping both formulations visible is important. Otherwise the reader could mistakenly treat good
+sparse-graph performance as evidence of dense linear-ordering dominance,
+which the experiments do not support.
+At larger scales, exact computation is often replaced by decomposition,
+approximation, or specialized engineering. Simpson et al. (2016) provide one
+8
+
+useful point of reference by treating feedback arc set computation in a webscale setting. Tournament and dense-ordering settings have their own fast
+heuristic literature, including local-search methods for weighted tournament
+feedback arc set Fomin et al. (2010) and ﬁxed-parameter approaches for the
+unweighted tournament case Alon et al. (2009). Their work is not directly
+comparable to the exact small-instance validation in this paper, but it illustrates the broader computational reality: scalable feedback arc methods are
+usually driven by structure, heuristics, or deployment constraints rather than
+by globally exact optimization. The goal here is not to displace exact methods; it is to present a heuristic framework whose computational behavior is
+strong on the sparse benchmark and whose limitations on dense complete
+ordering instances are reported explicitly.
+2.4. Linear ordering benchmarks and positioning
+The dense-transfer side of the paper is best understood through the linear
+ordering literature. Marti et al. (2012) provide a benchmark-oriented account
+of the Linear Ordering Problem Library (LOLIB) and its heuristic evaluation
+culture. That paper is the most appropriate formal reference for LOLIBstyle benchmark usage here because it anchors the library in a published
+benchmark-comparison setting rather than only as a download page. The
+oﬃcial LOLIB page itself Marti (2010) remains important for provenance and
+dataset identiﬁcation, especially because benchmark users often obtain the
+instances directly from library pages or their mirrors. Together, these sources
+explain why dense complete tournaments have a diﬀerent methodological
+status from sparse DIMACS-style directed graphs: they are not merely larger
+graphs of the same type, but instances drawn from a diﬀerent benchmark
+tradition with diﬀerent algorithmic expectations.
+The sparse benchmark side has a diﬀerent provenance. The graphbenchmarks collection Ali Dasdan (2026) is a public set of directed instances
+in DIMACS-style format rather than a linear-ordering library.
+That diﬀerence supports a central design choice: the sparse and dense
+benchmarks test diﬀerent claims. The sparse benchmark is the main evidence
+for practical value on nonnegative weighted digraphs. The dense benchmark
+is a transfer test used to determine where a general weighted-digraph heuristic
+stops being competitive against dense-ordering-native methods.
+The ranking-from-pairwise-comparisons viewpoint connects these benchmark families conceptually. In dense complete settings, every ordered pair
+
+9
+
+carries evidence, so forward-weight maximization aligns naturally with tournament and ranking formulations Ailon et al. (2008); Coppersmith et al.
+(2010). In sparse settings, many pairwise relations are absent, heterogeneous, or structurally constrained by applications such as dependency repair
+or precedence resolution.
+This is exactly why a method that performs well on sparse graphbenchmarks may still lose on LOLIB. The issue is not inconsistency in the
+experiments; it is a change in problem structure. Related work therefore has
+to prepare the reader for a comparative message that is strong but bounded.
+This paper occupies a speciﬁc position in the literature. It is not a
+new approximation-theory paper in the style of local-ratio foundations BarYehuda et al. (1998) or directed-feedback algorithm design Demetrescu and
+Finocchi (2003); Even et al. (1998). It is not an exact-method paper in the
+style of Baharev et al. (2021). It is not a web-scale systems paper in the style
+of Simpson et al. (2016). It is also not a dense linear-ordering or trainable
+ranking paper in the style of the LOLIB benchmark tradition Marti et al.
+(2012), tournament local search Fomin et al. (2010), or graph-neural ranking
+work such as GNNRank He et al. (2022). Instead, it is an integrated computational heuristic study whose main object is a reproducible framework for
+nonnegative weighted directed graphs.
+That framework combines three roles that are often separated in the
+literature: a cycle-reduction seed grounded in prior local-ratio ideas, a complementary weighted seed, and incumbent-protected SCC neighborhood reﬁnement. IPSNS is the main algorithmic contribution beyond the engineered
+LR-TA seed. It concentrates search on strongly connected components with
+positive backward contribution, applies SCC-local destroy-and-repair moves
+with restricted local-ratio repair, and accepts a candidate only when the
+global backward weight strictly decreases. The practical signiﬁcance of that
+combination is twofold. First, it gives a transparent explanation for why
+the method should be robust on sparse directed graphs: the initial seeds
+construct feasible orders in diﬀerent ways, and the reﬁnement concentrates
+eﬀort on strongly connected regions where ordering uncertainty remains. Second, it yields a claim that is strong enough to matter and narrow enough
+to defend: the framework is highly eﬀective on the main sparse benchmark,
+near-optimal on the exact-validation subset, and explicitly limited on dense
+LOLIB instances where the external matrix-based pairwise-ordering baseline
+is stronger.
+
+10
+
+3. Problem deﬁnition
+Let G = (V, A, w) be a directed graph with vertex set V , arc set A ⊆
+V × V , and nonnegative arc weights w : A → R≥0 . A feedback arc set is a
+set F ⊆ A such that removing F makes the graph acyclic. The minimum
+weighted feedback arc set problem
+asks for a minimum-weight feedback arc
+∑
+set, i.e., a set F minimizing a∈F w(a).
+An ordering π assigns each vertex a distinct position. An arc (u, v) is
+backward under π if u appears after v. The ordering-induced backward
+weight is
+∑
+bw(π) =
+w(u, v).
+(1)
+(u,v)∈A: π(u)>π(v)
+
+For any ordering π, the set of backward arcs is a feedback arc set: all
+remaining forward arcs point from earlier to later positions and therefore form
+an acyclic graph. Conversely, every acyclic subgraph admits a topological
+order. The weighted feedback arc set problem can therefore be treated as
+the problem of ﬁnding an ordering with minimum backward weight Flood
+(1990); Karp (1972).
+Dense linear ordering problem benchmarks are often stated in terms of a
+complete weight matrix C, where an ordering π = (π1 , . . . , πn ) is evaluated
+by the forward weight. In that notation,
+fwC (π) =
+
+∑
+
+Cπi ,πj ,
+
+bwC (π) =
+
+1≤i<j≤n
+
+∑
+
+Cπj ,πi = WC − fwC (π), (2)
+
+1≤i<j≤n
+
+∑
+
+where WC = i̸=j Cij is the total oﬀ-diagonal weight. Thus maximizing
+forward weight on a complete dense linear-ordering instance is equivalent
+to minimizing backward weight after converting the matrix to a complete
+weighted digraph. LOLIB results are reported as a transfer test. Those
+instances are dense complete ordering problems rather than sparse directed
+graph benchmarks.
+4. Proposed methodology
+The framework combines three layers: a local-ratio topological add-back
+seed, a complementary weighted seed, and an incumbent-protected reﬁnement over strongly connected components. Figure 1 summarizes the data
+11
+
+Table 1: Algorithm components and their roles in the framework.
+
+Component
+
+Primary mechanism
+
+Role in this paper
+
+LR-TA
+
+Global local-ratio
+cycle reduction
+followed by
+heavy-ﬁrst add-back
+Ordered arc removal,
+minimization,
+stabilization, and
+remimization inside
+SCCs
+SCC-local
+destroy–repair moves
+with restricted
+local-ratio repair and
+restricted add-back
+
+Engineered reproducible seed;
+main constructive method
+derived from prior local-ratio
+ideas
+Complementary internal seed
+and baseline; broadens
+incumbent quality before
+reﬁnement
+
+WMSFstyle
+seed
+
+IPSNS
+
+Main reﬁnement framework;
+improves only when the global
+objective decreases
+
+ﬂow, while Tables 1 and 2 isolate the roles of each component and the invariants that the implementation preserves.
+The implementation reads an aggregated weighted DIMACS digraph and
+stores it in edge-indexed arrays. Each arc receives an edge identiﬁer together
+with ﬁxed endpoint arrays and an activity ﬂag. This design is shared across
+LR-TA, WMSF-style seeding, and IPSNS. The common objective is the backward weight deﬁned in Section 3; all moves are evaluated under that objective,
+and all determinism claims in this section refer to ﬁxed input graphs and ﬁxed
+random seeds.
+4.1. Local-ratio topological add-back
+LR-TA is the ﬁrst constructive component. It inherits the idea of localratio cycle reduction from the directed-feedback setting of Demetrescu and
+Finocchi (2003), but the implementation studied here is an engineered sparsegraph instantiation rather than a new theorem. The algorithm maintains an
+active subgraph over the original edge identiﬁers and repeatedly applies two
+phases.
+In Phase I, the algorithm searches the active graph for any directed cycle
+using an iterative depth-ﬁrst search. The search is deterministic because
+12
+
+Table 2: Implementation-level invariants preserved by the framework.
+
+Property
+
+Meaning
+
+Acyclic seed
+output
+Heavy-ﬁrst
+add-back
+
+LR-TA and the WMSF-style seed both output an
+acyclic active graph that induces a valid ordering.
+Reinserted edges are processed in nonincreasing
+original weight, so high-weight arcs are given
+priority for restoration.
+Kahn-style topological reconstruction uses
+deterministic tie-breaking, making seed output
+reproducible for ﬁxed input.
+IPSNS updates the incumbent only when the
+candidate backward weight is strictly smaller.
+IPSNS SCC selection and destroy fractions are
+fully determined by the conﬁgured random seed.
+
+Deterministic
+topological
+order
+Incumbent
+protection
+Reproducible
+randomization
+
+vertices and outgoing edge lists are scanned in ﬁxed order, and only the ﬁrst
+detected cycle is used. If C is the detected cycle, LR-TA computes
+ε(C) = min w(e)
+e∈C
+
+(3)
+
+and reduces the mutable weight of every arc in C by ε(C). At least one
+arc becomes tight. Any arc whose reduced weight falls below the numerical
+tolerance is deactivated and appended to the removed-edge set FLR . The
+phase terminates when no directed cycle remains in the active graph, so the
+active subgraph is a directed acyclic graph.
+In Phase II, LR-TA attempts to reinsert removed arcs without recreating cyclicity. Removed arcs are processed in nonincreasing order of original
+weight, with deterministic tie-breaking on endpoints and edge identiﬁer. Let
+π be a topological order of the current active directed acyclic graph and let
+rankπ (v) denote the position of vertex v. A candidate arc (u, v) is accepted
+immediately if
+rankπ (u) < rankπ (v),
+(4)
+because the current topological order already certiﬁes that the insertion is
+forward. Otherwise the algorithm checks whether v can reach u in the current active graph, using a reachability search pruned by the topological rank
+interval. The arc is reinserted if and only if no such path exists. Whenever a
+13
+
+Algorithm 1 LR-TA seed construction
+Require: Weighted digraph G = (V, A, w) with w ≥ 0
+Ensure: Ordering πLR , removed-edge set FLR
+1: Build edge-indexed arrays (U, V, W0 , W, active, adj)
+2: FLR ← ∅
+3: while the active graph contains a directed cycle C do
+4:
+ε ← mine∈C W [e]
+5:
+for all e ∈ C do
+6:
+W [e] ← W [e] − ε
+7:
+if W [e] ≤ τ and e is active then
+8:
+deactivate e; set W [e] ← 0; add e to FLR
+9:
+end if
+10:
+end for
+11: end while
+12: Compute deterministic topological order π of the active graph
+13: for all e = (u, v) ∈ FLR in nonincreasing order of W0 [e] do
+14:
+if rankπ (u) < rankπ (v) then
+15:
+reactivate e; remove e from FLR
+16:
+else if v ̸⇝ u in the current active graph then
+17:
+reactivate e; remove e from FLR
+18:
+recompute deterministic topological order π
+19:
+end if
+20: end for
+21: return πLR , FLR
+backward candidate is accepted, the topological order is recomputed so that
+future admissibility tests remain exact. The extracted topological order is
+deterministic under the implementation used here, but it is not mathematically unique: diﬀerent linear extensions of the same DAG can exist. The
+chosen extraction rule is therefore an engineering convention rather than a
+canonical ordering of an acyclic state.
+Algorithm 1 summarizes the implementation.
+The add-back phase is where this implementation departs most clearly
+from a bare local-ratio reduction. It is also the component with the strongest
+ablation signal in the current experiments. LR-TA should therefore be understood as a two-phase engineered seed rather than as a one-step local-ratio
+routine.
+14
+
+4.2. WMSF-style seed construction
+The second seed is a weighted removeArcs–minimize–stabilize pipeline implemented locally as an internal baseline. It broadens the seed space available
+to the reﬁnement stage and helps deﬁne the incumbent-protection guarantee.
+At a high level, the WMSF-style seed decomposes the graph into strongly
+connected components and processes each nontrivial component separately.
+Within a component, it ﬁrst removes arcs according to a prescribed weightbased ordering. Two orderings are supported in code: L1, which sorts arcs
+primarily by weight, and L2, which normalizes arc weight by a weighted
+in/out-degree denominator. The resulting removed set is then minimized by
+heavy-ﬁrst add-back, followed by a stabilization step and a second minimization pass. When the entire graph is a single nontrivial strongly connected
+component, both L1 and L2 are tried and the lower-backward-weight seed is
+kept. Otherwise the conﬁgured ordering is used componentwise.
+The point of carrying this seed into IPSNS is not to establish a separate
+literature claim about WMSF. Instead, it provides a complementary structural bias to LR-TA. LR-TA is driven by cycle reductions in the active graph.
+The WMSF-style seed is driven by ordered arc removals and subsequent minimization. Because the two constructions fail diﬀerently on some instances,
+taking the better of them before reﬁnement produces a stronger and more
+robust incumbent than either seed alone.
+IPSNS is the main reﬁnement contribution. It combines SCC-local
+destroy-and-repair moves, restricted local-ratio repair, and restricted heavyﬁrst add-back with a strict incumbent-protection rule. Reﬁnement is
+therefore concentrated on cyclic regions where ordering uncertainty remains,
+while the global objective can only improve or stay unchanged.
+4.3. Incumbent-protected SCC-neighborhood search
+IPSNS begins by computing both seeds on the full graph: the full WMSFstyle seed and the LR-TA seed. Their backward weights are evaluated under
+the common ordering objective, and the better one becomes the initial incumbent. The reﬁnement stage then iterates over strongly connected components
+of the original aggregated graph, but the selection is ﬁltered by the incumbent
+ordering: only components with positive current backward contribution are
+eligible, and a weighted-random choice is drawn from the top-K contributors
+by SCC backward weight. This makes the neighborhood search concentrated
+rather than exhaustive.
+
+15
+
+Within the chosen component, IPSNS applies a destroy-and-repair move.
+The destroy stage has two parts. First, a fraction of currently removed internal edges is reactivated in heavy-ﬁrst order, temporarily giving the neighborhood more freedom. Second, a small fraction of currently active internal
+edges is forcibly removed in light-ﬁrst order, encouraging escape from a locally stable order. The repair stage then applies a restricted local-ratio cycle
+reduction on that SCC neighborhood and ﬁnishes with restricted heavy-ﬁrst
+add-back minimization. All graph edits are conﬁned to the chosen component’s internal edges, while the rest of the incumbent graph remains untouched during the move.
+If the repaired candidate fails to admit a valid topological order, the entire SCC-local state is reverted. If the candidate is valid, the full incumbent
+objective is recomputed. The incumbent is updated only if the new backward weight is strictly smaller than the current best value. Otherwise the
+move is rejected and the previous incumbent is restored exactly. This is
+what makes the method incumbent-protected: reﬁnement never commits a
+worsening move.
+Algorithm 2 summarizes the IPSNS driver.
+Two implementation details are especially important for interpretation.
+First, the default WMSF seed mode inside IPSNS is the full per-SCC pipeline,
+not a weaker legacy approximation; this is required so that the reﬁnement
+never starts from a seed weaker than the standalone WMSF baseline. Second,
+the randomization in IPSNS is controlled entirely by a ﬁxed seed. The resulting sequence of SCC choices and destroy fractions is therefore reproducible
+given the same input and parameter settings. The parameter choices themselves are interpreted conservatively later in the paper: the ablation study
+supports them as reasonable defaults on the tested subset, not as universally
+optimal settings.
+4.4. Algorithmic invariants
+The most important invariant in the framework belongs to IPSNS rather
+than to LR-TA. Let π (0) denote the better of the two internal seeds and
+let π (t) denote the incumbent ordering after t accepted-or-rejected IPSNS
+iterations. Because the incumbent is replaced only by a strictly improving
+candidate, the sequence satisﬁes
+)
+(
+)
+( )
+(
+for all t ≥ 0.
+(5)
+bw π (t+1) ≤ bw π (t) ≤ bw π (0)
+
+16
+
+This monotone non-degradation property is not an approximation guarantee,
+but it is a concrete algorithmic promise: the ﬁnal IPSNS solution is never
+worse than the better internal seed under the same objective and nonnegativeweight assumptions.
+LR-TA and the WMSF-style seed have their own feasibility invariants.
+LR-TA always exits its reduction stage with an acyclic active graph, and its
+add-back phase only reactivates arcs that preserve acyclicity. The WMSFstyle seed similarly alternates removal and minimization steps while checking
+acyclic feasibility. IPSNS inherits those feasibility properties locally during
+SCC repair and adds the stronger incumbent-protection rule globally. That
+combination supports a narrow guarantee about reﬁnement quality without
+claiming any new theoretical approximation ratio.
+5. Experimental design
+The experimental design follows a deliberately narrow claim strategy. The
+study does not attempt to demonstrate that one heuristic dominates every
+weighted feedback arc set or linear ordering regime. Instead, it evaluates
+a reproducible framework for nonnegative weighted directed graphs, using
+sparse benchmark instances as the primary setting and dense complete ordering instances as a transfer test.
+Five empirical questions motivate the design. The ﬁrst is whether the
+full reﬁnement framework improves on its internal seeds without violating
+the non-degradation invariant. The second is which components materially
+contribute to the ﬁnal solution quality. The third is how close the framework
+comes to exact optimization on instances where exact optimization is feasible.
+The fourth is how the framework compares with strong internal and external
+baselines on the main sparse benchmark. The ﬁfth is how far the sparsebenchmark conclusions transfer to dense complete ordering instances. Table 3
+summarizes how the ﬁve computational components are used to answer these
+questions.
+5.1. Datasets
+The study uses two public benchmark families with diﬀerent roles in the
+argument.
+The primary benchmark family comes from the public graph-benchmarks
+collection Ali Dasdan (2026). After path-level deduplication, this yields 105
+
+17
+
+Table 3: Overview of the ﬁve computational components used in the study.
+Study
+
+Purpose
+
+Inst. Main setting
+
+Internal
+benchmark
+Ablation
+study
+Exact
+validation
+
+Safety check for LR-TA, WMSF, and IPSNS
+
+105
+
+Add-back, reﬁnement, and iteration study
+
+10
+
+Comparison with exact bitmask dynamic
+programming
+
+57
+
+External baselines on the main benchmark
+
+97
+
+Sparse
+comparison
+
+Dense
+Scope-boundary analysis on LOLIB instances
+transfer test
+
+50
+
+sparse weighted
+DIMACS graphs
+representative
+sparse subset
+standard
+nonnegative
+instances with
+n ≤ 20
+standard
+nonnegative sparse
+instances
+LOLIB complete
+weighted ordering
+instances
+
+unique sparse weighted DIMACS digraph instances. These instances support the internal benchmark, the ablation study, the exact small-instance
+validation, and the external sparse comparison.
+The standard analysis is restricted to the nonnegative-weight subset.
+Eight instances are excluded from the standard sparse comparison set
+because they contain negative-weight arcs: gerez, howard-max, k3_3, ku,
+peterson, peterson1, peterson2, and stg0. This exclusion is methodological rather than cosmetic. The local-ratio construction and the interpretation
+of incumbent protection in this study are framed for nonnegative weights,
+so mixing negative-weight instances into the main tables would weaken the
+meaning of the guarantee. After exclusions, the primary sparse comparison
+set contains 97 standard instances.
+The exact-validation subset comprises the 57 standard nonnegative benchmark instances with n ≤ 20 included in the bitmask dynamic-programming
+study. Negative-weight instances and trivial n = 0 cases are excluded. This
+subset is not treated as a separate benchmark family; it is a validation slice
+used to judge heuristic quality against certiﬁed optima.
+The dense transfer test uses a 50-instance subset of the Linear Ordering
+Problem Library (LOLIB) 2010 Marti et al. (2012); Marti (2010). These
+instances diﬀer structurally from the sparse benchmark in a way that matters
+algorithmically. They are complete weighted ordering instances, and the
+
+18
+
+selected subset spans three families: SGB (25 instances), IO (10 instances),
+and RandA1 (15 instances across n = 100, 150, and 200). In the converted
+DIMACS representation used in the experiments, every ordered pair carries
+weight, so these instances are eﬀectively dense complete tournaments or dense
+linear-ordering inputs rather than sparse general digraphs.
+This distinction is central to the scope of the study. The sparse benchmark is the main source of positive claims. LOLIB is not treated as coequal
+evidence for the primary contribution; it is used to determine where a sparse
+weighted-digraph heuristic remains competitive and where a dense-orderingnative ordering method becomes preferable.
+5.2. Algorithms and baselines
+The evaluation includes the proposed reﬁnement framework, its internal
+seed methods, an exact reference method for the small-instance study, and a
+set of external or simple baseline heuristics.
+The full method of interest is IPSNS, which starts from the better of
+two internal seeds and applies incumbent-protected SCC-local reﬁnement.
+The two seeds are LR-TA and WMSF. LR-TA is the engineered local-ratio
+plus topological add-back construction described in Section 4; WMSF is a
+weighted removeArcs–minimize–stabilize seed that is carried forward as a
+baseline and seed source.
+For the exact small-instance validation, the reference method is exact
+bitmask dynamic programming. That solver is not used as a scalable comparator on the full sparse benchmark; its role is only to certify optimality on
+the small validation subset.
+The sparse and dense comparison studies also include ﬁve additional baselines:
+• the DRMacIver/FAS tool DRMacIver (2026), an external deterministic matrix-based ordering heuristic that maximizes forward weight on
+pairwise evidence and is evaluated here under the common backwardweight objective;
+• python-igraph’s Eades-style feedback arc interface python-igraph developers (2026);
+• a weighted Eades adaptation implemented locally and described explicitly as an adaptation rather than as the original Eades et al. (1993)
+algorithm;
+19
+
+• Borda net-score ordering Coppersmith et al. (2010);
+• random multistart ranking.
+DRMacIver/FAS is not an exact method. Its matrix-based formulation
+makes it a particularly relevant comparator for dense LOLIB instances, which
+are complete weighted ordering problems, whereas the sparse benchmark
+exercises it only through a sparse entry-list interface.
+This baseline mix is deliberate. It does not attempt to exhaust every
+recent ranking model or every exact solver. In particular, it does not include a learned model such as GNNRank He et al. (2022), a memetic linearordering solver such as LOP_MA-EDM Carlos Segura (2026), or the recent minimal-and-stable weighted feedback arc set heuristic of Cavallaro and
+Cutello Cavallaro and Cutello (2025). Those omissions are stated explicitly.
+The intended comparison surface is the ecosystem of deterministic or neardeterministic weighted-digraph heuristics and accessible external tools that
+a practitioner could reasonably invoke without building a separate learning
+or solver pipeline.
+Several fairness rules govern the comparisons. First, all quality comparisons use the same backward-weight objective on the original nonnegative
+arc weights. Second, oﬃcial external methods and local adaptations are distinguished explicitly. The weighted Eades method is an adaptation of the
+unweighted Eades idea Eades et al. (1993); it is not presented as an oﬃcial
+external implementation. Third, DRMacIver/FAS is reported exactly as it
+was run in the study. The sparse comparison therefore retains its four incompletions on the standard set, and the dense comparison retains its strong
+overall performance. Finally, outcomes are interpreted in scope: losing to
+a dense-ordering-native method on dense LOLIB is not treated as evidence
+against the sparse-graph claim, and strong sparse performance is not used to
+imply dense linear-ordering dominance.
+5.3. Evaluation metrics
+The primary objective throughout the paper is backward weight (BW),
+deﬁned in Section 3. Lower BW is always better, and all main tables are
+organized around that quantity.
+Several secondary metrics support interpretation. The number of globalbest instances records how often a method attains the minimum observed
+BW among the compared algorithms on a given benchmark. For the external
+20
+
+sparse comparison, relative excess over IPSNS records the mean percentage
+by which a method’s BW exceeds IPSNS on completed instances. For the
+exact small-instance study, the mean gap from the certiﬁed optimum and
+the number of optimal matches summarize how close each heuristic comes to
+exact optimization. Mean runtime is reported for practical context, although
+it is not normalized across machines. The dense complete-ordering study
+also reports forward ratio as a secondary descriptive measure of how much
+pairwise weight is oriented forward by the returned ranking. Finally, the
+incumbent-violation count records how often IPSNS would return a solution
+worse than LR-TA or WMSF; under the intended invariant this count should
+remain zero on the nonnegative setting.
+5.4. Implementation and reproducibility
+All reported numbers are taken from saved experimental summaries and
+regenerated paper assets. Tables and ﬁgures in the results section are produced from the recorded JSON, CSV, and Markdown outputs of the ﬁve
+computational components, with key reported numbers checked against their
+source ﬁles before inclusion.
+The experimental runs use ﬁxed seeds where randomness exists and consistent wrappers for the compared methods. For IPSNS, the saved summaries
+record the default full WMSF seed mode and the iteration budgets used in
+each study. The ablation study is especially important here because it justiﬁes those defaults conservatively: on the 10-instance subset, the mean BW for
+50 iterations is identical to the 200-iteration mean, and the no-SCC-priority
+variant is nearly identical to the default. Those results are interpreted as
+subset-level support for reasonable defaults, not as universal parameter optimality.
+Negative-weight sparse instances are excluded from the standard claimbearing benchmark because they do not match the nonnegative setting studied here. DRMacIver/FAS incompletions on the sparse benchmark are reported explicitly rather than hidden in ﬁltered tables. The dense LOLIB
+transfer test is retained even though it narrows the claim surface, because
+it documents where the framework remains competitive and where dense
+complete ordering instances favor a specialized external method.
+The review version is prepared under double-anonymized constraints, so
+code-availability language remains anonymized in the declarations. That
+packaging choice does not aﬀect the experimental evidence summarized here.
+
+21
+
+Table 4: Comparison on the 97 standard nonnegative sparse instances. BW denotes
+backward weight; lower values are better. Relative excess is the mean percentage by
+which an algorithm’s BW exceeds IPSNS on completed instances.
+
+Method
+IPSNS (ours)
+LR-TA (ours)
+WMSF seed
+DRMacIver/FAS
+igraph Eades
+Weighted Eades
+Borda net score
+Random multistart
+
+Complete
+
+Mean BW
+
+Mean RT (s)
+
+Best
+
+Relative excess
+
+97/97
+97/97
+97/97
+93/97
+97/97
+97/97
+97/97
+97/97
+
+37,698
+38,327
+40,005
+53,173
+95,920
+99,689
+512,277
+1,075,258
+
+21.92
+0.08
+1.31
+4.00
+0.01
+0.11
+0.00
+0.03
+
+96
+80
+61
+56
+40
+42
+27
+42
+
+0.00%
+0.71%
+2.06%
+21.61%
+30.54%
+30.48%
+55.55%
+49.76%
+
+6. Computational results
+The computational evidence should be read in the same order as the experimental design. The paper ﬁrst establishes the main sparse-benchmark
+result, then checks exact small-instance quality, then uses ablations to interpret the engineering choices, and ﬁnally tests transfer to dense LOLIB
+instances. This ordering matters because the positive claim is intentionally
+narrow: IPSNS is presented as a strong, reproducible heuristic framework for
+nonnegative sparse weighted directed graphs, not as a universal best method
+for every ordering benchmark.
+6.1. Sparse weighted graph benchmarks
+The primary result comes from the standard nonnegative sparse benchmark, with the full internal benchmark supplying the safety check for the
+reﬁnement stage. Table 4 summarizes the main comparison on 97 instances,
+and Figures 2 and 3 visualize the gap structure and the distribution of instance wins.
+The main outcome is clear on this benchmark. IPSNS achieves the lowest
+observed backward weight among the tested methods on 96 of the 97 standard instances. Its mean BW is 37,698, compared with 38,327 for LR-TA
+and 40,005 for WMSF. Among the external methods, DRMacIver/FAS is the
+strongest comparator, but its mean BW is still 53,173 on the completed standard instances, or about 21.61% above IPSNS. DRMacIver/FAS completes
+93 of 97 instances; the remaining four cases are two DAG inputs rejected
+by the wrapper and two large sparse instances that time out in the wrapper
+22
+
+used here. Sparse-comparison averages for DRMacIver/FAS are computed
+on completed runs only; incompletions are reported separately and are not
+hidden. The remaining baselines are substantially weaker on average, with
+the Eades variants about 30% higher than IPSNS and the simpler Borda and
+random baselines far behind.
+This result addresses baseline strength directly. The sparse-benchmark
+claim is not based only on a comparison among internal variants. It survives
+contact with a strong external comparator, a widely available graph-library
+heuristic, and several simple but informative ranking baselines. The most
+important external comparison is DRMacIver/FAS, not because it wins the
+benchmark, but because it remains competitive on much of the sparse set
+despite being a matrix-based pairwise-ordering heuristic rather than a sparsedigraph-native method. Even there, the gap is small only on one instance:
+r20_60, where DRMacIver/FAS beats IPSNS by 3 BW units. That same
+instance is also the only IPSNS near-miss in the exact-validation study below,
+which makes the sparse story internally consistent rather than contradictory.
+The full internal benchmark strengthens this interpretation by showing
+that the reﬁnement stage does not obtain these gains by occasionally damaging its seeds. Across 105 sparse benchmark instances, IPSNS is never worse
+than LR-TA and never worse than WMSF, with zero incumbent-protection
+violations in the veriﬁed summary. It strictly improves over LR-TA on 16
+instances and over WMSF on 36 instances. The mean runtime per instance
+rises from 0.074 seconds for LR-TA and 1.24 seconds for WMSF to about
+20.2 seconds for IPSNS, so the gain is not free; however, it is gained without giving up the best internal seed. That property connects the empirical
+behavior back to the monotone non-degradation invariant in Section 4.
+The runtime pattern also clariﬁes the engineering tradeoﬀ. LR-TA is
+the fastest strong method in the study: its mean sparse-benchmark runtime
+is only 0.08 seconds per instance, yet its mean BW is within about 1.7%
+of IPSNS. That makes LR-TA a credible low-latency choice when reﬁnement
+time is limited. IPSNS then occupies the higher-quality point on the tradeoﬀ
+curve, paying more runtime to secure the best observed solutions on almost
+every instance. The study therefore provides a fast seed heuristic, a stronger
+reﬁnement framework, and a clear statement of what the extra computation
+buys.
+The sparse results cover a broad but intentionally scoped benchmark.
+The comparison uses 97 standard nonnegative sparse instances after exclusions and includes eight algorithms in total. The claim remains limited to
+23
+
+Table 5: Exact validation on the 57 standard nonnegative instances with n ≤ 20 included
+in the dynamic-programming study. Mean gap is measured against the certiﬁed optimum
+on each instance.
+
+Method
+
+Optimal Optimality rate
+
+IPSNS (ours)
+LR-TA (ours)
+WMSF seed
+
+56/57
+55/57
+51/57
+
+98.2%
+96.5%
+89.5%
+
+Mean gap
+0.0006%
+0.0590%
+0.0961%
+
+Table 6: Ablation study on 10 representative sparse instances. Relative change is measured
+against LR-TA; negative percentages indicate improvement.
+
+Variant
+LR without add-back
+LR-TA
+WMSF seed
+Best seed, no reﬁnement
+IPSNS, 50 iterations
+IPSNS, 200 iterations
+IPSNS, no SCC priority
+
+Mean BW
+4525.1
+4271.5
+4332.5
+4271.5
+4239.2
+4239.2
+4239.1
+
+Relative change Mean RT (s)
++5.94%
++0.00%
++1.43%
++0.00%
+-0.76%
+-0.76%
+-0.76%
+
+0.017
+0.047
+0.040
+0.069
+0.778
+5.734
+5.727
+
+this setting and does not extend to negative-weight cases or dense complete
+ordering benchmarks.
+6.2. Exact validation and ablation evidence
+The exact small-instance validation and the ablation study serve diﬀerent purposes, but together they explain why the framework is both credible
+and interpretable. Table 5 reports the exact validation results, and Table 6
+reports the component ablation.
+The exact small-instance study supports a quality-validation narrative
+rather than a theoretical one. On the 57 standard nonnegative instances
+with n ≤ 20 included in the dynamic-programming study, IPSNS matches
+the certiﬁed optimum on 56 instances and has a mean gap of 0.0006% from
+the exact optimum. LR-TA matches the optimum on 55 instances with
+mean gap 0.0590%, and WMSF matches the optimum on 51 with mean gap
+0.0961%. These numbers show that the framework is not merely competitive
+in relative benchmark terms; on the exact-validation subset, it is essentially
+24
+
+exact in practice.
+This table does not provide an approximation guarantee, a worst-case
+bound, or a proof of global behavior beyond the validated subset. The correct
+statement is that IPSNS is empirically near-optimal on the exact-validation
+subset. The only IPSNS near-miss is instance r20_60.
+The exact-validation result also helps interpret the single sparsebenchmark loss to DRMacIver/FAS. The only IPSNS near-miss is again
+r20_60. This is also the only standard small instance where IPSNS fails to
+match exact optimum. That consistency reduces the chance that the sparse
+comparison is driven by unstable reporting or artifact mismatch. Instead,
+it suggests a small, structurally diﬃcult case where the framework is near
+optimum but not uniquely dominant.
+The ablation study explains where the framework’s gains come from. The
+add-back phase is the dominant contributor among the tested design choices.
+Removing it raises mean BW from 4,271.5 for LR-TA to 4,525.1 for the noadd-back variant, a degradation of about 5.94%. This is the clearest experimental support for treating topological add-back as a substantive engineering
+contribution rather than a decorative post-processing step.
+The reﬁnement stage then provides a smaller but still measurable gain.
+Moving from LR-TA to IPSNS with 50 iterations reduces mean BW from
+4,271.5 to 4,239.2, about 0.76%. In absolute terms that gain is much smaller
+than the add-back gain, but it is still meaningful because it is obtained
+after starting from a strong seed and while preserving the non-degradation
+invariant. This is the kind of marginal improvement one expects from a
+bounded reﬁnement layer: it does not re-invent the seed; it improves the
+hard residue that remains after seeding.
+The ablation results also provide the main evidence for parameter justiﬁcation, and the interpretation must remain conservative. On this 10-instance
+subset, the add-back phase accounts for the largest mean improvement (about
+5.9%), while IPSNS contributes a further 0.75%. The 50-iteration and 200iteration IPSNS variants have the same mean BW, which suggests that the
+default budget is already beyond the point of visible average improvement
+on these instances. Likewise, removing SCC priority changes the mean only
+from 4,239.2 to 4,239.1, eﬀectively negligible at the reported precision. These
+observations support the default settings as reasonable choices, but they do
+not show that those settings are universally optimal on other graph families
+or scales.
+
+25
+
+Table 7: Dense LOLIB transfer test on 50 complete weighted ordering instances. Lower
+BW is better.
+Method
+
+Mean BW
+
+Best
+
+Mean RT (s)
+
+DRMacIver/FAS
+IPSNS (ours)
+LR-TA (ours)
+WMSF seed
+igraph Eades
+Weighted Eades
+Random multistart
+Borda net score
+
+571,687
+582,354
+582,948
+585,926
+659,570
+675,235
+883,664
+1,066,045
+
+45/50
+5/50
+2/50
+1/50
+0/50
+0/50
+0/50
+0/50
+
+1.01
+37.92
+0.22
+0.19
+0.01
+0.01
+0.02
+0.00
+
+Family breakdown for IPSNS and DRMacIver/FAS
+Family
+IPSNS best DRMacIver/FAS best
+SGB
+1/25
+24/25
+IO
+4/10
+6/10
+RandA1
+0/15
+15/15
+
+Mean BW (IPSNS / DRMacIver/FAS)
+1,048,056 / 1,036,085
+36,996 / 32,860
+169,755 / 156,909
+
+6.3. Dense LOLIB transfer test
+Table 7 and Figure 4 summarize the dense LOLIB transfer test.
+This is the result that prevents overclaiming. On the 50 dense complete
+ordering instances, DRMacIver/FAS is the best overall method in the study:
+it wins 45 instances and achieves mean BW 571,687, compared with 582,354
+for IPSNS. The mean gap is 3.88% in DRMacIver/FAS’s favor. IPSNS remains second overall and retains zero incumbent violations against LR-TA
+and WMSF, but the dense benchmark does not support any claim of overall
+dominance by the proposed framework.
+The family breakdown explains why. DRMacIver/FAS wins 24 of the 25
+SGB instances and all 15 RandA1 instances. IPSNS is more competitive on
+IO, where it wins 4 of 10 against DRMacIver/FAS’s 6 of 10, but that does
+not overturn the overall dense-ordering result. The cleanest interpretation
+is structural: DRMacIver/FAS is a matrix-based pairwise-ordering heuristic
+whose documented input model aligns with LOLIB’s complete weighted ordering format, whereas IPSNS is designed around sparse weighted-digraph
+seeding and SCC-local reﬁnement. Dense complete ordering remains an active research area Fomin et al. (2010); Ostovari and Zarei (2024), and when
+every ordered pair carries weight the advantage shifts toward methods specialized for matrix-based pairwise evidence.
+This ﬁnding narrows the claim in a credible way. Retaining the dense
+transfer study shows that the framework transfers nontrivially to a dense
+26
+
+benchmark, remains competitive on a structured IO subset, and still preserves the internal no-worsening invariant, but dense complete ordering is
+not the framework’s strongest regime.
+Across the section as a whole, the empirical message is coherent. The
+strongest claim belongs to the sparse nonnegative benchmark, where IPSNS
+attains the best observed backward weight among the tested methods on 96
+of 97 standard instances and never returns a result worse than the better
+internal seed. The exact-validation subset shows that the quality story is not
+merely relative to heuristics, and the ablation study shows that the gains
+are not coming from an uninterpretable black box. The dense transfer study
+then marks the boundary of that success case. The framework is a strong
+and reproducible method for the sparse weighted-digraph regime, and the
+computational evidence shows how far that statement can be pushed.
+7. Discussion
+The computational evidence supports a clear but bounded interpretation of the proposed framework. The strongest result is the sparse nonnegative benchmark, where IPSNS achieves the lowest observed backward weight
+among the tested methods on 96 of 97 standard instances and never degrades
+the better internal seed. The importance of that result is not only that the
+framework performs well, but that it performs well in a way that matches the
+intended algorithmic design. The methodology combines two complementary
+global constructions with a reﬁnement stage that concentrates eﬀort on the
+cyclic parts of the graph and accepts a move only when the global objective improves. The sparse results therefore do not look accidental: they are
+consistent with the structure that the method is designed to exploit.
+The sparse benchmark interpretation begins with the role of the seed
+methods. LR-TA and WMSF produce feasible orderings by diﬀerent mechanisms. LR-TA is driven by local-ratio reductions and topological add-back,
+whereas WMSF follows a removal-and-minimization template. On many
+sparse instances those two constructions are already strong, and LR-TA in
+particular oﬀers an excellent quality–runtime tradeoﬀ. IPSNS improves on
+that base by focusing its neighborhood moves on strongly connected components that still contribute substantial backward weight under the incumbent
+ordering. This is a natural strategy for sparse cyclic graphs. When the
+graph contains large acyclic regions and a smaller cyclic core, indiscriminate
+perturbation is wasteful; the search budget is better spent where ordering
+27
+
+ambiguity remains concentrated. The empirical advantage of IPSNS on the
+sparse benchmark is therefore not simply that it runs longer than LR-TA. It
+is that the extra computation is directed at the right structural target.
+The internal safety result is central to this interpretation. On the full
+105-instance internal benchmark, IPSNS never returns a solution worse than
+LR-TA or WMSF. That is more than a convenient side condition. In practical
+decision-support or ordering pipelines, a reﬁnement stage that occasionally
+damages a good seed is hard to trust, hard to tune, and diﬃcult to diagnose. The monotone non-degradation rule makes the framework traceable.
+If reﬁnement ﬁnds no helpful move, the best seed is preserved. If reﬁnement
+improves the incumbent, that improvement is directly visible in the ﬁnal
+objective. For an engineering-oriented audience, this kind of operational reliability is often more useful than a loosely justiﬁed claim that a local search
+method is “usually better.”
+The exact-validation subset strengthens the quality story without changing its theoretical status. IPSNS matches the certiﬁed optimum on 56 of 57
+standard nonnegative instances in the validation subset and has a mean gap
+of 0.0006%. That is strong evidence that the heuristic framework is solving
+the small instances almost perfectly in practice. It is not, however, evidence
+for a new approximation ratio or a new optimality guarantee beyond the
+validated subset. When exact optimization is feasible, the framework tracks
+the optimum closely; when the instances become larger, the study relies on
+comparative benchmark evidence rather than on a theoretical claim it does
+not possess.
+The ablation study helps clarify which parts of the framework are carrying
+the result. The topological add-back phase is the dominant design element
+among the tested components, with a mean backward-weight reduction of
+about 5.9% relative to local-ratio without add-back. That is the main reason
+LR-TA should be understood as an engineered instantiation rather than as
+a thin wrapper around prior local-ratio ideas. The reﬁnement stage then
+contributes a smaller additional improvement, about 0.75% on the ablation
+subset. Seed construction determines most of the ordering quality; reﬁnement
+cleans up the remaining diﬃcult cases without sacriﬁcing the incumbent. The
+observed near-equality between 50 and 200 IPSNS iterations on the ablation
+subset also clariﬁes how the parameter choices should be discussed. They
+appear reasonable and stable on the tested subset, but they should not be
+promoted as universally optimal defaults for every future graph family.
+The dense LOLIB transfer test is the key scope boundary. On that bench28
+
+mark, DRMacIver/FAS is stronger overall, winning 45 of 50 instances and
+outperforming IPSNS in mean backward weight. This result is part of the
+scientiﬁc contribution because it shows where the framework stops being the
+most competitive option among the methods tested. The structural explanation is straightforward. DRMacIver/FAS is a deterministic matrix-based
+pairwise-ordering heuristic, and LOLIB supplies dense complete ordering instances where every ordered pair contributes information. IPSNS, by contrast, is built around sparse weighted-digraph seeding and SCC-local reﬁnement. Recent dense-ordering feedback arc set methods Fomin et al. (2010);
+Ostovari and Zarei (2024) reinforce that complete weighted ordering is a
+distinct algorithmic regime rather than a mere scale change from sparse digraphs. When the graph is fully dense, the distinction between cyclic core
+and acyclic background becomes much less informative, and the advantage
+shifts toward methods specialized for matrix-based pairwise evidence.
+At the same time, the dense result should not be overinterpreted in the
+opposite direction. IPSNS remains second overall on LOLIB, preserves its
+non-degradation property, and is competitive on the IO family, where it
+wins 4 of 10 instances. Dense complete ordering is not the paper’s primary
+target, and a matrix-based pairwise-ordering heuristic is preferable there.
+Identifying where the methodology is strong, where it is merely competitive,
+and where a diﬀerent structural assumption favors another class of methods
+improves the credibility of the overall claim.
+Several limitations remain and should be stated directly. First, the paper
+does not oﬀer a new approximation guarantee. The local-ratio principle used
+in LR-TA is prior art, and the present contribution is an engineered reproducible instantiation plus the incumbent-protected SCC reﬁnement framework. Second, the main claims apply only to nonnegative-weight instances.
+Negative-weight sparse instances are excluded from the standard analysis because they do not match the intended setting of the framework and would
+blur the meaning of the reported invariant. Third, the exact-validation study
+is limited to small instances where bitmask dynamic programming is feasible.
+It supports the quality narrative but does not remove the need for heuristic benchmarking on larger graphs. Fourth, dense linear-ordering instances
+are not the primary target, and the LOLIB results show that clearly. Fifth,
+the review version of the paper is anonymized, so data and code availability
+must be described in double-blind form until the submission process allows
+a public release.
+These limitations also help identify the practical implications. The pa29
+
+per is best read as a contribution to weighted ordering and cyclic-dependency
+repair in graph-based decision-support settings. Many engineering and operations workﬂows contain precedence conﬂicts, pairwise preference information,
+or cyclic dependencies that must be resolved into an ordering without claiming that every arc or relation can be simultaneously respected. In such settings, a methodology that starts from strong fast seeds, improves only when
+the objective truly decreases, and remains reproducible under ﬁxed seeds
+and explicit tie handling can be more valuable than a theoretically stronger
+method that is harder to deploy or interpret. The sparse benchmark results
+suggest that the framework is well suited to that style of application: graphs
+are large enough to make exact optimization impractical, sparse enough that
+SCC-local reﬁnement remains meaningful, and structured enough that the
+combination of LR-TA, WMSF, and IPSNS improves over simpler ranking
+heuristics.
+Future work should follow from those boundaries rather than ignore
+them. One direction is richer parameter tuning, especially to understand
+when longer reﬁnement budgets or alternative SCC-selection rules materially
+improve sparse instances beyond the current defaults. Another is broader
+evaluation on ranking and application-facing datasets that better expose domain structure than generic benchmarks alone. A third is exact or ILP-based
+polishing on medium-sized instances if solver setup becomes available in a
+later study. That would not replace the present heuristic contribution, but it
+could sharpen the quality reference point between the small exact-validation
+regime and the large sparse benchmark regime. A fourth is broader study of
+negative-weight or mixed-sign settings under a formulation that preserves a
+clean interpretation of the objective and the reﬁnement invariant.
+Overall, the study is strongest when it remains faithful to its empirical boundaries. It presents a reproducible methodology for the minimum
+weighted feedback arc set problem in nonnegative weighted directed graphs,
+demonstrates clear strength on the main sparse benchmark, and documents
+where a diﬀerent structural regime favors a diﬀerent algorithmic family.
+8. Conclusions
+This paper studied the minimum weighted feedback arc set problem
+through its ordering interpretation on nonnegative weighted directed graphs.
+The main contribution is not a new approximation framework, but a reproducible computational methodology that combines an engineered local-ratio
+30
+
+construction with topological add-back, a complementary weighted seed, and
+an incumbent-protected SCC-local reﬁnement stage. Within that design, LRTA serves as a strong constructive seed, while IPSNS is the main reﬁnement
+framework that improves the incumbent only when the global backwardweight objective decreases.
+The computational evidence supports a clear scope-bounded conclusion.
+On the standard nonnegative sparse benchmark, IPSNS attains the best observed backward weight among the tested methods on 96 of 97 instances
+and improves on all tested internal and external comparators, including the
+strongest external baseline. On the full internal benchmark, the reﬁnement
+stage never worsens the better internal seed, which conﬁrms the intended
+non-degradation behavior in practice.
+The exact-validation subset shows that the framework is near-optimal
+when bitmask dynamic programming certiﬁes optima. The ablation study
+shows that the topological add-back phase is the dominant design element,
+with SCC-local reﬁnement providing an additional but smaller gain.
+The results also deﬁne an important boundary. On dense complete
+LOLIB ordering instances, the matrix-based pairwise-ordering baseline DRMacIver/FAS is stronger overall. This does not negate the sparse-benchmark
+contribution; it clariﬁes it. The proposed framework is strongest in the sparse
+nonnegative weighted-digraph regime for which it was designed. It should
+be interpreted as a general weighted-digraph heuristic rather than as a
+dense-native linear-ordering solver.
+The practical value of the framework lies in this combination of quality, structural focus, and reproducibility. The methodology is suitable for
+weighted ordering and cyclic-dependency repair settings where exact optimization is too expensive, sparse graph structure is meaningful, and reﬁnement should not be allowed to damage a good seed. Within the stated
+boundaries, engineered local-ratio seeding plus incumbent-protected SCC reﬁnement is an eﬀective strategy for sparse weighted directed ordering problems.
+Two immediate directions follow from this evidence. The ﬁrst is
+broader evaluation on additional sparse weighted digraph families, especially
+application-derived instances with richer edge-weight semantics. The second
+is methodological: the same incumbent-protected reﬁnement discipline could
+be combined with stronger dense-ordering seeds or exact large-neighborhood
+subroutines without changing the basic non-degradation philosophy that
+motivated the present framework.
+31
+
+Aggregated weighted
+directed graph
+
+LR-TA seed
+cycle reduction
++ add-back
+
+WMSF-style seed
+remove–minimize
+–stabilize
+Best internal seed
+by backward weight
+
+SCC scoring and
+top-K selection
+restore
+
+Destroy move
+reactivate heavy removed
+remove light active
+
+Repair move
+restricted local-ratio
++ restricted add-back
+Accept only if
+backward weight improves
+
+Final incumbent
+ordering
+Figure 1: Conceptual overview of the integrated framework. Two constructive seeds are
+evaluated ﬁrst; IPSNS then applies incumbent-protected SCC-local destroy-and-repair
+moves to the better seed only when they improve the global objective.
+
+32
+
+Algorithm 2 IPSNS with incumbent protection
+Require: Weighted digraph G = (V, A, w), iteration budget T
+Ensure: Ordering π ⋆ with objective no worse than the best internal seed
+1: Build WMSF-style seed πW and LR-TA seed πLR
+2: π ⋆ ← arg min{bw(πW ), bw(πLR )}
+3: for t = 1, . . . , T do
+4:
+Score each nontrivial SCC by its current backward contribution
+5:
+if all SCC scores are zero then
+6:
+break
+7:
+end if
+8:
+Sample one SCC from the top-K positive-score SCCs using weighted
+random choice
+9:
+Save the current internal SCC state
+10:
+Reactivate a heavy fraction of removed internal edges
+11:
+Remove a light fraction of active internal edges
+12:
+Apply SCC-restricted local-ratio repair
+13:
+Apply SCC-restricted heavy-ﬁrst add-back minimization
+14:
+if the candidate SCC state is invalid then
+15:
+restore saved SCC state; continue
+16:
+end if
+17:
+Recompute the global ordering and candidate objective
+18:
+if the candidate objective is smaller than bw(π ⋆ ) then
+19:
+accept the candidate and update π ⋆
+20:
+else
+21:
+restore the previous incumbent exactly
+22:
+end if
+23: end for
+24: return π ⋆
+
+33
+
+Mean BW excess over IPSNS (%)
+
+50
+40
+30
+20
+10
+0
+
+)
+
+urs
+
+(o
+NS
+IPS
+
+)
+urs
+
+(o
+TA
+LR-
+
+F
+MS
+
+d
+see
+
+W
+
+ver
+
+aci
+RM
+
+D
+
+ade
+
+E
+aph
+
+igr
+
+s
+h
+
+ig
+We
+
+s
+
+e
+cor
+
+ade
+
+E
+ted
+
+da
+Bor
+
+sta
+
+lti
+mu
+m
+o
+nd
+
+s
+net
+
+rt
+
+Ra
+
+Number of global-best instances
+
+Figure 2: Mean backward-weight excess over IPSNS on the 97 standard nonnegative sparse
+instances. Lower is better; IPSNS is the reference at zero.
+
+100
+80
+60
+40
+20
+0
+
+S
+PSN
+
+I
+
+rs)
+
+(ou
+
+)
+urs
+
+(o
+TA
+LR-
+
+F se
+
+S
+WM
+
+ed
+
+ver
+
+ci
+Ma
+DR
+
+ig
+
+h
+rap
+
+es
+
+Ead
+
+i
+We
+
+ed
+ght
+
+es
+
+Ead
+
+d
+Bor
+
+et
+an
+
+re
+
+sco
+
+rt
+
+sta
+
+lti
+mu
+m
+ndo
+
+Ra
+
+Figure 3: Number of instances on which each method attains the lowest observed backward
+weight on the primary sparse benchmark.
+
+34
+
+Global-best instances
+
+25
+
+IPSNS
+DRMaciver
+
+20
+15
+10
+5
+0
+
+SGB
+
+IO
+
+RandA1
+
+Figure 4: Global-best counts by LOLIB family for IPSNS and DRMacIver/FAS.
+
+35
+
+CRediT authorship contribution statement
+Author details are omitted from the review manuscript for doubleanonymized submission. A complete CRediT statement will be provided in
+the separate title page and submission metadata.
+Funding statement
+This research did not receive external funding.
+Declaration of competing interest
+The authors declare that they have no known competing ﬁnancial interests or personal relationships that could have inﬂuenced the work reported
+in this paper.
+Data and code availability
+An anonymized reproducibility artifact containing the implementation,
+experiment scripts, selected instance lists, conversion utilities, and postprocessed result tables is provided as supplementary material for review Anonymous (2026). The benchmark instances used in the study are publicly available from the sources cited in the manuscript; the artifact includes scripts
+and metadata needed to obtain and convert them. A public repository and
+archival DOI will be released upon acceptance.
+Declaration of generative AI and AI-assisted technologies in the
+manuscript preparation process
+During the preparation of this work, the authors used AI-assisted tools,
+including ChatGPT, Codex, Claude, and Perplexity AI, to support literature exploration, organization of experimental material, and language editing.
+The authors reviewed and edited all generated content, veriﬁed the relevant
+sources and experimental results, and take full responsibility for the content
+of the submitted manuscript.
+
+36
+
+References
+Ailon, N., Charikar, M., Newman, A., 2008. Aggregating inconsistent information: Ranking and clustering. Journal of the ACM 55, 23:1–23:27.
+doi:10.1145/1411509.1411513.
+Ali Dasdan, 2026. graph-benchmarks: Directed graph benchmarks in dimacs
+graph format.
+https://github.com/alidasdan/graph-benchmarks.
+Dataset repository; accessed 2026-06-06.
+Alon, N., Lokshtanov, D., Saurabh, S., 2009. Fast FAST, in: Automata,
+Languages and Programming, Springer Berlin Heidelberg. pp. 49–58.
+Anonymous, 2026. Anonymous reproducibility artifact for this submission.
+Submitted as supplementary material for double-anonymized review.
+Baharev, A., Schichl, H., Neumaier, A., Achterberg, T., 2021. An exact
+method for the minimum feedback arc set problem. ACM Journal of Experimental Algorithmics 26, 1.4:1–1.4:28. doi:10.1145/3446429.
+Bar-Yehuda, R., Geiger, D., Naor, J.S., Roth, R.M., 1998. Approximation
+algorithms for the feedback vertex set problem with applications to constraint satisfaction and bayesian inference. SIAM Journal on Computing
+27, 942–959. doi:10.1137/S0097539796305109.
+Carlos Segura, 2026. Lop_ma-edm: Memetic algorithms with explicit diversity management for the linear ordering problem. https://github.com/
+carlossegurag/LOP_MA-EDM. Software repository; accessed 2026-06-06.
+Cavallaro, C., Cutello, V., 2025. An eﬃcient heuristic algorithm to compute
+minimal and stable weighted feedback arc sets, in: Proceedings of the International Conference on Software Engineering and Knowledge Engineering
+(SEKE), pp. 84–87. doi:10.18293/SEKE2025-049.
+Coppersmith, D., Fleischer, L.K., Rurda, A., 2010. Ordering by weighted
+number of wins gives a good ranking for weighted tournaments. ACM
+Transactions on Algorithms 6, 55:1–55:13. doi:10.1145/1798596.1798608.
+Demetrescu, C., Finocchi, I., 2003. Combinatorial algorithms for feedback
+problems in directed graphs. Information Processing Letters 86, 129–136.
+doi:10.1016/S0020-0190(02)00491-X.
+37
+
+DRMacIver, 2026. Feedback-arc-set. https://github.com/DRMacIver/
+Feedback-Arc-Set.
+Software repository;
+experiment commit
+16ﬀ24a92fde886e58819180a9fe686e60991c5c; accessed 2026-06-06.
+Eades, P., Lin, X., 1995. A heuristic for the feedback arc set problem. Australasian Journal of Combinatorics 12, 15–25.
+Eades, P., Lin, X., Smyth, W.F., 1993. A fast and eﬀective heuristic for
+the feedback arc set problem. Information Processing Letters 47, 319–323.
+doi:10.1016/0020-0190(93)90079-O.
+Even, G., Naor, J.S., Schieber, B., Sudan, M., 1998. Approximating minimum feedback sets and multicuts in directed graphs. Algorithmica 20,
+151–174. doi:10.1007/PL00009191.
+Flood, M.M., 1990. Exact and heuristic algorithms for the weighted feedback
+arc set problem: A special case of the skew-symmetric quadratic assignment problem. Networks 20, 1–23. doi:10.1002/net.3230200102.
+Fomin, F.V., Lokshtanov, D., Raman, V., Saurabh, S., 2010. Fast local search
+algorithm for weighted feedback arc set in tournaments. Proceedings of
+the AAAI Conference on Artiﬁcial Intelligence 24, 65–70. doi:10.1609/
+aaai.v24i1.7557.
+He, Y., Gan, Q., Wipf, D., Reinert, G.D., Yan, J., Cucuringu, M., 2022. Gnnrank: Learning global rankings from pairwise comparisons via directed
+graph neural networks, in: Proceedings of the 39th International Conference on Machine Learning, pp. 8581–8612. URL: https://proceedings.
+mlr.press/v162/he22b.html.
+Hecht, M., Gonciarz, K., Horvát, S., 2021. Tight localizations of feedback
+sets. ACM Journal of Experimental Algorithmics 26, 1.3:1–1.3:19. doi:10.
+1145/3447652.
+Karp, R.M., 1972. Reducibility among combinatorial problems, in: Complexity of Computer Computations. Springer US, Boston, MA, pp. 85–103.
+doi:10.1007/978-1-4684-2001-2_9.
+Lempel, A., Cederbaum, I., 1966. Minimum feedback arc and vertex sets
+of a directed graph. IEEE Transactions on Circuit Theory 13, 399–403.
+doi:10.1109/TCT.1966.1082620.
+38
+
+Marti, R., 2010. Lolib: Linear ordering problem library. https://www.uv.
+es/~rmarti/paper/lop.html. Oﬃcial library page; accessed 2026-06-06.
+Marti, R., Reinelt, G., Duarte, A., 2012. A benchmark library and a
+comparison of heuristic methods for the linear ordering problem. Computational Optimization and Applications 51, 1297–1317. doi:10.1007/
+s10589-010-9384-9.
+Ostovari, M., Zarei, A., 2024. A better LP rounding for feedback arc set on
+tournaments. Theoretical Computer Science 1015, 114768. doi:10.1016/
+j.tcs.2024.114768.
+python-igraph developers, 2026.
+python-igraph documentation:
+Graph.feedback_arc_set.
+https://python.igraph.org/en/stable/
+api/igraph.Graph.html. Documentation for the weighted feedback arc
+set API; accessed 2026-06-06.
+Simpson, M., Srinivasan, V., Thomo, A., 2016. Eﬃcient computation of
+feedback arc set at web-scale. Proceedings of the VLDB Endowment 10,
+133–144. doi:10.14778/3021924.3021930.
+
+39
+
+
