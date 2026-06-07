@@ -1,0 +1,6 @@
+method,label,n_complete,mean_bw,mean_rt_s,mean_improve_vs_lrta,wins_vs_lrta,ties_vs_lrta,losses_vs_lrta,wins_vs_ipsns,ties_vs_ipsns,losses_vs_ipsns,mean_accepted_moves,stopped_reasons
+lrta_ref,LR-TA (seed),18,97184.9,,0.0,0,18,0,0,11,7,,{}
+ipsns_ref,IPSNS (EXP4 full),18,94127.4,,3057.5,7,11,0,0,18,0,,{}
+lrta_adj_swap_ls,Adj-swap LS from LR-TA,18,97184.9,0.026,0.0,0,18,0,0,11,7,0.0,"{""local_optimum"": 18}"
+lrta_insert_ls,Insertion LS from LR-TA,18,95778.6,0.234,1406.3,4,14,0,1,12,5,0.9,"{""local_optimum"": 18}"
+bestseed_insert_ls,Insertion LS from best seed,18,95617.3,0.383,1567.6,7,11,0,1,14,3,0.6,"{""local_optimum"": 18}"
