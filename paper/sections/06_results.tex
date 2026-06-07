@@ -1,7 +1,7 @@
 \section{Computational results}
 \label{sec:results}
 
-The computational evidence should be read in the same order as the experimental design. The paper first establishes the main sparse-benchmark result, then checks exact small-instance quality, then uses ablations to interpret the engineering choices, and finally tests transfer to dense LOLIB instances. This ordering matters because the positive claim is intentionally narrow: IPSNS is presented as a strong, reproducible heuristic framework for nonnegative sparse weighted directed graphs, not as a universal best method for every ordering benchmark.
+The computational evidence should be read in the same order as the experimental design. The paper first establishes the main sparse-benchmark result, then checks exact small-instance quality, then uses ablations to interpret the engineering choices, and finally tests transfer to dense LOLIB instances. This ordering matters because the main claim is intentionally scoped: IPSNS is presented as a strong, reproducible heuristic framework for nonnegative sparse weighted directed graphs.
 
 \subsection{Sparse weighted graph benchmarks}
 
@@ -50,7 +50,7 @@ EXP7 asks whether IPSNS improvements over LR-TA can be matched by simpler order-
 
 \input{tables/table_plain_local_search}
 
-The sparse results cover a broad but intentionally scoped benchmark. The comparison uses 97 standard nonnegative sparse instances after exclusions and includes eight algorithms in total. The claim remains limited to this setting and does not extend to negative-weight cases or dense complete ordering benchmarks.
+The sparse results cover a broad but intentionally scoped benchmark. The comparison uses 97 standard nonnegative sparse instances after exclusions and includes eight algorithms in total. These results are specific to this setting and do not extend to negative-weight cases or dense complete ordering benchmarks.
 
 \subsection{Exact validation and ablation evidence}
 
@@ -62,7 +62,7 @@ The exact small-instance validation and the ablation study serve different purpo
 
 The exact small-instance study supports a quality-validation narrative rather than a theoretical one. On the 57 standard nonnegative instances with \(n \le 20\) included in the dynamic-programming study, IPSNS matches the certified optimum on 56 instances and has a mean gap of 0.0006\% from the exact optimum. LR-TA matches the optimum on 55 instances with mean gap 0.0590\%, and WMSF matches the optimum on 51 with mean gap 0.0961\%. These numbers show that the framework is not merely competitive in relative benchmark terms; on the exact-validation subset, it is essentially exact in practice.
 
-This table does not provide an approximation guarantee, a worst-case bound, or a proof of global behavior beyond the validated subset. The correct statement is that IPSNS is empirically near-optimal on the exact-validation subset. The only IPSNS near-miss is instance \texttt{r20\_60}.
+This table does not provide an approximation guarantee, a worst-case bound, or a proof of global behavior beyond the validated subset. The appropriate conclusion is that IPSNS is empirically near-optimal on the exact-validation subset. The only IPSNS near-miss is instance \texttt{r20\_60}.
 
 The exact-validation result also helps interpret the single sparse-benchmark loss to DRMacIver/FAS. The only IPSNS near-miss is again \texttt{r20\_60}. This is also the only standard small instance where IPSNS fails to match exact optimum. That consistency reduces the chance that the sparse comparison is driven by unstable reporting or artifact mismatch. Instead, it suggests a small, structurally difficult case where the framework is near optimum but not uniquely dominant.
 
@@ -93,10 +93,10 @@ Table~\ref{tab:lolib-scope} and Figure~\ref{fig:exp5-lolib-scope} summarize the 
     \label{fig:exp5-lolib-scope}
 \end{figure}
 
-This is the result that prevents overclaiming. On the 50 dense complete ordering instances, DRMacIver/FAS is the best overall method in the study: it wins 45 instances and achieves mean BW 571,687, compared with 582,354 for IPSNS. The mean gap is 3.88\% in DRMacIver/FAS's favor. IPSNS remains second overall and retains zero incumbent violations against LR-TA and WMSF, but the dense benchmark does not support any claim of overall dominance by the proposed framework.
+This result defines an important scope boundary. On the 50 dense complete ordering instances, DRMacIver/FAS is the best overall method in the study: it wins 45 instances and achieves mean BW 571,687, compared with 582,354 for IPSNS. The mean gap is 3.88\% in DRMacIver/FAS's favor. IPSNS remains second overall and retains zero incumbent violations against LR-TA and WMSF, but the dense benchmark favors the matrix-based comparator.
 
 The family breakdown explains why. DRMacIver/FAS wins 24 of the 25 SGB instances and all 15 RandA1 instances. IPSNS is more competitive on IO, where it wins 4 of 10 against DRMacIver/FAS's 6 of 10, but that does not overturn the overall dense-ordering result. The cleanest interpretation is structural: DRMacIver/FAS is a matrix-based pairwise-ordering heuristic whose documented input model aligns with LOLIB's complete weighted ordering format, whereas IPSNS is designed around sparse weighted-digraph seeding and SCC-local refinement. Dense complete ordering remains an active research area \cite{FLRS10,OZ24}, and when every ordered pair carries weight the advantage shifts toward methods specialized for matrix-based pairwise evidence.
 
-This finding narrows the claim in a credible way. Retaining the dense transfer study shows that the framework transfers nontrivially to a dense benchmark, remains competitive on a structured IO subset, and still preserves the internal no-worsening invariant, but dense complete ordering is not the framework's strongest regime.
+This finding sharpens the overall claim. Retaining the dense transfer study shows that the framework transfers nontrivially to a dense benchmark, remains competitive on a structured IO subset, and still preserves the internal no-worsening invariant, but dense complete ordering is not the framework's strongest regime.
 
 Across the section as a whole, the empirical message is coherent. The strongest claim belongs to the sparse nonnegative benchmark, where IPSNS attains the best observed backward weight among the tested methods on 96 of 97 standard instances and never returns a result worse than the better internal seed. The exact-validation subset shows that the quality story is not merely relative to heuristics, and the ablation study shows that the gains are not coming from an uninterpretable black box. The dense transfer study then marks the boundary of that success case. The framework is a strong and reproducible method for the sparse weighted-digraph regime, and the computational evidence shows how far that statement can be pushed.
