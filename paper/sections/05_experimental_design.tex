@@ -54,6 +54,7 @@ Several secondary metrics support interpretation. The number of global-best inst
 To supplement tabular comparisons, paired statistical tests are computed on the common completed instances of the external sparse comparison, using per-instance backward weight as the outcome unit. The Wilcoxon signed-rank test and sign test characterize the distribution of per-instance paired differences; they are reported as distributional evidence for the observed outcome asymmetry and do not replace exact optimality certificates.
 A supplementary budget experiment (EXP6) runs IPSNS at six iteration budgets (10, 25, 50, 100, 200, and 400) on a 20-instance representative sparse subset to characterize how solution quality varies with the iteration budget relative to runtime cost.
 A generic local-search comparison (EXP7) tests whether adjacent-swap or single-vertex insertion local search seeded from LR-TA can replicate IPSNS quality on the same representative subset.
+A time-capped MIP baseline (EXP8) was also run on a deterministic 15-instance medium sparse subset ($n \le 318$, 120\,s per instance) to compare IPSNS with solver-certified optima where the MIP proves optimal.
 
 \subsection{Implementation and reproducibility}
 

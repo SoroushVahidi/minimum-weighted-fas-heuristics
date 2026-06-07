@@ -1,0 +1,2 @@
+instance,n,m,density,solver,mode,time_limit_seconds,status,status_message,mip_objective,mip_bw_incumbent,mip_dual_bound_bw,mip_gap_pct,proven_optimal,runtime_seconds,lrta_bw,ipsns_bw,wmsf_bw,drmaciver_bw,ipsns_gap_to_incumbent_pct,ipsns_gap_to_bound_pct,error
+stg,20,30,0.157895,scipy.optimize.milp (HiGHS),MIP,10.0,optimal,Optimization terminated successfully. (HiGHS Status 7: Optimal),5.0,5.0,5.0,,True,0.017,6.0,5.0,,5.0,,,

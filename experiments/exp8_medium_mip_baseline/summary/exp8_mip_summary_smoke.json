@@ -1,0 +1,29 @@
+{
+  "total_instances": 1,
+  "completed": 1,
+  "proven_optimal": 1,
+  "time_limit_hit": 0,
+  "errors": 0,
+  "skipped": 0,
+  "mean_runtime_seconds": 0.02,
+  "ipsns_matches_mip_incumbent": 1,
+  "ipsns_better_than_mip_incumbent": 0,
+  "gap_vs_incumbent": [
+    {
+      "instance": "stg",
+      "n": "20",
+      "mode": "MIP",
+      "mip_bw": 5.0,
+      "ipsns_bw": 5.0,
+      "gap_pct": 0.0,
+      "proven_optimal": true
+    }
+  ],
+  "gap_vs_bound": [
+    {
+      "instance": "stg",
+      "gap_to_bound_pct": 0.0,
+      "mode": "MIP"
+    }
+  ]
+}
