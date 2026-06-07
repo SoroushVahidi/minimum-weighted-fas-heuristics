@@ -9,10 +9,7 @@ build/
 .eggs/
 *.ipynb_checkpoints/
 .ipynb_checkpoints/
-results/raw/
-results/processed/
-results/tables/*.csv
-!results/tables/unified_reproducibility_summary.csv
+results/
 experiments/*/raw/
 *.csv
 !configs/
@@ -30,3 +27,21 @@ submission_package/files_for_upload/*.pdf
 submission_package/files_for_upload/*.txt
 submission_package/anonymous_artifact/*.zip
 submission_package/anonymous_artifact/staging/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.spl
+*.synctex.gz
+paper/title_page.pdf
+paper/cover_letter_draft.pdf
+paper/main_anonymized.pdf
+paper/contact_*.log
+
+# Diagnostic renders from warning/readthrough passes
+paper/notes/final_warning_pass/rendered_pages/
+paper/notes/final_warning_pass/contact_sheets/
