@@ -12,7 +12,7 @@ The implementation reads an aggregated weighted DIMACS digraph and stores it in 
 \subsection{Local-ratio topological add-back}
 \label{subsec:lrta}
 
-LR-TA is the first constructive component. It inherits the idea of local-ratio cycle reduction from the directed-feedback setting of Demetrescu and Finocchi \cite{DF03}, but the implementation studied here is an engineered sparse-graph instantiation rather than a new theorem. The algorithm maintains an active subgraph over the original edge identifiers and repeatedly applies two phases.
+LR-TA is the first constructive component. It inherits the idea of local-ratio cycle reduction from the directed-feedback setting of \cite{DF03}, but the implementation studied here is an engineered sparse-graph instantiation rather than a new theorem. The algorithm maintains an active subgraph over the original edge identifiers and repeatedly applies two phases.
 
 In Phase I, the algorithm searches the active graph for any directed cycle using an iterative depth-first search. The search is deterministic because vertices and outgoing edge lists are scanned in fixed order, and only the first detected cycle is used. If \(C\) is the detected cycle, LR-TA computes
 \begin{equation}
