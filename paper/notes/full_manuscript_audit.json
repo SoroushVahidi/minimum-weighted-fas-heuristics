@@ -1,16 +1,16 @@
 {
-  "total_section_words": 9625,
+  "total_section_words": 9603,
   "section_word_counts": {
-    "01_introduction": 1215,
-    "02_related_work": 1795,
-    "03_problem_definition": 262,
+    "01_introduction": 1212,
+    "02_related_work": 1777,
+    "03_problem_definition": 265,
     "04_algorithmic_framework": 1483,
     "05_experimental_design": 1507,
-    "06_results": 1547,
+    "06_results": 1545,
     "07_discussion": 1419,
-    "08_conclusion": 397
+    "08_conclusion": 395
   },
-  "abstract_words": 221,
+  "abstract_words": 209,
   "abstract_ok": true,
   "section_counts": {
     "sections": 8,
@@ -64,11 +64,11 @@
   "overclaim_hits": [
     {
       "file": "main_anonymized.tex",
-      "line": 25,
+      "line": 32,
       "matches": [
         "optimal"
       ],
-      "text": "Weighted directed graphs provide a natural model for precedence conflicts, cyclic dependencies, and pairwise ordering data in engineering and decision systems. This paper studies the minimum weighted feedback arc set problem on nonnegative weighted directed graphs, equivalently the problem of finding an ordering with minimum total backward edge weight. We present a reproducible heuristic framework that combines an engineered local-ratio cycle-reduction method with topological add-back, a weighted seed construction, and an incumbent-protected refinement over strongly connected components. The refinement is designed to improve local cyclic substructures while preserving a simple non-worsening invariant relative to the best seed solution. The computational study combines sparse public graph benchmarks, an ablation study, exact validation on small instances, external baseline comparisons, and a dense linear-ordering transfer test. On small nonnegative instances where exact optimization is feasible, the proposed refinement is optimal on 56 of 57 standard instances, with a mean relative gap of about 0.0006 percent. On 97 standard nonnegative sparse benchmark instances, it attains the best observed backward weight on 96 instances and outperforms all tested internal and external baselines, including the strongest external heuristic. Dense instances from the Linear Ordering Problem Library (LOLIB) define an important scope boundary: a tournament-native external method is stronger on that benchmark, while the proposed framework remains a general weighted-digraph heuristic rather than a dense-native linear-ordering solver."
+      "text": "The computational study combines sparse public graph benchmarks, an ablation study, exact validation on small instances, external baseline comparisons, and a dense linear-ordering transfer test. On small nonnegative instances where exact optimization is feasible, the proposed refinement is optimal on 56 of 57 standard instances, with a mean relative gap of about 0.0006 percent. On 97 standard nonnegative sparse benchmark instances, it attains the best observed backward weight on 96 instances and outperforms all tested baselines, including the strongest external heuristic. Dense instances from the Linear Ordering Problem Library (LOLIB) define an important scope boundary. A tournament-native external method is stronger on that benchmark, while the proposed framework remains a general weighted-digraph heuristic rather than a dense-native linear-ordering solver."
     },
     {
       "file": "sections/01_introduction.tex",
@@ -80,15 +80,15 @@
     },
     {
       "file": "sections/01_introduction.tex",
-      "line": 10,
+      "line": 12,
       "matches": [
         "guarantee"
       ],
-      "text": "The integrated framework combines three components. First, the local-ratio topological add-back procedure produces a feasible ordering from weighted cycle reductions and a reconstruction step. Second, a weighted seed construction provides a complementary initial ordering; in this manuscript it is treated as a seed and baseline rather than as a primary novelty claim. Third, an incumbent-protected refinement searches within strongly connected components (SCCs) and updates the incumbent only when a candidate ordering has no larger backward weight. We refer to this refinement as incumbent-protected SCC neighborhood search (IPSNS). This protection gives a simple but important invariant: the final solution cannot be worse than the best internal seed under the same objective and nonnegative-weight assumptions. The invariant is not an approximation guarantee, but it prevents refinement from degrading the seed and makes the local search behavior auditable instance by instance."
+      "text": "Third, incumbent-protected refinement searches within strongly connected components (SCCs). It updates the incumbent only when a candidate ordering has no larger backward weight. We refer to this refinement as incumbent-protected SCC neighborhood search (IPSNS). This protection gives a simple invariant: the final solution cannot be worse than the best internal seed under the same objective and nonnegative-weight assumptions. The invariant is not an approximation guarantee, but it prevents refinement from degrading the seed and makes the local search behavior auditable instance by instance."
     },
     {
       "file": "sections/01_introduction.tex",
-      "line": 14,
+      "line": 16,
       "matches": [
         "universal",
         "optimal"
@@ -97,7 +97,7 @@
     },
     {
       "file": "sections/01_introduction.tex",
-      "line": 23,
+      "line": 25,
       "matches": [
         "guarantee"
       ],
@@ -117,7 +117,7 @@
       "matches": [
         "dominant"
       ],
-      "text": "The external-baseline design in this manuscript intentionally mixes library-grade and specialized open-source tools. The python-igraph documentation for \\texttt{Graph.feedback\\_arc\\_set} \\cite{python_igraph_feedback_arc_set} exposes both an Eades-style heuristic and exact integer-programming modes behind a stable API, making it a useful baseline because it reflects what a practitioner could call from a general-purpose graph library. In contrast, the DRMacIver/FAS tool \\cite{drmaciver_feedback_arc_set} is a specialized weighted-ordering method rather than a general graph-analysis package. Its importance here is empirical: it is the strongest external baseline on the sparse standard benchmark and the dominant method on the dense LOLIB transfer test."
+      "text": "The external-baseline design in this manuscript intentionally mixes library-grade and specialized open-source tools. The python-igraph documentation for \\texttt{Graph.feedback\\_arc\\_set} \\cite{python_igraph_feedback_arc_set} exposes both an Eades-style heuristic and exact integer-programming modes. It is a useful baseline because it reflects what a practitioner could call from a general-purpose graph library. In contrast, the DRMacIver/FAS tool \\cite{drmaciver_feedback_arc_set} is a specialized weighted-ordering method rather than a general graph-analysis package. Its importance here is empirical: it is the strongest external baseline on the sparse standard benchmark and the dominant method on the dense LOLIB transfer test."
     },
     {
       "file": "sections/02_related_work.tex",
@@ -129,7 +129,7 @@
     },
     {
       "file": "sections/02_related_work.tex",
-      "line": 40,
+      "line": 46,
       "matches": [
         "optimal"
       ],
@@ -137,11 +137,11 @@
     },
     {
       "file": "sections/02_related_work.tex",
-      "line": 42,
+      "line": 48,
       "matches": [
         "universal"
       ],
-      "text": "For a journal-paper contribution, that position is appropriate. The manuscript does not need to claim universal dominance or theoretical novelty where the evidence is not there. What it can claim is that a carefully engineered local-ratio-and-refinement framework materially improves reproducible performance on sparse weighted directed ordering problems while remaining explicit about its dense-ordering limits."
+      "text": "For a journal-paper contribution, that position is appropriate. The manuscript does not need to claim universal dominance or theoretical novelty where the evidence is not there. What it can claim is that a carefully engineered local-ratio-and-refinement framework materially improves reproducible performance on sparse weighted directed ordering problems. It also remains explicit about its dense-ordering limits."
     },
     {
       "file": "sections/04_algorithmic_framework.tex",
@@ -186,15 +186,15 @@
     },
     {
       "file": "sections/05_experimental_design.tex",
-      "line": 16,
+      "line": 18,
       "matches": [
         "guarantee"
       ],
-      "text": "The standard analysis is restricted to the nonnegative-weight subset. Eight instances are excluded from the standard sparse comparison set because they contain negative-weight arcs: \\texttt{gerez}, \\texttt{howard-max}, \\texttt{k3\\_3}, \\texttt{ku}, \\texttt{peterson}, \\texttt{peterson1}, \\texttt{peterson2}, and \\texttt{stg0}. This exclusion is methodological rather than cosmetic. The local-ratio construction and the interpretation of incumbent protection in this manuscript are framed for nonnegative weights, so mixing negative-weight instances into the main tables would weaken the meaning of the guarantee. After exclusions, the primary sparse comparison set contains 97 standard instances."
+      "text": "This exclusion is methodological rather than cosmetic. The local-ratio construction and the interpretation of incumbent protection in this manuscript are framed for nonnegative weights, so mixing negative-weight instances into the main tables would weaken the meaning of the guarantee. After exclusions, the primary sparse comparison set contains 97 standard instances."
     },
     {
       "file": "sections/05_experimental_design.tex",
-      "line": 30,
+      "line": 32,
       "matches": [
         "optimal"
       ],
@@ -202,7 +202,7 @@
     },
     {
       "file": "sections/05_experimental_design.tex",
-      "line": 49,
+      "line": 51,
       "matches": [
         "optimal"
       ],
@@ -210,7 +210,7 @@
     },
     {
       "file": "sections/05_experimental_design.tex",
-      "line": 59,
+      "line": 61,
       "matches": [
         "universal",
         "optimal"
@@ -248,7 +248,7 @@
       "matches": [
         "dominant"
       ],
-      "text": "The exact-validation result also helps interpret the single sparse-benchmark loss to DRMacIver/FAS. The only IPSNS near-miss is again \\texttt{r20\\_60}, which is also the only standard small instance where IPSNS fails to match exact optimum. That consistency reduces the chance that the sparse comparison is driven by unstable reporting or artifact mismatch. Instead, it suggests a small, structurally difficult case where the framework is extremely close to optimum but not uniquely dominant."
+      "text": "The exact-validation result also helps interpret the single sparse-benchmark loss to DRMacIver/FAS. The only IPSNS near-miss is again \\texttt{r20\\_60}. This is also the only standard small instance where IPSNS fails to match exact optimum. That consistency reduces the chance that the sparse comparison is driven by unstable reporting or artifact mismatch. Instead, it suggests a small, structurally difficult case where the framework is near optimum but not uniquely dominant."
     },
     {
       "file": "sections/06_results.tex",
@@ -296,16 +296,16 @@
     },
     {
       "file": "sections/08_conclusion.tex",
-      "line": 6,
+      "line": 8,
       "matches": [
         "optimal",
         "dominant"
       ],
-      "text": "The computational evidence supports a clear scope-bounded conclusion. On the standard nonnegative sparse benchmark, IPSNS attains the lowest observed backward weight on 96 of 97 instances and improves on all tested internal and external comparators, including the strongest external baseline. On the full internal benchmark, the refinement stage never worsens the better internal seed, which confirms the intended non-degradation behavior in practice. The exact small-instance validation shows that the framework is near-optimal when exact optimization is feasible, and the ablation study shows that the topological add-back phase is the dominant design element, with SCC-local refinement providing an additional but smaller gain."
+      "text": "The exact small-instance validation shows that the framework is near-optimal when exact optimization is feasible. The ablation study shows that the topological add-back phase is the dominant design element, with SCC-local refinement providing an additional but smaller gain."
     },
     {
       "file": "sections/08_conclusion.tex",
-      "line": 10,
+      "line": 12,
       "matches": [
         "universal"
       ],

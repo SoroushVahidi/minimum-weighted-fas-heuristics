@@ -1,0 +1,86 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 0,
+    "medium": 3,
+    "low": 2,
+    "overfull": 0,
+    "underfull": 5,
+    "overfull_gt_2pt": 0,
+    "warning_lines": 5,
+    "errors": 0
+  },
+  "by_type": {
+    "underfull_hbox": 5
+  },
+  "top_source_ranges": [
+    [
+      "main_anonymized.bbl:97-105",
+      2
+    ],
+    [
+      "sections/06_results:48-49",
+      1
+    ],
+    [
+      "main_anonymized.bbl:16-24",
+      1
+    ],
+    [
+      "main_anonymized.bbl:54-61",
+      1
+    ]
+  ],
+  "warnings": [
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 54,
+      "line_end": 61,
+      "file": "main_anonymized.bbl",
+      "log_line": 27,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 54--61"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 97,
+      "line_end": 105,
+      "file": "main_anonymized.bbl",
+      "log_line": 28,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 97--105"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 2512,
+      "line_start": 16,
+      "line_end": 24,
+      "file": "main_anonymized.bbl",
+      "log_line": 26,
+      "message": "Underfull \\hbox (badness 2512) in paragraph at lines 16--24"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "low",
+      "badness": 1838,
+      "line_start": 48,
+      "line_end": 49,
+      "file": "sections/06_results",
+      "log_line": 25,
+      "message": "Underfull \\hbox (badness 1838) in paragraph at lines 48--49"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "low",
+      "badness": 1067,
+      "line_start": 97,
+      "line_end": 105,
+      "file": "main_anonymized.bbl",
+      "log_line": 29,
+      "message": "Underfull \\hbox (badness 1067) in paragraph at lines 97--105"
+    }
+  ]
+}

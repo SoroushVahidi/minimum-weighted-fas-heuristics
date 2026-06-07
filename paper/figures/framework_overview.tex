@@ -1,6 +1,6 @@
 \begin{figure}[t]
 \centering
-\begin{tikzpicture}[
+\begin{tikzpicture}[scale=0.94, transform shape,
     box/.style={draw, rounded corners=2pt, align=center, minimum width=2.8cm, minimum height=0.95cm},
     smallbox/.style={draw, rounded corners=2pt, align=center, minimum width=2.3cm, minimum height=0.85cm},
     arrow/.style={-Latex, thick}
@@ -25,7 +25,7 @@
 \draw[arrow] (destroy) -- (accept);
 \draw[arrow] (repair) -- (accept);
 \draw[arrow] (accept) -- (output);
-\draw[arrow] (accept.east) .. controls +(1.7,0) and +(1.7,0) .. node[right, align=center] {otherwise restore\\previous incumbent} (bestseed.east);
+\draw[arrow] (accept.east) .. controls +(1.0,0) and +(1.0,0) .. node[right, font=\scriptsize] {restore} (bestseed.east);
 \end{tikzpicture}
 \caption{Conceptual overview of the integrated framework. Two constructive seeds are evaluated first; IPSNS then applies incumbent-protected SCC-local destroy-and-repair moves to the better seed only when they improve the global objective.}
 \label{fig:framework-overview}

@@ -3,9 +3,10 @@
 \footnotesize
 \caption{Overview of the five computational components used in the manuscript.}
 \label{tab:experiment-overview}
-\begin{tabular}{p{0.18\linewidth}p{0.34\linewidth}p{0.09\linewidth}p{0.29\linewidth}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.14\linewidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{0.06\linewidth} >{\raggedright\arraybackslash}p{0.22\linewidth}@{}}
 \toprule
-Study & Purpose & Instances & Main setting \\
+Study & Purpose & Inst. & Main setting \\
 \midrule
 Internal benchmark & Safety check for LR-TA, WMSF, and IPSNS & 105 & sparse weighted DIMACS graphs \\
 Ablation study & Add-back, refinement, and iteration study & 10 & representative sparse subset \\
@@ -13,5 +14,5 @@ Exact validation & Comparison with exact bitmask dynamic programming & 57 & stan
 Sparse comparison & External baselines on the main benchmark & 97 & standard nonnegative sparse instances \\
 Dense transfer test & Scope-boundary analysis on LOLIB instances & 50 & LOLIB complete weighted ordering instances \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}

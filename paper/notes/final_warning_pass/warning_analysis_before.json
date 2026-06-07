@@ -1,0 +1,451 @@
+{
+  "counts": {
+    "critical": 0,
+    "high": 12,
+    "medium": 15,
+    "low": 6,
+    "overfull": 13,
+    "underfull": 20,
+    "overfull_gt_2pt": 12,
+    "warning_lines": 33,
+    "errors": 0
+  },
+  "by_type": {
+    "overfull_hbox": 13,
+    "underfull_hbox": 20
+  },
+  "top_source_ranges": [
+    [
+      "tables/table_algorithm_components:10-10",
+      2
+    ],
+    [
+      "tables/table_algorithm_components:11-11",
+      2
+    ],
+    [
+      "tables/table_experiment_overview:12-12",
+      2
+    ],
+    [
+      "tables/table_experiment_overview:14-14",
+      2
+    ],
+    [
+      "sections/08_conclusion:8-9",
+      2
+    ],
+    [
+      "sections/01_introduction:10-11",
+      1
+    ],
+    [
+      "sections/02_related_work:16-17",
+      1
+    ],
+    [
+      "sections/02_related_work:34-35",
+      1
+    ],
+    [
+      "sections/03_problem_definition:42-1",
+      1
+    ],
+    [
+      "figures/framework_overview:29-30",
+      1
+    ],
+    [
+      "tables/table_algorithm_components:9-9",
+      1
+    ],
+    [
+      "tables/table_algorithm_components:9-10",
+      1
+    ],
+    [
+      "tables/table_algorithm_components:10-11",
+      1
+    ],
+    [
+      "tables/table_algorithm_components:11-12",
+      1
+    ],
+    [
+      "tables/table_algorithm_invariants:11-11",
+      1
+    ],
+    [
+      "tables/table_algorithm_invariants:12-12",
+      1
+    ],
+    [
+      "tables/table_algorithm_invariants:13-13",
+      1
+    ],
+    [
+      "tables/table_experiment_overview:8-8",
+      1
+    ],
+    [
+      "tables/table_experiment_overview:10-10",
+      1
+    ],
+    [
+      "tables/table_experiment_overview:13-14",
+      1
+    ],
+    [
+      "tables/table_experiment_overview:6-17",
+      1
+    ],
+    [
+      "sections/06_results:48-49",
+      1
+    ],
+    [
+      "main_anonymized.tex:12-42",
+      1
+    ],
+    [
+      "declarations/funding_statement:2-1",
+      1
+    ],
+    [
+      "sections/02_related_work:26-1",
+      1
+    ]
+  ],
+  "warnings": [
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 24.16685,
+      "line_start": 29,
+      "line_end": 30,
+      "file": "figures/framework_overview",
+      "log_line": 132,
+      "message": "Overfull \\hbox (24.16685pt too wide) in paragraph at lines 29--30"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 22.41316,
+      "line_start": 42,
+      "line_end": 1,
+      "file": "sections/03_problem_definition",
+      "log_line": 131,
+      "message": "Overfull \\hbox (22.41316pt too wide) in paragraph at lines 42--1"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 21.46729,
+      "line_start": 34,
+      "line_end": 35,
+      "file": "sections/02_related_work",
+      "log_line": 130,
+      "message": "Overfull \\hbox (21.46729pt too wide) in paragraph at lines 34--35"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 21.1848,
+      "line_start": 26,
+      "line_end": 1,
+      "file": "sections/02_related_work",
+      "log_line": 128,
+      "message": "Overfull \\hbox (21.1848pt too wide) in paragraph at lines 26--1"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 19.41814,
+      "line_start": 2,
+      "line_end": 1,
+      "file": "declarations/funding_statement",
+      "log_line": 162,
+      "message": "Overfull \\hbox (19.41814pt too wide) in paragraph at lines 2--1"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 15.24629,
+      "line_start": 12,
+      "line_end": 42,
+      "file": "main_anonymized.tex",
+      "log_line": 161,
+      "message": "Overfull \\hbox (15.24629pt too wide) in paragraph at lines 12--42"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 10.60919,
+      "line_start": 10,
+      "line_end": 11,
+      "file": "sections/01_introduction",
+      "log_line": 127,
+      "message": "Overfull \\hbox (10.60919pt too wide) in paragraph at lines 10--11"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 9.25098,
+      "line_start": 8,
+      "line_end": 9,
+      "file": "sections/08_conclusion",
+      "log_line": 160,
+      "message": "Overfull \\hbox (9.25098pt too wide) in paragraph at lines 8--9"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 8.99167,
+      "line_start": 6,
+      "line_end": 17,
+      "file": "tables/table_experiment_overview",
+      "log_line": 157,
+      "message": "Overfull \\hbox (8.99167pt too wide) in paragraph at lines 6--17"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 6.62704,
+      "line_start": 48,
+      "line_end": 49,
+      "file": "sections/06_results",
+      "log_line": 158,
+      "message": "Overfull \\hbox (6.62704pt too wide) in paragraph at lines 48--49"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 5.2904,
+      "line_start": 8,
+      "line_end": 8,
+      "file": "tables/table_experiment_overview",
+      "log_line": 150,
+      "message": "Overfull \\hbox (5.2904pt too wide) in paragraph at lines 8--8"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "high",
+      "pt": 4.27927,
+      "line_start": 16,
+      "line_end": 17,
+      "file": "sections/02_related_work",
+      "log_line": 129,
+      "message": "Overfull \\hbox (4.27927pt too wide) in paragraph at lines 16--17"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 57,
+      "line_end": 64,
+      "file": "main_anonymized.bbl",
+      "log_line": 164,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 57--64"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 102,
+      "line_end": 110,
+      "file": "main_anonymized.bbl",
+      "log_line": 165,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 102--110"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 10,
+      "line_end": 10,
+      "file": "tables/table_algorithm_components",
+      "log_line": 139,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 10--10"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 11,
+      "line_end": 11,
+      "file": "tables/table_algorithm_components",
+      "log_line": 143,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 11--11"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 11,
+      "line_end": 11,
+      "file": "tables/table_algorithm_invariants",
+      "log_line": 147,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 11--11"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 13,
+      "line_end": 13,
+      "file": "tables/table_algorithm_invariants",
+      "log_line": 149,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 13--13"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 10,
+      "line_end": 10,
+      "file": "tables/table_experiment_overview",
+      "log_line": 151,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 10--10"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 12,
+      "line_end": 12,
+      "file": "tables/table_experiment_overview",
+      "log_line": 152,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 12--12"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 10000,
+      "line_start": 13,
+      "line_end": 14,
+      "file": "tables/table_experiment_overview",
+      "log_line": 154,
+      "message": "Underfull \\hbox (badness 10000) in paragraph at lines 13--14"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 7888,
+      "line_start": 9,
+      "line_end": 9,
+      "file": "tables/table_algorithm_components",
+      "log_line": 133,
+      "message": "Underfull \\hbox (badness 7888) in paragraph at lines 9--9"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 7759,
+      "line_start": 14,
+      "line_end": 14,
+      "file": "tables/table_experiment_overview",
+      "log_line": 155,
+      "message": "Underfull \\hbox (badness 7759) in paragraph at lines 14--14"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 4954,
+      "line_start": 9,
+      "line_end": 10,
+      "file": "tables/table_algorithm_components",
+      "log_line": 134,
+      "message": "Underfull \\hbox (badness 4954) in paragraph at lines 9--10"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 4647,
+      "line_start": 11,
+      "line_end": 12,
+      "file": "tables/table_algorithm_components",
+      "log_line": 145,
+      "message": "Underfull \\hbox (badness 4647) in paragraph at lines 11--12"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 3386,
+      "line_start": 14,
+      "line_end": 14,
+      "file": "tables/table_experiment_overview",
+      "log_line": 156,
+      "message": "Underfull \\hbox (badness 3386) in paragraph at lines 14--14"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "medium",
+      "badness": 2486,
+      "line_start": 12,
+      "line_end": 12,
+      "file": "tables/table_algorithm_invariants",
+      "log_line": 148,
+      "message": "Underfull \\hbox (badness 2486) in paragraph at lines 12--12"
+    },
+    {
+      "type": "overfull_hbox",
+      "severity": "low",
+      "pt": 0.34056,
+      "line_start": 8,
+      "line_end": 9,
+      "file": "sections/08_conclusion",
+      "log_line": 159,
+      "message": "Overfull \\hbox (0.34056pt too wide) in paragraph at lines 8--9"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "low",
+      "badness": 1838,
+      "line_start": 16,
+      "line_end": 24,
+      "file": "main_anonymized.bbl",
+      "log_line": 163,
+      "message": "Underfull \\hbox (badness 1838) in paragraph at lines 16--24"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "low",
+      "badness": 1546,
+      "line_start": 10,
+      "line_end": 10,
+      "file": "tables/table_algorithm_components",
+      "log_line": 137,
+      "message": "Underfull \\hbox (badness 1546) in paragraph at lines 10--10"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "low",
+      "badness": 1460,
+      "line_start": 12,
+      "line_end": 12,
+      "file": "tables/table_experiment_overview",
+      "log_line": 153,
+      "message": "Underfull \\hbox (badness 1460) in paragraph at lines 12--12"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "low",
+      "badness": 1132,
+      "line_start": 10,
+      "line_end": 11,
+      "file": "tables/table_algorithm_components",
+      "log_line": 140,
+      "message": "Underfull \\hbox (badness 1132) in paragraph at lines 10--11"
+    },
+    {
+      "type": "underfull_hbox",
+      "severity": "low",
+      "badness": 1072,
+      "line_start": 11,
+      "line_end": 11,
+      "file": "tables/table_algorithm_components",
+      "log_line": 144,
+      "message": "Underfull \\hbox (badness 1072) in paragraph at lines 11--11"
+    }
+  ]
+}
