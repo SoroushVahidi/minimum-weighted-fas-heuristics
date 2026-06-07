@@ -1,0 +1,45 @@
+{
+  "pages": 44,
+  "total_pdf_words": 13680,
+  "section_source_words": {
+    "01_introduction.tex": 1205,
+    "02_related_work.tex": 1951,
+    "03_problem_definition.tex": 259,
+    "04_algorithmic_framework.tex": 1611,
+    "05_experimental_design.tex": 1506,
+    "06_results.tex": 2106,
+    "07_discussion.tex": 1662,
+    "08_conclusion.tex": 375
+  },
+  "tables": 0,
+  "figures": 4,
+  "algorithms": 2,
+  "overfull_count": 0,
+  "underfull_count": 24,
+  "undefined_ref_count": 0,
+  "error_count": 0,
+  "overfull_lines": [],
+  "underfull_summary": [
+    "warning: sections/02_related_work:17: Underfull \\hbox (badness 2027) in paragraph at lines 16--17",
+    "warning: sections/02_related_work:17: Underfull \\hbox (badness 1596) in paragraph at lines 16--17",
+    "warning: sections/06_results:68: Underfull \\hbox (badness 1838) in paragraph at lines 67--68",
+    "warning: main_anonymized.bbl:32: Underfull \\hbox (badness 2512) in paragraph at lines 25--32",
+    "warning: main_anonymized.bbl:110: Underfull \\hbox (badness 10000) in paragraph at lines 103--110",
+    "warning: main_anonymized.bbl:223: Underfull \\hbox (badness 10000) in paragraph at lines 215--223",
+    "warning: main_anonymized.bbl:223: Underfull \\hbox (badness 1067) in paragraph at lines 215--223"
+  ],
+  "post_reference_table": false,
+  "post_reference_figure": false,
+  "defensive_phrase_counts": {
+    "scope boundary": 2,
+    "not a new approximation": 2,
+    "not a universal": 1,
+    "best observed": 5,
+    "dense": 67,
+    "limitation": 5
+  },
+  "source_identity_hits": {},
+  "source_style_hits": {},
+  "pdf_identity_hits": [],
+  "pdf_placeholder_hits": []
+}
