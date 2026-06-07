@@ -1,0 +1,42 @@
+{
+  "before": {
+    "main_anonymized": {
+      "overfull": 47,
+      "underfull": 101,
+      "warning": 153,
+      "error_like": 0
+    },
+    "title_page": {
+      "overfull": 0,
+      "underfull": 0,
+      "warning": 0,
+      "error_like": 0
+    },
+    "cover_letter": {
+      "overfull": 0,
+      "underfull": 0,
+      "warning": 0,
+      "error_like": 0
+    }
+  },
+  "after": {
+    "main_anonymized": {
+      "overfull": 51,
+      "underfull": 101,
+      "warning": 157,
+      "error_like": 0
+    },
+    "title_page": {
+      "overfull": 0,
+      "underfull": 0,
+      "warning": 0,
+      "error_like": 0
+    },
+    "cover_letter": {
+      "overfull": 0,
+      "underfull": 0,
+      "warning": 0,
+      "error_like": 0
+    }
+  }
+}

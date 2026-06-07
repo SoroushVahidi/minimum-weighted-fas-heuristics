@@ -1,14 +1,14 @@
 {
-  "total_section_words": 9632,
+  "total_section_words": 9625,
   "section_word_counts": {
     "01_introduction": 1215,
-    "02_related_work": 1799,
-    "03_problem_definition": 263,
+    "02_related_work": 1795,
+    "03_problem_definition": 262,
     "04_algorithmic_framework": 1483,
     "05_experimental_design": 1507,
     "06_results": 1547,
     "07_discussion": 1419,
-    "08_conclusion": 399
+    "08_conclusion": 397
   },
   "abstract_words": 221,
   "abstract_ok": true,
@@ -84,7 +84,7 @@
       "matches": [
         "guarantee"
       ],
-      "text": "The integrated framework combines three components. First, the local-ratio topological add-back procedure produces a feasible ordering from weighted cycle reductions and a reconstruction step. Second, a weighted seed construction provides a complementary initial ordering; in this manuscript it is treated as a seed and baseline rather than as a primary novelty claim. Third, an incumbent-protected refinement searches within strongly connected components (SCCs), updating the incumbent solution only when a candidate ordering has no larger backward weight. We refer to this refinement as incumbent-protected SCC neighborhood search (IPSNS). This protection gives a simple but important invariant: the final solution cannot be worse than the best internal seed under the same objective and nonnegative-weight assumptions. The invariant is not an approximation guarantee, but it prevents refinement from degrading the seed and makes the local search behavior auditable instance by instance."
+      "text": "The integrated framework combines three components. First, the local-ratio topological add-back procedure produces a feasible ordering from weighted cycle reductions and a reconstruction step. Second, a weighted seed construction provides a complementary initial ordering; in this manuscript it is treated as a seed and baseline rather than as a primary novelty claim. Third, an incumbent-protected refinement searches within strongly connected components (SCCs) and updates the incumbent only when a candidate ordering has no larger backward weight. We refer to this refinement as incumbent-protected SCC neighborhood search (IPSNS). This protection gives a simple but important invariant: the final solution cannot be worse than the best internal seed under the same objective and nonnegative-weight assumptions. The invariant is not an approximation guarantee, but it prevents refinement from degrading the seed and makes the local search behavior auditable instance by instance."
     },
     {
       "file": "sections/01_introduction.tex",
@@ -117,7 +117,7 @@
       "matches": [
         "dominant"
       ],
-      "text": "The external-baseline design in this manuscript intentionally mixes library-grade and specialized open-source tools. The python-igraph documentation for \\texttt{Graph.feedback\\_arc\\_set} \\cite{python_igraph_feedback_arc_set} exposes both an Eades-style heuristic and exact integer-programming modes behind a stable API, making it a useful baseline because it reflects what a practitioner could call directly from a general-purpose graph library. In contrast, the DRMacIver/FAS tool \\cite{drmaciver_feedback_arc_set} is a specialized weighted-ordering method rather than a general graph-analysis package. Its importance here is empirical: it is the strongest external baseline on the sparse standard benchmark and the dominant method on the dense LOLIB transfer test."
+      "text": "The external-baseline design in this manuscript intentionally mixes library-grade and specialized open-source tools. The python-igraph documentation for \\texttt{Graph.feedback\\_arc\\_set} \\cite{python_igraph_feedback_arc_set} exposes both an Eades-style heuristic and exact integer-programming modes behind a stable API, making it a useful baseline because it reflects what a practitioner could call from a general-purpose graph library. In contrast, the DRMacIver/FAS tool \\cite{drmaciver_feedback_arc_set} is a specialized weighted-ordering method rather than a general graph-analysis package. Its importance here is empirical: it is the strongest external baseline on the sparse standard benchmark and the dominant method on the dense LOLIB transfer test."
     },
     {
       "file": "sections/02_related_work.tex",
@@ -256,7 +256,7 @@
       "matches": [
         "dominant"
       ],
-      "text": "The ablation study explains where the framework's gains come from. The add-back phase is the dominant contributor among the tested design choices. Removing it raises mean BW from 4,271.5 for LR-TA to 4,525.1 for the no-add-back variant, a degradation of about 5.94\\%. That is the clearest experimental support for treating topological add-back as a substantive engineering contribution rather than a decorative post-processing step."
+      "text": "The ablation study explains where the framework's gains come from. The add-back phase is the dominant contributor among the tested design choices. Removing it raises mean BW from 4,271.5 for LR-TA to 4,525.1 for the no-add-back variant, a degradation of about 5.94\\%. This is the clearest experimental support for treating topological add-back as a substantive engineering contribution rather than a decorative post-processing step."
     },
     {
       "file": "sections/06_results.tex",
@@ -309,7 +309,7 @@
       "matches": [
         "universal"
       ],
-      "text": "For a computational optimization audience, the practical value of the framework lies in this combination of quality, structural focus, and reproducibility. The methodology is suitable for weighted ordering and cyclic-dependency repair settings where exact optimization is too expensive, sparse graph structure is meaningful, and refinement should not be allowed to damage a good seed. The manuscript therefore contributes a usable and auditable heuristic approach rather than a broader but less defensible universal claim. Within those boundaries, the results suggest that engineered local-ratio seeding plus incumbent-protected SCC refinement is an effective strategy for sparse weighted directed ordering problems."
+      "text": "For a computational optimization audience, the practical value of the framework lies in this combination of quality, structural focus, and reproducibility. The methodology is suitable for weighted ordering and cyclic-dependency repair settings where exact optimization is too expensive, sparse graph structure is meaningful, and refinement should not be allowed to damage a good seed. The manuscript therefore contributes a usable and auditable heuristic approach rather than a broader, less defensible universal claim. Within those boundaries, the results suggest that engineered local-ratio seeding plus incumbent-protected SCC refinement is an effective strategy for sparse weighted directed ordering problems."
     },
     {
       "file": "tables/table_ablation.tex",
