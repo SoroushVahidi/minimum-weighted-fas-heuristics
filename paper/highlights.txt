@@ -1,0 +1,5 @@
+- Reproducible heuristics for weighted directed ordering are developed
+- Strongly connected refinement improves local-ratio seed solutions
+- Exact small-instance tests show near-optimal ordering quality
+- Sparse benchmarks outperform tested external baselines
+- Dense LOLIB results define a clear scope boundary

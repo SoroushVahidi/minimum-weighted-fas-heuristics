@@ -14,13 +14,19 @@ The archived DAM/IPSNS predecessor package contains an Elsevier template and loc
 
 The archived JOCO/local-ratio predecessor package uses Springer `svjour3` files and is not the template source for this workspace.
 
+For CAIE double-anonymized review, use `main_anonymized.tex` together with the separate `title_page.tex`.
+
 ## Files
 
 - `main.tex`: top-level manuscript skeleton.
+- `main_anonymized.tex`: anonymized CAIE review manuscript.
+- `title_page.tex`: separate title page for double-anonymized review.
 - `sections/`: section stubs with TODOs tied to EXP1b--EXP5.
 - `references.bib`: merged predecessor bibliography requiring verification.
 - `tables/`: compact manuscript table drafts sourced from the combined experiment summaries.
 - `notes/manuscript_writing_plan.md`: first-pass writing plan, claim boundaries, reuse rules, and citation TODOs.
+- `declarations/`: submission-ready declaration snippets for review and final files.
+- `highlights.txt`: CAIE/Elsevier highlight bullets.
 - `notes/latex_template_audit.md`: template and LaTeX source audit.
 - `notes/bibliography_extraction_report.md`: extracted BibTeX source map and reference checklist.
 - `notes/reusable_material_audit.md`: candidate predecessor sections with reuse warnings.
