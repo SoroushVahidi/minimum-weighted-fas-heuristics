@@ -1,0 +1,174 @@
+{
+  "abstract": {
+    "word_count": 232,
+    "limit": 250,
+    "pass": true,
+    "has_citations": false,
+    "citations_found": [],
+    "abbreviations": {
+      "MWFAS": {
+        "found": false,
+        "defined": null
+      },
+      "LR-TA": {
+        "found": false,
+        "defined": null
+      },
+      "WMSF": {
+        "found": false,
+        "defined": null
+      },
+      "IPSNS": {
+        "found": false,
+        "defined": null
+      },
+      "LOLIB": {
+        "found": true,
+        "defined": true,
+        "first_position": 1533
+      },
+      "DRMacIver": {
+        "found": false,
+        "defined": null
+      },
+      "FAS": {
+        "found": false,
+        "defined": null
+      }
+    },
+    "anon_main_match": true,
+    "text_preview": "Weighted directed graphs model precedence conflicts, cyclic dependencies, and pairwise ordering data in engineering and decision systems. This paper studies the minimum weighted feedback arc set problem on nonnegative weighted directed graphs, equivalently the problem of finding an ordering with min"
+  },
+  "keywords": {
+    "count": 7,
+    "limit_min": 1,
+    "limit_max": 7,
+    "pass": true,
+    "keywords": [
+      "Minimum weighted feedback arc set",
+      "weighted ordering",
+      "local-ratio algorithm",
+      "strongly connected components",
+      "incumbent-protected refinement",
+      "linear ordering problem",
+      "computational heuristics"
+    ],
+    "anon_main_match": true,
+    "issues": []
+  },
+  "highlights": {
+    "paper_highlights": {
+      "count": 5,
+      "count_pass": true,
+      "bullets": [
+        {
+          "text": "Reproducible heuristics for weighted directed ordering are developed",
+          "char_count": 68,
+          "pass": true
+        },
+        {
+          "text": "Strongly connected refinement improves local-ratio seed solutions",
+          "char_count": 65,
+          "pass": true
+        },
+        {
+          "text": "Exact small-instance tests show near-optimal ordering quality",
+          "char_count": 61,
+          "pass": true
+        },
+        {
+          "text": "Sparse benchmarks outperform tested external baselines",
+          "char_count": 54,
+          "pass": true
+        },
+        {
+          "text": "Dense LOLIB results define a clear scope boundary",
+          "char_count": 49,
+          "pass": true
+        }
+      ],
+      "all_char_pass": true,
+      "overall_pass": true
+    },
+    "upload_highlights": {
+      "count": 5,
+      "count_pass": true,
+      "bullets": [
+        {
+          "text": "Reproducible heuristics for weighted directed ordering are developed",
+          "char_count": 68,
+          "pass": true
+        },
+        {
+          "text": "Strongly connected refinement improves local-ratio seed solutions",
+          "char_count": 65,
+          "pass": true
+        },
+        {
+          "text": "Exact small-instance tests show near-optimal ordering quality",
+          "char_count": 61,
+          "pass": true
+        },
+        {
+          "text": "Sparse benchmarks outperform tested external baselines",
+          "char_count": 54,
+          "pass": true
+        },
+        {
+          "text": "Dense LOLIB results define a clear scope boundary",
+          "char_count": 49,
+          "pass": true
+        }
+      ],
+      "all_char_pass": true,
+      "overall_pass": true
+    },
+    "paper_upload_match": true
+  },
+  "pdf": {
+    "path": "paper/main_anonymized.pdf",
+    "exists": true,
+    "pages": 44,
+    "approx_word_count": 13770,
+    "page_comment": "44 pages: no strict CAIE page limit; acceptable for full experimental paper."
+  },
+  "structure": {
+    "sections": 13,
+    "subsections": 15,
+    "tables": 13,
+    "figures": 5,
+    "algorithms": 2
+  },
+  "compression_candidates": {
+    "found": [
+      {
+        "pattern": "dense.*?LOLIB.*?scope",
+        "label": "Dense/scope caveat repeated",
+        "occurrences": 10
+      },
+      {
+        "pattern": "best.*?observed.*?not.*?optim",
+        "label": "Best-observed caveat repeated",
+        "occurrences": 8
+      },
+      {
+        "pattern": "sparse.*?outperform.*?baseline",
+        "label": "Sparse outperform baseline repeated",
+        "occurrences": 3
+      },
+      {
+        "pattern": "EXP[6-9].*?interpret",
+        "label": "EXP6-9 interpretation note",
+        "occurrences": 4
+      }
+    ],
+    "recommendation": "Review identified patterns for safe compression; do not remove EXP6-9 evidence."
+  },
+  "overall": {
+    "abstract_pass": true,
+    "keywords_pass": true,
+    "highlights_pass": true,
+    "ready": true,
+    "recommendation": "All CAIE abstract/keywords/highlights checks pass. Ready for upload."
+  }
+}
