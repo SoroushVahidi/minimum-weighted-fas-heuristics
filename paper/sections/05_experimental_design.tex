@@ -1,18 +1,105 @@
 \section{Experimental design}
 \label{sec:experimental-design}
 
-TODO: Describe EXP1b--EXP5 in manuscript terms, not repository-report terms.
+The experimental design is organized around a narrow claim surface. The paper does not attempt to show that one heuristic dominates every weighted feedback arc set or linear ordering regime. Instead, it evaluates a reproducible heuristic framework for nonnegative weighted directed graphs, with sparse benchmark instances as the main target and dense complete ordering instances as a transfer test. That choice reflects both the intended CAIE contribution and the concern profile identified in the rejection audit: the main burden is not to enlarge the claim, but to make the empirical scope, baseline fairness, and limitation boundaries explicit.
+
+\subsection{Research questions}
+
+The study addresses five empirical questions.
+
+First, does the full incumbent-protected refinement framework improve upon its own internal seeds without violating the non-degradation invariant? This question is answered by the full internal benchmark in EXP1b, which compares IPSNS against LR-TA and WMSF over the same 105-instance sparse benchmark used elsewhere in the repository.
+
+Second, which design elements materially contribute to the final performance of the framework? EXP2 isolates the main engineering choices: the topological add-back phase, the use of a best-of-two seed rather than a single seed, the addition of SCC-local refinement, the iteration budget, and the SCC-priority heuristic. This directly addresses a recurring rejection concern for heuristic papers: it is not enough to present a compound method; the paper should show which parts matter and which parts are only local implementation choices.
+
+Third, how close is the proposed framework to exact optimization on instances where exact optimization is still feasible? EXP3 answers that question on the nonnegative subset with \(n \le 20\), using exact bitmask dynamic programming as the reference. The role of this experiment is deliberately modest. It supports a near-optimality narrative on small instances, but it is not used to imply any general optimality or approximation guarantee.
+
+Fourth, how does the framework compare with strong internal and external baselines on the primary sparse benchmark? EXP4 is the main claim-bearing comparison. It includes the internal methods LR-TA and WMSF, three simple in-repository ranking baselines, python-igraph's Eades heuristic interface, and the DRMaciver weighted feedback arc set tool. The comparison is evaluated on the 97 standard nonnegative sparse instances after exclusions and deduplication.
+
+Fifth, how far do the sparse-benchmark conclusions transfer to dense complete ordering instances? EXP5 answers that question on a 50-instance LOLIB subset. This experiment is intentionally framed as a scope test rather than a second primary benchmark. Its purpose is to reveal where a sparse weighted-digraph heuristic remains competitive, and where a tournament-native ordering method is stronger.
+
+Table~\ref{tab:experiment-overview} summarizes how the five experiments partition these questions.
+
+\input{tables/table_experiment_overview}
 
 \subsection{Datasets}
-TODO: Sparse graph-benchmarks, exact small subset, external sparse standard nonnegative subset, LOLIB dense complete ordering subset. Explain negative-weight exclusions.
-% TODO(rejection-audit): State clearly that the main claim-bearing benchmark is the sparse nonnegative DIMACS set and that LOLIB is a transfer test, not coequal evidence for universal performance.
 
-\subsection{Baselines}
-TODO: Internal methods, exact DP, igraph approx Eades, DRMacIver/FAS, weighted Eades adaptation, Borda/net-score, random multistart. Distinguish official external tools from in-repository adaptations.
-% TODO(rejection-audit): Distinguish external software, wrappers, and in-repository adaptations to preempt baseline-fairness objections.
+The experiments use two public benchmark families with different structural roles.
 
-\subsection{Metrics}
-TODO: Backward weight, runtime, global-best count, exact gap, forward ratio for LOLIB.
+\paragraph{Sparse weighted directed graphs.}
+The main benchmark family comes from the public \texttt{graph-benchmarks} repository \cite{graph_benchmarks_repo}. In repository terms, 123 input paths were listed across the benchmark configurations, but path-level deduplication reduces that set to 105 unique sparse weighted DIMACS digraph instances. These instances form the basis of EXP1b and, after standard exclusions, EXP4. They are also the parent pool from which EXP2 and EXP3 draw their subsets.
 
-\subsection{Reproducibility}
-TODO: Repository, fixed seeds, scripts, hardware if available.
+The paper's standard analysis is restricted to the nonnegative-weight subset. Eight instances are excluded from the standard sparse comparison set because they contain negative-weight arcs: \texttt{gerez}, \texttt{howard-max}, \texttt{k3\_3}, \texttt{ku}, \texttt{peterson}, \texttt{peterson1}, \texttt{peterson2}, and \texttt{stg0}. This exclusion is not cosmetic. The local-ratio construction and the incumbent-protection interpretation in this manuscript are framed for nonnegative weights, so including negative-weight cases in the main tables would mix problem settings and weaken the meaning of the guarantee. After those exclusions, the primary sparse comparison set contains 97 standard instances.
+
+This sparse benchmark is the main evidence for the paper's positive claims. When the manuscript later states that IPSNS outperforms the tested baselines, that statement should be read as referring to this 97-instance standard nonnegative sparse benchmark unless an exception is stated explicitly.
+
+\paragraph{Exact-validation subset.}
+EXP3 uses the subset of the sparse benchmark for which exact optimization is feasible by committed dynamic-programming code. The committed summaries show 57 standard nonnegative instances with \(n \le 20\). This subset is not a second benchmark family; it is a validation slice carved out of the main sparse family so that heuristic outputs can be judged against exact optima. Because it is small by construction, it is used only for quality validation, not for scaling or runtime claims.
+
+\paragraph{Dense complete ordering instances.}
+EXP5 uses a 50-instance subset of LOLIB 2010 \cite{MRD12,lolib_library}. These instances differ structurally from the sparse benchmark in a way that matters algorithmically. They are dense complete weighted ordering instances, and the selected subset spans three families: SGB (25 instances), IO (10 instances), and RandA1 (15 instances across \(n=100\), \(150\), and \(200\)). In the converted DIMACS representation used in the experiments, every ordered pair contributes a weight, so these are effectively complete weighted tournaments or dense linear-ordering inputs rather than sparse general digraphs.
+
+This distinction is central to the interpretation of EXP5. The paper does not treat LOLIB as a coequal source of evidence for the main sparse-graph claim. Instead, it uses LOLIB to test whether the same framework transfers gracefully outside its main design regime and to identify the boundary at which tournament-native methods become preferable.
+
+\paragraph{Dataset breadth and remaining limits.}
+Taken together, the sparse benchmark and LOLIB are enough to address the immediate rejection concern that the paper should not rely on a single narrow empirical setting. At the same time, the dataset story remains intentionally conservative. The manuscript does not claim coverage of every relevant graph family, every industrial network class, or every ranking benchmark. The present design broadens the empirical surface enough to support a CAIE submission while still keeping the experiments interpretable and reproducible.
+
+\subsection{Algorithms and baselines}
+
+The evaluation mixes three kinds of methods: the proposed internal framework, internal baseline constructions that are part of the same repository, and external software or library wrappers.
+
+\paragraph{Internal methods.}
+The full method of interest is IPSNS, which starts from the better of two internal seeds and applies incumbent-protected SCC-local refinement. The two seed methods are LR-TA and WMSF. LR-TA is the engineered local-ratio plus topological add-back seed described in Section~\ref{sec:algorithmic-framework}; WMSF is the weighted removeArcs--minimize--stabilize seed carried forward as an internal baseline and seed source. The experimental design treats WMSF as a comparison target and seed, not as a novel contribution of the present paper.
+
+\paragraph{Exact reference method.}
+For EXP3, the reference method is exact bitmask dynamic programming on small instances. This exact solver is not used as a scalable benchmark against the full sparse dataset. Its role is only to certify optimality on the small exact-validation subset.
+
+\paragraph{External and simple baselines for sparse and dense comparisons.}
+EXP4 and EXP5 compare the internal methods with five additional baselines:
+\begin{itemize}
+    \item the DRMaciver/Feedback-Arc-Set tool \cite{drmaciver_feedback_arc_set}, treated as an external wrapper around an open-source specialized algorithm;
+    \item python-igraph's Eades-style feedback arc interface \cite{python_igraph_feedback_arc_set};
+    \item a weighted Eades adaptation implemented in the repository and explicitly described as an adaptation rather than as the original \cite{ELS93} algorithm;
+    \item Borda net-score ordering;
+    \item random multistart ranking.
+\end{itemize}
+
+This baseline mix is deliberate. It does not attempt to exhaust every recent ranking method. In particular, it does not include a learned model such as GNNRank, and it does not include a commercial exact solver for the full benchmark. Those omissions are stated rather than hidden. The comparison target is the ecosystem of deterministic or near-deterministic weighted-digraph heuristics and accessible external tools that a practitioner could reasonably invoke without building a separate learning or solver pipeline.
+
+\paragraph{Baseline fairness policy.}
+Several fairness rules govern the comparisons.
+
+First, all quality comparisons are reported under the same backward-weight objective on the original nonnegative edge weights. This avoids switching between edge-removal and ordering objectives across methods.
+
+Second, official external methods and in-repository adaptations are distinguished explicitly. The weighted Eades method is an in-repository adaptation of the unweighted Eades idea \cite{ELS93}; it is not attributed as an official external implementation. Similarly, Borda and random multistart are simple calibration baselines rather than claims to state-of-the-art competition.
+
+Third, DRMaciver is reported exactly as it was run in the committed experiment wrappers. The sparse EXP4 results therefore retain its four incompletions on the standard set, and the dense EXP5 results retain its strong overall performance. The paper does not upgrade or downgrade that method by changing its runtime budget or restart policy after the fact.
+
+Fourth, the manuscript is careful about scope when interpreting baseline outcomes. A loss to a tournament-native method on dense LOLIB is not treated as evidence that IPSNS fails on its intended sparse domain. Conversely, strong sparse performance is not used to claim dense linear-ordering dominance.
+
+\subsection{Evaluation metrics}
+
+The primary objective throughout the paper is backward weight (BW), defined in Section~\ref{sec:problem-definition}. Lower BW is always better. All main comparison tables are organized around that metric.
+
+Several secondary metrics support interpretation:
+\begin{itemize}
+    \item \textbf{Global-best count:} the number of instances on which a method attains the minimum observed BW among the compared algorithms.
+    \item \textbf{Relative excess over IPSNS:} for EXP4, the mean percentage by which a method's BW exceeds IPSNS on completed instances.
+    \item \textbf{Exact gap:} for EXP3, the percentage gap from exact optimum on each small instance, summarized by mean gap and optimal-instance counts.
+    \item \textbf{Runtime:} mean wall-clock runtime per instance, reported from committed runs for practical context but not normalized across machines.
+    \item \textbf{Forward ratio:} for the dense complete-ordering experiment, the fraction of total pairwise weight placed forward by the returned ranking. This is a secondary descriptive metric rather than a replacement objective.
+    \item \textbf{Incumbent violations:} the number of cases in which IPSNS would return a solution worse than LR-TA or WMSF. Under the algorithmic invariant, this count should remain zero on the nonnegative setting.
+\end{itemize}
+
+These metrics are matched to the rejection concerns identified in the audit. BW and global-best counts address baseline strength. Exact gap addresses the request for stronger quality validation without overstating theory. Runtime provides pragmatic engineering context. Incumbent-violation counts tie the experiments back to the framework's main formal invariant. The dense forward-ratio and family summaries help articulate the sparse-versus-dense boundary rather than bury it in a single aggregate number.
+
+\subsection{Implementation and reproducibility}
+
+The manuscript relies only on committed experiment outputs and committed generation scripts. No experiment is rerun for the paper pass described here. Instead, manuscript assets are generated from the committed summaries by a paper-specific build script, \texttt{build\_paper\_results\_assets.py}. That script reads the committed JSON, CSV, and Markdown summaries for EXP1b--EXP5, verifies key manuscript numbers against their source files, regenerates the paper tables, and produces the result figures as vector PDF files. It also writes machine-readable and human-readable provenance notes in the paper notes directory.
+
+This generation layer serves two purposes. First, it reduces manual transcription risk. Second, it makes the manuscript tables auditable: the paper-level assets are derived from the committed experiment summaries rather than being hand-maintained copies with unclear provenance.
+
+The experimental runs themselves use fixed seeds where randomness exists and committed wrapper scripts for the compared methods. For IPSNS, the committed summaries record the default full WMSF seed mode and the iteration budgets used in each experiment. EXP2 is especially important here because it justifies those defaults conservatively: on the 10-instance ablation subset, the mean BW for 50 iterations is identical to the 200-iteration mean, and the no-SCC-priority variant is nearly identical to the default. The manuscript interprets those results as subset-level support for the chosen defaults, not as universal parameter optimality.
+
+The reproducibility story also includes transparent reporting of exclusions and incompletions. Negative-weight sparse instances are excluded from the standard claim-bearing benchmark because they do not match the nonnegative setting studied in the manuscript. DRMaciver incompletions on the sparse benchmark are reported explicitly rather than hidden in filtered tables. The dense LOLIB transfer test is retained even though it weakens the paper's claim surface, because that honesty is part of the intended contribution: the framework is strong on sparse weighted digraphs and bounded on dense complete ordering instances.
+
+One reproducibility detail remains administrative rather than experimental. The manuscript is written under double-anonymized submission constraints, and the current repository is still local/private in the draft workflow. The code-availability statement therefore remains anonymized at the manuscript level, while the paper text avoids non-anonymized repository references. That is a submission-packaging issue rather than a data-quality issue, and it does not affect the committed experimental evidence summarized here.

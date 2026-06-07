@@ -1,0 +1,137 @@
+{
+  "generated_at_utc": "2026-06-07T00:36:40.095797+00:00",
+  "script": "paper/scripts/build_paper_results_assets.py",
+  "source_files": {
+    "digest_json": "experiments/combined/summary/manuscript_results_digest.json",
+    "exp1b_stats": "experiments/exp1b_core_benchmark_full_wmsf_seed/summary/exp1b_core_benchmark_stats.json",
+    "exp2_stats": "experiments/exp2_ablation/summary/exp2_ablation_stats.json",
+    "exp3_stats": "experiments/exp3_exact_small/summary/exp3_exact_stats.json",
+    "exp4_stats": "experiments/exp4_external_baselines/summary/exp4_external_stats.json",
+    "exp4_table": "experiments/exp4_external_baselines/tables/exp4_external_paper_summary.csv",
+    "exp5_stats": "experiments/exp5_lolib_dense/summary/exp5_lolib_stats.json",
+    "exp5_table": "experiments/exp5_lolib_dense/tables/exp5_lolib_paper_summary.csv",
+    "exp5_report": "experiments/exp5_lolib_dense/summary/exp5_final_report.md"
+  },
+  "checks": [
+    {
+      "name": "EXP1b instances",
+      "observed": 105,
+      "expected": 105,
+      "ok": true
+    },
+    {
+      "name": "EXP1b nonempty errors",
+      "observed": 0,
+      "expected": 0,
+      "ok": true
+    },
+    {
+      "name": "EXP1b incumbent violations",
+      "observed": 0,
+      "expected": 0,
+      "ok": true
+    },
+    {
+      "name": "EXP2 successful runs",
+      "observed": 80,
+      "expected": 80,
+      "ok": true
+    },
+    {
+      "name": "EXP3 standard instances",
+      "observed": 57,
+      "expected": 57,
+      "ok": true
+    },
+    {
+      "name": "EXP3 IPSNS optimal",
+      "observed": "56/57 (98.2%)",
+      "expected": "56/57 (98.2%)",
+      "ok": true
+    },
+    {
+      "name": "EXP3 IPSNS mean gap pct",
+      "observed": "0.0006%",
+      "expected": "0.0006%",
+      "ok": true
+    },
+    {
+      "name": "EXP4 standard instances",
+      "observed": 97,
+      "expected": 97,
+      "ok": true
+    },
+    {
+      "name": "EXP4 IPSNS complete",
+      "observed": 97,
+      "expected": 97,
+      "ok": true
+    },
+    {
+      "name": "EXP4 DRMaciver complete",
+      "observed": 93,
+      "expected": 93,
+      "ok": true
+    },
+    {
+      "name": "EXP4 DRMaciver relative gap pct",
+      "observed": 21.61,
+      "expected": 21.61,
+      "ok": true
+    },
+    {
+      "name": "EXP5 instances",
+      "observed": 50,
+      "expected": 50,
+      "ok": true
+    },
+    {
+      "name": "EXP5 IPSNS best count",
+      "observed": 5,
+      "expected": 5,
+      "ok": true
+    },
+    {
+      "name": "EXP5 DRMaciver best count",
+      "observed": 45,
+      "expected": 45,
+      "ok": true
+    },
+    {
+      "name": "EXP5 DRMaciver mean BW",
+      "observed": 571687.0,
+      "expected": 571687.0,
+      "ok": true
+    },
+    {
+      "name": "EXP5 family rows parsed",
+      "observed": [
+        "IO",
+        "RandA1",
+        "SGB"
+      ],
+      "expected": [
+        "IO",
+        "RandA1",
+        "SGB"
+      ],
+      "ok": true
+    }
+  ],
+  "generated_files": [
+    "paper/tables/table_experiment_overview.tex",
+    "paper/tables/table_sparse_external_baselines.tex",
+    "paper/tables/table_exact_validation.tex",
+    "paper/tables/table_ablation.tex",
+    "paper/tables/table_lolib_scope.tex",
+    "paper/figures/exp4_relative_bw.pdf",
+    "paper/figures/exp4_win_counts.pdf",
+    "paper/figures/exp5_lolib_scope.pdf"
+  ],
+  "notes": [
+    "EXP4 tables and figures are generated from the committed paper summary CSV.",
+    "EXP5 overall metrics are generated from the committed paper summary CSV.",
+    "EXP5 per-family DRMaciver and IPSNS means/best counts are parsed from the committed final report because the compact paper summary CSV does not include the family-level DRMaciver rows.",
+    "No experiment values are inferred from uncommitted files."
+  ]
+}
