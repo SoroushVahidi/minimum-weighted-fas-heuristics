@@ -185,14 +185,30 @@ def fmt_p(p):
 # ══════════════════════════════════════════════════════════════════════════
 print("Loading EXP4 sparse data...")
 exp4_rows = read_csv(EXP4_RAW)
-# Restrict to the standard 97-instance set: status=ok instances that appear
-# for ipsns_full (the reference algorithm)
+
+# All instances where IPSNS completed (includes negative-weight instances)
 ipsns_ok_instances = {r["instance"] for r in exp4_rows
                       if r["algorithm"] == "ipsns_full" and r["status"] == "ok"}
-print(f"  IPSNS-completed instances: {len(ipsns_ok_instances)}")
 
-# Filter to those instances only (97-instance set)
-sparse_rows = [r for r in exp4_rows if r["instance"] in ipsns_ok_instances]
+# Identify negative-weight instances: total_weight < 0 OR any completed
+# result has backward_weight < 0 (only possible when arcs have negative weight)
+neg_weight_instances = {
+    r["instance"] for r in exp4_rows
+    if (r.get("total_weight", "").strip() and float(r["total_weight"]) < 0)
+    or (r.get("backward_weight", "").strip() and r.get("status") == "ok"
+        and float(r["backward_weight"]) < 0)
+}
+
+# Standard 97-instance nonnegative set
+standard_instances = ipsns_ok_instances - neg_weight_instances
+
+print(f"  IPSNS-completed instances (all): {len(ipsns_ok_instances)}")
+print(f"  Negative-weight instances excluded: {len(neg_weight_instances)}"
+      f" ({sorted(neg_weight_instances)})")
+print(f"  Standard nonnegative instances: {len(standard_instances)}")
+
+# Filter to standard set only
+sparse_rows = [r for r in exp4_rows if r["instance"] in standard_instances]
 pivot_sparse = pivot_by_instance(sparse_rows)
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -487,18 +503,19 @@ print("Writing LaTeX table...")
 
 tex = r"""\begin{table}[htbp]
 \centering
+\footnotesize
 \caption{Paired statistical tests comparing IPSNS against each baseline on
-the common completed instances of the standard sparse benchmark.
-Improvement is the per-instance reduction in backward weight achieved by IPSNS;
-positive values indicate IPSNS attains a lower backward weight.
-The Wilcoxon signed-rank test and sign test are two-sided;
-they provide distributional support for the observed differences
-and do not replace exact optimality certificates.}
+common completed instances of the standard nonnegative sparse benchmark
+(negative-weight instances excluded).
+Improvement is the per-instance reduction in backward weight achieved by IPSNS
+(positive values indicate IPSNS attains a lower backward weight).
+The Wilcoxon signed-rank test and sign test are two-sided and
+provide distributional support for the observed differences;
+they do not replace exact optimality certificates.}
 \label{tab:paired_sparse_tests}
-\small
-\begin{tabular}{lrrrrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-Comparison & $n$ & W & T & L & Median $\Delta$BW & Wilcoxon $p$ & Sign-test $p$ \\
+Comparison & $n$ & W & T & L & Med.\ $\Delta$BW & $p$ (Wilcoxon / Sign) \\
 \midrule
 """
 
@@ -513,29 +530,33 @@ pair_order = [
 for key, display in pair_order:
     s = paired_results.get(key)
     if not s or s.get("n_paired", 0) == 0:
-        tex += f"{display} & -- & -- & -- & -- & -- & -- & -- \\\\\n"
+        tex += f"{display} & -- & -- & -- & -- & -- & -- \\\\\n"
         continue
     wp = fmt_p(s.get("wilcoxon_p"))
     sp = fmt_p(s.get("sign_test_p"))
     med = s["median_improvement_bw"]
-    # Format median
     if abs(med) >= 1:
         med_str = f"{med:,.0f}"
     else:
         med_str = f"{med:.2f}"
+    p_combined = f"${{{wp}}}$ / ${{{sp}}}$"
     tex += (f"{display} & {s['n_paired']} & {s['wins']} & {s['ties']} & "
-            f"{s['losses']} & {med_str} & {wp} & {sp} \\\\\n")
+            f"{s['losses']} & {med_str} & {p_combined} \\\\\n")
 
+n_drm = paired_results.get("IPSNS vs DRMacIver/FAS", {}).get("n_paired", 0)
+neg_note = (r"DRMacIver/FAS has " + str(n_drm) +
+            r" paired instances (four sparse incompletions and eight "
+            r"negative-weight instances excluded).")
+scipy_note = (r" scipy was unavailable; Wilcoxon $p$ not computed."
+              if not HAS_SCIPY else "")
 tex += r"""\bottomrule
+\multicolumn{7}{p{0.95\linewidth}}{\footnotesize
+W\,=\,wins (IPSNS lower BW), T\,=\,ties, L\,=\,losses.
+Med.\ $\Delta$BW is the per-instance median improvement in backward-weight units.
+""" + neg_note + r"""
+IPSNS never loses to LR-TA or WMSF (zero losses), consistent with the non-degradation invariant.
+""" + scipy_note + r"""} \\
 \end{tabular}
-\begin{tablenotes}
-\small
-\item W\,=\,wins (IPSNS lower BW), T\,=\,ties, L\,=\,losses.
-Median $\Delta$BW is in backward-weight units (lower is better for IPSNS).
-"""
-if not HAS_SCIPY:
-    tex += r"\item scipy was unavailable; Wilcoxon p is not computed." + "\n"
-tex += r"""\end{tablenotes}
 \end{table}
 """
 

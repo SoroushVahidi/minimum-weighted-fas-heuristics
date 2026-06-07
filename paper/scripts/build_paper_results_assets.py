@@ -226,7 +226,7 @@ EXP5 & Dense transfer test and scope boundary analysis & 50 & LOLIB complete wei
         "ipsns_full": "IPSNS (ours)",
         "lrta_full": "LR-TA (ours)",
         "wmsf_seed": "WMSF seed",
-        "drmaciver_fas": "DRMaciver",
+        "drmaciver_fas": "DRMacIver/FAS",
         "igraph_approx_eades": "igraph Eades",
         "weighted_eades": "Weighted Eades",
         "borda_net_score": "Borda net score",
@@ -292,7 +292,7 @@ EXP5 & Dense transfer test and scope boundary analysis & 50 & LOLIB complete wei
         ("wmsf_seed", "WMSF seed"),
         ("best_seed_no_lns", "Best seed, no refinement"),
         ("ipsns_50iters", "IPSNS, 50 iterations"),
-        ("ipsns_full", "IPSNS, 200 iterations"),
+        ("ipsns_full", "IPSNS, 400 iterations (default)"),
         ("ipsns_no_scc_priority", "IPSNS, no SCC priority"),
     ]
     base_lrta = float(exp2["lrta_full"]["mean_bw"])
@@ -316,7 +316,7 @@ EXP5 & Dense transfer test and scope boundary analysis & 50 & LOLIB complete wei
             *ablation_rows,
             r"\bottomrule",
             r"\end{tabular}",
-            r"\par\vspace{2pt}\parbox{0.94\linewidth}{\footnotesize The add-back phase accounts for the largest mean improvement (about 5.9\%), while IPSNS contributes a further 0.75\% on this subset. The equal 50- and 200-iteration means support the default iteration budget only as subset-level evidence, not as a universal tuning rule.}",
+            r"\par\vspace{2pt}\parbox{0.94\linewidth}{\footnotesize The add-back phase accounts for the largest mean improvement (about 5.9\%), while IPSNS contributes a further 0.75\% on this subset. The equal 50- and 400-iteration means support the default iteration budget only as subset-level evidence, not as a universal tuning rule.}",
             r"\end{table}",
             "",
         ]
@@ -335,7 +335,7 @@ EXP5 & Dense transfer test and scope boundary analysis & 50 & LOLIB complete wei
         "borda_net_score",
     ]
     exp5_labels = {
-        "drmaciver_fas": "DRMaciver",
+        "drmaciver_fas": "DRMacIver/FAS",
         "ipsns_full": "IPSNS (ours)",
         "lrta_full": "LR-TA (ours)",
         "wmsf_seed": "WMSF seed",
@@ -434,7 +434,7 @@ EXP5 & Dense transfer test and scope boundary analysis & 50 & LOLIB complete wei
     width = 0.36
     fig, ax = plt.subplots(figsize=(5.6, 3.2))
     ax.bar([i - width / 2 for i in x], ipsns_best, width=width, label="IPSNS", color="0.65", edgecolor="black", linewidth=0.5)
-    ax.bar([i + width / 2 for i in x], dr_best, width=width, label="DRMaciver", color="0.25", edgecolor="black", linewidth=0.5)
+    ax.bar([i + width / 2 for i in x], dr_best, width=width, label="DRMacIver/FAS", color="0.25", edgecolor="black", linewidth=0.5)
     ax.set_xticks(list(x))
     ax.set_xticklabels(families)
     ax.set_ylabel("Global-best instances")

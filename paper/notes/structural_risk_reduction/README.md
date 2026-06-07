@@ -1,7 +1,7 @@
 # Structural Risk-Reduction Pass — README
 
 ## What was computed
-- Graph features extracted from 103 sparse benchmark instances
+- Graph features extracted from 95 sparse benchmark instances
   (benchmark_sources/graph-benchmarks/) and 50 LOLIB converted DIMACS files.
 - Features: n, m, density, n nontrivial SCCs, largest SCC fraction, fraction in nontrivial SCCs,
   fraction of arcs internal to SCCs, acyclicity.

@@ -2,14 +2,14 @@
   "sparse_benchmark": {
     "label": "Standard sparse benchmark (EXP4, 97-instance set)",
     "ipsns_vs_drmaciver": {
-      "n": 101,
+      "n": 93,
       "wins_a": 37,
-      "wins_b": 8,
-      "ties": 56,
-      "mean_bw_a": 27206.1,
-      "mean_bw_b": 48613.72,
-      "mean_rt_a_s": 1.827,
-      "mean_rt_b_s": 3.683
+      "wins_b": 1,
+      "ties": 55,
+      "mean_bw_a": 29586.25,
+      "mean_bw_b": 52972.3,
+      "mean_rt_a_s": 1.9841,
+      "mean_rt_b_s": 3.9996
     }
   },
   "dense_lolib": {

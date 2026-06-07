@@ -184,6 +184,16 @@ exp4_rows = read_csv_rows(EXP4_RAW)
 ipsns_ok = {r["instance"] for r in exp4_rows
             if r["algorithm"] == "ipsns_full" and r["status"] == "ok"}
 
+# Exclude negative-weight instances (not part of the standard nonnegative set)
+neg_weight = {
+    r["instance"] for r in exp4_rows
+    if (r.get("total_weight", "").strip() and float(r["total_weight"]) < 0)
+    or (r.get("backward_weight", "").strip() and r.get("status") == "ok"
+        and float(r["backward_weight"]) < 0)
+}
+ipsns_ok = ipsns_ok - neg_weight
+print(f"  Negative-weight instances excluded: {len(neg_weight)}")
+
 for inst in ipsns_ok:
     if inst not in sparse_file_map:
         sparse_missing.append(inst)
@@ -489,7 +499,9 @@ tex += f"Mean frac. in nontrivial SCCs & {s['mean_frac_in_nontrivial_sccs']:.4f}
 tex += f"Mean nontrivial SCC count & {s['mean_n_nontrivial_sccs']:.1f} & {l['mean_n_nontrivial_sccs']:.1f} \\\\\n"
 tex += r"""\bottomrule
 \multicolumn{3}{p{0.9\linewidth}}{\footnotesize
-Sparse benchmark uses the \texttt{graph-benchmarks} collection (standard 97-instance nonnegative subset after exclusions).
+Sparse benchmark uses the \texttt{graph-benchmarks} collection; statistics cover the
+standard nonnegative subset (negative-weight instances excluded) for which DIMACS files
+were located.
 LOLIB dense benchmark uses 50 converted DIMACS instances across three families (SGB, RandA1, IO).
 SCC features computed from converted DIMACS instance files.} \\
 \end{tabular}

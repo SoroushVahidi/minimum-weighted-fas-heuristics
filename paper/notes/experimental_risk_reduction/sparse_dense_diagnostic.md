@@ -2,10 +2,10 @@
 
 ## Sparse benchmark (EXP4 standard set)
 
-- Instances: 101
-- IPSNS wins / DRMacIver wins / Ties: 37 / 8 / 56
-- Mean BW — IPSNS: 27,206.10, DRMacIver: 48,613.72
-- Mean RT — IPSNS: 1.8270 s, DRMacIver: 3.6830 s
+- Instances: 93
+- IPSNS wins / DRMacIver wins / Ties: 37 / 1 / 55
+- Mean BW — IPSNS: 29,586.25, DRMacIver: 52,972.30
+- Mean RT — IPSNS: 1.9841 s, DRMacIver: 3.9996 s
 
 ## Dense LOLIB benchmark (EXP5, 50 instances)
 

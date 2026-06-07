@@ -2,39 +2,39 @@
   "source": "EXP4 sparse external benchmark (standard 97-instance set, status=ok only)",
   "algorithms": {
     "IPSNS": {
-      "n_completed": 123,
-      "mean_bw": 31663.7967,
+      "n_completed": 115,
+      "mean_bw": 33898.713,
       "median_bw": 5118.0,
-      "mean_rt_s": 17.337833,
-      "median_rt_s": 0.018647
+      "mean_rt_s": 18.543885,
+      "median_rt_s": 0.021649
     },
     "LR-TA": {
-      "n_completed": 123,
-      "mean_bw": 32164.6098,
+      "n_completed": 115,
+      "mean_bw": 34434.3652,
       "median_bw": 5118.0,
-      "mean_rt_s": 0.064093,
-      "median_rt_s": 0.001107
+      "mean_rt_s": 0.068496,
+      "median_rt_s": 0.00148
     },
     "WMSF": {
-      "n_completed": 123,
-      "mean_bw": 33550.1301,
+      "n_completed": 115,
+      "mean_bw": 35916.2696,
       "median_bw": 5118.0,
-      "mean_rt_s": 1.036137,
-      "median_rt_s": 0.00122
+      "mean_rt_s": 1.108157,
+      "median_rt_s": 0.001232
     },
     "DRMacIver/FAS": {
-      "n_completed": 119,
-      "mean_bw": 46874.9664,
-      "median_bw": 6216.0,
-      "mean_rt_s": 3.733406,
-      "median_rt_s": 0.122527
+      "n_completed": 111,
+      "mean_bw": 50401.4324,
+      "median_bw": 9374.0,
+      "mean_rt_s": 4.002257,
+      "median_rt_s": 0.157472
     },
     "igraph Eades": {
-      "n_completed": 123,
-      "mean_bw": 79740.7561,
-      "median_bw": 7114.0,
-      "mean_rt_s": 0.004967,
-      "median_rt_s": 0.000698
+      "n_completed": 115,
+      "mean_bw": 85354.8522,
+      "median_bw": 12414.0,
+      "mean_rt_s": 0.005264,
+      "median_rt_s": 0.000664
     },
     "Weighted Eades": {
       "n_completed": 115,

@@ -1,6 +1,6 @@
 # Results Asset Provenance
 
-- Generated at (UTC): `2026-06-07T00:36:40.095797+00:00`
+- Generated at (UTC): `2026-06-07T14:44:09.823621+00:00`
 - Script: `paper/scripts/build_paper_results_assets.py`
 
 ## Source files

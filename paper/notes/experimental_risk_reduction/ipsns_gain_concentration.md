@@ -1,13 +1,13 @@
 # IPSNS Gain Concentration over LR-TA — Sparse Benchmark
 
-- Instances compared: 105
+- Instances compared: 97
 - IPSNS improves over LR-TA: 16 instances
-- Ties: 89 instances
+- Ties: 81 instances
 - IPSNS worse: 0 instances
-- Mean absolute improvement (BW units): 581.4762
+- Mean absolute improvement (BW units): 629.4330
 - Median absolute improvement: 0.0000
 - Q1 / Q3: 0.0000 / 0.0000
-- Mean relative improvement: 0.6318%
+- Mean relative improvement: 0.6839%
 - Median relative improvement: 0.0000%
 
 ## Top-10 instances by absolute IPSNS improvement over LR-TA
