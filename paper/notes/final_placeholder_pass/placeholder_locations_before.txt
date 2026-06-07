@@ -1,0 +1,46 @@
+paper/main.tex:32:\ead{[Corresponding Author Contact]}
+paper/title_page.tex:13:\ead{[Corresponding Author Contact]}
+paper/cover_letter_draft.tex:6:\begin{letter}{[Editor Name]\\Computers \& Industrial Engineering}
+paper/cover_letter_draft.tex:8:\opening{Dear [Editor Name],}
+paper/cover_letter_draft.tex:18:\closing{Sincerely,\\[1.5ex]Soroush Vahidi\\\mbox{[Corresponding Author Contact]}}
+paper/notes/final_upload_audit/source_placeholder_scan.json:5:      "text": "\\ead{[Corresponding Author Contact]}"
+paper/notes/final_upload_audit/source_placeholder_scan.json:11:      "text": "\\ead{[Corresponding Author Contact]}"
+paper/notes/final_upload_audit/source_placeholder_scan.json:17:      "text": "\\begin{letter}{[Editor Name]\\\\Computers \\& Industrial Engineering}"
+paper/notes/final_upload_audit/source_placeholder_scan.json:21:      "text": "\\opening{Dear [Editor Name],}"
+paper/notes/final_upload_audit/source_placeholder_scan.json:25:      "text": "\\closing{Sincerely,\\\\[1.5ex]Soroush Vahidi\\\\\\mbox{[Corresponding Author Contact]}}"
+paper/notes/final_upload_audit/cover_letter_draft_text.txt:2:[Editor Name]
+paper/notes/final_upload_audit/cover_letter_draft_text.txt:4:Dear [Editor Name],
+paper/notes/final_upload_audit/cover_letter_draft_text.txt:23:[Corresponding Author Contact]
+paper/notes/final_upload_audit/title_page_text.txt:25:Email address: [Corresponding Author Contact] (Soroush Vahidi)
+paper/notes/final_upload_audit/manual_submission_actions.md:13:## Placeholders to fill manually
+paper/notes/final_upload_audit/manual_submission_actions.md:15:- [ ] Replace `[Corresponding Author Contact]` in:
+paper/notes/final_upload_audit/manual_submission_actions.md:19:- [ ] Replace `[Editor Name]` in `paper/cover_letter_draft.tex` (lines 6 and 8)
+paper/notes/final_upload_audit/manual_submission_actions.md:20:- [ ] Decide whether to replace any date placeholder or rely on the submission system's auto date (no explicit date placeholder is currently in source)
+paper/notes/final_upload_audit/manual_submission_actions.md:22:After filling placeholders, recompile title page and cover letter locally and refresh:
+paper/notes/final_upload_audit/source_placeholder_scan.md:1:# Source Placeholder Scan
+paper/notes/final_upload_audit/source_placeholder_scan.md:5:- line 32: `\ead{[Corresponding Author Contact]}`
+paper/notes/final_upload_audit/source_placeholder_scan.md:9:- line 13: `\ead{[Corresponding Author Contact]}`
+paper/notes/final_upload_audit/source_placeholder_scan.md:13:- line 6: `\begin{letter}{[Editor Name]\\Computers \& Industrial Engineering}`
+paper/notes/final_upload_audit/source_placeholder_scan.md:14:- line 8: `\opening{Dear [Editor Name],}`
+paper/notes/final_upload_audit/source_placeholder_scan.md:15:- line 18: `\closing{Sincerely,\\[1.5ex]Soroush Vahidi\\\mbox{[Corresponding Author Contact]}}`
+paper/notes/final_upload_audit/pdf_text_scan.json:4:    "placeholder_hits": [],
+paper/notes/final_upload_audit/pdf_text_scan.json:13:    "placeholder_hits": [
+paper/notes/final_upload_audit/pdf_text_scan.json:14:      "[Corresponding Author Contact]"
+paper/notes/final_upload_audit/pdf_text_scan.json:23:    "placeholder_hits": [
+paper/notes/final_upload_audit/pdf_text_scan.json:24:      "[Editor Name]",
+paper/notes/final_upload_audit/pdf_text_scan.json:25:      "[Corresponding Author Contact]"
+paper/notes/final_upload_audit/pdf_text_scan.md:6:- placeholder hits: []
+paper/notes/final_upload_audit/pdf_text_scan.md:12:- placeholder hits: ['[Corresponding Author Contact]']
+paper/notes/final_upload_audit/pdf_text_scan.md:18:- placeholder hits: ['[Editor Name]', '[Corresponding Author Contact]']
+paper/notes/final_upload_audit/final_upload_readiness_report.md:34:- placeholder hits: none
+paper/notes/final_upload_audit/final_upload_readiness_report.md:40:- placeholder hits: `[Corresponding Author Contact]` (manual fill required)
+paper/notes/final_upload_audit/final_upload_readiness_report.md:44:- placeholder hits: `[Editor Name]`, `[Corresponding Author Contact]` (manual fill required)
+paper/notes/final_upload_audit/final_upload_readiness_report.md:46:## Source placeholder scan
+paper/notes/final_upload_audit/final_upload_readiness_report.md:48:Remaining placeholders (manual only):
+paper/notes/final_upload_audit/final_upload_readiness_report.md:50:- `paper/title_page.tex:13` — `[Corresponding Author Contact]`
+paper/notes/final_upload_audit/final_upload_readiness_report.md:51:- `paper/main.tex:32` — `[Corresponding Author Contact]` (non-anonymized version)
+paper/notes/final_upload_audit/final_upload_readiness_report.md:52:- `paper/cover_letter_draft.tex:6,8,18` — `[Editor Name]`, `[Corresponding Author Contact]`
+paper/notes/final_upload_audit/final_upload_readiness_report.md:54:No `TODO`, `FIXME`, or `??` in anonymized manuscript source.
+paper/notes/final_upload_audit/final_upload_readiness_report.md:87:**Technically ready after manual placeholders are filled and visual PDF review is completed.**
+paper/notes/final_upload_audit/final_upload_readiness_report.md:89:Scientific content, experiment values, and anonymized manuscript identity controls are synchronized. Only corresponding-author contact and editor/contact placeholders remain before upload.
+paper/notes/final_upload_audit/final_upload_readiness_report.md:93:Fill `[Corresponding Author Contact]` and `[Editor Name]`, recompile title page and cover letter, visually review all three upload PDFs, then upload the five files listed in `manual_submission_actions.md`.
