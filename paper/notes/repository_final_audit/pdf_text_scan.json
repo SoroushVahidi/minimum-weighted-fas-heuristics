@@ -1,0 +1,33 @@
+{
+  "submission_package/files_for_upload/main_anonymized.pdf": {
+    "exists": true,
+    "identity_hits": [],
+    "placeholder_hits": [],
+    "text_extract": "paper/notes/repository_final_audit/main_anonymized_text.txt"
+  },
+  "submission_package/files_for_upload/title_page.pdf": {
+    "exists": true,
+    "identity_hits": [
+      "Soroush",
+      "Vahidi",
+      "NJIT",
+      "New Jersey Institute of Technology",
+      "sv96@njit.edu",
+      "sv96"
+    ],
+    "placeholder_hits": [],
+    "text_extract": "paper/notes/repository_final_audit/title_page_text.txt"
+  },
+  "submission_package/files_for_upload/cover_letter_draft.pdf": {
+    "exists": true,
+    "identity_hits": [
+      "Soroush",
+      "Vahidi",
+      "NJIT",
+      "sv96@njit.edu",
+      "sv96"
+    ],
+    "placeholder_hits": [],
+    "text_extract": "paper/notes/repository_final_audit/cover_letter_draft_text.txt"
+  }
+}

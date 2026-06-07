@@ -1,0 +1,55 @@
+{
+  "experiments/combined/summary/manuscript_results_digest.md": {
+    "exists": true,
+    "is_dir": false,
+    "size": 4678
+  },
+  "experiments/exp3_exact_small/summary": {
+    "exists": true,
+    "is_dir": true
+  },
+  "experiments/exp4_external_baselines/summary/exp4_raw_summary.csv": {
+    "exists": true,
+    "is_dir": false,
+    "size": 110369
+  },
+  "experiments/exp4_external_baselines/tables": {
+    "exists": true,
+    "is_dir": true
+  },
+  "experiments/exp5_lolib_dense/summary/exp5_lolib_raw_summary.csv": {
+    "exists": true,
+    "is_dir": false,
+    "size": 51979
+  },
+  "experiments/exp5_lolib_dense/tables/exp5_lolib_paper_summary.csv": {
+    "exists": true,
+    "is_dir": false,
+    "size": 816
+  },
+  "paper/notes/results_asset_provenance.md": {
+    "exists": true,
+    "is_dir": false,
+    "size": 2588
+  },
+  "paper/tables/table_sparse_external_baselines.tex": {
+    "exists": true,
+    "is_dir": false,
+    "size": 1267
+  },
+  "paper/tables/table_exact_validation.tex": {
+    "exists": true,
+    "is_dir": false,
+    "size": 713
+  },
+  "paper/tables/table_ablation.tex": {
+    "exists": true,
+    "is_dir": false,
+    "size": 993
+  },
+  "paper/tables/table_lolib_scope.tex": {
+    "exists": true,
+    "is_dir": false,
+    "size": 1426
+  }
+}

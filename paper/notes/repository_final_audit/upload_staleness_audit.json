@@ -1,0 +1,28 @@
+{
+  "latest_source_mtime": 1780797202.131629,
+  "stale_or_missing_uploads": [
+    "submission_package/files_for_upload/main_anonymized.pdf"
+  ],
+  "details": {
+    "submission_package/files_for_upload/main_anonymized.pdf": {
+      "exists": true,
+      "mtime": 1780796537.679177,
+      "newer_than_source": false
+    },
+    "submission_package/files_for_upload/title_page.pdf": {
+      "exists": true,
+      "mtime": 1780797659.4510946,
+      "newer_than_source": true
+    },
+    "submission_package/files_for_upload/cover_letter_draft.pdf": {
+      "exists": true,
+      "mtime": 1780797659.455281,
+      "newer_than_source": true
+    },
+    "submission_package/files_for_upload/highlights.txt": {
+      "exists": true,
+      "mtime": 1780797659.4595428,
+      "newer_than_source": true
+    }
+  }
+}
