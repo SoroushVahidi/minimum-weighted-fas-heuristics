@@ -1,34 +1,6 @@
 \begin{figure}[t]
 \centering
-\begin{tikzpicture}[scale=0.94, transform shape,
-    box/.style={draw, rounded corners=2pt, align=center, minimum width=2.8cm, minimum height=0.95cm},
-    smallbox/.style={draw, rounded corners=2pt, align=center, minimum width=2.3cm, minimum height=0.85cm},
-    arrow/.style={-Latex, thick}
-]
-\node[box] (input) {Aggregated weighted\\directed graph};
-\node[smallbox, below left=1.1cm and 0.7cm of input] (lrta) {LR-TA seed\\cycle reduction\\+ add-back};
-\node[smallbox, below right=1.1cm and 0.7cm of input] (wmsf) {WMSF-style seed\\remove--minimize\\--stabilize};
-\node[box, below=2.5cm of input] (bestseed) {Best internal seed\\by backward weight};
-\node[box, below=1.3cm of bestseed] (scc) {SCC scoring and\\top-$K$ selection};
-\node[smallbox, below left=1.25cm and 1.0cm of scc] (destroy) {Destroy move\\reactivate heavy removed\\remove light active};
-\node[smallbox, below right=1.25cm and 1.0cm of scc] (repair) {Repair move\\restricted local-ratio\\+ restricted add-back};
-\node[box, below=2.8cm of scc] (accept) {Accept only if\\backward weight improves};
-\node[box, below=1.2cm of accept] (output) {Final incumbent\\ordering};
-
-\draw[arrow] (input) -- (lrta);
-\draw[arrow] (input) -- (wmsf);
-\draw[arrow] (lrta) -- (bestseed);
-\draw[arrow] (wmsf) -- (bestseed);
-\draw[arrow] (bestseed) -- (scc);
-\draw[arrow] (scc) -- (destroy);
-\draw[arrow] (scc) -- (repair);
-\draw[arrow] (destroy) -- (accept);
-\draw[arrow] (repair) -- (accept);
-\draw[arrow] (accept) -- (output);
-\path (bestseed.east) ++(3.4,0) coordinate (restoreB);
-\path (restoreB |- accept.east) coordinate (restoreA);
-\draw[arrow] (accept.east) -- (restoreA) -- node[right, font=\scriptsize] {restore} (restoreB) -- (bestseed.east);
-\end{tikzpicture}
+\includegraphics[width=0.78\textwidth]{figures/framework_overview_clean.png}
 \caption{Conceptual overview of the integrated framework. Two constructive seeds are evaluated first; IPSNS then applies incumbent-protected SCC-local destroy-and-repair moves to the better seed only when they improve the global objective.}
 \label{fig:framework-overview}
 \end{figure}
