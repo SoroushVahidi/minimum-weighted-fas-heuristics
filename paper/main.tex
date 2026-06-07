@@ -23,11 +23,12 @@
 \title{A Reproducible Local-Ratio and SCC-Refinement Framework for Weighted Ordering Problems in Directed Graphs}
 
 \author[inst1]{Soroush Vahidi}
-\author[inst1]{TODO Coauthor}
+\cortext[cor1]{Corresponding author}
+\ead{[Corresponding Author Contact]}
 \address[inst1]{Department of Computer Science, New Jersey Institute of Technology, Newark, NJ, USA}
 
 \begin{abstract}
-Weighted directed graphs provide a natural model for precedence conflicts, cyclic dependencies, and pairwise ordering data in engineering and decision systems. This paper studies the minimum weighted feedback arc set problem on nonnegative weighted directed graphs, equivalently the problem of finding an ordering with minimum total backward edge weight. We present a reproducible heuristic framework that combines an engineered local-ratio cycle-reduction method with topological add-back, a weighted seed construction, and an incumbent-protected refinement over strongly connected components. The refinement is designed to improve local cyclic substructures while preserving a simple non-worsening invariant relative to the best seed solution. The computational study combines sparse public graph benchmarks, an ablation study, exact validation on small instances, external baseline comparisons, and a dense linear-ordering transfer test. On small nonnegative instances where exact optimization is feasible, the proposed refinement is optimal on 56 of 57 standard instances, with a mean relative gap of about 0.0006 percent. On 97 standard nonnegative sparse benchmark instances, it attains the best observed backward weight on 96 instances and outperforms all tested internal and external baselines, including the strongest external heuristic. Dense LOLIB linear-ordering instances define an important scope boundary: a tournament-native external method is stronger on that benchmark, while the proposed framework remains a general weighted-digraph heuristic rather than a dense-native linear-ordering solver.
+Weighted directed graphs provide a natural model for precedence conflicts, cyclic dependencies, and pairwise ordering data in engineering and decision systems. This paper studies the minimum weighted feedback arc set problem on nonnegative weighted directed graphs, equivalently the problem of finding an ordering with minimum total backward edge weight. We present a reproducible heuristic framework that combines an engineered local-ratio cycle-reduction method with topological add-back, a weighted seed construction, and an incumbent-protected refinement over strongly connected components. The refinement is designed to improve local cyclic substructures while preserving a simple non-worsening invariant relative to the best seed solution. The computational study combines sparse public graph benchmarks, an ablation study, exact validation on small instances, external baseline comparisons, and a dense linear-ordering transfer test. On small nonnegative instances where exact optimization is feasible, the proposed refinement is optimal on 56 of 57 standard instances, with a mean relative gap of about 0.0006 percent. On 97 standard nonnegative sparse benchmark instances, it attains the best observed backward weight on 96 instances and outperforms all tested internal and external baselines, including the strongest external heuristic. Dense instances from the Linear Ordering Problem Library (LOLIB) define an important scope boundary: a tournament-native external method is stronger on that benchmark, while the proposed framework remains a general weighted-digraph heuristic rather than a dense-native linear-ordering solver.
 \end{abstract}
 
 \begin{keyword}
@@ -45,11 +46,11 @@ Minimum weighted feedback arc set \sep weighted ordering \sep local-ratio algori
 \input{sections/07_discussion}
 \input{sections/08_conclusion}
 
-\section*{Declaration of competing interest}
-TODO: Add Elsevier-required declaration.
-
-\section*{Data and code availability}
-TODO: State repository availability. The GitHub repository is currently private and must be made public before citation or final submission.
+\input{declarations/credit_statement_nonanonymized}
+\input{declarations/funding_statement}
+\input{declarations/competing_interest}
+\input{declarations/data_code_availability}
+\input{declarations/generative_ai_declaration}
 
 \bibliographystyle{elsarticle-harv}
 \bibliography{references}
