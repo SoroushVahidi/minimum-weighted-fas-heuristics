@@ -26,3 +26,7 @@ venv/
 experiments/*/external_tools/
 experiments/*/downloads/
 experiments/*/logs/
+submission_package/files_for_upload/*.pdf
+submission_package/files_for_upload/*.txt
+submission_package/anonymous_artifact/*.zip
+submission_package/anonymous_artifact/staging/
