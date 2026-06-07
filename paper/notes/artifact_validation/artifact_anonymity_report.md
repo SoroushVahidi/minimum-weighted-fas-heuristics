@@ -1,9 +1,9 @@
 # Artifact Anonymity Report
 
 - Zip path: `submission_package/anonymous_artifact/mwfas_reproducibility_artifact_anonymous.zip`
-- Zip size: 147077 bytes
-- Zip SHA256: `3bbb70a1027eae59205c1437064bd1b9aaff1a3e114e8a795bb9f3a2b456e924`
-- File count: 83
+- Zip size: 182527 bytes
+- Zip SHA256: `3dbf74c1d5082144d94457785ee45e81d9720a68cd4a09f7a5487feb47ccedbe`
+- File count: 95
 
 ## Forbidden path scan
 

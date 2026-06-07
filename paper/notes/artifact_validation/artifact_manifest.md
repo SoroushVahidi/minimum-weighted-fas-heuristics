@@ -1,7 +1,7 @@
 # Artifact Manifest
 
 - Artifact root: `mwfas_reproducibility_artifact_anonymous`
-- File count: 83
+- File count: 95
 
 ## Top-level contents
 
@@ -22,17 +22,17 @@
 
 - `DATASETS.md` — 1193 bytes — `5dd7c664ba4ea3559315037cc015ffed0a70450d6819a78b35be5e1e1a709563`
 - `LICENSE` — 1148 bytes — `d42442023e57fc9a5157faf78b3f10046d930f10b72342fe8e2aed93f53b1d2e`
-- `MANIFEST.md` — 4559 bytes — `024b9fa6fdbe8c0e9a555a1596850cbf4ac5114f905ae76084f666dd1322949a`
-- `PROJECT_README.md` — 5418 bytes — `7f35b2d7edc9e6e4ff85717070962e08476d02033e5a6480d068b19601260bff`
-- `README.md` — 2202 bytes — `9d3f93080237d0660a0c4554b2af0829741ea1921e9470fa9482fd17f1a42ea3`
-- `REPRODUCE.md` — 924 bytes — `f4eae13414175055eb4cc2c71d4d7bc1afbf5900d07f708b9a1bf3df0a461d8e`
-- `docs/baselines_and_datasets_references.md` — 9810 bytes — `b4ec3672094e9b7d6ab8f77bfed71874c69bc087701d5c4fd0b55de62ec07a1b`
-- `experiments/README.md` — 6476 bytes — `c2980ba56ef2033018e1db02d7e9e3e4f47085c17e844b7101f58ae073413b04`
+- `MANIFEST.md` — 5121 bytes — `136e0e1e163e9625471720240616bb905d6e72677a55c4b41ff92890fa2b2a3d`
+- `PROJECT_README.md` — 1251 bytes — `d30d1ad3279d9e21610358125c0858c843b3ee3e264c66b822b646ee12a8d630`
+- `README.md` — 1781 bytes — `42ef3a774d75553ca67f7d47b89e9548734d601abdded90dfe5d18c0eeadcdf3`
+- `REPRODUCE.md` — 996 bytes — `0a2a8ce29d7ccb51522f11a46dee09c7ce8aa2ec9ff69e487fa5412bb5b1cb71`
+- `docs/baselines_and_datasets_references.md` — 9810 bytes — `4216b008ce49f2bebaf2ffd625d0f56d71817ab331cffc5df17e7eb057d395af`
+- `experiments/README.md` — 1571 bytes — `c9e570a7f38f8af7f5af537b1e344901bbc6e5a54450b08fde64a3c67bf3fd24`
 - `experiments/combined/tables/manuscript_table_ablation.csv` — 627 bytes — `5510b7512fe36f3c7f6a9df2f846ceca1a1c9502f9258e964dec4d12446fda62`
 - `experiments/combined/tables/manuscript_table_core_sparse.csv` — 426 bytes — `cdf7c033c8af39dd73abd02ccc49c8d0f4a2b1aa065ee7e64bd6bc1991dc1918`
 - `experiments/combined/tables/manuscript_table_exact_small.csv` — 236 bytes — `a622b225b6fee24c8cf4e288f77568ddc76a79f6fef8c0576726de8de54a951e`
-- `experiments/combined/tables/manuscript_table_external_sparse.csv` — 950 bytes — `0708ea16f29c4e19f73526082220151f4b7189d8f194fe5b92522bf3fa8268cf`
-- `experiments/combined/tables/manuscript_table_lolib_dense.csv` — 817 bytes — `cd633e722b9c3d33715da82d02b09e6c292166de9248f0c0689bc6fbee15dc50`
+- `experiments/combined/tables/manuscript_table_external_sparse.csv` — 950 bytes — `49307b8207613ebd69bafacf0140819b55addd7aee596c52f925322dd825d470`
+- `experiments/combined/tables/manuscript_table_lolib_dense.csv` — 817 bytes — `21a1e11a52c0c5b6bb79851f7816fa6888f6f61cde7b0ed062c96e579fa66c5c`
 - `experiments/exp1b_core_benchmark_full_wmsf_seed/configs/benchmark_instances_found_all.txt` — 4851 bytes — `dab00187f09f899346b5dbbcad85a00022969c919133d0e9e2e09caa9a8bd895`
 - `experiments/exp1b_core_benchmark_full_wmsf_seed/configs/experiment_metadata.txt` — 209 bytes — `68b5109a2ba5590f40efa1e4f5a08f09f48c01d7355e3b820df9b286ea6113d5`
 - `experiments/exp1b_core_benchmark_full_wmsf_seed/configs/smoke_instances.txt` — 120 bytes — `a14d9bc6e8f1cc8fa9dfc367897c00e42fd17444f2b070a1824d905c342cc79c`
@@ -60,40 +60,52 @@
 - `experiments/exp4_external_baselines/run_exp4_benchmark.py` — 9430 bytes — `63d804eb0287dc6fe7186d5e5ef2d6062ceab6f70ecf91192fe7514a958a0eb2`
 - `experiments/exp4_external_baselines/run_exp4_external_baselines_tmux.sh` — 1357 bytes — `13a13aec012490d1ad388f517ce3cc4bba535d139f34848b300b7149a4c56216`
 - `experiments/exp4_external_baselines/run_exp4_smoke.sh` — 926 bytes — `084689b1a51306c2b694fab46dbe17f69bdc95a40bc97752bdc5c77cbf56a900`
-- `experiments/exp4_external_baselines/summary/exp4_external_report.md` — 7487 bytes — `25db6e2c84703cd1063d15b69638ffaeace709bc5fb64ddbfa175e892b220925`
+- `experiments/exp4_external_baselines/summary/exp4_external_report.md` — 7487 bytes — `daf5132daf4ab194146167b37d2de81b498f68a649ef3725e88c24cea1a95d82`
 - `experiments/exp4_external_baselines/summary/exp4_external_stats.json` — 1470 bytes — `d582120108d3fa3d830c8736503de9739e3ce3ad66d88b1f017e527e09443415`
 - `experiments/exp4_external_baselines/summary/exp4_external_summary.md` — 1919 bytes — `4a2a1cd1a5f414638c7261464d0db5906bd625ed1ddbb2ccccc5ed3851d47086`
 - `experiments/exp4_external_baselines/summary/exp4_smoke_summary.csv` — 3596 bytes — `92a76773535b7f04f32eda9a3af3a46284c1b8222166735bb3b135a6516217f0`
 - `experiments/exp4_external_baselines/summary/external_access_report.md` — 5336 bytes — `6e9f278dbbfc18fa2cd78bb1a3c73c35a84f24e754f9655530c06965f4837582`
 - `experiments/exp4_external_baselines/tables/exp4_external_paper_summary.csv` — 1009 bytes — `7f11420f5392847ae3327ea332f1726e6cf0888f61a24c149b65224703841bed`
 - `experiments/exp4_external_baselines/tables/exp4_external_wide_summary.csv` — 22400 bytes — `43d48af4af42e3f0b33bf06eae086ccec0765660f65f2bbb7e4407714d8ca12a`
-- `experiments/exp5_lolib_dense/README.md` — 4564 bytes — `8d4125d1a4ce6fa54828e0ea0f7c51b280e131e63b556a7f9a57c8f970918ba9`
+- `experiments/exp5_lolib_dense/README.md` — 4564 bytes — `8a900a16fb96eced5d5f827090fd98d6f0ac9d6b90c4c62b4c74762030d2b839`
 - `experiments/exp5_lolib_dense/configs/exp5_lolib_instances.txt` — 8103 bytes — `a3ec1700f60c290bbcc7ff49fb776bdaad5eb3bd0b31fade69b8b7e76f63d569`
 - `experiments/exp5_lolib_dense/configs/exp5_lolib_plan.yaml` — 2367 bytes — `911ef8299a3419694dc3d7fd2e3c760f2125f4c67b33a1b953c0487d8486330d`
 - `experiments/exp5_lolib_dense/configs/exp5_lolib_smoke.txt` — 916 bytes — `2c72cad2ce053dfda27731cd59348b40bb838f63c971910fe49835f517e6c737`
 - `experiments/exp5_lolib_dense/configs/tiny_lolib_test.lop` — 39 bytes — `019eee9d7c348c4c27e356feea6cb88f522a86983689425a13e7ab1e04044f09`
-- `experiments/exp5_lolib_dense/postprocess_exp5_lolib.py` — 9858 bytes — `120f6e2ee546055667a05a60c69821341e8c32bee25cdf3c2d04dce4bd0c10a3`
+- `experiments/exp5_lolib_dense/postprocess_exp5_lolib.py` — 9858 bytes — `13fd5322b3982e0fae22deb3fc9525c6dea750713c180459a0e54c3e5364756d`
 - `experiments/exp5_lolib_dense/run_exp5_lolib_benchmark.py` — 9771 bytes — `85ed0d1af44540bb24a6dba52f4625b2c8698b84f87f915914623b6eae0f04a0`
 - `experiments/exp5_lolib_dense/run_exp5_lolib_tmux.sh` — 1133 bytes — `531c9749ffef94a0604dd3c5518178dd4224feb6775ea680d87d3af6fbd42a22`
-- `experiments/exp5_lolib_dense/summary/exp5_final_report.md` — 6176 bytes — `7b908c7b9b4e56f1006539a4d9f77b6a87d3cb1c6fdc4d26eef9aeb93cc5c7da`
-- `experiments/exp5_lolib_dense/summary/exp5_lolib_access_report.md` — 5451 bytes — `4cfd04fb5d9603c947961b8ba5436fc7c596325f26636120f940dacf6f923832`
+- `experiments/exp5_lolib_dense/summary/exp5_final_report.md` — 6176 bytes — `c826f8038bdbaf992112621c982904df5ce378d8a04fe4f7760722fb3e24850d`
+- `experiments/exp5_lolib_dense/summary/exp5_lolib_access_report.md` — 5451 bytes — `1f3aadc71202604aa298bdb7a8ef029c2108e2dc693f0b9c3f68630391bdd385`
 - `experiments/exp5_lolib_dense/summary/exp5_lolib_stats.json` — 894 bytes — `c172c3616d2e2cd7938719adbebb480f0f1f43ae8ba5c2151dba87d2421428d5`
-- `experiments/exp5_lolib_dense/summary/exp5_lolib_summary.md` — 1460 bytes — `8f50bc27400034a8e90f042b7cdace399f6b3be4f3604b51d8f1ea7e1c9b88ae`
+- `experiments/exp5_lolib_dense/summary/exp5_lolib_summary.md` — 1460 bytes — `4301ea6c6d50d9ddd50c7a6c8e8968434a1a9455345dd11ac9eea30be1eb0b7a`
 - `experiments/exp5_lolib_dense/tables/exp5_lolib_paper_summary.csv` — 807 bytes — `adead142a1c8705656e3dd41a6b9cc4e771ee085fab1b585323b228450240f4d`
 - `experiments/exp5_lolib_dense/tables/exp5_lolib_wide_summary.csv` — 4761 bytes — `7db31a1fbec21261d9bbd81c27214765960eaa72b79876be2ef666e260e3f415`
 - `requirements.txt` — 34 bytes — `38d5878da797b2646211833d894be56065dee023e6c2bf87eba2bb9c0693cb3f`
+- `scripts/check_mip_solver_availability.py` — 3515 bytes — `e5d47523539c6155f534de08f19e9ee22e7136d86a47bafa61711ad8bc055039`
 - `scripts/convert_lolib_to_dimacs.py` — 3618 bytes — `577dcfc7903ba4f2f41c4f24d15974a29287a081037e4f48b5bb9be5e0cc746f`
 - `scripts/evaluate_order_lop.py` — 2824 bytes — `ca6e85218fc7582aa126c00d4c498811a475c6cfb8a84b2a222364395692cb8b`
+- `scripts/postprocess_exp6_ipsns_budget_curve.py` — 12548 bytes — `3748d4c132670eb53824cc800943bb226f2b23a6a3a8bfe76cf7839d9551d7ea`
+- `scripts/postprocess_exp7_plain_local_search.py` — 14257 bytes — `d09df82cb32e6e1477c0f3533311b69f61c1b901d46c281a43198a1451a57f1a`
+- `scripts/postprocess_exp8_medium_mip_baseline.py` — 9878 bytes — `02d953db93f40ce81e1624d8ad619f808282c5595954ff6b5027e8a778d05289`
+- `scripts/postprocess_exp9_application_case.py` — 7087 bytes — `0997961a2489fbce544d328a65570f9fde1eea207b68ad3fd8ce481566596f40`
+- `scripts/prepare_exp9_application_case.py` — 8848 bytes — `0011be32d3796bd5b22b6d21aadb02c9e4a37a76cb711ad05e31b2095a932112`
 - `scripts/reproduce_all.py` — 4524 bytes — `c9e17dd9242d575cf2f13261cf7cc43f5ca0bb5e71ae4dba1260f12d2a275c1a`
 - `scripts/run_borda.py` — 898 bytes — `13d3fac8161005cabf631f57ce175292354a6d796276ad1233e1e9b01589734b`
 - `scripts/run_drmaciver_fas.py` — 6259 bytes — `928ef32c81b290a35bcb9447fe82e0dc4ac5e9d0de0ce8f517161e77f4c87947`
 - `scripts/run_exact.py` — 1327 bytes — `56645acd9e6b6f501a69fa6867fbe93a4d103bbda1d47b2b2d0fc083f90f445e`
+- `scripts/run_exp6_ipsns_budget_curve.py` — 4857 bytes — `05a9be8e7c3900c9a9d4a9a6a0bd043f3fdab31eedb795235eab341799546506`
+- `scripts/run_exp7_plain_local_search.py` — 17097 bytes — `46319eb078a781ee746bd583d7770c2898d12bd39762e54cdb3113530311a253`
+- `scripts/run_exp8_medium_mip_baseline.py` — 14835 bytes — `8201b00b9502c86963d841698fa4e7e07b1fd1f2972f96e42c8c975f296734aa`
+- `scripts/run_exp9_application_case.py` — 6649 bytes — `cf42b3f590b240aeceff1bb1a789b6d1de394b09226e934b9f72c57b5de051d3`
 - `scripts/run_igraph_eades.py` — 3076 bytes — `9e2d7e22dce13d7685515b46623c84b03edc90c387ec5ce7b634b2346664ef16`
 - `scripts/run_ipsns.py` — 2816 bytes — `1f990c17b5442736daaf8b919f8c5c847993fc70dea03b8e03bbc0cf632d4711`
 - `scripts/run_lrta.py` — 1504 bytes — `5a31c0ad4426402e2e10e68f39d5646b2c1d0c79b007dc2222fe86d3e70e4268`
 - `scripts/run_random_baseline.py` — 1153 bytes — `81b1d586b129e6145b0b0a5bc430dd0286a906f16e0194647894db104199222a`
 - `scripts/run_weighted_eades.py` — 969 bytes — `13e67998944add3d80fca64403e63cd7ca6a6f9dd85cb8360f164eb09d52c269`
 - `scripts/run_wmsf.py` — 1668 bytes — `8d6b2933f87ac2830f59497857a714af54a5d7da7b98583a5ec974e876c67b5e`
+- `scripts/select_exp6_ipsns_budget_instances.py` — 7754 bytes — `7fad39d9b34bb4c38636bef21b513fafc286de520cbe223769519fa4b6e37804`
+- `scripts/select_exp8_medium_mip_instances.py` — 7003 bytes — `12701407e026e33180a6797b3a9980ad5bd42eaa23bb967142adcefec2eeddb1`
 - `setup.py` — 225 bytes — `d71fd989d578eef208b950a7e0dc9618133d079a0a1b0726543a07d380274df5`
 - `src/mwfas/__init__.py` — 75 bytes — `f786730adec5709ad7e22d0686f85603e2ff3c3dc5d6110043cdc3775b2d3bcf`
 - `src/mwfas/baselines.py` — 6965 bytes — `02434f6a9c09dd00ee8cd811fe1c4c23fd12027b11dc43e997f425180912eca8`

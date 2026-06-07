@@ -1,6 +1,6 @@
 {
   "artifact_root": "mwfas_reproducibility_artifact_anonymous",
-  "file_count": 83,
+  "file_count": 95,
   "top_level_contents": [
     "DATASETS.md",
     "LICENSE",
@@ -28,33 +28,33 @@
     },
     {
       "relative_path": "MANIFEST.md",
-      "size": 4559,
-      "sha256": "024b9fa6fdbe8c0e9a555a1596850cbf4ac5114f905ae76084f666dd1322949a"
+      "size": 5121,
+      "sha256": "136e0e1e163e9625471720240616bb905d6e72677a55c4b41ff92890fa2b2a3d"
     },
     {
       "relative_path": "PROJECT_README.md",
-      "size": 5418,
-      "sha256": "7f35b2d7edc9e6e4ff85717070962e08476d02033e5a6480d068b19601260bff"
+      "size": 1251,
+      "sha256": "d30d1ad3279d9e21610358125c0858c843b3ee3e264c66b822b646ee12a8d630"
     },
     {
       "relative_path": "README.md",
-      "size": 2202,
-      "sha256": "9d3f93080237d0660a0c4554b2af0829741ea1921e9470fa9482fd17f1a42ea3"
+      "size": 1781,
+      "sha256": "42ef3a774d75553ca67f7d47b89e9548734d601abdded90dfe5d18c0eeadcdf3"
     },
     {
       "relative_path": "REPRODUCE.md",
-      "size": 924,
-      "sha256": "f4eae13414175055eb4cc2c71d4d7bc1afbf5900d07f708b9a1bf3df0a461d8e"
+      "size": 996,
+      "sha256": "0a2a8ce29d7ccb51522f11a46dee09c7ce8aa2ec9ff69e487fa5412bb5b1cb71"
     },
     {
       "relative_path": "docs/baselines_and_datasets_references.md",
       "size": 9810,
-      "sha256": "b4ec3672094e9b7d6ab8f77bfed71874c69bc087701d5c4fd0b55de62ec07a1b"
+      "sha256": "4216b008ce49f2bebaf2ffd625d0f56d71817ab331cffc5df17e7eb057d395af"
     },
     {
       "relative_path": "experiments/README.md",
-      "size": 6476,
-      "sha256": "c2980ba56ef2033018e1db02d7e9e3e4f47085c17e844b7101f58ae073413b04"
+      "size": 1571,
+      "sha256": "c9e570a7f38f8af7f5af537b1e344901bbc6e5a54450b08fde64a3c67bf3fd24"
     },
     {
       "relative_path": "experiments/combined/tables/manuscript_table_ablation.csv",
@@ -74,12 +74,12 @@
     {
       "relative_path": "experiments/combined/tables/manuscript_table_external_sparse.csv",
       "size": 950,
-      "sha256": "0708ea16f29c4e19f73526082220151f4b7189d8f194fe5b92522bf3fa8268cf"
+      "sha256": "49307b8207613ebd69bafacf0140819b55addd7aee596c52f925322dd825d470"
     },
     {
       "relative_path": "experiments/combined/tables/manuscript_table_lolib_dense.csv",
       "size": 817,
-      "sha256": "cd633e722b9c3d33715da82d02b09e6c292166de9248f0c0689bc6fbee15dc50"
+      "sha256": "21a1e11a52c0c5b6bb79851f7816fa6888f6f61cde7b0ed062c96e579fa66c5c"
     },
     {
       "relative_path": "experiments/exp1b_core_benchmark_full_wmsf_seed/configs/benchmark_instances_found_all.txt",
@@ -219,7 +219,7 @@
     {
       "relative_path": "experiments/exp4_external_baselines/summary/exp4_external_report.md",
       "size": 7487,
-      "sha256": "25db6e2c84703cd1063d15b69638ffaeace709bc5fb64ddbfa175e892b220925"
+      "sha256": "daf5132daf4ab194146167b37d2de81b498f68a649ef3725e88c24cea1a95d82"
     },
     {
       "relative_path": "experiments/exp4_external_baselines/summary/exp4_external_stats.json",
@@ -254,7 +254,7 @@
     {
       "relative_path": "experiments/exp5_lolib_dense/README.md",
       "size": 4564,
-      "sha256": "8d4125d1a4ce6fa54828e0ea0f7c51b280e131e63b556a7f9a57c8f970918ba9"
+      "sha256": "8a900a16fb96eced5d5f827090fd98d6f0ac9d6b90c4c62b4c74762030d2b839"
     },
     {
       "relative_path": "experiments/exp5_lolib_dense/configs/exp5_lolib_instances.txt",
@@ -279,7 +279,7 @@
     {
       "relative_path": "experiments/exp5_lolib_dense/postprocess_exp5_lolib.py",
       "size": 9858,
-      "sha256": "120f6e2ee546055667a05a60c69821341e8c32bee25cdf3c2d04dce4bd0c10a3"
+      "sha256": "13fd5322b3982e0fae22deb3fc9525c6dea750713c180459a0e54c3e5364756d"
     },
     {
       "relative_path": "experiments/exp5_lolib_dense/run_exp5_lolib_benchmark.py",
@@ -294,12 +294,12 @@
     {
       "relative_path": "experiments/exp5_lolib_dense/summary/exp5_final_report.md",
       "size": 6176,
-      "sha256": "7b908c7b9b4e56f1006539a4d9f77b6a87d3cb1c6fdc4d26eef9aeb93cc5c7da"
+      "sha256": "c826f8038bdbaf992112621c982904df5ce378d8a04fe4f7760722fb3e24850d"
     },
     {
       "relative_path": "experiments/exp5_lolib_dense/summary/exp5_lolib_access_report.md",
       "size": 5451,
-      "sha256": "4cfd04fb5d9603c947961b8ba5436fc7c596325f26636120f940dacf6f923832"
+      "sha256": "1f3aadc71202604aa298bdb7a8ef029c2108e2dc693f0b9c3f68630391bdd385"
     },
     {
       "relative_path": "experiments/exp5_lolib_dense/summary/exp5_lolib_stats.json",
@@ -309,7 +309,7 @@
     {
       "relative_path": "experiments/exp5_lolib_dense/summary/exp5_lolib_summary.md",
       "size": 1460,
-      "sha256": "8f50bc27400034a8e90f042b7cdace399f6b3be4f3604b51d8f1ea7e1c9b88ae"
+      "sha256": "4301ea6c6d50d9ddd50c7a6c8e8968434a1a9455345dd11ac9eea30be1eb0b7a"
     },
     {
       "relative_path": "experiments/exp5_lolib_dense/tables/exp5_lolib_paper_summary.csv",
@@ -327,6 +327,11 @@
       "sha256": "38d5878da797b2646211833d894be56065dee023e6c2bf87eba2bb9c0693cb3f"
     },
     {
+      "relative_path": "scripts/check_mip_solver_availability.py",
+      "size": 3515,
+      "sha256": "e5d47523539c6155f534de08f19e9ee22e7136d86a47bafa61711ad8bc055039"
+    },
+    {
       "relative_path": "scripts/convert_lolib_to_dimacs.py",
       "size": 3618,
       "sha256": "577dcfc7903ba4f2f41c4f24d15974a29287a081037e4f48b5bb9be5e0cc746f"
@@ -335,6 +340,31 @@
       "relative_path": "scripts/evaluate_order_lop.py",
       "size": 2824,
       "sha256": "ca6e85218fc7582aa126c00d4c498811a475c6cfb8a84b2a222364395692cb8b"
+    },
+    {
+      "relative_path": "scripts/postprocess_exp6_ipsns_budget_curve.py",
+      "size": 12548,
+      "sha256": "3748d4c132670eb53824cc800943bb226f2b23a6a3a8bfe76cf7839d9551d7ea"
+    },
+    {
+      "relative_path": "scripts/postprocess_exp7_plain_local_search.py",
+      "size": 14257,
+      "sha256": "d09df82cb32e6e1477c0f3533311b69f61c1b901d46c281a43198a1451a57f1a"
+    },
+    {
+      "relative_path": "scripts/postprocess_exp8_medium_mip_baseline.py",
+      "size": 9878,
+      "sha256": "02d953db93f40ce81e1624d8ad619f808282c5595954ff6b5027e8a778d05289"
+    },
+    {
+      "relative_path": "scripts/postprocess_exp9_application_case.py",
+      "size": 7087,
+      "sha256": "0997961a2489fbce544d328a65570f9fde1eea207b68ad3fd8ce481566596f40"
+    },
+    {
+      "relative_path": "scripts/prepare_exp9_application_case.py",
+      "size": 8848,
+      "sha256": "0011be32d3796bd5b22b6d21aadb02c9e4a37a76cb711ad05e31b2095a932112"
     },
     {
       "relative_path": "scripts/reproduce_all.py",
@@ -355,6 +385,26 @@
       "relative_path": "scripts/run_exact.py",
       "size": 1327,
       "sha256": "56645acd9e6b6f501a69fa6867fbe93a4d103bbda1d47b2b2d0fc083f90f445e"
+    },
+    {
+      "relative_path": "scripts/run_exp6_ipsns_budget_curve.py",
+      "size": 4857,
+      "sha256": "05a9be8e7c3900c9a9d4a9a6a0bd043f3fdab31eedb795235eab341799546506"
+    },
+    {
+      "relative_path": "scripts/run_exp7_plain_local_search.py",
+      "size": 17097,
+      "sha256": "46319eb078a781ee746bd583d7770c2898d12bd39762e54cdb3113530311a253"
+    },
+    {
+      "relative_path": "scripts/run_exp8_medium_mip_baseline.py",
+      "size": 14835,
+      "sha256": "8201b00b9502c86963d841698fa4e7e07b1fd1f2972f96e42c8c975f296734aa"
+    },
+    {
+      "relative_path": "scripts/run_exp9_application_case.py",
+      "size": 6649,
+      "sha256": "cf42b3f590b240aeceff1bb1a789b6d1de394b09226e934b9f72c57b5de051d3"
     },
     {
       "relative_path": "scripts/run_igraph_eades.py",
@@ -385,6 +435,16 @@
       "relative_path": "scripts/run_wmsf.py",
       "size": 1668,
       "sha256": "8d6b2933f87ac2830f59497857a714af54a5d7da7b98583a5ec974e876c67b5e"
+    },
+    {
+      "relative_path": "scripts/select_exp6_ipsns_budget_instances.py",
+      "size": 7754,
+      "sha256": "7fad39d9b34bb4c38636bef21b513fafc286de520cbe223769519fa4b6e37804"
+    },
+    {
+      "relative_path": "scripts/select_exp8_medium_mip_instances.py",
+      "size": 7003,
+      "sha256": "12701407e026e33180a6797b3a9980ad5bd42eaa23bb967142adcefec2eeddb1"
     },
     {
       "relative_path": "setup.py",

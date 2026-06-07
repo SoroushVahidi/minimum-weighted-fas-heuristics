@@ -12,5 +12,5 @@ For Elsevier upload, use `highlights.pdf` as the preferred highlights file. `hig
 | highlights.pdf | 8138 | 1 | 2a89dea2fa95a224752c978013a36e0982846e7dab9e0ee001274394a037a44c |
 | highlights.txt | 312 |  | 65b2485340f79b9259ae4741948a3b68ac95a25d39f57b194a9c51d0affe28af |
 | main_anonymized.pdf | 1058509 | 47 | 72c547dc4f9d01b8ef0a79815992638d9457a99f8fb270fbef04e0471c1ef1dc |
-| mwfas_reproducibility_artifact_anonymous.zip | 147077 |  | 3bbb70a1027eae59205c1437064bd1b9aaff1a3e114e8a795bb9f3a2b456e924 |
+| mwfas_reproducibility_artifact_anonymous.zip | 182527 |  | 3dbf74c1d5082144d94457785ee45e81d9720a68cd4a09f7a5487feb47ccedbe |
 | title_page.pdf | 27665 | 2 | e136e8c753d4f8dcbea561d8ce7511085c13ea99a420a9a369d08d294f6be7f1 |

@@ -80,6 +80,7 @@ def is_text_file(path: Path) -> bool:
 
 def sanitize_text(text: str) -> str:
     replacements = [
+        (r"\bDRMaciver\b", "DRMacIver"),
         (r"/home/soroush/minimum-weighted-fas-heuristics", "[workspace root]"),
         (r"/home/soroush/benchmark_sources/graph-benchmarks/?", "[graph-benchmarks root]/"),
         (r"github\.com/SoroushVahidi/minimum-weighted-fas-heuristics", "[repository anonymized for review]"),
@@ -147,15 +148,14 @@ def build_artifact_docs() -> None:
 
 This package is an anonymous reproducibility artifact prepared for double-anonymized review.
 It contains the implementation, experiment support scripts, selected committed summaries,
-paper-asset builders, and documentation needed to inspect and reproduce the manuscript-facing
-tables and figures without exposing author identity.
+manuscript-facing CSV tables, and documentation needed to inspect the reported results
+without exposing author identity.
 
 ## Included
 
 - `src/mwfas/` core implementation modules
 - `scripts/` command-line wrappers for the reported methods
-- selected experiment configs, postprocessors, committed summaries, and paper tables
-- manuscript asset builders and provenance notes
+- selected experiment configs, postprocessors, committed summaries, and manuscript-facing tables
 - dataset and baseline reference notes
 
 ## Excluded
@@ -176,18 +176,8 @@ pip install -e .
 
 ## Inspect committed summaries
 
-- `experiments/combined/summary/` contains the manuscript results digest.
-- `experiments/combined/tables/` contains the paper-facing CSV tables.
+- `experiments/combined/tables/` contains the manuscript-facing CSV tables.
 - experiment-specific `summary/` and `tables/` directories contain the committed supporting files.
-
-## Regenerate manuscript result tables and figures from committed summaries
-
-```bash
-python paper/scripts/build_paper_results_assets.py
-```
-
-This command rebuilds the manuscript-facing tables and vector figures from the committed
-summary files without rerunning the reported experiments.
 
 ## Optional reruns
 
@@ -203,6 +193,38 @@ depend on external tools, dataset access, and the local software environment.
 
 No author-identifying information is intentionally included in this artifact.
 A public repository and archival release will be provided after acceptance.
+"""
+    project_readme = """# Project Overview
+
+This artifact packages the anonymous code and benchmark-facing experiment materials used to
+support the manuscript's reported results.
+
+## Included components
+
+- `src/mwfas/`: LR-TA, WMSF, IPSNS, exact DP, evaluation, and I/O helpers
+- `scripts/`: command-line entry points for the reported methods and external wrappers
+- `experiments/`: selected configs, postprocessors, committed summaries, and manuscript-facing tables
+- `docs/baselines_and_datasets_references.md`: dataset and baseline provenance notes
+
+## Scope
+
+The bundled experiment materials focus on the benchmark and transfer-test experiments
+represented by EXP1b-EXP5. Public benchmark data are not redistributed here; instead,
+the artifact includes the instance lists, conversion utility, and committed summary tables
+used to support the manuscript-facing results. Additional helper scripts for later manuscript
+diagnostics and the application-facing public ordering example are included under `scripts/`.
+
+## Quick start
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e .
+python -m compileall src/mwfas scripts
+```
+
+See `README.md`, `REPRODUCE.md`, and `experiments/README.md` for inspection and rerun guidance.
 """
     datasets = """# Datasets
 
@@ -231,13 +253,15 @@ A public repository and archival release will be provided after acceptance.
 
 ```bash
 python -m compileall src/mwfas scripts
-python experiments/combined/build_manuscript_results_digest.py
-python paper/scripts/build_paper_results_assets.py
 ```
+
+These checks confirm that the bundled implementation modules and command-line wrappers load
+cleanly in a fresh environment.
 
 ## Inspect the committed summary tables
 
 - `experiments/combined/tables/`
+- `experiments/exp1b_core_benchmark_full_wmsf_seed/summary/`
 - `experiments/exp2_ablation/summary/`
 - `experiments/exp3_exact_small/summary/`
 - `experiments/exp4_external_baselines/summary/`
@@ -258,9 +282,42 @@ python scripts/run_drmaciver_fas.py --help
 Exact reproduction of runtimes or external-baseline behavior may vary by machine,
 dependency versions, and availability of third-party tools.
 """
+    experiments_readme = """# Experiments
+
+This directory contains the anonymous experiment materials bundled with the reproducibility
+artifact. Raw outputs, logs, downloads, and external cloned tools are intentionally omitted;
+the artifact instead includes selected configs, committed summaries, and manuscript-facing tables.
+
+## Included experiment packages
+
+| Experiment | Purpose | Included materials |
+|---|---|---|
+| **EXP1b** | Main sparse benchmark with full WMSF seed | configs, postprocessor, summaries, paper/wide tables |
+| **EXP2** | Ablation study | README, configs, launcher, summaries, table |
+| **EXP3** | Exact small-instance validation | config, launcher, summaries, table |
+| **EXP4** | External baseline comparison on standard sparse instances | registry, launchers, postprocessor, summaries, paper/wide tables |
+| **EXP5** | LOLIB dense transfer test | README, configs, launcher, postprocessor, summaries, paper/wide tables |
+
+## Combined manuscript-facing tables
+
+- `combined/tables/manuscript_table_core_sparse.csv`
+- `combined/tables/manuscript_table_ablation.csv`
+- `combined/tables/manuscript_table_exact_small.csv`
+- `combined/tables/manuscript_table_external_sparse.csv`
+- `combined/tables/manuscript_table_lolib_dense.csv`
+
+## Notes
+
+- Standard benchmark claims use the nonnegative-weight subset only.
+- LOLIB is included as a dense transfer test rather than the primary sparse benchmark.
+- Scripts for later manuscript diagnostics and the application-facing public ordering example
+  are provided under `../scripts/`, but their large raw outputs are not bundled here.
+"""
     stage_text(readme, STAGING_DIR / "README.md")
+    stage_text(project_readme, STAGING_DIR / "PROJECT_README.md")
     stage_text(datasets, STAGING_DIR / "DATASETS.md")
     stage_text(reproduce, STAGING_DIR / "REPRODUCE.md")
+    stage_text(experiments_readme, STAGING_DIR / "experiments" / "README.md")
 
 
 def collect_files() -> list[CopiedFile]:
@@ -389,11 +446,6 @@ def populate_staging() -> None:
     # Project metadata.
     for filename in ["requirements.txt", "setup.py", "LICENSE"]:
         stage_file(ROOT / filename)
-    if (ROOT / "README.md").exists():
-        stage_file(ROOT / "README.md", rel_dest="PROJECT_README.md", sanitize=True)
-
-    # Experiment overview.
-    stage_file(ROOT / "experiments" / "README.md")
 
     def include_experiment(exp_name: str, include_top_level: tuple[str, ...] = ()) -> None:
         exp = ROOT / "experiments" / exp_name
