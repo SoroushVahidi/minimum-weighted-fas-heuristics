@@ -27,6 +27,7 @@ In Phase II, LR-TA attempts to reinsert removed arcs without recreating cyclicit
     \label{eq:lrta-fast-accept}
 \end{equation}
 because the current topological order already certifies that the insertion is forward. Otherwise the algorithm checks whether \(v\) can reach \(u\) in the current active graph, using a reachability search pruned by the topological rank interval. The arc is reinserted if and only if no such path exists. Whenever a backward candidate is accepted, the topological order is recomputed so that future admissibility tests remain exact.
+% TODO(rejection-audit): Add one sentence that the extracted topological order is deterministic but not unique, so the paper studies one engineering choice rather than a canonical linear extension.
 
 Algorithm~\ref{alg:lrta} summarizes the implementation.
 
@@ -116,6 +117,7 @@ Algorithm~\ref{alg:ipsns} summarizes the IPSNS driver at manuscript level.
 \end{algorithm}
 
 Two implementation details are especially important for interpretation. First, the default WMSF seed mode inside IPSNS is the full per-SCC pipeline, not a weaker legacy approximation; this is required so that the refinement never starts from a seed weaker than the standalone WMSF baseline. Second, the randomization in IPSNS is controlled entirely by a fixed seed. The resulting sequence of SCC choices and destroy fractions is therefore reproducible given the same input and parameter settings.
+% TODO(rejection-audit): Tie the fixed IPSNS defaults back to EXP2 as subset-level parameter support, not a universal tuning claim.
 
 \subsection{Algorithmic invariants}
 \label{subsec:invariants}

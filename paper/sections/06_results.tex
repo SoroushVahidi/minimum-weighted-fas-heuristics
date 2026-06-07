@@ -5,11 +5,13 @@ This section will report the main computational evidence using compact manuscrip
 
 \subsection{Sparse weighted graph benchmarks}
 Table~\ref{tab:sparse-external-baselines} summarizes the sparse external-baseline comparison on 97 standard nonnegative instances. The intended narrative is that the incumbent-protected refinement attains the best observed backward weight on 96 of 97 instances, while the strongest external baseline is substantially worse in mean backward weight on this sparse benchmark.
+% TODO(rejection-audit): Name DRMaciver as the strongest external comparator on the sparse benchmark and use EXP4 to answer the baseline-strength concern directly.
 
 \input{tables/table_sparse_external_baselines}
 
 \subsection{Exact validation on small instances}
 Table~\ref{tab:exact-validation} summarizes the exact small-instance validation. The intended narrative is near-optimality rather than a formal approximation guarantee: the proposed refinement is optimal on 56 of 57 standard small nonnegative instances and has a mean relative gap of about 0.0006 percent.
+% TODO(rejection-audit): Make the no-new-theory boundary explicit here: exact validation supports solution quality empirically but does not imply an approximation ratio.
 
 \input{tables/table_exact_validation}
 
@@ -20,5 +22,6 @@ Table~\ref{tab:ablation} records the component ablation. The intended narrative 
 
 \subsection{Dense LOLIB transfer test}
 Table~\ref{tab:lolib-scope} reports the dense LOLIB transfer test. The intended narrative is a scope boundary: a tournament-native external heuristic is stronger on complete dense linear-ordering instances, while incumbent protection still holds for the proposed general weighted-digraph framework.
+% TODO(rejection-audit): Say explicitly that EXP5 is included to prevent overclaiming, not to claim dense LOP dominance.
 
 \input{tables/table_lolib_scope}
