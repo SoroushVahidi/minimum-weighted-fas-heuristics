@@ -172,7 +172,8 @@ Algorithm & BW & Runtime (s) \\
 Instance: top-50 Wikipedia users by vote activity.
 """
         tex += f"$n={sr['n']}$ nodes, $m={sr['m']}$ arcs, density $={sr['density']}$, "
-        tex += f"total weight $={int(float(sr['total_weight'])):,}$.} \\\\\n"
+        tw = int(float(sr['total_weight']))
+        tex += f"total weight $={tw:,}$.}} \\\\\n"
         tex += r"""\end{tabular}
 \end{table}
 """

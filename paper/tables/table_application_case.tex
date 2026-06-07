@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\caption{Application case study: Wikipedia adminship vote network (EXP9).
+The top-50 most-active users form a directed weighted graph where each arc
+weight equals the number of endorsement votes cast. Backward weight (BW) counts
+the total weight of arcs that violate the returned prestige ranking.
+A minimum-BW ordering minimises reverse endorsements.}
+\label{tab:application-case}
+\begin{tabular}{lrr}
+\toprule
+Algorithm & BW & Runtime (s) \\
+\midrule
+IPSNS & 141 & 0.72 \\
+LR-TA & 141 & 0.23 \\
+WMSF & 142 & 0.24 \\
+DRMacIver/FAS & 135 & 0.79 \\
+igraph\_eades & 153 & 0.31 \\
+weighted\_eades & 157 & 0.02 \\
+\bottomrule
+\multicolumn{3}{p{0.92\linewidth}}{\footnotesize
+Instance: top-50 Wikipedia users by vote activity.
+$n=50$ nodes, $m=752$ arcs, density $=0.306939$, total weight $=752$.} \\
+\end{tabular}
+\end{table}

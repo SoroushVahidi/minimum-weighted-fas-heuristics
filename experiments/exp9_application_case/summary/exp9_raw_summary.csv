@@ -1,0 +1,7 @@
+instance,dataset,top_n,n,m,density,total_weight,algorithm,backward_weight,runtime_seconds,status,error
+wiki_vote_top50,wikipedia_adminship_vote,50,50,752,0.306939,752.0,LR-TA,141.0000,0.2302,ok,
+wiki_vote_top50,wikipedia_adminship_vote,50,50,752,0.306939,752.0,WMSF,142.0000,0.2386,ok,
+wiki_vote_top50,wikipedia_adminship_vote,50,50,752,0.306939,752.0,IPSNS,141.0000,0.7151,ok,
+wiki_vote_top50,wikipedia_adminship_vote,50,50,752,0.306939,752.0,DRMacIver/FAS,135.0000,0.7925,ok,
+wiki_vote_top50,wikipedia_adminship_vote,50,50,752,0.306939,752.0,igraph_eades,153.0000,0.3058,ok,
+wiki_vote_top50,wikipedia_adminship_vote,50,50,752,0.306939,752.0,weighted_eades,157.0000,0.0217,ok,

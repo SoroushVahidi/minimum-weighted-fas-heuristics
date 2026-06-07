@@ -1,0 +1,2 @@
+instance,dataset,n,m,density,total_weight,best_algorithm,best_bw,ipsns_bw,lrta_bw,wmsf_bw,ipsns_vs_lrta
+wiki_vote_top50,wikipedia_adminship_vote,50,752,0.306939,752.0,DRMacIver/FAS,135.0,141.0,141.0,142.0,0.0
