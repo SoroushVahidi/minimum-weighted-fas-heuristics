@@ -33,12 +33,14 @@ For the exact small-instance validation, the reference method is exact bitmask d
 
 The sparse and dense comparison studies also include five additional baselines:
 \begin{itemize}
-    \item the DRMacIver/FAS tool \cite{drmaciver_feedback_arc_set}, treated as an external wrapper around an open-source specialized algorithm;
+    \item the DRMacIver/FAS tool \cite{drmaciver_feedback_arc_set}, an external deterministic matrix-based ordering heuristic that maximizes forward weight on pairwise evidence and is evaluated here under the common backward-weight objective;
     \item python-igraph's Eades-style feedback arc interface \cite{python_igraph_feedback_arc_set};
     \item a weighted Eades adaptation implemented locally and described explicitly as an adaptation rather than as the original \cite{ELS93} algorithm;
     \item Borda net-score ordering \cite{CFR10};
     \item random multistart ranking.
 \end{itemize}
+
+DRMacIver/FAS is not an exact method. Its matrix-based formulation makes it a particularly relevant comparator for dense LOLIB instances, which are complete weighted ordering problems, whereas the sparse benchmark exercises it only through a sparse entry-list interface.
 
 This baseline mix is deliberate. It does not attempt to exhaust every recent ranking model or every exact solver. In particular, it does not include a learned model such as GNNRank \cite{GNNRank22}, a memetic linear-ordering solver such as LOP\_MA-EDM \cite{lop_ma_edm_repo}, or the recent minimal-and-stable weighted feedback arc set heuristic of Cavallaro and Cutello \cite{CC25}. Those omissions are stated explicitly. The intended comparison surface is the ecosystem of deterministic or near-deterministic weighted-digraph heuristics and accessible external tools that a practitioner could reasonably invoke without building a separate learning or solver pipeline.
 
