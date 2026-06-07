@@ -12,14 +12,14 @@ Items that require user action before uploading to CAIE.
 
 ## Placeholders to fill manually
 
-- [ ] Replace `[Corresponding Author Contact]` in:
-  - `paper/title_page.tex` (line 13)
-  - `paper/main.tex` (line 32, post-acceptance/non-anonymized use)
-  - `paper/cover_letter_draft.tex` (line 18)
-- [ ] Replace `[Editor Name]` in `paper/cover_letter_draft.tex` (lines 6 and 8)
+- [x] Replace `[Corresponding Author Contact]` with `sv96@njit.edu` in non-anonymized sources (done)
+  - `paper/title_page.tex`
+  - `paper/main.tex` (post-acceptance/non-anonymized use)
+  - `paper/cover_letter_draft.tex`
+- [x] Replace `[Editor Name]` with generic `Dear Editor,` in cover letter (done)
 - [ ] Decide whether to replace any date placeholder or rely on the submission system's auto date (no explicit date placeholder is currently in source)
 
-After filling placeholders, recompile title page and cover letter locally and refresh:
+Title page and cover letter recompiled locally; upload copies refreshed:
 - `submission_package/files_for_upload/title_page.pdf`
 - `submission_package/files_for_upload/cover_letter_draft.pdf`
 

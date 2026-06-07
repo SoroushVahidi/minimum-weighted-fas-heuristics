@@ -1,0 +1,34 @@
+A Reproducible Local-Ratio and SCC-Reﬁnement
+Framework
+for Weighted Ordering in Directed Graphs
+Soroush Vahidia
+a
+
+Department of Computer Science, New Jersey Institute of Technology, Newark, NJ,
+USA
+
+Abstract
+The review manuscript is submitted separately as main_anonymized.tex.
+This title page is kept outside the anonymized ﬁle for double-anonymized
+review.
+Acknowledgments
+Acknowledgments will be added in the non-anonymized version of the
+manuscript after the double-anonymized review process.
+Funding statement
+This research received no speciﬁc grant from public, commercial, or notfor-proﬁt funding agencies.
+Declaration of competing interest
+The authors declare that they have no known competing ﬁnancial interests or personal relationships that could have appeared to inﬂuence the work
+reported in this paper.
+∗
+
+Corresponding author
+Email address: sv96@njit.edu (Soroush Vahidi)
+
+CRediT authorship contribution statement
+Soroush Vahidi: Conceptualization, Methodology, Software, Validation,
+Formal analysis, Investigation, Writing - original draft, Writing - review &
+editing, Visualization.
+
+2
+
+
