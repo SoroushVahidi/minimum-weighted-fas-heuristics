@@ -1,4 +1,2 @@
 stale_or_missing_uploads:
-submission_package/files_for_upload/title_page.pdf
-submission_package/files_for_upload/cover_letter_draft.pdf
-submission_package/files_for_upload/highlights.txt
+

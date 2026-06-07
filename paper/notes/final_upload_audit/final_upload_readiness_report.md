@@ -2,8 +2,8 @@
 
 ## Repository
 
-- **Starting HEAD:** `3086b26`
-- **Upload staleness:** title page, cover letter, and highlights were stale relative to source; fresh compile refreshed all upload PDFs/text
+- **Starting HEAD:** `b4e0765`
+- **Upload staleness:** all upload files current relative to source; recompile skipped
 - **Blocking issues:** none
 
 ## Upload inventory
@@ -68,7 +68,7 @@ No `TODO`, `FIXME`, or `??` in anonymized manuscript source.
 
 ## LaTeX warning status
 
-Fresh compile (`final_upload_main.log`) matches prior warning pass:
+From prior warning pass (`paper/notes/final_warning_pass/warning_analysis_after.json`); upload PDFs not recompiled this run because sources are current:
 
 | Severity | Count |
 |---|---:|
