@@ -6,7 +6,7 @@ Snapshot after CAIE submission-package preparation and repository cleanup.
 
 | Item | Value |
 |---|---|
-| **HEAD** | `27aeb08` (update after cleanup commit if newer) |
+| **HEAD** | `eeaaafd` |
 | **Branch** | `main` |
 | **Remote** | `origin/main` (synced) |
 
