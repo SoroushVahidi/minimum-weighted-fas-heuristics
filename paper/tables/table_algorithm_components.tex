@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering
+\caption{Algorithm components and their manuscript roles.}
+\label{tab:algorithm-components}
+\begin{tabular}{p{2.4cm}p{4.0cm}p{5.6cm}}
+\toprule
+Component & Primary mechanism & Role in this paper \\
+\midrule
+LR-TA & Global local-ratio cycle reduction followed by heavy-first add-back & Engineered reproducible seed; main constructive method derived from prior local-ratio ideas \\
+WMSF-style seed & Ordered arc removal, minimization, stabilization, and remimization inside SCCs & Complementary internal seed and baseline; broadens incumbent quality before refinement \\
+IPSNS & SCC-local destroy--repair moves with restricted local-ratio repair and restricted add-back & Main refinement framework; improves only when the global objective decreases \\
+\bottomrule
+\end{tabular}
+\end{table}

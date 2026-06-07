@@ -1,27 +1,135 @@
 \section{Algorithmic framework}
 \label{sec:algorithmic-framework}
 
-TODO: Describe LR-TA, WMSF seed, and IPSNS. Make clear what is inherited from Demetrescu--Finocchi and what is engineered/new.
+The framework combines three layers: a local-ratio topological add-back seed, a complementary weighted seed, and an incumbent-protected refinement over strongly connected components. Figure~\ref{fig:framework-overview} summarizes the data flow, while Tables~\ref{tab:algorithm-components} and~\ref{tab:algorithm-invariants} isolate the roles of each component and the invariants that the implementation preserves.
+
+\input{figures/framework_overview}
+\input{tables/table_algorithm_components}
+\input{tables/table_algorithm_invariants}
+
+The implementation reads an aggregated weighted DIMACS digraph and stores it in edge-indexed arrays. Each arc receives an edge identifier together with fixed endpoint arrays and an activity flag. This design is shared across LR-TA, WMSF-style seeding, and IPSNS. The common objective is the backward weight defined in Section~\ref{sec:problem-definition}; all moves are evaluated under that objective, and all determinism claims in this section refer to fixed input graphs and fixed random seeds.
 
 \subsection{Local-ratio topological add-back}
 \label{subsec:lrta}
 
-TODO: Pseudocode for LR-TA. Explain deterministic cycle handling, active edge bookkeeping, topological reconstruction, and add-back.
+LR-TA is the first constructive component. It inherits the idea of local-ratio cycle reduction from the directed-feedback setting of Demetrescu and Finocchi \cite{DF03}, but the implementation studied here is an engineered sparse-graph instantiation rather than a new theorem. The algorithm maintains an active subgraph over the original edge identifiers and repeatedly applies two phases.
+
+In Phase I, the algorithm searches the active graph for any directed cycle using an iterative depth-first search. The search is deterministic because vertices and outgoing edge lists are scanned in fixed order, and only the first detected cycle is used. If \(C\) is the detected cycle, LR-TA computes
+\begin{equation}
+    \varepsilon(C)=\min_{e\in C} w(e)
+    \label{eq:lrta-epsilon}
+\end{equation}
+and reduces the mutable weight of every arc in \(C\) by \(\varepsilon(C)\). At least one arc becomes tight. Any arc whose reduced weight falls below the numerical tolerance is deactivated and appended to the removed-edge set \(F_{\mathrm{LR}}\). The phase terminates when no directed cycle remains in the active graph, so the active subgraph is a directed acyclic graph.
+
+In Phase II, LR-TA attempts to reinsert removed arcs without recreating cyclicity. Removed arcs are processed in nonincreasing order of original weight, with deterministic tie-breaking on endpoints and edge identifier. Let \(\pi\) be a topological order of the current active directed acyclic graph and let \(\operatorname{rank}_{\pi}(v)\) denote the position of vertex \(v\). A candidate arc \((u,v)\) is accepted immediately if
+\begin{equation}
+    \operatorname{rank}_{\pi}(u) < \operatorname{rank}_{\pi}(v),
+    \label{eq:lrta-fast-accept}
+\end{equation}
+because the current topological order already certifies that the insertion is forward. Otherwise the algorithm checks whether \(v\) can reach \(u\) in the current active graph, using a reachability search pruned by the topological rank interval. The arc is reinserted if and only if no such path exists. Whenever a backward candidate is accepted, the topological order is recomputed so that future admissibility tests remain exact.
+
+Algorithm~\ref{alg:lrta} summarizes the implementation.
+
+\begin{algorithm}[t]
+\caption{LR-TA seed construction}
+\label{alg:lrta}
+\begin{algorithmic}[1]
+\Require Weighted digraph \(G=(V,A,w)\) with \(w\ge 0\)
+\Ensure Ordering \(\pi_{\mathrm{LR}}\), removed-edge set \(F_{\mathrm{LR}}\)
+\State Build edge-indexed arrays \((U,V,W_0,W,\textit{active},\textit{adj})\)
+\State \(F_{\mathrm{LR}} \gets \emptyset\)
+\While{the active graph contains a directed cycle \(C\)}
+    \State \(\varepsilon \gets \min_{e\in C} W[e]\)
+    \ForAll{\(e \in C\)}
+        \State \(W[e] \gets W[e] - \varepsilon\)
+        \If{\(W[e] \le \tau\) and \(e\) is active}
+            \State deactivate \(e\); set \(W[e]\gets 0\); add \(e\) to \(F_{\mathrm{LR}}\)
+        \EndIf
+    \EndFor
+\EndWhile
+\State Compute deterministic topological order \(\pi\) of the active graph
+\ForAll{\(e=(u,v)\in F_{\mathrm{LR}}\) in nonincreasing order of \(W_0[e]\)}
+    \If{\(\operatorname{rank}_{\pi}(u) < \operatorname{rank}_{\pi}(v)\)}
+        \State reactivate \(e\); remove \(e\) from \(F_{\mathrm{LR}}\)
+    \ElsIf{\(v \not\leadsto u\) in the current active graph}
+        \State reactivate \(e\); remove \(e\) from \(F_{\mathrm{LR}}\)
+        \State recompute deterministic topological order \(\pi\)
+    \EndIf
+\EndFor
+\State \Return \(\pi_{\mathrm{LR}}, F_{\mathrm{LR}}\)
+\end{algorithmic}
+\end{algorithm}
+
+The add-back phase is where this implementation departs most clearly from a bare local-ratio reduction. It is also the component with the strongest ablation signal in the current experiments. The manuscript should therefore treat LR-TA as a two-phase engineered seed rather than as a one-step local-ratio routine.
 
 \subsection{WMSF-style seed construction}
 \label{subsec:wmsf}
 
-TODO: Describe as an internal seed/baseline. Avoid overclaiming literature status.
+The second seed is a weighted removeArcs--minimize--stabilize pipeline implemented in the repository as an internal baseline. The role of this component in the manuscript is pragmatic: it broadens the seed space available to the refinement stage and helps define the incumbent-protection guarantee. It should not be presented as the main novelty of the paper.
+
+At a high level, the WMSF-style seed decomposes the graph into strongly connected components and processes each nontrivial component separately. Within a component, it first removes arcs according to a prescribed weight-based ordering. Two orderings are supported in code: \(L1\), which sorts arcs primarily by weight, and \(L2\), which normalizes arc weight by a weighted in/out-degree denominator. The resulting removed set is then minimized by heavy-first add-back, followed by a stabilization step and a second minimization pass. When the entire graph is a single nontrivial strongly connected component, both \(L1\) and \(L2\) are tried and the lower-backward-weight seed is kept. Otherwise the configured ordering is used componentwise.
+
+The point of carrying this seed into IPSNS is not to establish a separate literature claim about WMSF. Instead, it provides a complementary structural bias to LR-TA. LR-TA is driven by cycle reductions in the active graph. The WMSF-style seed is driven by ordered arc removals and subsequent minimization. Because the two constructions fail differently on some instances, taking the better of them before refinement produces a stronger and more robust incumbent than either seed alone.
 
 \subsection{Incumbent-protected SCC-neighborhood search}
 \label{subsec:ipsns}
 
-TODO: Pseudocode for IPSNS. Define SCC-local neighborhoods, seeds, destroy-repair, and incumbent protection.
+IPSNS begins by computing both seeds on the full graph: the full WMSF-style seed and the LR-TA seed. Their backward weights are evaluated under the common ordering objective, and the better one becomes the initial incumbent. The refinement stage then iterates over strongly connected components of the original aggregated graph, but the selection is filtered by the incumbent ordering: only components with positive current backward contribution are eligible, and a weighted-random choice is drawn from the top-\(K\) contributors by SCC backward weight. This makes the neighborhood search concentrated rather than exhaustive.
+
+Within the chosen component, IPSNS applies a destroy-and-repair move. The destroy stage has two parts. First, a fraction of currently removed internal edges is reactivated in heavy-first order, temporarily giving the neighborhood more freedom. Second, a small fraction of currently active internal edges is forcibly removed in light-first order, encouraging escape from a locally stable order. The repair stage then applies a restricted local-ratio cycle reduction on that SCC neighborhood and finishes with restricted heavy-first add-back minimization. All graph edits are confined to the chosen component's internal edges, while the rest of the incumbent graph remains untouched during the move.
+
+If the repaired candidate fails to admit a valid topological order, the entire SCC-local state is reverted. If the candidate is valid, the full incumbent objective is recomputed. The incumbent is updated only if the new backward weight is strictly smaller than the current best value. Otherwise the move is rejected and the previous incumbent is restored exactly. This is what makes the method incumbent-protected: refinement never commits a worsening move.
+
+Algorithm~\ref{alg:ipsns} summarizes the IPSNS driver at manuscript level.
+
+\begin{algorithm}[t]
+\caption{IPSNS with incumbent protection}
+\label{alg:ipsns}
+\begin{algorithmic}[1]
+\Require Weighted digraph \(G=(V,A,w)\), iteration budget \(T\)
+\Ensure Ordering \(\pi^\star\) with objective no worse than the best internal seed
+\State Build WMSF-style seed \(\pi_{\mathrm{W}}\) and LR-TA seed \(\pi_{\mathrm{LR}}\)
+\State \(\pi^\star \gets \arg\min\{\operatorname{bw}(\pi_{\mathrm{W}}),\operatorname{bw}(\pi_{\mathrm{LR}})\}\)
+\For{\(t=1,\dots,T\)}
+    \State Score each nontrivial SCC by its current backward contribution
+    \If{all SCC scores are zero}
+        \State \textbf{break}
+    \EndIf
+    \State Sample one SCC from the top-\(K\) positive-score SCCs using weighted random choice
+    \State Save the current internal SCC state
+    \State Reactivate a heavy fraction of removed internal edges
+    \State Remove a light fraction of active internal edges
+    \State Apply SCC-restricted local-ratio repair
+    \State Apply SCC-restricted heavy-first add-back minimization
+    \If{the candidate SCC state is invalid}
+        \State restore saved SCC state; \textbf{continue}
+    \EndIf
+    \State Recompute the global ordering and candidate objective
+    \If{the candidate objective is smaller than \(\operatorname{bw}(\pi^\star)\)}
+        \State accept the candidate and update \(\pi^\star\)
+    \Else
+        \State restore the previous incumbent exactly
+    \EndIf
+\EndFor
+\State \Return \(\pi^\star\)
+\end{algorithmic}
+\end{algorithm}
+
+Two implementation details are especially important for interpretation. First, the default WMSF seed mode inside IPSNS is the full per-SCC pipeline, not a weaker legacy approximation; this is required so that the refinement never starts from a seed weaker than the standalone WMSF baseline. Second, the randomization in IPSNS is controlled entirely by a fixed seed. The resulting sequence of SCC choices and destroy fractions is therefore reproducible given the same input and parameter settings.
 
 \subsection{Algorithmic invariants}
 \label{subsec:invariants}
 
-TODO: State monotone non-degradation lemma for IPSNS:
-If an incumbent is updated only when the candidate objective is no worse, then the incumbent sequence is non-increasing and the final solution is no worse than the best internal seed.
+The most important invariant in the framework belongs to IPSNS rather than to LR-TA. Let \(\pi^{(0)}\) denote the better of the two internal seeds and let \(\pi^{(t)}\) denote the incumbent ordering after \(t\) accepted-or-rejected IPSNS iterations. Because the incumbent is replaced only by a strictly improving candidate, the sequence satisfies
+\begin{equation}
+    \operatorname{bw}\!\left(\pi^{(t+1)}\right)
+    \le
+    \operatorname{bw}\!\left(\pi^{(t)}\right)
+    \le
+    \operatorname{bw}\!\left(\pi^{(0)}\right)
+    \qquad \text{for all } t\ge 0.
+    \label{eq:ipsns-monotone}
+\end{equation}
+This monotone non-degradation property is not an approximation guarantee, but it is a concrete algorithmic promise: the final IPSNS solution is never worse than the better internal seed under the same objective and nonnegative-weight assumptions.
 
-Use a numbered equation if writing the invariant formally.
+LR-TA and the WMSF-style seed have their own feasibility invariants. LR-TA always exits its reduction stage with an acyclic active graph, and its add-back phase only reactivates arcs that preserve acyclicity. The WMSF-style seed similarly alternates removal and minimization steps while checking acyclic feasibility. IPSNS inherits those feasibility properties locally during SCC repair and adds the stronger incumbent-protection rule globally. That combination explains why the paper can make a narrow but defensible guarantee about refinement quality without claiming any new theoretical approximation ratio.
