@@ -1,0 +1,16 @@
+{
+  "scipy_version": "1.17.1",
+  "scipy_milp": true,
+  "scipy_milp_backend": "HiGHS (via scipy)",
+  "highspy": false,
+  "pulp": null,
+  "ortools": null,
+  "gurobipy": null,
+  "python_mip": null,
+  "recommended_solver": "scipy.optimize.milp (HiGHS)",
+  "solver_available": true,
+  "existing_exact_scripts": [
+    "src/mwfas/exact.py",
+    "scripts/run_exact.py"
+  ]
+}
