@@ -4,9 +4,12 @@ These files are committed only because the repository is private and the author 
 
 This folder contains non-anonymized files (title_page.pdf and cover_letter_draft.pdf). Do not share this repository or folder with reviewers during double-blind review.
 
+For Elsevier upload, use `highlights.pdf` as the preferred highlights file. `highlights.txt` is retained as a plain-text backup.
+
 | File | Size | Pages | SHA256 |
 |---|---:|---:|---|
 | cover_letter_draft.pdf | 13714 | 1 | 23b95dd5349c37faa06386e15dc0d7251cd4f5782820c8e23922187a2c31ad36 |
+| highlights.pdf | 8138 | 1 | 2a89dea2fa95a224752c978013a36e0982846e7dab9e0ee001274394a037a44c |
 | highlights.txt | 312 |  | 65b2485340f79b9259ae4741948a3b68ac95a25d39f57b194a9c51d0affe28af |
 | main_anonymized.pdf | 1058509 | 47 | 72c547dc4f9d01b8ef0a79815992638d9457a99f8fb270fbef04e0471c1ef1dc |
 | mwfas_reproducibility_artifact_anonymous.zip | 147077 |  | 3bbb70a1027eae59205c1437064bd1b9aaff1a3e114e8a795bb9f3a2b456e924 |
