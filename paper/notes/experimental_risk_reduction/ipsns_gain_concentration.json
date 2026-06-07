@@ -1,0 +1,95 @@
+{
+  "n_instances": 105,
+  "n_ipsns_improves_over_lrta": 16,
+  "n_ties": 89,
+  "n_ipsns_worse": 0,
+  "mean_improvement_abs": 581.4762,
+  "median_improvement_abs": 0.0,
+  "q1_improvement_abs": 0.0,
+  "q3_improvement_abs": 0.0,
+  "mean_improvement_rel_pct": 0.6318,
+  "median_improvement_rel_pct": 0.0,
+  "top10_instances": [
+    {
+      "instance": "rd_big",
+      "improvement_abs": 35707.0,
+      "improvement_rel_pct": 3.2557,
+      "n": 1000,
+      "m": 2999,
+      "density": 0.003002
+    },
+    {
+      "instance": "rd_1024_2048_1",
+      "improvement_abs": 10838.0,
+      "improvement_rel_pct": 3.6592,
+      "n": 1024,
+      "m": 2047,
+      "density": 0.001954
+    },
+    {
+      "instance": "gr10",
+      "improvement_abs": 3954.0,
+      "improvement_rel_pct": 6.333,
+      "n": 47,
+      "m": 83,
+      "density": 0.03839
+    },
+    {
+      "instance": "dsip",
+      "improvement_abs": 3744.0,
+      "improvement_rel_pct": 5.6551,
+      "n": 4079,
+      "m": 6602,
+      "density": 0.000397
+    },
+    {
+      "instance": "s38584",
+      "improvement_abs": 2783.0,
+      "improvement_rel_pct": 0.4967,
+      "n": 20349,
+      "m": 34562,
+      "density": 8.3e-05
+    },
+    {
+      "instance": "s38417",
+      "improvement_abs": 1433.0,
+      "improvement_rel_pct": 0.4106,
+      "n": 24255,
+      "m": 34876,
+      "density": 5.9e-05
+    },
+    {
+      "instance": "s5378",
+      "improvement_abs": 758.0,
+      "improvement_rel_pct": 8.6421,
+      "n": 3076,
+      "m": 4589,
+      "density": 0.000485
+    },
+    {
+      "instance": "s953",
+      "improvement_abs": 557.0,
+      "improvement_rel_pct": 8.2093,
+      "n": 730,
+      "m": 1090,
+      "density": 0.002048
+    },
+    {
+      "instance": "s382",
+      "improvement_abs": 399.0,
+      "improvement_rel_pct": 3.6764,
+      "n": 273,
+      "m": 438,
+      "density": 0.005899
+    },
+    {
+      "instance": "r1000",
+      "improvement_abs": 320.0,
+      "improvement_rel_pct": 7.3143,
+      "n": 999,
+      "m": 3960,
+      "density": 0.003972
+    }
+  ],
+  "note": "Graph structural features (SCC counts) not pre-computed in committed files; density = m/n(n-1) available for instances with n, m."
+}

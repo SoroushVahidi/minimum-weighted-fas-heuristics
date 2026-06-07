@@ -1,0 +1,48 @@
+{
+  "source": "EXP4 sparse external benchmark (standard 97-instance set, status=ok only)",
+  "algorithms": {
+    "IPSNS": {
+      "n_completed": 123,
+      "mean_bw": 31663.7967,
+      "median_bw": 5118.0,
+      "mean_rt_s": 17.337833,
+      "median_rt_s": 0.018647
+    },
+    "LR-TA": {
+      "n_completed": 123,
+      "mean_bw": 32164.6098,
+      "median_bw": 5118.0,
+      "mean_rt_s": 0.064093,
+      "median_rt_s": 0.001107
+    },
+    "WMSF": {
+      "n_completed": 123,
+      "mean_bw": 33550.1301,
+      "median_bw": 5118.0,
+      "mean_rt_s": 1.036137,
+      "median_rt_s": 0.00122
+    },
+    "DRMacIver/FAS": {
+      "n_completed": 119,
+      "mean_bw": 46874.9664,
+      "median_bw": 6216.0,
+      "mean_rt_s": 3.733406,
+      "median_rt_s": 0.122527
+    },
+    "igraph Eades": {
+      "n_completed": 123,
+      "mean_bw": 79740.7561,
+      "median_bw": 7114.0,
+      "mean_rt_s": 0.004967,
+      "median_rt_s": 0.000698
+    },
+    "Weighted Eades": {
+      "n_completed": 115,
+      "mean_bw": 88641.4348,
+      "median_bw": 12414.0,
+      "mean_rt_s": 0.095303,
+      "median_rt_s": 0.000672
+    }
+  },
+  "note": "IPSNS runtime ~22 s is the full SCC-refinement budget. LR-TA ~0.08 s is seed-only. WMSF ~1.3 s includes weighted seed construction. DRMacIver/FAS ~4 s via external wrapper on 93/97 completed. True budget curve (quality vs. iteration count) requires a new experiment."
+}

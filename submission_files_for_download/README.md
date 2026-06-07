@@ -8,6 +8,6 @@ This folder contains non-anonymized files (title_page.pdf and cover_letter_draft
 |---|---:|---:|---|
 | cover_letter_draft.pdf | 13292 | 1 | e2be34bb67e25da5093d52debf754b942e330a984e39c377e060f5479f609223 |
 | highlights.txt | 312 |  | 65b2485340f79b9259ae4741948a3b68ac95a25d39f57b194a9c51d0affe28af |
-| main_anonymized.pdf | 201352 | 39 | b2408fe7cbd1a8de77591cf1664b1861caa564275e37aba01eaf392f03b01651 |
+| main_anonymized.pdf | 205553 | 41 | 528ba27713d3f1241e35344c0b06977395bb0f80689f5f5eb0e47c13d987357d |
 | mwfas_reproducibility_artifact_anonymous.zip | 147077 |  | 3bbb70a1027eae59205c1437064bd1b9aaff1a3e114e8a795bb9f3a2b456e924 |
 | title_page.pdf | 27665 | 2 | e136e8c753d4f8dcbea561d8ce7511085c13ea99a420a9a369d08d294f6be7f1 |

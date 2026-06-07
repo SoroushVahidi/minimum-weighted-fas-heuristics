@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Paired statistical tests comparing IPSNS against each baseline on
+common completed instances of the standard sparse benchmark.
+Improvement is the per-instance reduction in backward weight achieved by IPSNS
+(positive values indicate IPSNS attains a lower backward weight).
+The Wilcoxon signed-rank test and sign test are two-sided and
+provide distributional support for the observed differences;
+they do not replace exact optimality certificates.}
+\label{tab:paired_sparse_tests}
+\begin{tabular}{lrrrrrr}
+\toprule
+Comparison & $n$ & W & T & L & Med.\ $\Delta$BW & $p$ (Wilcoxon / Sign) \\
+\midrule
+IPSNS vs LR-TA          & 105 & 16 & 89 &  0 & 0   & ${<}0.001$ / ${<}0.001$ \\
+IPSNS vs WMSF           & 105 & 36 & 69 &  0 & 0   & ${<}0.001$ / ${<}0.001$ \\
+IPSNS vs DRMacIver/FAS  & 101 & 37 & 56 &  8 & 0   & ${<}0.001$ / ${<}0.001$ \\
+IPSNS vs igraph Eades   & 105 & 59 & 41 &  5 & 92  & ${<}0.001$ / ${<}0.001$ \\
+IPSNS vs Weighted Eades &  97 & 55 & 42 &  0 & 859 & ${<}0.001$ / ${<}0.001$ \\
+\bottomrule
+\multicolumn{7}{p{0.95\linewidth}}{\footnotesize
+W\,=\,wins (IPSNS lower BW), T\,=\,ties, L\,=\,losses.
+Med.\ $\Delta$BW is the per-instance median improvement in backward-weight units.
+DRMacIver/FAS has 101 paired instances (four sparse incompletions excluded).
+IPSNS never loses to LR-TA or WMSF (zero losses), consistent with the non-degradation invariant.} \\
+\end{tabular}
+\end{table}

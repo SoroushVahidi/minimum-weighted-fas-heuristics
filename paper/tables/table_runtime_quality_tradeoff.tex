@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Runtime and backward-weight quality summary for the main algorithms
+on the standard sparse benchmark (EXP4, completed instances only, lower BW is better).
+Runtime is wall-clock seconds; mean and median are computed over completed instances.}
+\label{tab:runtime_quality_tradeoff}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Algorithm & $n$ compl. & Mean BW & Median BW & Mean RT (s) & Median RT (s) \\
+\midrule
+IPSNS & 123 & 31,664 & 5,118 & 17.338 & 0.019 \\
+LR-TA & 123 & 32,165 & 5,118 & 0.064 & 0.001 \\
+WMSF & 123 & 33,550 & 5,118 & 1.036 & 0.001 \\
+DRMacIver/FAS & 119 & 46,875 & 6,216 & 3.733 & 0.123 \\
+Weighted Eades & 115 & 88,641 & 12,414 & 0.095 & 0.001 \\
+igraph Eades & 123 & 79,741 & 7,114 & 0.005 & 0.001 \\
+\bottomrule
+\end{tabular}
+\end{table}

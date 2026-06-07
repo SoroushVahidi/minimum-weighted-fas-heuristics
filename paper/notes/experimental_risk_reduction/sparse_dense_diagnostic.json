@@ -1,0 +1,61 @@
+{
+  "sparse_benchmark": {
+    "label": "Standard sparse benchmark (EXP4, 97-instance set)",
+    "ipsns_vs_drmaciver": {
+      "n": 101,
+      "wins_a": 37,
+      "wins_b": 8,
+      "ties": 56,
+      "mean_bw_a": 27206.1,
+      "mean_bw_b": 48613.72,
+      "mean_rt_a_s": 1.827,
+      "mean_rt_b_s": 3.683
+    }
+  },
+  "dense_lolib": {
+    "label": "Dense LOLIB benchmark (EXP5, 50 instances)",
+    "ipsns_vs_drmaciver": {
+      "n": 50,
+      "wins_a": 5,
+      "wins_b": 45,
+      "ties": 0,
+      "mean_bw_a": 582353.56,
+      "mean_bw_b": 571687.14,
+      "mean_rt_a_s": 37.9224,
+      "mean_rt_b_s": 1.0122
+    },
+    "per_family": {
+      "SGB": {
+        "n": 25,
+        "wins_a": 1,
+        "wins_b": 24,
+        "ties": 0,
+        "mean_bw_a": 1048055.68,
+        "mean_bw_b": 1036084.64,
+        "mean_rt_a_s": 7.0257,
+        "mean_rt_b_s": 0.9438
+      },
+      "RandA1": {
+        "n": 15,
+        "wins_a": 0,
+        "wins_b": 15,
+        "ties": 0,
+        "mean_bw_a": 169755.07,
+        "mean_bw_b": 156909.4,
+        "mean_rt_a_s": 113.2543,
+        "mean_rt_b_s": 1.276
+      },
+      "IO": {
+        "n": 10,
+        "wins_a": 4,
+        "wins_b": 6,
+        "ties": 0,
+        "mean_bw_a": 36996.0,
+        "mean_bw_b": 32860.0,
+        "mean_rt_a_s": 2.166,
+        "mean_rt_b_s": 0.7875
+      }
+    }
+  },
+  "interpretation": "On the sparse benchmark IPSNS wins more instances than DRMacIver/FAS. On dense LOLIB DRMacIver/FAS wins more instances. This supports the structural narrative: IPSNS is SCC-refinement oriented (sparse), DRMacIver/FAS is matrix-based pairwise-ordering (dense-friendly)."
+}
