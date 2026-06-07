@@ -36,11 +36,11 @@ The sparse and dense comparison studies also include five additional baselines:
     \item the DRMacIver/FAS tool \cite{drmaciver_feedback_arc_set}, treated as an external wrapper around an open-source specialized algorithm;
     \item python-igraph's Eades-style feedback arc interface \cite{python_igraph_feedback_arc_set};
     \item a weighted Eades adaptation implemented locally and described explicitly as an adaptation rather than as the original \cite{ELS93} algorithm;
-    \item Borda net-score ordering;
+    \item Borda net-score ordering \cite{CFR10};
     \item random multistart ranking.
 \end{itemize}
 
-This baseline mix is deliberate. It does not attempt to exhaust every recent ranking model or every exact solver. In particular, it does not include a learned model such as GNNRank, nor does it include a commercial exact solver for the full sparse dataset. Those omissions are stated explicitly. The intended comparison surface is the ecosystem of deterministic or near-deterministic weighted-digraph heuristics and accessible external tools that a practitioner could reasonably invoke without building a separate learning or solver pipeline.
+This baseline mix is deliberate. It does not attempt to exhaust every recent ranking model or every exact solver. In particular, it does not include a learned model such as GNNRank \cite{GNNRank22}, a memetic linear-ordering solver such as LOP\_MA-EDM \cite{lop_ma_edm_repo}, or the recent minimal-and-stable weighted feedback arc set heuristic of Cavallaro and Cutello \cite{CC25}. Those omissions are stated explicitly. The intended comparison surface is the ecosystem of deterministic or near-deterministic weighted-digraph heuristics and accessible external tools that a practitioner could reasonably invoke without building a separate learning or solver pipeline.
 
 Several fairness rules govern the comparisons. First, all quality comparisons use the same backward-weight objective on the original nonnegative arc weights. Second, official external methods and local adaptations are distinguished explicitly. The weighted Eades method is an adaptation of the unweighted Eades idea \cite{ELS93}; it is not presented as an official external implementation. Third, DRMacIver/FAS is reported exactly as it was run in the study. The sparse comparison therefore retains its four incompletions on the standard set, and the dense comparison retains its strong overall performance. Finally, outcomes are interpreted in scope: losing to a tournament-native method on dense LOLIB is not treated as evidence against the sparse-graph claim, and strong sparse performance is not used to imply dense linear-ordering dominance.
 
