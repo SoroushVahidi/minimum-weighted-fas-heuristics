@@ -3,15 +3,17 @@
 
 \begin{document}
 
-\begin{letter}{Editor\\Computers \& Industrial Engineering}
+\begin{letter}{Editors\\EURO Journal on Computational Optimization}
 
-\opening{Dear Editor,}
+\opening{Dear Editors,}
 
-Please consider our manuscript, ``A Reproducible Local-Ratio and SCC-Refinement Framework for Weighted Ordering in Directed Graphs,'' for publication in \textit{Computers \& Industrial Engineering}.
+Please consider our manuscript, ``Local-Ratio Seeding and SCC-Based Refinement for the Minimum Weighted Feedback Arc Set Problem,'' for publication as a Research Article in the \textit{EURO Journal on Computational Optimization}.
 
-The paper studies the minimum weighted feedback arc set problem on nonnegative weighted directed graphs through a reproducible computational methodology for weighted ordering. The manuscript contributes an engineered local-ratio topological add-back seed, a complementary weighted seed, and an incumbent-protected refinement over strongly connected components. The empirical study combines exact validation on small instances, component ablation, external baseline comparisons on sparse benchmark graphs, a public application-facing ordering example, and a dense transfer study on instances from the Linear Ordering Problem Library. These public datasets are used as reproducible surrogates for precedence-conflict resolution, dependency repair, and workflow-coordination settings where industrial data are often proprietary or lack standardized conflict weights. The resulting contribution is a scope-bounded heuristic framework: it is strongest on sparse nonnegative weighted digraphs, while the dense LOLIB study explicitly marks a regime where a matrix-based pairwise-ordering external method is stronger.
+The manuscript develops computational methods for a combinatorial optimization problem and sits at the intersection of operations research and computer science. It combines heuristic design with extensive computational validation: a local-ratio seed with topological add-back, a complementary constructive seed, and an incumbent-protected SCC-local destroy-and-repair refinement. The evaluation includes exact validation, external baselines, ablation, runtime-budget analysis, and a dense-transfer study, so the claims are supported by multiple complementary evidence sources rather than by a new approximation theorem.
 
-The submission package includes a double-anonymized review manuscript and is prepared to reference an anonymous reproducibility artifact for review. The work is original, has not been published previously, and is not under consideration elsewhere. The manuscript states that the study received no specific external funding, and it includes the required declaration regarding the use of AI-assisted tools in manuscript preparation.
+The strongest numerical evidence is as follows: the framework matches the certified optimum on 56 of 57 exact-validation instances, with a mean exact-validation gap of approximately 0.0006\%, and it achieves the best tested result on 96 of 97 standard nonnegative sparse benchmark instances. We report the dense LOLIB transfer result transparently as a structural scope boundary, where a matrix-oriented method is stronger.
+
+The submission is original, is not under consideration elsewhere, and has been approved by all authors. The authors declare that they have no competing interests. A reproducibility package accompanies the paper, including the implementation, experiment scripts, manifests, processed results, and supplementary artifact.
 
 Thank you for your consideration.
 

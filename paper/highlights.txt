@@ -1,5 +1,5 @@
-- Reproducible heuristics for weighted directed ordering are developed
-- Strongly connected refinement improves local-ratio seed solutions
-- Exact small-instance tests show near-optimal ordering quality
-- Sparse benchmarks outperform tested external baselines
-- Dense LOLIB results define a clear scope boundary
+- LR-TA combines local-ratio reduction with topological add-back.
+- IPSNS performs incumbent-protected SCC-local destroy-and-repair refinement.
+- Exact validation matches 56 of 57 certified optima.
+- Best tested result on 96 of 97 sparse nonnegative instances.
+- Dense LOLIB tests reveal a matrix-oriented regime boundary.
