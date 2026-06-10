@@ -1,0 +1,551 @@
+{
+  "n_runs": 140,
+  "parameter_comparisons": {
+    "iters": {
+      "varied_param": "iters",
+      "n_comparisons": 30,
+      "wins_vs_baseline_lower_bw": 0,
+      "ties": 30,
+      "losses_vs_baseline_higher_bw": 0,
+      "mean_delta_bw": 0.0,
+      "median_delta_bw": 0.0,
+      "mean_runtime_ratio_vs_baseline": 0.6257340480339714,
+      "any_effect": false,
+      "by_config_value": {
+        "iters_100": {
+          "wins": 0,
+          "ties": 10,
+          "losses": 0,
+          "mean_delta_bw": 0.0,
+          "any_effect": false
+        },
+        "iters_200": {
+          "wins": 0,
+          "ties": 10,
+          "losses": 0,
+          "mean_delta_bw": 0.0,
+          "any_effect": false
+        },
+        "iters_600": {
+          "wins": 0,
+          "ties": 10,
+          "losses": 0,
+          "mean_delta_bw": 0.0,
+          "any_effect": false
+        }
+      }
+    },
+    "topk_scc": {
+      "varied_param": "topk_scc",
+      "n_comparisons": 30,
+      "wins_vs_baseline_lower_bw": 0,
+      "ties": 30,
+      "losses_vs_baseline_higher_bw": 0,
+      "mean_delta_bw": 0.0,
+      "median_delta_bw": 0.0,
+      "mean_runtime_ratio_vs_baseline": 0.8018603252435063,
+      "any_effect": false,
+      "by_config_value": {
+        "topk_10": {
+          "wins": 0,
+          "ties": 10,
+          "losses": 0,
+          "mean_delta_bw": 0.0,
+          "any_effect": false
+        },
+        "topk_20": {
+          "wins": 0,
+          "ties": 10,
+          "losses": 0,
+          "mean_delta_bw": 0.0,
+          "any_effect": false
+        },
+        "topk_5": {
+          "wins": 0,
+          "ties": 10,
+          "losses": 0,
+          "mean_delta_bw": 0.0,
+          "any_effect": false
+        }
+      }
+    },
+    "destroy_addback_frac": {
+      "varied_param": "destroy_addback_frac",
+      "n_comparisons": 30,
+      "wins_vs_baseline_lower_bw": 2,
+      "ties": 25,
+      "losses_vs_baseline_higher_bw": 3,
+      "mean_delta_bw": -1.7,
+      "median_delta_bw": 0.0,
+      "mean_runtime_ratio_vs_baseline": 0.8938940430836434,
+      "any_effect": true,
+      "by_config_value": {
+        "addback_0.15": {
+          "wins": 1,
+          "ties": 8,
+          "losses": 1,
+          "mean_delta_bw": -3.1,
+          "any_effect": true
+        },
+        "addback_0.25": {
+          "wins": 1,
+          "ties": 8,
+          "losses": 1,
+          "mean_delta_bw": -7.3,
+          "any_effect": true
+        },
+        "addback_0.35": {
+          "wins": 0,
+          "ties": 9,
+          "losses": 1,
+          "mean_delta_bw": 5.3,
+          "any_effect": true
+        }
+      }
+    },
+    "destroy_remove_frac": {
+      "varied_param": "destroy_remove_frac",
+      "n_comparisons": 20,
+      "wins_vs_baseline_lower_bw": 1,
+      "ties": 18,
+      "losses_vs_baseline_higher_bw": 1,
+      "mean_delta_bw": -1.2,
+      "median_delta_bw": 0.0,
+      "mean_runtime_ratio_vs_baseline": 0.8055842022385565,
+      "any_effect": true,
+      "by_config_value": {
+        "remove_0.01": {
+          "wins": 1,
+          "ties": 9,
+          "losses": 0,
+          "mean_delta_bw": -2.8,
+          "any_effect": true
+        },
+        "remove_0.05": {
+          "wins": 0,
+          "ties": 9,
+          "losses": 1,
+          "mean_delta_bw": 0.4,
+          "any_effect": true
+        }
+      }
+    },
+    "rng_seed": {
+      "varied_param": "rng_seed",
+      "n_comparisons": 20,
+      "wins_vs_baseline_lower_bw": 0,
+      "ties": 20,
+      "losses_vs_baseline_higher_bw": 0,
+      "mean_delta_bw": 0.0,
+      "median_delta_bw": 0.0,
+      "mean_runtime_ratio_vs_baseline": 0.805288512697101,
+      "any_effect": false,
+      "by_config_value": {
+        "rng_2": {
+          "wins": 0,
+          "ties": 10,
+          "losses": 0,
+          "mean_delta_bw": 0.0,
+          "any_effect": false
+        },
+        "rng_3": {
+          "wins": 0,
+          "ties": 10,
+          "losses": 0,
+          "mean_delta_bw": 0.0,
+          "any_effect": false
+        }
+      }
+    }
+  },
+  "iteration_budget": {
+    "budgets_tested": [
+      100,
+      200,
+      400,
+      600
+    ],
+    "per_budget": {
+      "100": {
+        "n_instances": 10,
+        "mean_final_bw": 4239.2,
+        "median_final_bw": 877.0,
+        "wins_ties_losses_vs_baseline400": [
+          0,
+          10,
+          0
+        ],
+        "per_instance": {
+          "bad": {
+            "final_bw": 1.0,
+            "baseline_bw": 1.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.001484,
+            "quality_per_runtime": 0.0
+          },
+          "bad1": {
+            "final_bw": 94.0,
+            "baseline_bw": 94.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.00309,
+            "quality_per_runtime": 0.0
+          },
+          "bad2": {
+            "final_bw": 180.0,
+            "baseline_bw": 180.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.00293,
+            "quality_per_runtime": 0.0
+          },
+          "bad3": {
+            "final_bw": 1519.0,
+            "baseline_bw": 1519.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.001859,
+            "quality_per_runtime": 0.0
+          },
+          "bad4": {
+            "final_bw": 877.0,
+            "baseline_bw": 877.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.002868,
+            "quality_per_runtime": 0.0
+          },
+          "bad5": {
+            "final_bw": 770.0,
+            "baseline_bw": 770.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.002744,
+            "quality_per_runtime": 0.0
+          },
+          "bad6": {
+            "final_bw": 218.0,
+            "baseline_bw": 218.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.002708,
+            "quality_per_runtime": 0.0
+          },
+          "bad7": {
+            "final_bw": 1724.0,
+            "baseline_bw": 1724.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.00442,
+            "quality_per_runtime": 0.0
+          },
+          "grid": {
+            "final_bw": 32954.0,
+            "baseline_bw": 32954.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.224889,
+            "quality_per_runtime": 0.0
+          },
+          "r1000": {
+            "final_bw": 4055.0,
+            "baseline_bw": 4055.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 14.898492,
+            "quality_per_runtime": 0.0
+          }
+        }
+      },
+      "200": {
+        "n_instances": 10,
+        "mean_final_bw": 4239.2,
+        "median_final_bw": 877.0,
+        "wins_ties_losses_vs_baseline400": [
+          0,
+          10,
+          0
+        ],
+        "per_instance": {
+          "bad": {
+            "final_bw": 1.0,
+            "baseline_bw": 1.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.002653,
+            "quality_per_runtime": 0.0
+          },
+          "bad1": {
+            "final_bw": 94.0,
+            "baseline_bw": 94.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.005638,
+            "quality_per_runtime": 0.0
+          },
+          "bad2": {
+            "final_bw": 180.0,
+            "baseline_bw": 180.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.005119,
+            "quality_per_runtime": 0.0
+          },
+          "bad3": {
+            "final_bw": 1519.0,
+            "baseline_bw": 1519.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.003097,
+            "quality_per_runtime": 0.0
+          },
+          "bad4": {
+            "final_bw": 877.0,
+            "baseline_bw": 877.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.004732,
+            "quality_per_runtime": 0.0
+          },
+          "bad5": {
+            "final_bw": 770.0,
+            "baseline_bw": 770.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.004823,
+            "quality_per_runtime": 0.0
+          },
+          "bad6": {
+            "final_bw": 218.0,
+            "baseline_bw": 218.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.004655,
+            "quality_per_runtime": 0.0
+          },
+          "bad7": {
+            "final_bw": 1724.0,
+            "baseline_bw": 1724.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.007557,
+            "quality_per_runtime": 0.0
+          },
+          "grid": {
+            "final_bw": 32954.0,
+            "baseline_bw": 32954.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.301452,
+            "quality_per_runtime": 0.0
+          },
+          "r1000": {
+            "final_bw": 4055.0,
+            "baseline_bw": 4055.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 29.192075,
+            "quality_per_runtime": 0.0
+          }
+        }
+      },
+      "400": {
+        "n_instances": 110,
+        "mean_final_bw": 4238.518181818182,
+        "median_final_bw": 877.0,
+        "wins_ties_losses_vs_baseline400": [
+          1,
+          8,
+          1
+        ],
+        "per_instance": {
+          "bad": {
+            "final_bw": 1.0,
+            "baseline_bw": 1.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.231834,
+            "quality_per_runtime": 0.0
+          },
+          "bad1": {
+            "final_bw": 94.0,
+            "baseline_bw": 94.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.010609,
+            "quality_per_runtime": 0.0
+          },
+          "bad2": {
+            "final_bw": 180.0,
+            "baseline_bw": 180.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.009312,
+            "quality_per_runtime": 0.0
+          },
+          "bad3": {
+            "final_bw": 1519.0,
+            "baseline_bw": 1519.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.005244,
+            "quality_per_runtime": 0.0
+          },
+          "bad4": {
+            "final_bw": 877.0,
+            "baseline_bw": 877.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.009581,
+            "quality_per_runtime": 0.0
+          },
+          "bad5": {
+            "final_bw": 770.0,
+            "baseline_bw": 770.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.008758,
+            "quality_per_runtime": 0.0
+          },
+          "bad6": {
+            "final_bw": 218.0,
+            "baseline_bw": 218.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.008734,
+            "quality_per_runtime": 0.0
+          },
+          "bad7": {
+            "final_bw": 1724.0,
+            "baseline_bw": 1724.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.014003,
+            "quality_per_runtime": 0.0
+          },
+          "grid": {
+            "final_bw": 32957.0,
+            "baseline_bw": 32954.0,
+            "delta_bw": 3.0,
+            "runtime_sec": 0.438153,
+            "quality_per_runtime": -6.846923334999418
+          },
+          "r1000": {
+            "final_bw": 4021.0,
+            "baseline_bw": 4055.0,
+            "delta_bw": -34.0,
+            "runtime_sec": 46.686369,
+            "quality_per_runtime": 0.7282639607290942
+          }
+        }
+      },
+      "600": {
+        "n_instances": 10,
+        "mean_final_bw": 4239.2,
+        "median_final_bw": 877.0,
+        "wins_ties_losses_vs_baseline400": [
+          0,
+          10,
+          0
+        ],
+        "per_instance": {
+          "bad": {
+            "final_bw": 1.0,
+            "baseline_bw": 1.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.00573,
+            "quality_per_runtime": 0.0
+          },
+          "bad1": {
+            "final_bw": 94.0,
+            "baseline_bw": 94.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.015086,
+            "quality_per_runtime": 0.0
+          },
+          "bad2": {
+            "final_bw": 180.0,
+            "baseline_bw": 180.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.013557,
+            "quality_per_runtime": 0.0
+          },
+          "bad3": {
+            "final_bw": 1519.0,
+            "baseline_bw": 1519.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.00778,
+            "quality_per_runtime": 0.0
+          },
+          "bad4": {
+            "final_bw": 877.0,
+            "baseline_bw": 877.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.013277,
+            "quality_per_runtime": 0.0
+          },
+          "bad5": {
+            "final_bw": 770.0,
+            "baseline_bw": 770.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.013027,
+            "quality_per_runtime": 0.0
+          },
+          "bad6": {
+            "final_bw": 218.0,
+            "baseline_bw": 218.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.012242,
+            "quality_per_runtime": 0.0
+          },
+          "bad7": {
+            "final_bw": 1724.0,
+            "baseline_bw": 1724.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.020954,
+            "quality_per_runtime": 0.0
+          },
+          "grid": {
+            "final_bw": 32954.0,
+            "baseline_bw": 32954.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 0.615578,
+            "quality_per_runtime": 0.0
+          },
+          "r1000": {
+            "final_bw": 4055.0,
+            "baseline_bw": 4055.0,
+            "delta_bw": 0.0,
+            "runtime_sec": 87.045498,
+            "quality_per_runtime": 0.0
+          }
+        }
+      }
+    },
+    "min_budget_matching_best_per_instance": {
+      "bad": 100,
+      "bad1": 100,
+      "bad2": 100,
+      "bad3": 100,
+      "bad4": 100,
+      "bad5": 100,
+      "bad6": 100,
+      "bad7": 100,
+      "grid": 100,
+      "r1000": 400
+    },
+    "instances_matching_best_at_budget": {
+      "100": 9,
+      "200": 9,
+      "400": 10,
+      "600": 9
+    },
+    "budget_matching_all_10": 400,
+    "budget_matching_at_least_90pct": 100
+  },
+  "rng_robustness": {
+    "seeds_used": [
+      1,
+      2,
+      3
+    ],
+    "n_configs_with_multiple_seeds": 1,
+    "note": "Only baseline configuration replicated across seeds 1,2,3; all other configs use seed 1 only.",
+    "per_seed_mean_bw": {
+      "1": 4239.2,
+      "2": 4239.2,
+      "3": 4239.2
+    }
+  },
+  "tolerance": {
+    "values_tested": [
+      1e-12
+    ],
+    "note": "No tolerance variation in stage-1 design; all runs used 1e-12."
+  },
+  "exp2_seed_bw_reference": {
+    "bad1": 94.0,
+    "bad2": 180.0,
+    "bad3": 1519.0,
+    "bad4": 877.0,
+    "bad5": 770.0,
+    "bad6": 218.0,
+    "bad7": 1724.0,
+    "bad": 1.0,
+    "grid": 32957.0,
+    "r1000": 4375.0
+  }
+}

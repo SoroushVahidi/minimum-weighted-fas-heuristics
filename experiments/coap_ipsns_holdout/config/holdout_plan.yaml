@@ -1,0 +1,51 @@
+# COAP IPSNS stage-2: stratified tuning + holdout validation
+# Pre-registered before launch (2026-06-10)
+
+experiment_id: coap_ipsns_holdout
+stage1_reference: experiments/coap_ipsns_sensitivity/summary/analysis_summary.json
+
+splits:
+  tuning: experiments/coap_ipsns_holdout/config/tuning_instances.csv
+  holdout: experiments/coap_ipsns_holdout/config/holdout_instances.csv
+
+baseline_params:
+  topk_scc: 15
+  destroy_addback_frac: 0.30
+  destroy_remove_frac: 0.02
+  tol: 1.0e-12
+  wmsf_seed_mode: full
+  seed_ordering: L2
+  scc_select_mode: weighted
+
+rng_seeds: [1, 2, 3, 4, 5]
+
+candidate_configs:
+  seed_only:
+    iters: 0
+    description: Best internal seed without IPSNS refinement (iters=0)
+  iters_10:
+    iters: 10
+  iters_50:
+    iters: 50
+  iters_400:
+    iters: 400
+    description: Legacy manuscript default budget
+  iters_50_topk5:
+    iters: 50
+    topk_scc: 5
+  iters_50_addback25:
+    iters: 50
+    destroy_addback_frac: 0.25
+
+selection_rules_post_hoc:
+  - Primary metric on tuning split: median normalized improvement vs best seed (return_info.best_seed_bw)
+  - Require zero incumbent violations vs best seed on every tuning instance and seed
+  - Prefer smallest iteration budget among configs tied within 1e-9 absolute BW on >=90% of tuning instances
+  - Holdout split used only for confirmation; not for re-ranking beyond pre-registered finalists
+  - Finalists for holdout reporting: top 3 tuning configs by median improvement plus legacy iters_400
+
+output_root: experiments/coap_ipsns_holdout
+checkpoints_dir: experiments/coap_ipsns_holdout/checkpoints/runs
+results_jsonl: experiments/coap_ipsns_holdout/results/runs.jsonl
+failures_jsonl: experiments/coap_ipsns_holdout/results/failures.jsonl
+manifest_json: experiments/coap_ipsns_holdout/results/run_manifest.json

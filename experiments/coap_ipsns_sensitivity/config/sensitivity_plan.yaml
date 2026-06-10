@@ -1,0 +1,40 @@
+# COAP IPSNS parameter sensitivity (reduced one-at-a-time design)
+#
+# Rationale: a full Cartesian product of configs/sensitivity.yaml would be
+# 4×3×3×4×3 = 432 configs per instance. We instead hold manuscript defaults
+# fixed and vary one parameter at a time on the EXP2 representative subset
+# (10 instances), plus two RNG replicates at the baseline configuration.
+
+experiment_id: coap_ipsns_sensitivity
+description: >
+  One-at-a-time IPSNS sensitivity around manuscript defaults on the EXP2
+  ablation subset. Supports COAP parameter-justification without claiming
+  universal optimality.
+
+instance_list: experiments/coap_ipsns_sensitivity/config/instances.csv
+
+# Manuscript / implementation defaults (run_ipsns.py)
+baseline:
+  iters: 400
+  topk_scc: 15
+  destroy_addback_frac: 0.30
+  destroy_remove_frac: 0.02
+  tol: 1.0e-12
+  rng_seed: 1
+  wmsf_seed_mode: full
+  seed_ordering: L2
+  scc_select_mode: weighted
+
+# One-at-a-time sweeps (each list excludes the baseline value where noted)
+oat_variations:
+  iters: [100, 200, 600]
+  topk_scc: [5, 10, 20]
+  destroy_addback_frac: [0.15, 0.25, 0.35]
+  destroy_remove_frac: [0.01, 0.05]
+  rng_seed: [2, 3]
+
+output_root: experiments/coap_ipsns_sensitivity
+checkpoints_dir: experiments/coap_ipsns_sensitivity/checkpoints/runs
+results_jsonl: experiments/coap_ipsns_sensitivity/results/runs.jsonl
+failures_jsonl: experiments/coap_ipsns_sensitivity/results/failures.jsonl
+manifest_json: experiments/coap_ipsns_sensitivity/results/run_manifest.json

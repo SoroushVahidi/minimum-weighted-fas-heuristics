@@ -1,0 +1,22 @@
+{
+  "source": "/home/soroush/minimum-weighted-fas-heuristics/experiments/exp1b_core_benchmark_full_wmsf_seed/tables/exp1b_core_benchmark_paper_summary.csv",
+  "excluded_exp2_instances": [
+    "bad",
+    "bad1",
+    "bad2",
+    "bad3",
+    "bad4",
+    "bad5",
+    "bad6",
+    "bad7",
+    "grid",
+    "r1000"
+  ],
+  "required_holdout": [
+    "r20_60"
+  ],
+  "eligible_pool_size": 87,
+  "tuning_count": 18,
+  "holdout_count": 25,
+  "overlap": []
+}
