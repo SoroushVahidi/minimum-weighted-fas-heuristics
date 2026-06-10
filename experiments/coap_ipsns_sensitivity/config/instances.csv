@@ -1,0 +1,11 @@
+instance,file_path,source
+bad1,/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad1.d,exp2_ablation
+bad2,/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad2.d,exp2_ablation
+bad3,/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad3.d,exp2_ablation
+bad4,/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad4.d,exp2_ablation
+bad5,/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad5.d,exp2_ablation
+bad6,/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad6.d,exp2_ablation
+bad7,/home/soroush/benchmark_sources/graph-benchmarks/core-bad/bad7.d,exp2_ablation
+bad,/home/soroush/benchmark_sources/graph-benchmarks/core/bad.d,exp2_ablation
+grid,/home/soroush/benchmark_sources/graph-benchmarks/core-big/grid.d,exp2_ablation
+r1000,/home/soroush/benchmark_sources/graph-benchmarks/core-big/r1000.d,exp2_ablation
