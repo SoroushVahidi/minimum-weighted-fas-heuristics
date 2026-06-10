@@ -1,0 +1,4 @@
+[graph-benchmarks root]/core-bad/bad1.d
+[graph-benchmarks root]/core/complete3.d
+[graph-benchmarks root]/core-big/grid.d
+[graph-benchmarks root]/core-big/r1000.d

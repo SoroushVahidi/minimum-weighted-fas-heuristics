@@ -1,0 +1,10 @@
+[graph-benchmarks root]/core-bad/bad1.d
+[graph-benchmarks root]/core-bad/bad2.d
+[graph-benchmarks root]/core-bad/bad3.d
+[graph-benchmarks root]/core-bad/bad4.d
+[graph-benchmarks root]/core-bad/bad5.d
+[graph-benchmarks root]/core-bad/bad6.d
+[graph-benchmarks root]/core-bad/bad7.d
+[graph-benchmarks root]/core/bad.d
+[graph-benchmarks root]/core-big/grid.d
+[graph-benchmarks root]/core-big/r1000.d

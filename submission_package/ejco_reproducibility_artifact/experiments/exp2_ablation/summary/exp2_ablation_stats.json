@@ -1,0 +1,50 @@
+{
+  "lrta_full": {
+    "mean_bw": 4271.5,
+    "median_bw": 823.5,
+    "mean_runtime": 0.046650000000000004,
+    "n_ok": 10
+  },
+  "wmsf_seed": {
+    "mean_bw": 4332.5,
+    "median_bw": 823.5,
+    "mean_runtime": 0.040440000000000004,
+    "n_ok": 10
+  },
+  "best_seed_no_lns": {
+    "mean_bw": 4271.5,
+    "median_bw": 823.5,
+    "mean_runtime": 0.06910000000000001,
+    "n_ok": 10
+  },
+  "ipsns_50iters": {
+    "mean_bw": 4239.2,
+    "median_bw": 823.5,
+    "mean_runtime": 0.77803,
+    "n_ok": 10
+  },
+  "ipsns_100iters": {
+    "mean_bw": 4239.2,
+    "median_bw": 823.5,
+    "mean_runtime": 1.50016,
+    "n_ok": 10
+  },
+  "ipsns_full": {
+    "mean_bw": 4239.2,
+    "median_bw": 823.5,
+    "mean_runtime": 5.733569999999999,
+    "n_ok": 10
+  },
+  "lr_no_addback": {
+    "mean_bw": 4525.1,
+    "median_bw": 1025.0,
+    "mean_runtime": 0.01659,
+    "n_ok": 10
+  },
+  "ipsns_no_scc_priority": {
+    "mean_bw": 4239.1,
+    "median_bw": 823.5,
+    "mean_runtime": 5.72744,
+    "n_ok": 10
+  }
+}

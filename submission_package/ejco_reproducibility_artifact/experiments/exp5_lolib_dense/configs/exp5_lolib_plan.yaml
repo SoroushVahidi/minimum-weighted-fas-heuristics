@@ -1,0 +1,96 @@
+exp5_lolib_plan:
+  description: >
+    EXP5 LOLIB dense benchmark: evaluate LR-TA, WMSF, IPSNS, and baselines on
+    dense complete weighted ordering instances from the LOLIB 2010 archive.
+
+  data_source:
+    archive_url: "https://www.dropbox.com/s/fk105g63jmi3i1d/lolib_2010.zip?dl=1"
+    archive_file: "experiments/exp5_lolib_dense/downloads/lolib_2010.zip"
+    families_in_archive: [SGB, IO, MB, RandA1, RandA2, RandB, Spec, xLOLIB]
+    primary_page: "https://grafo.etsii.urjc.es/optsicom/lolib.html"
+    marti_page: "https://www.uv.es/~rmarti/paper/lop.html"
+
+  target_subset:
+    SGB:
+      n: 75
+      count: 25
+      files: all  # N-sgb75.01 through N-sgb75.25
+    IO:
+      count: 10
+      files:
+        - N-be75eec   # n=50
+        - N-be75np    # n=50
+        - N-be75oi    # n=50
+        - N-be75tot   # n=50
+        - N-usa79     # n=79
+        - N-stabu70   # n=60
+        - N-stabu74   # n=60
+        - N-stabu75   # n=60
+        - N-tiw56n54  # n=56
+        - N-tiw56r54  # n=56
+    RandA1:
+      count: 15  # 5 each at n=100, 150, 200; skip n=500
+      files:
+        - N-t1d100.01
+        - N-t1d100.02
+        - N-t1d100.03
+        - N-t1d100.04
+        - N-t1d100.05
+        - N-t1d150.01
+        - N-t1d150.02
+        - N-t1d150.03
+        - N-t1d150.04
+        - N-t1d150.05
+        - N-t1d200.01
+        - N-t1d200.02
+        - N-t1d200.03
+        - N-t1d200.04
+        - N-t1d200.05
+
+  total_instances: 50
+
+  algorithms:
+    - lrta_full
+    - wmsf_seed
+    - ipsns_full
+    - borda_net_score
+    - weighted_eades
+    - random_multistart
+    - drmaciver_fas
+    - igraph_approx_eades
+
+  timeouts_seconds:
+    simple_baselines: 60
+    lrta_full: 300
+    wmsf_seed: 300
+    ipsns_full: 300
+    drmaciver_fas: 300
+    igraph_approx_eades: 60
+
+  ipsns_params:
+    wmsf_seed_mode: full
+    iters: 200
+    seed: 42
+
+  random_multistart_params:
+    trials: 100
+    seed: 42
+
+  random_seed: 42
+
+  converted_dir: "experiments/exp5_lolib_dense/converted"
+  raw_dir: "experiments/exp5_lolib_dense/raw"
+  summary_dir: "experiments/exp5_lolib_dense/summary"
+  tables_dir: "experiments/exp5_lolib_dense/tables"
+  logs_dir: "experiments/exp5_lolib_dense/logs"
+
+  metrics:
+    - backward_weight
+    - forward_weight
+    - forward_ratio
+    - runtime
+    - status
+
+  bks_available: false  # BKS values not yet loaded; use relative comparisons
+
+  status: planned

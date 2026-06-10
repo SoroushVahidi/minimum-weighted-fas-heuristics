@@ -1,0 +1,113 @@
+{
+  "total_instances": 15,
+  "completed": 15,
+  "proven_optimal": 7,
+  "time_limit_hit": 8,
+  "errors": 0,
+  "skipped": 0,
+  "mean_runtime_seconds": 68.4,
+  "ipsns_matches_mip_incumbent": 6,
+  "ipsns_better_than_mip_incumbent": 0,
+  "gap_vs_incumbent": [
+    {
+      "instance": "stg",
+      "n": "20",
+      "mode": "MIP",
+      "mip_bw": 5.0,
+      "ipsns_bw": 5.0,
+      "gap_pct": 0.0,
+      "proven_optimal": true
+    },
+    {
+      "instance": "r20_60",
+      "n": "20",
+      "mode": "MIP",
+      "mip_bw": 1685.0,
+      "ipsns_bw": 1688.0,
+      "gap_pct": 0.178,
+      "proven_optimal": true
+    },
+    {
+      "instance": "gr10",
+      "n": "47",
+      "mode": "MIP",
+      "mip_bw": 58481.0,
+      "ipsns_bw": 58481.0,
+      "gap_pct": 0.0,
+      "proven_optimal": true
+    },
+    {
+      "instance": "s27",
+      "n": "54",
+      "mode": "MIP",
+      "mip_bw": 1905.0,
+      "ipsns_bw": 1905.0,
+      "gap_pct": 0.0,
+      "proven_optimal": true
+    },
+    {
+      "instance": "s208",
+      "n": "83",
+      "mode": "MIP",
+      "mip_bw": 2829.0,
+      "ipsns_bw": 2829.0,
+      "gap_pct": 0.0,
+      "proven_optimal": true
+    },
+    {
+      "instance": "s420",
+      "n": "101",
+      "mode": "MIP",
+      "mip_bw": 158.0,
+      "ipsns_bw": 158.0,
+      "gap_pct": 0.0,
+      "proven_optimal": true
+    },
+    {
+      "instance": "mm4a",
+      "n": "170",
+      "mode": "MIP",
+      "mip_bw": 4053.0,
+      "ipsns_bw": 4053.0,
+      "gap_pct": 0.0,
+      "proven_optimal": true
+    }
+  ],
+  "gap_vs_bound": [
+    {
+      "instance": "stg",
+      "gap_to_bound_pct": 0.0,
+      "mode": "MIP"
+    },
+    {
+      "instance": "r20_60",
+      "gap_to_bound_pct": 0.178,
+      "mode": "MIP"
+    },
+    {
+      "instance": "gr10",
+      "gap_to_bound_pct": 0.0,
+      "mode": "MIP"
+    },
+    {
+      "instance": "s27",
+      "gap_to_bound_pct": 0.0,
+      "mode": "MIP"
+    },
+    {
+      "instance": "s208",
+      "gap_to_bound_pct": 0.0,
+      "mode": "MIP"
+    },
+    {
+      "instance": "s420",
+      "gap_to_bound_pct": 0.0,
+      "mode": "MIP"
+    },
+    {
+      "instance": "mm4a",
+      "gap_to_bound_pct": 0.0,
+      "mode": "MIP"
+    }
+  ]
+}

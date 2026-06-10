@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Comparison on the 97 standard nonnegative sparse instances used for the primary claim-bearing benchmark. BW denotes backward weight; lower values are better. Relative excess is the mean percentage by which an algorithm's BW exceeds IPSNS on completed instances.}
+\label{tab:sparse-external-baselines}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrr}
+\toprule
+Method & Complete & Mean BW & Mean RT (s) & Best & Relative excess \\
+\midrule
+IPSNS (ours) & 97/97 & 37,698 & 21.92 & 96 & 0.00\% \\
+LR-TA (ours) & 97/97 & 38,327 & 0.08 & 80 & 0.71\% \\
+WMSF seed & 97/97 & 40,005 & 1.31 & 61 & 2.06\% \\
+DRMacIver/FAS & 93/97 & 53,173 & 4.00 & 56 & 21.61\% \\
+igraph Eades & 97/97 & 95,920 & 0.01 & 40 & 30.54\% \\
+Weighted Eades & 97/97 & 99,689 & 0.11 & 42 & 30.48\% \\
+Borda net score & 97/97 & 512,277 & 0.00 & 27 & 55.55\% \\
+Random multistart & 97/97 & 1,075,258 & 0.03 & 42 & 49.76\% \\
+\bottomrule
+\end{tabular}
+}
+\par\vspace{2pt}\parbox{0.94\linewidth}{\footnotesize\raggedright DRMacIver/FAS is the strongest external comparator on this benchmark, but it completes 93 of 97 instances because two DAG cases return empty-tournament errors and two large sparse instances time out in the wrapper used here.}
+\end{table}

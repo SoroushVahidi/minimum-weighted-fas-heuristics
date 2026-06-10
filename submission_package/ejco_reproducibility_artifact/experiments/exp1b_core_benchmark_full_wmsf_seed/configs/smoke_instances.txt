@@ -1,0 +1,3 @@
+[graph-benchmarks root]/core-bad/bad1.d
+[graph-benchmarks root]/core-bad/bad2.d
+[graph-benchmarks root]/core-bad/bad3.d

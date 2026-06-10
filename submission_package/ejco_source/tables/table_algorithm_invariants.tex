@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Implementation-level invariants preserved by the framework.}
+\label{tab:algorithm-invariants}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.8cm} >{\raggedright\arraybackslash}p{9.2cm}}
+\toprule
+Property & Meaning \\
+\midrule
+Acyclic seed output & LR-TA and the WMSF-style seed both output an acyclic active graph that induces a valid ordering. \\
+Heavy-first add-back & Reinserted edges are processed in nonincreasing original weight, so high-weight arcs are given priority for restoration. \\
+Deterministic topological order & Kahn-style topological reconstruction uses deterministic tie-breaking, making seed output reproducible for fixed input. \\
+Incumbent protection & IPSNS updates the incumbent only when the candidate backward weight is strictly smaller. \\
+Reproducible randomization & IPSNS SCC selection and destroy fractions are fully determined by the configured random seed. \\
+\bottomrule
+\end{tabular}
+\end{table}

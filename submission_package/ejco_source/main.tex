@@ -1,0 +1,71 @@
+% EJCO single-anonymized review. Reviewers may see author identities; use this file as the primary manuscript.
+\documentclass[preprint,12pt,authoryear]{elsarticle}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{microtype}
+\usepackage{placeins}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+\journal{EURO Journal on Computational Optimization}
+
+\setlength{\emergencystretch}{2em}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Local-Ratio Seeding and SCC-Based Refinement for the\\ Minimum Weighted Feedback Arc Set Problem}
+
+\author[inst1]{Soroush Vahidi}
+\cortext[cor1]{Corresponding author}
+\ead{sv96@njit.edu}
+\address[inst1]{Department of Computer Science, New Jersey Institute of Technology, Newark, NJ 07102, USA}
+
+\begin{abstract}
+The minimum weighted feedback arc set (MWFAS) problem asks for a minimum-weight set of arcs whose removal makes a nonnegative weighted directed graph acyclic, equivalently for a vertex ordering minimizing total backward arc weight. Despite its NP-hardness, scalable heuristics for sparse weighted digraphs are needed in ranking, dependency repair, and precedence-conflict resolution, where neither exact solvers nor dense tournament algorithms fit the problem structure.
+
+This paper presents an algorithm-engineering framework with three components. LR-TA (local-ratio topological add-back) applies iterative cycle-weight reductions to produce a feasible ordering, then recovers forward arcs via topological add-back, reducing unnecessary deletions. A complementary weighted seed provides an independent feasible ordering and a non-worsening baseline. IPSNS (incumbent-protected SCC neighborhood search) applies SCC-local destroy-and-repair refinement, updating the incumbent only when the global backward weight strictly decreases, guaranteeing acyclicity and non-worsening relative to the best internal seed under nonnegative weights.
+
+The contribution is computational and algorithmic rather than a new approximation-ratio theorem. On an exact-validation subset of 57 standard nonnegative instances, the framework matches the bitmask dynamic-programming optimum on 56 of 57, with a mean relative gap of approximately 0.0006\%. On 97 standard nonnegative sparse benchmark instances, it achieves the best observed backward weight among all tested methods on 96 instances. Dense LOLIB transfer testing identifies the structural boundary: on complete weighted ordering instances, a matrix-based pairwise-ordering method is stronger, confirming that SCC-local refinement is most effective on sparse directed graphs. A fully reproducible artifact accompanies the paper.
+\end{abstract}
+
+\begin{keyword}
+Minimum weighted feedback arc set \sep combinatorial optimization \sep local-ratio algorithm \sep
+strongly connected components \sep heuristic search \sep algorithm engineering
+\end{keyword}
+
+\end{frontmatter}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_problem_definition}
+\input{sections/04_algorithmic_framework}
+\input{sections/05_experimental_design}
+\input{sections/06_results}
+\input{sections/07_discussion}
+\input{sections/08_conclusion}
+
+\input{declarations/credit_statement_nonanonymized}
+\input{declarations/funding_statement}
+\input{declarations/competing_interest}
+\input{declarations/data_code_availability}
+\input{declarations/generative_ai_declaration}
+
+\FloatBarrier
+\bibliographystyle{elsarticle-harv}
+\bibliography{references}
+
+\end{document}

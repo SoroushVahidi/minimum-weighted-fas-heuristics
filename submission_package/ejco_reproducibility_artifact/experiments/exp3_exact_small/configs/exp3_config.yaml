@@ -1,0 +1,23 @@
+# EXP3: Exact Small-Instance Optimality Check
+# -------------------------------------------
+# Compare LR-TA, WMSF, and IPSNS against exact optimal solutions on all
+# benchmark instances with n <= 20 nodes.
+#
+# Exact method: bitmask DP — O(n * 2^n) time, O(2^n) space.
+# Practical limit: n <= 20 (fast for n <= 15, feasible for n <= 20).
+
+n_max: 20
+instance_source: experiments/exp1b_core_benchmark_full_wmsf_seed/configs/benchmark_instances_found_all.txt
+rng_seed: 1
+ipsns_iters: 400
+
+algorithms:
+  - exact_dp
+  - lrta
+  - wmsf
+  - ipsns
+
+outputs:
+  summary_csv: experiments/exp3_exact_small/tables/exp3_exact_summary.csv
+  stats_json: experiments/exp3_exact_small/summary/exp3_exact_stats.json
+  report_md: experiments/exp3_exact_small/summary/exp3_exact_report.md

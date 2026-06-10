@@ -1,0 +1,40 @@
+{
+  "n_instances_total": 50,
+  "n_instances_with_any_ok": 50,
+  "algorithms_run": [
+    "ipsns_full",
+    "lrta_full",
+    "wmsf_seed",
+    "drmaciver_fas",
+    "igraph_approx_eades",
+    "weighted_eades",
+    "borda_net_score",
+    "random_multistart"
+  ],
+  "ipsns_global_best": 5,
+  "ipsns_incumbent_violations_vs_lrta": 0,
+  "ipsns_incumbent_violations_vs_wmsf": 0,
+  "ipsns_mean_backward_weight": 582353.56,
+  "ipsns_mean_forward_ratio": 0.72551,
+  "drmaciver_mean_bw_gap_vs_ipsns_pct": -3.88,
+  "per_family": [
+    {
+      "family": "SGB",
+      "n_instances": 25,
+      "ipsns_global_best": 1,
+      "ipsns_mean_bw": 1048055.68
+    },
+    {
+      "family": "IO",
+      "n_instances": 10,
+      "ipsns_global_best": 4,
+      "ipsns_mean_bw": 36996.0
+    },
+    {
+      "family": "RandA1",
+      "n_instances": 15,
+      "ipsns_global_best": 0,
+      "ipsns_mean_bw": 169755.07
+    }
+  ]
+}

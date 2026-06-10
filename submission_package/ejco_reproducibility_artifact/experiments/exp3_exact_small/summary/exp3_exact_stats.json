@@ -1,0 +1,30 @@
+{
+  "n_instances_total": 67,
+  "n_instances_exact_ok": 64,
+  "n_instances_nontrivial_all": 62,
+  "n_instances_negative_weight": 5,
+  "negative_weight_instances": [
+    "k3_3",
+    "ku",
+    "peterson",
+    "peterson1",
+    "peterson2"
+  ],
+  "n_instances_standard": 57,
+  "standard_instances": {
+    "lrta_optimal": "55/57 (96.5%)",
+    "lrta_mean_gap_pct": "0.0590%",
+    "wmsf_optimal": "51/57 (89.5%)",
+    "wmsf_mean_gap_pct": "0.0961%",
+    "ipsns_optimal": "56/57 (98.2%)",
+    "ipsns_mean_gap_pct": "0.0006%"
+  },
+  "all_nontrivial_instances": {
+    "lrta_optimal": "56/62 (90.3%)",
+    "lrta_mean_gap_pct": "0.8771%",
+    "wmsf_optimal": "52/62 (83.9%)",
+    "wmsf_mean_gap_pct": "0.9112%",
+    "ipsns_optimal": "57/62 (91.9%)",
+    "ipsns_mean_gap_pct": "0.8233%"
+  }
+}

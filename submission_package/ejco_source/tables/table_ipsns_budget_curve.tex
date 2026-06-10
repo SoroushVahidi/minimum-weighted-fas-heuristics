@@ -1,0 +1,32 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{IPSNS quality-vs-runtime tradeoff across iteration budgets on a
+20-instance representative sparse subset (EXP6).
+Mean backward weight (BW), mean runtime per instance, and win/tie/loss counts
+versus LR-TA from EXP4 are shown for each budget.
+Rel.\ excess is the mean percentage by which that budget's BW exceeds the
+400-iteration result on the same subset; lower is better.
+LR-TA (from EXP4) is included as the low-latency reference.}
+\label{tab:ipsns_budget_curve}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+Algorithm (budget) & Mean BW & Mean RT (s) & W / T / L vs LR-TA & Rel.\ excess vs 400-iter \\
+\midrule
+LR-TA (seed only) & 87,365 & 0.035 & --- / --- / --- & --- \\
+IPSNS (10 iters) & 84,614 & 0.275 & 7 / 13 / 0 & 0.00\% \\
+IPSNS (25 iters) & 84,614 & 0.425 & 7 / 13 / 0 & 0.00\% \\
+IPSNS (50 iters) & 84,614 & 0.698 & 7 / 13 / 0 & 0.00\% \\
+IPSNS (100 iters) & 84,614 & 1.222 & 7 / 13 / 0 & 0.00\% \\
+IPSNS (200 iters) & 84,614 & 2.286 & 7 / 13 / 0 & 0.00\% \\
+IPSNS (400 iters) & 84,614 & 4.398 & 7 / 13 / 0 & 0.00\% \\
+\bottomrule
+\end{tabular}}
+\par\vspace{3pt}
+{\footnotesize
+Subset: 20 representative sparse instances with EXP4 IPSNS runtime $\le 60$\,s
+and $n \ge 10$, spanning density from very sparse to moderately dense.
+W\,=\,wins (IPSNS lower BW than LR-TA), T\,=\,ties, L\,=\,losses (none observed).
+Rel.\ excess: mean percentage above the 400-iteration result on the same instance set.}
+\end{table}

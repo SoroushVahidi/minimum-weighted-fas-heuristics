@@ -1,0 +1,32 @@
+\section{Problem definition}
+\label{sec:problem-definition}
+
+Let \(G=(V,A,w)\) be a directed graph with vertex set \(V\), arc set \(A\subseteq V\times V\), and nonnegative arc weights \(w:A\to \mathbb{R}_{\ge 0}\). A feedback arc set is a set \(F\subseteq A\) such that removing \(F\) makes the graph acyclic. The minimum weighted feedback arc set problem asks for a minimum-weight feedback arc set, i.e., a set \(F\) minimizing \(\sum_{a\in F}w(a)\).
+
+An ordering \(\pi\) assigns each vertex a distinct position. An arc \((u,v)\) is backward under \(\pi\) if \(u\) appears after \(v\). The ordering-induced backward weight is
+
+\begin{equation}
+    \operatorname{bw}(\pi)
+    =
+    \sum_{(u,v)\in A:\ \pi(u)>\pi(v)} w(u,v).
+    \label{eq:backward-weight}
+\end{equation}
+
+For any ordering \(\pi\), the set of backward arcs is a feedback arc set: all remaining forward arcs point from earlier to later positions and therefore form an acyclic graph. Conversely, every acyclic subgraph admits a topological order. The weighted feedback arc set problem can therefore be treated as the problem of finding an ordering with minimum backward weight \cite{F90,K72}.
+
+Dense linear ordering problem benchmarks are often stated in terms of a complete weight matrix \(C\), where an ordering \(\pi=(\pi_1,\ldots,\pi_n)\) is evaluated by the forward weight. In that notation,
+
+\begin{equation}
+    \operatorname{fw}_{C}(\pi)
+    =
+    \sum_{1\le i<j\le n} C_{\pi_i,\pi_j},
+    \qquad
+    \operatorname{bw}_{C}(\pi)
+    =
+    \sum_{1\le i<j\le n} C_{\pi_j,\pi_i}
+    =
+    W_C-\operatorname{fw}_{C}(\pi),
+    \label{eq:lolib-forward-backward}
+\end{equation}
+
+where \(W_C=\sum_{i\ne j}C_{ij}\) is the total off-diagonal weight. Thus maximizing forward weight on a complete dense linear-ordering instance is equivalent to minimizing backward weight after converting the matrix to a complete weighted digraph. LOLIB results are reported as a transfer test. Those instances are dense complete ordering problems rather than sparse directed graph benchmarks.

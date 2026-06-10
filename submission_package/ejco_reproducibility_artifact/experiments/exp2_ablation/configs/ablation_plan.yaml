@@ -1,0 +1,153 @@
+# EXP2 Ablation Study Plan
+# Merged MWFAS paper — component-contribution experiment
+# -------------------------------------------------------
+
+instance_list: experiments/exp2_ablation/configs/exp2_ablation_instances.txt
+output_root: experiments/exp2_ablation/raw
+log_root: experiments/exp2_ablation/logs
+tables_dir: experiments/exp2_ablation/tables
+summary_dir: experiments/exp2_ablation/summary
+rng_seed: 1
+
+variants:
+
+  # ---------------------------------------------------------------
+  # Variant 1: LR cycle reduction WITHOUT topological add-back
+  # Status: TODO — requires code change in src/mwfas/lrta.py
+  # ---------------------------------------------------------------
+  lr_no_addback:
+    status: runnable
+    description: >
+      Local-ratio Phase 1 only: repeatedly find a cycle, subtract its
+      minimum edge weight from all cycle edges; edges reduced to zero are
+      removed. The topological add-back (Phase 2 of LR-TA) is skipped.
+      This isolates the contribution of the add-back step.
+    code_location: src/mwfas/lrta.py
+    missing_support: >
+      local_ratio_fas_fast() (line 216) combines Phase 1 and Phase 2 with
+      no flag to skip add-back. Need to add add_back=True parameter; when
+      False, return after Phase 1 (skip lines 260-278). Also need entry
+      point lr_no_addback_ranking_from_dimacs_fast() or --no-addback flag
+      in scripts/run_lrta.py.
+    entrypoint_when_implemented: scripts/run_lrta.py --no-addback
+
+  # ---------------------------------------------------------------
+  # Variant 2: Full LR-TA (Phase 1 + Phase 2 add-back)
+  # Status: Runnable
+  # ---------------------------------------------------------------
+  lrta_full:
+    status: runnable
+    description: >
+      Full Local-Ratio Topological Add-back algorithm.
+      Phase 1: LR cycle reductions until DAG.
+      Phase 2: restore removed edges (heaviest first) that don't recreate cycles.
+    entrypoint: scripts/run_lrta.py
+    python_call: mwfas.lrta.paper_fas_ranking_from_dimacs_fast
+    args:
+      tol: 1.0e-12
+
+  # ---------------------------------------------------------------
+  # Variant 3: WMSF seed only
+  # Status: Runnable
+  # ---------------------------------------------------------------
+  wmsf_seed:
+    status: runnable
+    description: >
+      WMSF pipeline only (removeArcs → minimize → stabilize → minimize)
+      using L2 arc ordering. No LNS refinement.
+    entrypoint: scripts/run_wmsf.py
+    python_call: mwfas.wmsf.wmsf_ranking_from_dimacs_fast
+    args:
+      ordering: L2
+      tol: 1.0e-12
+
+  # ---------------------------------------------------------------
+  # Variant 4: Best of LR-TA and WMSF seeds, without LNS
+  # Status: Runnable (script-level post-processing; no code changes needed)
+  # ---------------------------------------------------------------
+  best_seed_no_lns:
+    status: runnable
+    description: >
+      Run both LR-TA (lrta_full) and WMSF (wmsf_seed) independently,
+      then for each instance select the ranking with lower backward weight.
+      This is the seed quality ceiling: the best achievable without any
+      LNS refinement. Implemented in the run script by comparing the
+      backward weights from both runs and selecting the better one.
+    implementation_note: >
+      No new code needed. The run script runs lrta_full and wmsf_seed,
+      reads both backward-weight values, and records min(BW_lrta, BW_wmsf)
+      as the best_seed_no_lns result.
+
+  # ---------------------------------------------------------------
+  # Variant 5: IPSNS with uniform random SCC selection (no priority)
+  # Status: TODO — requires code change in src/mwfas/ipsns.py
+  # ---------------------------------------------------------------
+  ipsns_no_scc_priority:
+    status: runnable
+    description: >
+      IPSNS with uniform random SCC selection from all non-zero-BW SCCs,
+      instead of weighted random from the top-K highest-BW SCCs. Isolates
+      the contribution of the BW-weighted top-K SCC priority heuristic.
+    code_location: src/mwfas/ipsns.py
+    missing_support: >
+      lns_merge_wmsf_lr_best_incumbent() (line 617) hardcodes BW-weighted
+      selection from top-K SCCs:
+        pool = scored[:min(topK_scc, len(scored))]
+        picked = random.choices(pool, weights=[x[0] for x in pool], k=1)[0]
+      Need to add scc_select_mode parameter ("weighted" | "random").
+      When "random": use full scored list and weights=None for uniform selection.
+    entrypoint_when_implemented: scripts/run_ipsns.py --scc-select-mode random
+    args_when_implemented:
+      iters: 400
+      scc_select_mode: random
+      rng_seed: 1
+
+  # ---------------------------------------------------------------
+  # Variant 6a: IPSNS with reduced iterations (50)
+  # Status: Runnable
+  # ---------------------------------------------------------------
+  ipsns_50iters:
+    status: runnable
+    description: IPSNS with 50 LNS iterations (vs. default 400).
+    entrypoint: scripts/run_ipsns.py
+    python_call: mwfas.ipsns.lns_merge_wmsf_lr_best_incumbent
+    args:
+      iters: 50
+      topk_scc: 15
+      seed_ordering: L2
+      rng_seed: 1
+      tol: 1.0e-12
+
+  # ---------------------------------------------------------------
+  # Variant 6b: IPSNS with reduced iterations (100)
+  # Status: Runnable
+  # ---------------------------------------------------------------
+  ipsns_100iters:
+    status: runnable
+    description: IPSNS with 100 LNS iterations (vs. default 400).
+    entrypoint: scripts/run_ipsns.py
+    python_call: mwfas.ipsns.lns_merge_wmsf_lr_best_incumbent
+    args:
+      iters: 100
+      topk_scc: 15
+      seed_ordering: L2
+      rng_seed: 1
+      tol: 1.0e-12
+
+  # ---------------------------------------------------------------
+  # Variant 7: Full IPSNS (default settings)
+  # Status: Runnable
+  # ---------------------------------------------------------------
+  ipsns_full:
+    status: runnable
+    description: >
+      Full IPSNS with default 400 iterations, top-15 SCC priority pool,
+      and BW-weighted random SCC selection. The complete proposed algorithm.
+    entrypoint: scripts/run_ipsns.py
+    python_call: mwfas.ipsns.lns_merge_wmsf_lr_best_incumbent
+    args:
+      iters: 400
+      topk_scc: 15
+      seed_ordering: L2
+      rng_seed: 1
+      tol: 1.0e-12
