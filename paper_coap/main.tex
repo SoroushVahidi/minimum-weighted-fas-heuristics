@@ -18,9 +18,10 @@
 \usepackage{microtype}
 \usepackage{placeins}
 
-% sn-jnl expects Orcidlogo.eps; use text link when logo file is unavailable locally.
+% Official sn-jnl references Orcidlogo.eps, but the December 2024 template package
+% does not ship that asset. Use a clean linked textual ORCID instead of a logo.
 \makeatletter
-\gdef\orcid#1{\href{#1}{ORCID}}
+\gdef\orcid#1{\,\textsuperscript{\href{#1}{\textcolor{blue}{ORCID}}}}
 \makeatother
 
 \raggedbottom

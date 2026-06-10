@@ -1,9 +1,10 @@
 \begin{table}[t]
 \centering
 \scriptsize
+\setlength{\tabcolsep}{3.5pt}
 \caption{Dense LOLIB transfer test on 50 complete weighted ordering instances. Lower BW is better. The upper panel reports overall performance; the lower panel isolates the two most relevant methods by family to make the dense-scope boundary explicit.}
 \label{tab:lolib-scope}
-\begin{tabular}{@{}lrrr@{}}
+\begin{tabularx}{\linewidth}{@{}lrrX@{}}
 \toprule
 Method & Mean BW & Best & Mean RT (s) \\
 \midrule
@@ -17,12 +18,15 @@ Random multistart & 883,664 & 0/50 & 0.02 \\
 Borda net score & 1,066,045 & 0/50 & 0.00 \\
 \midrule
 \multicolumn{4}{@{}l}{\textit{Family breakdown for IPSNS and DRMacIver/FAS}} \\
-Family & IPSNS best & DRMacIver/FAS best & Mean BW (IPSNS / DRMacIver/FAS) \\
+Family &
+\shortstack[c]{IPSNS\\best} &
+\shortstack[c]{DRMacIver/FAS\\best} &
+\shortstack[c]{Mean BW\\(IPSNS / DRMacIver/FAS)} \\
 SGB & 1/25 & 24/25 & 1,048,056 / 1,036,085 \\
 IO & 4/10 & 6/10 & 36,996 / 32,860 \\
 RandA1 & 0/15 & 15/15 & 169,755 / 156,909 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \vspace{2pt}
 
 {\footnotesize\raggedright DRMacIver/FAS is tournament-native and is the best overall dense LOLIB method in this study (45/50 instances, 3.88\% lower mean BW than IPSNS). EXP5 is therefore a transfer test and scope boundary, not evidence for universal dominance on dense linear-ordering problems.}

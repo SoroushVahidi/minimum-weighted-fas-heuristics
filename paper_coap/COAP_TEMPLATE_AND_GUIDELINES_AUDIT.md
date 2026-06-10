@@ -17,17 +17,29 @@
 
 | Item | Value |
 |---|---|
-| Intended official download | Springer Nature journal article template package (December 2024 version) |
-| Primary CMS URL attempted | `https://resource-cms.springernature.com/springer-cms/rest/v1/content/19238648/data/v3` |
-| Primary download result | **404 / JSON error** on 2026-06-10 |
-| Secondary page fetch attempted | Springer LaTeX author support landing page (HTML only; no direct ZIP link extracted programmatically) |
-| Fallback mirror used | `SoroushVahidi/frontier-allocation-for-budgeted-llm-inference/paper_ml_journal_snjnl_stage/` |
-| Archived mirror in repo | `paper_coap/template_reference/sn-jnl-template-v3.1-dec2024-local-mirror.zip` |
-| Archive SHA-256 | `c65e718f7a717b3fbb60f9c9bcddd7bd35bf06f6436d66d53e19d5107985491f` |
-| Class file version string | **Version 3.1 December 2024** (from `template_reference/sn-article.tex`) |
-| Sample file in archive | `sn-article.tex`, `sn-jnl.cls`, eight `.bst` files |
+| Official download URL (pass 2) | `https://cms-resources.apps.public.k8s.springernature.io/springer-cms/rest/v1/content/18782940/data/v12` |
+| Access date | 2026-06-10 |
+| Archive filename | `template_reference/sn-jnl-official-dec2024.zip` |
+| Archive size | 901,814 bytes |
+| Archive SHA-256 | `812e76dcaa9c28dc1bff1fb6065d51729b67d4ea140552a05088317414a3ecae` |
+| Package date in ZIP | 2024-12-12 |
+| Template version string | **Version 3.1 December 2024** (`template_reference/sn-article.tex`) |
+| Class file | `sn-jnl.cls` (55,857 bytes; SHA-256 `36d0c3273a59d48dc6a9c7b080dfa1ec50dc10229d8751568d1f2e490ffa5ecc`) |
+| Bibliography styles included | `sn-apacite.bst`, `sn-aps.bst`, `sn-basic.bst`, `sn-chicago.bst`, `sn-mathphys-ay.bst`, `sn-mathphys-num.bst`, `sn-nature.bst`, `sn-vancouver-ay.bst`, `sn-vancouver-num.bst` (under `bst/` in archive; copied to `paper_coap/` root for compilation) |
+| Other bundled assets | `sn-article.tex`, `sn-article.pdf`, `sn-bibliography.bib`, `user-manual.pdf`, `empty.eps`, `fig.eps` |
+| `Orcidlogo.eps` | **Not included** in the official December 2024 ZIP despite `\orcid{}` macro referencing it |
 
-**Note:** The fallback mirror matches the official December 2024 template family (`sn-jnl.cls` v3.1). The mirror is missing `Orcidlogo.eps`; COAP `main.tex` therefore uses a text ORCID hyperlink fallback.
+### Pass 1 fallback (superseded for active class files)
+
+| Item | Value |
+|---|---|
+| Pass 1 CMS URL attempted | `https://resource-cms.springernature.com/springer-cms/rest/v1/content/19238648/data/v3` → **404** |
+| Pass 1 fallback mirror | `SoroushVahidi/frontier-allocation-for-budgeted-llm-inference/paper_ml_journal_snjnl_stage/` |
+| Pass 1 archived mirror | `template_reference/sn-jnl-template-v3.1-dec2024-local-mirror.zip` (SHA-256 `c65e718f...`) |
+
+**Pass 2 action:** synchronized `paper_coap/sn-jnl.cls` and all `.bst` files from the official December 2024 ZIP. Byte comparison showed the pass-1 active class differed from the official file; the official copy is now authoritative in `paper_coap/`.
+
+**ORCID note:** because the official package omits `Orcidlogo.eps`, `main.tex` uses a superscript linked textual ORCID via a local `\orcid{}` redefinition.
 
 ## Confirmed COAP requirements
 
@@ -52,7 +64,7 @@
 2. Whether ORCID should appear only in the submission portal rather than the manuscript PDF (COAP recommends ORCID at submission; manuscript inclusion not explicitly required).
 3. Whether the final supplementary upload must use exact `ESM_1.zip` naming and metadata fields beyond the general SI guidance.
 4. Whether a separate title page PDF is required at submission in addition to the main LaTeX/PDF manuscript.
-5. Whether the official December 2024 ZIP has changed since the local mirror was captured (re-download should be attempted before final upload).
+5. Whether the official December 2024 ZIP has changed since pass 1 — **resolved in pass 2** via successful official download; re-check before final upload if Springer updates the package again.
 
 ## Bibliography style decision
 

@@ -34,13 +34,18 @@
 4. **`tables/table_ipsns_budget_curve.tex`** — removed `\resizebox`; replaced `\par\vspace` with `\vspace`.
 5. **`tables/table_plain_local_search.tex`** — same as budget-curve table.
 
-## Not changed in this pass
+## Pass 2 polish (2026-06-10)
 
-- EJCO package under `submission_package/ejco_*`
-- Elsevier `paper/` tree
-- CAIE historical packages
-- Reproducibility artifact zips
-- Cover letter, reviewer list, upload directory, ESM zip
+Mechanical fixes only:
+
+| File | Change |
+|---|---|
+| Official template files | Replaced `sn-jnl.cls` and all `.bst` files with official December 2024 ZIP |
+| `bibliography/references.bib` | Added verified `address` fields for `BH13`, `ALS09`, `LHK10WikiVote` |
+| `tables/table_lolib_scope.tex` | Fixed margin overflow via `tabularx` + `\shortstack` headers |
+| `main.tex` | Improved ORCID superscript link presentation |
+
+**Scientific content unchanged:** `sections/` remains byte-identical to `paper/sections/`; Figure 1 TikZ unchanged; abstract/keywords/algorithms/results text unchanged.
 
 ## Supplementary material status
 
