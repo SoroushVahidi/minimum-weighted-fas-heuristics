@@ -20,7 +20,8 @@ The contributions of this paper are as follows:
     \item LR-TA is an engineered local-ratio seed with topological add-back: iterative cycle-weight reductions build a feasible ordering, and a heavy-first arc-recovery phase reduces unnecessary deletions.
     \item A complementary weighted seed provides an independent feasible ordering and an internal non-worsening baseline, ensuring the refinement begins from a strong alternative constructive solution.
     \item IPSNS is an incumbent-protected SCC-local destroy-and-repair refinement that concentrates search on strongly connected components with positive backward contribution and accepts a candidate ordering only when the global backward weight strictly decreases.
-    \item The framework provides correctness guarantees: every returned ordering is acyclic, and the final solution is never worse than the best internal seed under the same nonnegative-weight objective.
+    \item The implementation is accompanied by explicit feasibility, termination, and monotonicity statements for LR-TA, add-back, and IPSNS (Section~\ref{subsec:formal-analysis}), including the incumbent-protection invariant without claiming a new approximation ratio.
+    \item An implementation-faithful worst-case complexity characterization is provided for LR-TA, the WMSF-style seed, and IPSNS, expressed in terms of graph size and algorithm parameters such as the IPSNS iteration budget and selected SCC size.
     \item An extensive computational validation covers exact bitmask dynamic-programming certification on small instances, time-capped MIP validation on medium instances, five external and adapted baselines, a component ablation study, a runtime--budget study, and a dense LOLIB transfer test.
     \item A fully reproducible artifact accompanies the paper, including all benchmark instances, algorithm implementations, experimental scripts, and saved result summaries.
 \end{itemize}

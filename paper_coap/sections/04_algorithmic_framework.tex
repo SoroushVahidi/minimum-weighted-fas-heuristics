@@ -120,10 +120,12 @@ Algorithm~\ref{alg:ipsns} summarizes the IPSNS driver.
 
 Two implementation details are especially important for interpretation. First, the default WMSF seed mode inside IPSNS is the full per-SCC pipeline, not a weaker legacy approximation; this is required so that the refinement never starts from a seed weaker than the standalone WMSF baseline. Second, the randomization in IPSNS is controlled entirely by a fixed seed. The resulting sequence of SCC choices and destroy fractions is therefore reproducible given the same input and parameter settings. The parameter choices themselves are interpreted conservatively later in the paper: the ablation study supports them as reasonable defaults on the tested subset, not as universally optimal settings.
 
+\input{sections/04_formal_analysis}
+
 \subsection{Algorithmic invariants}
 \label{subsec:invariants}
 
-The most important invariant in the framework belongs to IPSNS rather than to LR-TA. Let \(\pi^{(0)}\) denote the better of the two internal seeds and let \(\pi^{(t)}\) denote the incumbent ordering after \(t\) accepted-or-rejected IPSNS iterations. Because the incumbent is replaced only by a strictly improving candidate, the sequence satisfies
+The most important invariant in the framework belongs to IPSNS rather than to LR-TA. Let \(\pi^{(0)}\) denote the better of the two internal seeds and let \(\pi^{(t)}\) denote the incumbent ordering after \(t\) accepted-or-rejected IPSNS iterations. Proposition~\ref{prop:ipsns-monotonicity} implies
 \begin{equation}
     \operatorname{bw}\!\left(\pi^{(t+1)}\right)
     \le
@@ -135,4 +137,4 @@ The most important invariant in the framework belongs to IPSNS rather than to LR
 \end{equation}
 This monotone non-degradation property is not an approximation guarantee, but it is a concrete algorithmic promise: the final IPSNS solution is never worse than the better internal seed under the same objective and nonnegative-weight assumptions.
 
-LR-TA and the WMSF-style seed have their own feasibility invariants. LR-TA always exits its reduction stage with an acyclic active graph, and its add-back phase only reactivates arcs that preserve acyclicity. The WMSF-style seed similarly alternates removal and minimization steps while checking acyclic feasibility. IPSNS inherits those feasibility properties locally during SCC repair and adds the stronger incumbent-protection rule globally. That combination supports a narrow guarantee about refinement quality without claiming any new theoretical approximation ratio.
+LR-TA and the WMSF-style seed have their own feasibility invariants. Propositions~\ref{prop:lrta-feasibility} and~\ref{prop:addback-correctness} formalize LR-TA acyclicity and add-back correctness; the WMSF-style seed alternates removal and minimization steps while checking acyclic feasibility through the same add-back rules. IPSNS inherits those feasibility properties locally during SCC repair and adds the stronger incumbent-protection rule globally. That combination supports a narrow guarantee about refinement quality without claiming any new theoretical approximation ratio.
