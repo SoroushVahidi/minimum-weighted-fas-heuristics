@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Overview of the five committed experimental components used in the manuscript. EXP1b checks seed safety on the full internal benchmark; EXP2 studies design choices; EXP3 validates small instances against exact optimization; EXP4 compares against external baselines on the primary sparse benchmark; and EXP5 tests transfer to dense LOLIB instances.}
+\label{tab:experiment-overview}
+\begin{tabularx}{\linewidth}{@{}lXrX@{}}
+\toprule
+Experiment & Purpose & Instances & Main setting \\
+\midrule
+EXP1b & Internal safety check for LR-TA, WMSF, and IPSNS & 105 & sparse weighted DIMACS digraphs \\
+EXP2 & Add-back, refinement, and iteration ablation & 10 & representative sparse subset \\
+EXP3 & Exact validation against bitmask dynamic programming & 57 & standard nonnegative instances with $n \le 20$ \\
+EXP4 & External baseline comparison on the primary claim-bearing benchmark & 97 & standard nonnegative sparse instances \\
+EXP5 & Dense transfer test and scope boundary analysis & 50 & LOLIB complete weighted ordering instances \\
+\bottomrule
+\end{tabularx}
+\end{table}

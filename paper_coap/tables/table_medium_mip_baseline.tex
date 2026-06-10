@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Time-capped MIP baseline (EXP8) on 15 selected medium sparse instances
+($n \leq 318$, 120\,s time limit per instance). The solver certifies optimal
+solutions on 7 instances; the remaining 8 exceed the time limit and yield no MIP
+incumbent. IPSNS gap is measured against the solver-certified optimum on the 7
+proven-optimal instances only.}
+\label{tab:medium-mip-baseline}
+\begin{tabular}{lr}
+\toprule
+Metric & Value \\
+\midrule
+Instances selected & 15 \\
+Proven optimal (MIP solved) & 7 \\
+Time-limited (no incumbent) & 8 \\
+Time limit & 120\,s \\
+IPSNS matches MIP optimum & 6/7 \\
+IPSNS mean gap (proven-optimal) & 0.025\% \\
+IPSNS max gap (proven-optimal) & 0.178\% \\
+\bottomrule
+\end{tabular}
+\end{table}

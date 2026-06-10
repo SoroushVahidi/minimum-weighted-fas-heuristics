@@ -1,0 +1,72 @@
+\section{Experimental design}
+\label{sec:experimental-design}
+
+The experimental design follows a deliberately scoped claim strategy. The study evaluates a reproducible framework for nonnegative weighted directed graphs, using sparse benchmark instances as the primary setting and dense complete ordering instances as a transfer test.
+
+Five empirical questions motivate the design. The first is whether the full refinement framework improves on its internal seeds without violating the non-degradation invariant. The second is which components materially contribute to the final solution quality. The third is how close the framework comes to exact optimization on instances where exact optimization is feasible. The fourth is how the framework compares with strong internal and external baselines on the main sparse benchmark. The fifth is how far the sparse-benchmark conclusions transfer to dense complete ordering instances. Table~\ref{tab:experiment-overview} summarizes how the five computational components are used to answer these questions.
+
+\input{tables/table_experiment_overview}
+
+\subsection{Datasets}
+
+The study uses two public benchmark families with different roles in the argument.
+
+The primary benchmark family comes from the public \texttt{graph-benchmarks} collection \cite{graph_benchmarks_repo}. After path-level deduplication, this yields 105 unique sparse weighted DIMACS digraph instances. These instances support the internal benchmark, the ablation study, the exact small-instance validation, and the external sparse comparison.
+
+The standard analysis is restricted to the nonnegative-weight subset. Eight instances are excluded from the standard sparse comparison set because they contain negative-weight arcs:
+\texttt{gerez}, \texttt{howard-max}, \texttt{k3\_3}, \texttt{ku}, \texttt{peterson}, \texttt{peterson1}, \texttt{peterson2}, and \texttt{stg0}.
+This exclusion is methodological rather than cosmetic. The local-ratio construction and the interpretation of incumbent protection in this study are framed for nonnegative weights, so mixing negative-weight instances into the main tables would weaken the meaning of the guarantee. After exclusions, the primary sparse comparison set contains 97 standard instances.
+
+The exact-validation subset comprises the 57 standard nonnegative benchmark instances with \(n \le 20\) included in the bitmask dynamic-programming study. Negative-weight instances and trivial \(n = 0\) cases are excluded. This subset is not treated as a separate benchmark family; it is a validation slice used to judge heuristic quality against certified optima.
+
+The dense transfer test uses a 50-instance subset of the Linear Ordering Problem Library (LOLIB) 2010 \cite{MRD12,lolib_library}. These instances differ structurally from the sparse benchmark in a way that matters algorithmically. They are complete weighted ordering instances, and the selected subset spans three families: SGB (25 instances), IO (10 instances), and RandA1 (15 instances across \(n=100\), \(150\), and \(200\)). In the converted DIMACS representation used in the experiments, every ordered pair carries weight, so these instances are effectively dense complete tournaments or dense linear-ordering inputs rather than sparse general digraphs.
+
+This distinction is central to the scope of the study. The sparse benchmark is the main source of positive claims. LOLIB is not treated as coequal evidence for the primary contribution; it is used to determine where a sparse weighted-digraph heuristic remains competitive and where a dense-ordering-native ordering method becomes preferable.
+
+The evaluation covers sparse weighted digraph benchmarks, exact small-instance validation, medium-scale MIP validation, external heuristics, a dense LOLIB transfer test, and one application-facing public ordering instance.
+
+\subsection{Algorithms and baselines}
+
+The evaluation includes the proposed refinement framework, its internal seed methods, an exact reference method for the small-instance study, and a set of external or simple baseline heuristics.
+
+The full method of interest is IPSNS, which starts from the better of two internal seeds and applies incumbent-protected SCC-local refinement. The two seeds are LR-TA and WMSF. LR-TA is the engineered local-ratio plus topological add-back construction described in Section~\ref{sec:algorithmic-framework}; WMSF is a weighted removeArcs--minimize--stabilize seed that is carried forward as a baseline and seed source.
+
+For the exact small-instance validation, the reference method is exact bitmask dynamic programming. That solver is not used as a scalable comparator on the full sparse benchmark; its role is only to certify optimality on the small validation subset.
+
+The sparse and dense comparison studies also include five additional baselines:
+\begin{itemize}
+    \item the DRMacIver/FAS tool \cite{drmaciver_feedback_arc_set}, an external deterministic matrix-based ordering heuristic that maximizes forward weight on pairwise evidence and is evaluated here under the common backward-weight objective;
+    \item python-igraph's Eades-style feedback arc interface \cite{python_igraph_feedback_arc_set};
+    \item a weighted Eades adaptation implemented locally and described explicitly as an adaptation rather than as the original \cite{ELS93} algorithm;
+    \item Borda net-score ordering \cite{CFR10};
+    \item random multistart ranking.
+\end{itemize}
+
+DRMacIver/FAS is not an exact method. Its matrix-based formulation makes it a particularly relevant comparator for dense LOLIB instances, which are complete weighted ordering problems, whereas the sparse benchmark exercises it only through a sparse entry-list interface.
+
+The selection of each baseline follows a reproducibility and comparability criterion. Exact bitmask DP is the certified reference for instances small enough for exhaustive search; it validates heuristic quality without claiming that exact optimization scales globally. The time-capped MIP baseline (EXP8) extends certified reference to medium instances where bitmask DP is infeasible, reporting provably optimal solutions where the solver terminates within 120\,s and treating time-limited cases as incomplete evidence. The python-igraph Eades-style implementation is selected because it is a documented library-grade baseline with a public API, representing what a practitioner could call with a single invocation and setting the reproducible practical floor. The weighted Eades adaptation is included to assess whether applying the Eades net-score principle with arc weights closes the gap to IPSNS; it is labeled explicitly as an adaptation because the original \cite{ELS93} algorithm is unweighted. DRMacIver/FAS is included as an independent external method with a fundamentally different algorithmic model---matrix-based pairwise ordering rather than sparse-digraph cycle reduction---providing a cross-paradigm comparison and serving as the reference point for dense LOLIB performance. Borda net-score and random multistart serve as calibration anchors whose presence ensures the benchmark cannot be described as constructed against weak comparators. The adjacent-swap and single-vertex insertion local search comparisons (EXP7) directly test whether generic order-local moves without SCC structure can replicate IPSNS gains, isolating the contribution of SCC-aware destroy-repair from simpler greedy improvement.
+
+This baseline mix is deliberate. It does not attempt to exhaust every recent ranking model or every exact solver. In particular, it does not include a learned model such as GNNRank \cite{GNNRank22}, a memetic linear-ordering solver such as LOP\_MA-EDM \cite{lop_ma_edm_repo}, or the recent minimal-and-stable weighted feedback arc set heuristic of Cavallaro and Cutello \cite{CC25}. Those omissions are stated explicitly. The intended comparison surface is the ecosystem of deterministic or near-deterministic weighted-digraph heuristics and accessible external tools that a practitioner could reasonably invoke without building a separate learning or solver pipeline. Dense LOP-native solvers such as LOP\_MA-EDM and the methods surveyed in \cite{MRD12} are not primary baselines because they are designed for the complete pairwise-matrix input model; applying them to sparse digraph instances would blur two structurally different problem regimes. These solvers are cited as the appropriate reference class for dense linear ordering but are not described as experimentally compared against the proposed framework on the sparse benchmark.
+
+Several fairness rules govern the comparisons. First, all quality comparisons use the same backward-weight objective on the original nonnegative arc weights. Second, official external methods and local adaptations are distinguished explicitly. The weighted Eades method is an adaptation of the unweighted Eades idea \cite{ELS93}; it is not presented as an official external implementation. Third, DRMacIver/FAS is reported exactly as it was run in the study. The sparse comparison therefore retains its four incompletions on the standard set, and the dense comparison retains its strong overall performance. Finally, outcomes are interpreted in scope: losing to a dense-ordering-native method on dense LOLIB is not treated as evidence against the sparse-graph claim, and strong sparse performance is not used to imply dense linear-ordering dominance.
+
+\subsection{Evaluation metrics}
+
+The primary objective throughout the paper is backward weight (BW), defined in Section~\ref{sec:problem-definition}. Lower BW is always better, and all main tables are organized around that quantity.
+
+Several secondary metrics support interpretation. The number of global-best instances records how often a method attains the minimum observed BW among the compared algorithms on a given benchmark. For the external sparse comparison, relative excess over IPSNS records the mean percentage by which a method's BW exceeds IPSNS on completed instances. For the exact small-instance study, the mean gap from the certified optimum and the number of optimal matches summarize how close each heuristic comes to exact optimization. Mean runtime is reported for practical context, although it is not normalized across machines. The dense complete-ordering study also reports forward ratio as a secondary descriptive measure of how much pairwise weight is oriented forward by the returned ranking. Finally, the incumbent-violation count records how often IPSNS would return a solution worse than LR-TA or WMSF; under the intended invariant this count should remain zero on the nonnegative setting.
+To supplement tabular comparisons, paired statistical tests are computed on the common completed instances of the external sparse comparison, using per-instance backward weight as the outcome unit. The Wilcoxon signed-rank test and sign test characterize the distribution of per-instance paired differences; they are reported as distributional evidence for the observed outcome asymmetry and do not replace exact optimality certificates.
+A supplementary budget experiment (EXP6) runs IPSNS at six iteration budgets (10, 25, 50, 100, 200, and 400) on a 20-instance representative sparse subset to characterize how solution quality varies with the iteration budget relative to runtime cost.
+A generic local-search comparison (EXP7) tests whether adjacent-swap or single-vertex insertion local search seeded from LR-TA can replicate IPSNS quality on the same representative subset.
+A time-capped MIP baseline (EXP8) was also run on a deterministic 15-instance medium sparse subset ($n \le 318$, 120\,s per instance) to compare IPSNS with solver-certified optima where the MIP proves optimal.
+As an application-facing public ordering example, we convert the SNAP Wikipedia adminship vote network~\cite{LHK10WikiVote} into a weighted ordering instance by restricting to the top 50 users by vote degree and using vote counts as directed nonnegative arc weights (EXP9).
+
+\subsection{Implementation and reproducibility}
+
+All reported numbers are taken from saved experimental summaries and regenerated paper assets. Tables and figures in the results section are produced from the recorded JSON, CSV, and Markdown outputs of the five computational components, with key reported numbers checked against their source files before inclusion.
+
+The experimental runs use fixed seeds where randomness exists and consistent wrappers for the compared methods. For IPSNS, the saved summaries record the default full WMSF seed mode and the iteration budgets used in each study. The ablation study is especially important here because it justifies those defaults conservatively: on the 10-instance subset, the mean BW for 50 iterations is identical to the 400-iteration mean, and the no-SCC-priority variant is nearly identical to the default. Those results are interpreted as subset-level support for reasonable defaults, not as universal parameter optimality.
+
+Negative-weight sparse instances are excluded from the standard benchmark because they do not match the nonnegative setting studied here. DRMacIver/FAS incompletions on the sparse benchmark are reported explicitly rather than hidden in filtered tables. The dense LOLIB transfer test is retained because it documents where the framework remains competitive and where dense complete ordering instances favor a specialized external method.
+
+Runtime values are wall-clock times on a Linux workstation (Intel Core i7-12700K, 62\,GiB RAM, Ubuntu~24.04, Python~3.12) and are used mainly for within-study comparison; external tools were invoked via their documented interfaces.
