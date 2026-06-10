@@ -1,6 +1,55 @@
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.78\textwidth]{figures/framework_overview_clean.png}
+\resizebox{0.80\textwidth}{!}{%
+\begin{tikzpicture}[
+  box/.style={
+    rectangle,
+    draw=black,
+    rounded corners=2pt,
+    line width=0.7pt,
+    minimum width=4.9cm,
+    text width=4.45cm,
+    minimum height=1.30cm,
+    align=center,
+    inner sep=5pt,
+    font=\normalsize
+  },
+  arr/.style={->, >=Stealth, line width=0.8pt}
+]
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+\node[box] (n1) at ( 0.0,   0.0) {Aggregated weighted directed graph};
+\node[box] (n2) at (-4.2,  -2.7) {LR-TA seed\\[3pt]cycle reduction\\ + add-back};
+\node[box] (n3) at ( 4.2,  -2.7) {WMSF-style seed\\[3pt]remove--minimize\\ --stabilize};
+\node[box] (n4) at ( 0.0,  -5.2) {Best internal seed\\[3pt]by backward weight};
+\node[box] (n5) at ( 0.0,  -7.5) {SCC scoring and\\ top-$K$ selection};
+\node[box] (n6) at (-4.2, -10.3) {Destroy move\\[3pt]reactivate heavy removed\\ remove light active};
+\node[box] (n7) at ( 4.2, -10.3) {Repair move\\[3pt]restricted local-ratio\\ + restricted add-back};
+\node[box] (n8) at ( 0.0, -13.2) {Accept only if\\ backward weight improves};
+\node[box] (n9) at ( 0.0, -15.6) {Final incumbent\\ ordering};
+
+\coordinate (reject) at (4.5, -13.2);
+\coordinate (restore-east) at (8.4, -13.2);
+\coordinate (restore-top) at (8.4, -5.2);
+
+\draw[arr] (n1.south west) -- (n2.north);
+\draw[arr] (n1.south east) -- (n3.north);
+\draw[arr] (n2.south east) -- (n4.north west);
+\draw[arr] (n3.south west) -- (n4.north east);
+\draw[arr] (n4.south) -- (n5.north);
+\draw[arr] (n5.south west) -- (n6.north east);
+\draw[arr] (n5.south east) -- (n7.north west);
+\draw[arr] (n6.south east) -- (n8.north west);
+\draw[arr] (n7.south west) -- (n8.north east);
+\draw[arr] (n8.south) -- (n9.north);
+\draw[arr] (n8.east) -- (reject);
+\draw[arr] (reject) -- (restore-east)
+  -- node[midway, right=8pt, font=\normalsize] {restore} (restore-top)
+  -- (n4.east);
+
+\end{tikzpicture}%
+}
 \caption{Conceptual overview of the integrated framework. Two constructive seeds are evaluated first; IPSNS then applies incumbent-protected SCC-local destroy-and-repair moves to the better seed only when they improve the global objective.}
 \label{fig:framework-overview}
 \end{figure}
