@@ -23,7 +23,7 @@ The dense transfer test uses a 50-instance subset of the Linear Ordering Problem
 
 This distinction is central to the scope of the study. The sparse benchmark is the main source of positive claims. LOLIB is not treated as coequal evidence for the primary contribution; it is used to determine where a sparse weighted-digraph heuristic remains competitive and where a dense-ordering-native ordering method becomes preferable.
 
-Publicly reusable industrial datasets with explicit arc weights, conflicting precedence relations, and stable access conditions are limited, so the empirical study emphasizes reproducible public benchmarks together with an application-facing public ordering example. The sparse DIMACS instances provide heterogeneous weighted dependency graphs with transparent objective semantics, while the public ordering example instantiates the same nonnegative weighted-digraph formulation in a ranking-style setting. These experiments should therefore be read as reproducible surrogates for precedence-conflict resolution, dependency repair, workflow coordination, and pairwise-ordering workflows, not as a claim to exhaust the range of industrial data sources. In many engineering and operations settings, the relevant dependency data are organization-specific, proprietary, or recorded without standardized conflict weights.
+The evaluation covers sparse weighted digraph benchmarks, exact small-instance validation, medium-scale MIP validation, external heuristics, a dense LOLIB transfer test, and one application-facing public ordering instance.
 
 \subsection{Algorithms and baselines}
 
@@ -69,4 +69,4 @@ The experimental runs use fixed seeds where randomness exists and consistent wra
 
 Negative-weight sparse instances are excluded from the standard benchmark because they do not match the nonnegative setting studied here. DRMacIver/FAS incompletions on the sparse benchmark are reported explicitly rather than hidden in filtered tables. The dense LOLIB transfer test is retained because it documents where the framework remains competitive and where dense complete ordering instances favor a specialized external method.
 
-Runtime values are wall-clock times on a Linux workstation (Intel Core i7-12700K, 62\,GiB RAM, Ubuntu~24.04, Python~3.12) and are used mainly for within-study comparison; external tools were invoked via their documented interfaces. The review version is prepared under double-anonymized constraints, so code-availability language remains anonymized in the declarations.
+Runtime values are wall-clock times on a Linux workstation (Intel Core i7-12700K, 62\,GiB RAM, Ubuntu~24.04, Python~3.12) and are used mainly for within-study comparison; external tools were invoked via their documented interfaces.
