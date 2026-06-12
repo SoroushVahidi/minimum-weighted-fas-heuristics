@@ -7,22 +7,23 @@
 | Start | `fb90636` | docs: add differential audit push verification report |
 | 1 | `3d699d7` | paper: remove one-row statistics table and fix final layout |
 | 2 | `8b0fe03` | artifact: rebuild final COAP upload manuscript |
-| 3 | *(this commit)* | docs: record final pre-submission validation |
+| 3 | `1800b38` | docs: record final pre-submission validation |
 
 ## Push
 
 - Remote: `origin main`
 - Force push: **no**
-- Pre-push: 0 behind / N ahead (see post-push verification below)
+- Post-push: **local main == origin/main**, 0 ahead / 0 behind, working tree clean
 
-## PDF parity targets
+## Post-push PDF verification
 
-All must match SHA-256 `aebdf183f3a1c794b42b5b8a362524e396eaf7f7c8dd379c6c5b48f4a23bca77`:
-
-- `paper_coap/main.pdf`
-- `paper_coap/submission/final_upload/Vahidi_COAP_Manuscript.pdf`
-- `/home/soroush/COAP_initial_submission/Vahidi_COAP_Manuscript.pdf`
-- GitHub raw download (post-push)
+| Copy | SHA-256 | Match |
+|---|---|---|
+| `paper_coap/main.pdf` | `aebdf183…3bca77` | reference |
+| `final_upload/Vahidi_COAP_Manuscript.pdf` | `aebdf183…3bca77` | yes |
+| `/home/soroush/COAP_initial_submission/Vahidi_COAP_Manuscript.pdf` | `aebdf183…3bca77` | yes |
+| GitHub raw download (authenticated) | `aebdf183…3bca77` | yes |
+| `sha256sum -c MANIFEST.sha256` | all 6 files | OK |
 
 ## GitHub URLs
 
