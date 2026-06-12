@@ -24,7 +24,7 @@ A manuscript has been **prepared for submission** to COAP. Portal submission is 
 | Artifact | Path | Pages / size |
 |---|---|---|
 | Manuscript PDF | `paper_coap/main.pdf` / `paper_coap/submission/final_upload/Vahidi_COAP_Manuscript.pdf` | 24 pages |
-| Manuscript SHA-256 | `5ae415c68fa307fa3fa6726b39eb4af67ac78dbc1b37bff856f30732aa67827e` | 199,379 bytes |
+| Manuscript SHA-256 | `36a01f9235d1d5971f06dd0cfb28a55b05f4ddc2ffa26300dcc495d0520ad144` | 201,092 bytes |
 | Manuscript source | `paper_coap/` + source ZIP in `final_upload/` | |
 | Online Resource 1 PDF | `online_resource_1/Online_Resource_1.pdf` / `final_upload/Vahidi_Online_Resource_1_MWFAS.pdf` | 14 pages |
 | Online Resource 1 ZIP | `final_upload/Vahidi_Online_Resource_1_MWFAS.zip` | see manifest |
