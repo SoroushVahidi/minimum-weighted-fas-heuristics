@@ -1,0 +1,7 @@
+file_name,sha256_first12,file_size_bytes,portal_designation,designation_notes,reviewer_visible,required_at_initial_submission,upload_order,checksum_verified
+Vahidi_COAP_Manuscript.pdf,97eb61238a81,2953040,Manuscript,Primary manuscript PDF — generates the reviewer-visible document,YES,YES,1,YES
+Vahidi_COAP_Cover_Letter.pdf,df6622bd7b19,156672,Cover Letter,Editor-only letter; should NOT appear in reviewer PDF,NO (editor-only),YES,2,YES
+Vahidi_COAP_Manuscript_Source.zip,0fd2b2c138c3,1126400,LaTeX Source Files,"ZIP of LaTeX source; Springer uses to produce final published PDF; may not be required at initial submission but upload now",TYPICALLY NO (production use),RECOMMENDED,3,YES
+Vahidi_Online_Resource_1_MWFAS.pdf,8cc1479fb7ae,1789952,Supplementary Information / Electronic Supplementary Material,"Online Resource 1 PDF — reviewer-visible supplementary document; portal may rename to ESM_1.pdf",YES,YES,4,YES
+Vahidi_Online_Resource_1_MWFAS.zip,5dc3875acad3,12582912,Supplementary Material (Data / Code),"Online Resource 1 artifact archive; reviewer and editor access; portal may offer data/code designation",YES (check portal),YES,5,YES
+Vahidi_Related_Manuscripts_Statement.pdf,7e5ee12c4200,89088,Cover Letter (Other) or Author Statement,"One-page prior-submission disclosure; editor-only; upload under cover letter or author statement designation",NO (editor-only),YES,6,YES

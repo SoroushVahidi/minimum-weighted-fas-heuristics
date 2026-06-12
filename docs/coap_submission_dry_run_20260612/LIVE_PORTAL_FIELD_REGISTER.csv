@@ -1,0 +1,32 @@
+step_number,page_or_step_name,field_label,field_type,value_or_instruction,required,portal_verified,uncertainty
+1,Start Submission,URL,navigation,https://www.editorialmanager.com/coap,YES,NOT VERIFIED (requires login),Access portal at editorialmanager.com/coap; create or log in to account
+2,Article Type,Article Type,dropdown,"Original Research (or equivalent; verify portal options: Full Length Paper / Research Article / Original Article)",YES,NOT VERIFIED,COAP may use different terminology; choose the closest to full research paper
+3,Title,Title,text input,"SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs",YES,NOT VERIFIED,Exact title; do not use running title here
+4,Title,Running Title / Short Title,text input,"SCC-Local Heuristics for MWFAS on Sparse Digraphs",YES (if requested),NOT VERIFIED,Copy from manuscript header
+5,Abstract,Abstract,text area,"[Paste exact 238-word abstract from EDITORIAL_MANAGER_FINAL_COPY_READY_TEXT.md]",YES,NOT VERIFIED,Do not paste HTML; plain text
+6,Keywords,Keywords,text input (comma or semicolon separated),"Minimum weighted feedback arc set; Combinatorial optimization; Local-ratio algorithm; Strongly connected components; Heuristic search; Algorithm engineering",YES,NOT VERIFIED,6 keywords; verify separator requirement
+7,Authors,Author Name,text input,"Soroush Vahidi",YES,NOT VERIFIED,Enter family name and given name separately if prompted
+8,Authors,Email,text input,sv96@njit.edu,YES,NOT VERIFIED,
+9,Authors,Institution,text input,"Department of Computer Science, New Jersey Institute of Technology",YES,NOT VERIFIED,
+10,Authors,Country,dropdown,USA,YES,NOT VERIFIED,
+11,Authors,ORCID,text input,0000-0003-1934-6282,Optional (recommended),NOT VERIFIED,Format without https://orcid.org/ prefix if portal requires bare ID
+12,Authors,Corresponding author?,checkbox / radio,YES — sole author is corresponding author,YES,NOT VERIFIED,
+13,Declarations,Funding,text area,"This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.",YES,NOT VERIFIED,
+14,Declarations,Competing interests,text area,"The author declares that there are no known competing financial or non-financial interests that could have appeared to influence the work reported in this paper.",YES,NOT VERIFIED,
+15,Declarations,Author contributions,text area,"Soroush Vahidi: Conceptualization, Methodology, Software, Formal analysis, Investigation, Validation, Data curation, Visualization, Writing – original draft, Writing – review & editing.",YES,NOT VERIFIED,
+16,Declarations,Data availability,text area,"Online Resource 1 (supplementary PDF and artifact archive) accompanies this submission. It contains code, configurations, summary outputs, and reproduction scripts. The public benchmark instances are cited in the manuscript and available at https://github.com/alidasdan/graph-benchmarks.",YES,NOT VERIFIED,
+17,Declarations,Code availability,text area,"Included in Online Resource 1 (Vahidi_Online_Resource_1_MWFAS.zip).",YES,NOT VERIFIED,
+18,Declarations,AI use disclosure,text area,"During the preparation of this work, the author used AI-assisted tools, including ChatGPT, Codex, Claude, and Perplexity AI, to support literature exploration, organization of material, language editing, and coding assistance. The author reviewed and edited all outputs, verified the relevant sources and experimental results, and takes full responsibility for the content of the submitted manuscript.",YES if applicable,NOT VERIFIED,Place in Statements & Declarations; portal may have dedicated field
+19,Declarations,Preprint disclosure,text or checkbox,"A preprint by Vahidi and Koutis (arXiv:2412.16181, December 2024) covers related earlier MWFAS heuristics and is cited in the manuscript. The COAP submission substantially extends and supersedes that preprint.",YES if applicable,NOT VERIFIED,Some portals have dedicated arXiv field
+20,Declarations,Related manuscripts,text area,"Related author manuscripts: JOCO-D-26-00099 (LR-TA); DA19469 (IPSNS). Prepared packages for CAIE and EJCO. See enclosed Related Manuscripts Statement for details.",YES if applicable,NOT VERIFIED,Reference the uploaded statement document
+21,Suggested Reviewers,Reviewer 1,name + email + institution,"See SUGGESTED_REVIEWER_REGISTER.csv for verified candidates",Optional,NOT VERIFIED,Prepare 3–5 names before portal step
+22,Suggested Reviewers,Reviewer 2–5,name + email + institution,"See SUGGESTED_REVIEWER_REGISTER.csv",Optional,NOT VERIFIED,
+23,Opposed Reviewers,Opposed reviewers,text,"[Author to complete — any conflict of interest exclusions]",Optional,NOT VERIFIED,
+24,File Upload,Manuscript PDF,file upload — designation Manuscript,Vahidi_COAP_Manuscript.pdf,YES,NOT VERIFIED,Upload first; this is the primary document
+25,File Upload,Cover Letter PDF,file upload — designation Cover Letter,Vahidi_COAP_Cover_Letter.pdf,YES (usually),NOT VERIFIED,Select 'Cover Letter' designation; should be editor-only
+26,File Upload,Source ZIP,file upload — designation LaTeX source files or Source Files,Vahidi_COAP_Manuscript_Source.zip,YES (Springer requires source for accepted papers; check if required at initial submission),NOT VERIFIED,
+27,File Upload,OR1 PDF,file upload — designation Supplementary Information or Online Resource,Vahidi_Online_Resource_1_MWFAS.pdf,YES,NOT VERIFIED,Reviewer-visible; label as Online Resource 1
+28,File Upload,OR1 ZIP,file upload — designation Supplementary Material or Data/Code archive,Vahidi_Online_Resource_1_MWFAS.zip,YES,NOT VERIFIED,Reviewer-visible if uploaded as supplementary; verify visibility
+29,File Upload,Related Manuscripts Statement,file upload — designation Cover Letter or Other (editor-only),Vahidi_Related_Manuscripts_Statement.pdf,YES,NOT VERIFIED,Mark as editor-only if portal allows
+30,Generated PDF,Review PDF,review generated PDF,Verify: title correct; author correct; abstract correct; no duplicate pages; supplementary files attached correctly; no cover letter page visible in reviewer PDF,YES,NOT VERIFIED,Approve only if correct
+31,Final Submit,Submit,button,Click Submit after all verifications complete,YES,NOT VERIFIED,Cannot undo after submission

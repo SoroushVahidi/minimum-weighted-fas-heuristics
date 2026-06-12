@@ -37,6 +37,8 @@ experiments/*/raw/
 !docs/final_coap_adversarial_audit_20260612/*.csv
 !docs/full_branch_repository_audit_20260612/*.csv
 !docs/repository_maintenance/**/*.csv
+!docs/coap_submission_dry_run_20260612/*.csv
+!docs/coap_submission_freeze_20260612/*.csv
 !docs/EXPERIMENT_REGISTRY.csv
 !docs/AUDIT_STATUS_REGISTER.csv
 !experiments/coap_ipsns_holdout/config/*.json

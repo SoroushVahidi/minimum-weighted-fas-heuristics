@@ -1,0 +1,25 @@
+field,manuscript_value,cover_letter_value,copy_ready_text_value,or1_value,registry_or_repo_value,consistent,discrepancy_or_note
+Title,"SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs","SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs","SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs","SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs (Online Resource 1 cover page)",N/A,YES,No discrepancy
+Author,"Soroush Vahidi","Soroush Vahidi","Soroush Vahidi","Soroush Vahidi",git user: Soroush Vahidi,YES,No discrepancy
+Affiliation,"Department of Computer Science, New Jersey Institute of Technology, Newark, NJ 07102","New Jersey Institute of Technology, Newark NJ 07102","New Jersey Institute of Technology",Not stated explicitly in OR1 content,N/A,YES (minor format variation),All refer to NJIT; short form in cover letter is acceptable
+Email,sv96@njit.edu,sv96@njit.edu,sv96@njit.edu,N/A,N/A,YES,No discrepancy
+ORCID,0000-0003-1934-6282,0000-0003-1934-6282,0000-0003-1934-6282,N/A,N/A,YES,No discrepancy
+Abstract (word count),238 words (verified pdftotext),N/A — not in cover letter,238 words,N/A — not in OR1,N/A,YES,Within 150–250 guideline
+Keywords,"Minimum weighted feedback arc set; Combinatorial optimization; Local-ratio algorithm; Strongly connected components; Heuristic search; Algorithm engineering",N/A,Same 6 keywords,N/A,N/A,YES,6 keywords; meets 4–6 requirement
+Funding statement,"No specific grant received",Confirmed in cover letter,"This research did not receive any specific grant...",N/A,N/A,YES,No discrepancy
+Competing interests,No known competing interests,N/A — not in cover letter,"No known competing financial or non-financial interests",N/A,N/A,YES,No discrepancy
+AI disclosure,"ChatGPT, Codex, Claude, Perplexity AI — listed in Declarations",Not stated in cover letter (not required there),"ChatGPT, Codex, Claude, Perplexity AI",N/A,N/A,YES,Declarations in manuscript; cover letter not required to repeat
+arXiv preprint disclosure,arXiv:2412.16181 cited as [6] in related work,arXiv:2412.16181 disclosed in cover letter,arXiv:2412.16181 stated in related-work field,N/A,N/A,YES,Consistent across all surfaces
+JOCO manuscript disclosure,JOCO-D-26-00099 cited and described §2.1,JOCO-D-26-00099 stated in cover letter,JOCO-D-26-00099 in portal comments field,Related-manuscripts statement lists JOCO,N/A,YES,Consistent
+DAM manuscript disclosure,DA19469 cited and described §2.1,DA19469 stated in cover letter,DA19469 in portal comments field,Related-manuscripts statement lists DA19469,N/A,YES,Consistent
+EXP10 win/tie/loss (38/55/0),"38 wins, 55 ties, 0 losses",N/A,N/A,OR1 Table 4: 38/55/0,experiments/exp10_stochastic_robustness/summary: 38/55/0,YES,All consistent
+EXP4 IPSNS instances best (96/97),"96 of 97 standard instances",N/A,Abstract: 96 of 97,N/A,EXPERIMENT_REGISTRY.csv EXP4: consistent,YES,No discrepancy
+EXP3 exact match (56/57),"56 of 57 standard instances",N/A,N/A,OR1 references EXP3,experiments/exp3_exact_small/README.md: 56/57 (note: 57 nonneg instances),YES,Consistent
+EXP10 instance count (93-instance subset),"93-instance common sparse subset",N/A,Abstract: 93-instance common sparse subset,OR1: 93 instances,experiments/exp10_stochastic_robustness/README.md: 93 instances,YES,Consistent
+EXP10 repetitions per method (20),"20 IPSNS seeds and 20 DRMacIver/FAS repetitions",N/A,Abstract: 20 seeds; 20 repetitions,OR1,exp10 config: 20 reps,YES,Consistent
+OR1 SHA-256 (PDF),8cc1479fb7aebe9e8b4c219aada0bf87f6c0383f53345a2d851b776b581aa0ea,N/A,N/A,N/A,UPLOAD_FILE_REGISTER.csv: 8cc1479fb7ae...,YES,Verified
+OR1 SHA-256 (ZIP),5dc3875acad386f992266a43d1406b96787c95fa1d3acde7124be327ee29495e,N/A,N/A,N/A,UPLOAD_FILE_REGISTER.csv: 5dc3875acad3...,YES,Verified
+Manuscript SHA-256,97eb61238a81e12e2597a6963926f0f092ad994f3f369b89715f36e9e06d0898,N/A,N/A,N/A,UPLOAD_FILE_REGISTER.csv: 97eb6123...,YES,Verified
+Data availability statement,"OR1 accompanies this submission...code, configurations, summary outputs, and reproduction scripts","Reproducibility offered via OR1",Same in copy-ready text,"OR1 is the artifact",N/A,YES,Consistent
+Code availability statement,Included in OR1 ZIP,N/A,Included in OR1 ZIP,N/A,N/A,YES,No discrepancy
+EXP11 scope (6 nonneg instances),6-instance nonnegative calibration subset,N/A,N/A,OR1 Table 6: 6 instances,experiments/exp11_topological_extraction_sensitivity/summary/exp11_aggregate.json: n_instances=6,YES,"Fixed in commit 04ba2c3; all now consistent; 0 instances improved"

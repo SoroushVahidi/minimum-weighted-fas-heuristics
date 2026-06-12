@@ -1,0 +1,32 @@
+file,action,classification,scientific_result_changed,algorithm_changed,manuscript_claim_changed,disclosure_weakened,sensitive_material,reason_for_inclusion
+.gitignore,MODIFIED — added 2 csv exception lines,repository configuration,NO,NO,NO,NO,NO,Required to allow dry-run and freeze CSV files to be tracked; follows established pattern in .gitignore
+docs/coap_submission_dry_run_20260612/audit_metadata.json,ADD — new untracked file,submission documentation,NO,NO,NO,NO,NO,Machine-readable dry-run record
+docs/coap_submission_dry_run_20260612/AUTHOR_CONFIRMATIONS_REQUIRED.md,ADD — new untracked file,internal author checklist,NO,NO,NO,NO,NO,Permanent record of 15 author-confirmation items
+docs/coap_submission_dry_run_20260612/COVER_LETTER_VERIFICATION.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Cover letter audit evidence
+docs/coap_submission_dry_run_20260612/EXECUTIVE_SUMMARY.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Dry-run executive summary
+docs/coap_submission_dry_run_20260612/FILE_DESIGNATION_MAP.csv,ADD — new untracked file (gitignore exception added),durable submission documentation,NO,NO,NO,NO,NO,Upload file designation reference
+docs/coap_submission_dry_run_20260612/FINAL_PORTAL_ISSUE_REGISTER.csv,ADD — new untracked file (gitignore exception added),official-requirement evidence,NO,NO,NO,NO,NO,13-issue tracker; ISSUE-01 notes JOCO/DAM pending accurately
+docs/coap_submission_dry_run_20260612/FINAL_SUBMISSION_DRY_RUN_VERDICT.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Primary dry-run verdict
+docs/coap_submission_dry_run_20260612/GENERATED_PDF_ORDER_PLAN.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Portal PDF verification plan
+docs/coap_submission_dry_run_20260612/LIVE_PORTAL_FIELD_REGISTER.csv,ADD — new untracked file (gitignore exception added),internal author checklist,NO,NO,NO,NO,NO,31-step portal field reference; portal behaviors labeled NOT VERIFIED
+docs/coap_submission_dry_run_20260612/MANUSCRIPT_UPLOAD_VERIFICATION.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Manuscript audit evidence
+docs/coap_submission_dry_run_20260612/OFFICIAL_COAP_REQUIREMENTS.csv,ADD — new untracked file (gitignore exception added),official-requirement evidence,NO,NO,NO,NO,NO,27 requirements; unverified items labeled NOT VERIFIED
+docs/coap_submission_dry_run_20260612/ONLINE_RESOURCE_UPLOAD_VERIFICATION.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,OR1 VALIDATION PASSED record
+docs/coap_submission_dry_run_20260612/RELATED_MANUSCRIPT_VERIFICATION.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Related-work disclosure table
+docs/coap_submission_dry_run_20260612/REPOSITORY_STATE.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,State snapshot
+docs/coap_submission_dry_run_20260612/SOURCE_ZIP_VERIFICATION.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Source ZIP structure verification
+docs/coap_submission_dry_run_20260612/STEP_BY_STEP_SUBMISSION_WALKTHROUGH.md,ADD — new untracked file,internal author checklist,NO,NO,NO,NO,NO,32-step portal walkthrough
+docs/coap_submission_dry_run_20260612/SUBMISSION_CONSISTENCY_MATRIX.csv,ADD — new untracked file (gitignore exception added),durable submission documentation,NO,NO,NO,NO,NO,24 cross-surface consistency checks
+docs/coap_submission_dry_run_20260612/SUGGESTED_REVIEWER_REGISTER.csv,ADD — new untracked file (gitignore exception added),internal author checklist,NO,NO,NO,NO,NO,5 reviewer candidates with public-source verification
+docs/coap_submission_dry_run_20260612/UPLOAD_FILE_REGISTER.csv,ADD — new untracked file (gitignore exception added),durable submission documentation,NO,NO,NO,NO,NO,6-file checksum register
+docs/coap_submission_freeze_20260612/CONCURRENT_SUBMISSION_DECISION_TREE.md,ADD — new untracked file,internal author checklist,NO,NO,NO,NO,NO,Decision tree for 4 JOCO/DAM status cases; does not assert unknown statuses
+docs/coap_submission_freeze_20260612/DRY_RUN_RETENTION_DECISION.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,File classification and commit decision record
+docs/coap_submission_freeze_20260612/FINAL_REVIEWER_RECOMMENDATIONS.csv,ADD — new untracked file (gitignore exception added),internal author checklist,NO,NO,NO,NO,NO,Verified reviewer list with name-typo correction note
+docs/coap_submission_freeze_20260612/GIT_PROVENANCE_RECONCILIATION.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Reconciliation of af34d57 vs 04ba2c3 discrepancy
+docs/coap_submission_freeze_20260612/UNTRACKED_FILE_REGISTER.csv,ADD — new untracked file (gitignore exception added),durable submission documentation,NO,NO,NO,NO,NO,Per-file register with sensitivity classification
+docs/coap_submission_freeze_20260612/UPLOAD_ARTIFACT_VERIFICATION.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Upload checksum verification record
+docs/coap_submission_freeze_20260612/VALIDATION_RESULTS.md,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Full validation result summary
+paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md,ADD — new untracked file,internal author checklist,NO,NO,NO,NO,NO,Pre-submission checklist with JOCO/DAM gate
+paper_coap/submission/EDITORIAL_MANAGER_FINAL_COPY_READY_TEXT.md,ADD — new file (updated with confirmation gates),internal author checklist,NO,NO,NO,NO,NO,Updated with PRE-SUBMISSION GATE warning and field classification legend
+paper_coap/submission/final_upload/SUBMISSION_FREEZE.json,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,Immutable freeze manifest; explicitly states submission has NOT been made
+paper_coap/submission/final_upload/SUBMISSION_FREEZE.sha256,ADD — new untracked file,durable submission documentation,NO,NO,NO,NO,NO,SHA-256 of freeze manifest (separate from MANIFEST.sha256 to avoid circular reference)

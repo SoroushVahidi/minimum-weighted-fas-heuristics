@@ -1,0 +1,128 @@
+{
+  "dry_run_date": "2026-06-12",
+  "journal": "Computational Optimization and Applications (COAP)",
+  "publisher": "Springer Nature",
+  "portal": "https://www.editorialmanager.com/coap",
+  "manuscript_title": "SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs",
+  "author": {
+    "name": "Soroush Vahidi",
+    "email": "sv96@njit.edu",
+    "institution": "New Jersey Institute of Technology",
+    "department": "Department of Computer Science",
+    "orcid": "0000-0003-1934-6282"
+  },
+  "repository": {
+    "path": "/home/soroush/minimum-weighted-fas-heuristics",
+    "branch": "main",
+    "commit_at_dry_run": "04ba2c3",
+    "remote": "origin"
+  },
+  "upload_files": [
+    {
+      "filename": "Vahidi_COAP_Manuscript.pdf",
+      "sha256": "97eb61238a81e12e2597a6963926f0f092ad994f3f369b89715f36e9e06d0898",
+      "size_bytes": 2953040,
+      "designation": "Manuscript",
+      "reviewer_visible": true
+    },
+    {
+      "filename": "Vahidi_COAP_Cover_Letter.pdf",
+      "sha256": "df6622bd7b19f2ed73e5d54c38e953a2092f9436f574db4da86b374efe6496f8",
+      "size_bytes": 156672,
+      "designation": "Cover Letter",
+      "reviewer_visible": false
+    },
+    {
+      "filename": "Vahidi_COAP_Manuscript_Source.zip",
+      "sha256": "0fd2b2c138c31798ff334a47f7d5c917fd32ec83aa5b05b932c82c20a32f7b38",
+      "size_bytes": 1126400,
+      "designation": "LaTeX Source Files",
+      "reviewer_visible": false
+    },
+    {
+      "filename": "Vahidi_Online_Resource_1_MWFAS.pdf",
+      "sha256": "8cc1479fb7aebe9e8b4c219aada0bf87f6c0383f53345a2d851b776b581aa0ea",
+      "size_bytes": 1789952,
+      "designation": "Supplementary Information",
+      "reviewer_visible": true
+    },
+    {
+      "filename": "Vahidi_Online_Resource_1_MWFAS.zip",
+      "sha256": "5dc3875acad386f992266a43d1406b96787c95fa1d3acde7124be327ee29495e",
+      "size_bytes": 12582912,
+      "designation": "Supplementary Material (Data/Code)",
+      "reviewer_visible": true
+    },
+    {
+      "filename": "Vahidi_Related_Manuscripts_Statement.pdf",
+      "sha256": "7e5ee12c4200ff0a006f350b379d63a1dc38dccbc588ab7dbb62e241a08b519e",
+      "size_bytes": 89088,
+      "designation": "Cover Letter (editor-only) or Author Statement",
+      "reviewer_visible": false
+    }
+  ],
+  "test_results": {
+    "main_suite": {
+      "passed": 90,
+      "failed": 0,
+      "skipped": 1,
+      "log": "logs/tests.log"
+    },
+    "or1_packaged_suite": {
+      "passed": 79,
+      "failed": 0,
+      "skipped": 7
+    },
+    "or1_validation": {
+      "result": "PASSED",
+      "log": "logs/or1_validation.log",
+      "note": "Cache files must be cleaned before each validation run"
+    }
+  },
+  "key_manuscript_claims": {
+    "exp4_ipsns_best_of_97": "96 of 97",
+    "exp10_win_tie_loss": "38/55/0",
+    "exp10_instances": 93,
+    "exp10_reps_per_method": 20,
+    "exp10_total_runs": 1860,
+    "exp10_mean_dr_excess_pct": 21.60,
+    "exp3_exact_matches": "56 of 57",
+    "exp11_nonneg_instances": 6,
+    "exp11_instances_improved": 0,
+    "abstract_word_count": 238,
+    "keywords_count": 6
+  },
+  "issues": {
+    "blockers": 1,
+    "high": 2,
+    "medium": 5,
+    "low": 3,
+    "info": 2,
+    "primary_blocker": "JOCO-D-26-00099 and DA19469 concurrent submission status must be confirmed by author"
+  },
+  "verdict": "SUBMISSION READY — pending author confirmation of JOCO/DAM concurrent submission status",
+  "phases_complete": [
+    "Phase 1: Repository state",
+    "Phase 2: Upload file inventory",
+    "Phase 3: Manuscript upload verification",
+    "Phase 4: Source ZIP verification",
+    "Phase 5: Online Resource 1 verification",
+    "Phase 6: Cover letter verification",
+    "Phase 7: Related manuscript verification",
+    "Phase 8: Author confirmations required",
+    "Phase 9: COAP requirements",
+    "Phase 10: Live portal field register",
+    "Phase 11: Copy-ready text",
+    "Phase 12: Suggested reviewer register",
+    "Phase 13: File designation map",
+    "Phase 14: Generated PDF order plan",
+    "Phase 15: Submission consistency matrix",
+    "Phase 16: Final portal issue register",
+    "Phase 17: Corrections check (no tracked changes needed)",
+    "Phase 18: Final test run",
+    "Phase 19: Commit/push (not required — no tracked changes)",
+    "Phase 20: Step-by-step submission walkthrough"
+  ],
+  "output_directory": "docs/coap_submission_dry_run_20260612/",
+  "canonical_copy_ready_text": "paper_coap/submission/EDITORIAL_MANAGER_FINAL_COPY_READY_TEXT.md"
+}

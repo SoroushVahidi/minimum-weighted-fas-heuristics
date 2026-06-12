@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "freeze_date": "2026-06-12",
+  "target_journal": "Computational Optimization and Applications",
+  "publisher": "Springer Nature",
+  "portal": "editorialmanager.com/coap",
+  "manuscript_title": "SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs",
+  "repository_commit_at_freeze": "af34d57d3a921c1be50a61f990c2d85ff8d97df3",
+  "repository_remote": "https://github.com/SoroushVahidi/minimum-weighted-fas-heuristics",
+  "submission_status": "NOT SUBMITTED — this freeze marks the submission-ready snapshot; it does not indicate that submission has occurred",
+  "author": {
+    "name": "Soroush Vahidi",
+    "email": "sv96@njit.edu",
+    "institution": "New Jersey Institute of Technology",
+    "department": "Department of Computer Science",
+    "orcid": "0000-0003-1934-6282"
+  },
+  "files": [
+    {
+      "filename": "Vahidi_COAP_Manuscript.pdf",
+      "sha256": "97eb61238a81e12e2597a6963926f0f092ad994f3f369b89715f36e9e06d0898",
+      "size_bytes": 333157,
+      "portal_designation": "Manuscript",
+      "reviewer_visibility": "yes",
+      "canonical_source": "paper_coap/main.tex (built at commit 04ca3ad)"
+    },
+    {
+      "filename": "Vahidi_COAP_Cover_Letter.pdf",
+      "sha256": "df6622bd7b19f2ed73e5d54c38e953a2092f9436f574db4da86b374efe6496f8",
+      "size_bytes": 24732,
+      "portal_designation": "Cover Letter",
+      "reviewer_visibility": "editor-only",
+      "canonical_source": "paper_coap/submission/cover_letter.tex"
+    },
+    {
+      "filename": "Vahidi_COAP_Manuscript_Source.zip",
+      "sha256": "0fd2b2c138c31798ff334a47f7d5c917fd32ec83aa5b05b932c82c20a32f7b38",
+      "size_bytes": 145760,
+      "portal_designation": "LaTeX Source Files",
+      "reviewer_visibility": "production-use-only",
+      "canonical_source": "paper_coap/ directory LaTeX source archive"
+    },
+    {
+      "filename": "Vahidi_Online_Resource_1_MWFAS.pdf",
+      "sha256": "8cc1479fb7aebe9e8b4c219aada0bf87f6c0383f53345a2d851b776b581aa0ea",
+      "size_bytes": 130236,
+      "portal_designation": "Supplementary Information",
+      "reviewer_visibility": "yes",
+      "canonical_source": "online_resource_1/docs/main.tex (frozen supplementary PDF)"
+    },
+    {
+      "filename": "Vahidi_Online_Resource_1_MWFAS.zip",
+      "sha256": "5dc3875acad386f992266a43d1406b96787c95fa1d3acde7124be327ee29495e",
+      "size_bytes": 1116197,
+      "portal_designation": "Supplementary Material (Data/Code)",
+      "reviewer_visibility": "yes",
+      "canonical_source": "online_resource_1/ directory frozen artifact archive"
+    },
+    {
+      "filename": "Vahidi_Related_Manuscripts_Statement.pdf",
+      "sha256": "7e5ee12c4200ff0a006f350b379d63a1dc38dccbc588ab7dbb62e241a08b519e",
+      "size_bytes": 22804,
+      "portal_designation": "Cover Letter (Other / Author Statement)",
+      "reviewer_visibility": "editor-only",
+      "canonical_source": "paper_coap/submission/related_manuscripts_statement.tex"
+    }
+  ],
+  "tests": {
+    "main_suite_result": "90 passed, 1 skipped",
+    "or1_packaged_suite_result": "79 passed, 7 skipped",
+    "or1_validation_result": "VALIDATION PASSED",
+    "test_run_date": "2026-06-12"
+  },
+  "key_manuscript_claims_verified": {
+    "exp4_ipsns_best_of_97": "96 of 97",
+    "exp10_win_tie_loss": "38/55/0",
+    "exp10_instances": 93,
+    "exp10_reps_per_method": 20,
+    "exp10_total_runs": 1860,
+    "exp10_mean_dr_excess_pct": 21.60,
+    "exp3_exact_matches": "56 of 57",
+    "exp11_nonneg_instances": 6,
+    "exp11_instances_improved": 0,
+    "abstract_word_count": 238,
+    "keywords_count": 6
+  },
+  "author_confirmations_pending": [
+    "JOCO-D-26-00099 current status: must not be under active peer review for the cover-letter concurrent-submission declaration to be accurate",
+    "DA19469 current status: same requirement",
+    "CAIE package: confirm whether formally submitted and if so the outcome",
+    "EJCO package: confirm whether formally submitted and if so the outcome"
+  ],
+  "checksum_manifest": "MANIFEST.sha256 (in this directory)",
+  "submission_documentation": "docs/coap_submission_dry_run_20260612/ and docs/coap_submission_freeze_20260612/",
+  "canonical_portal_text": "paper_coap/submission/EDITORIAL_MANAGER_FINAL_COPY_READY_TEXT.md",
+  "author_checklist": "paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md",
+  "concurrent_submission_decision_tree": "docs/coap_submission_freeze_20260612/CONCURRENT_SUBMISSION_DECISION_TREE.md"
+}

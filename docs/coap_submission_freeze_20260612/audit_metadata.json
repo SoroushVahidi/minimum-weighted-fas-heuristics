@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "freeze_date": "2026-06-12",
+  "journal": "Computational Optimization and Applications (COAP)",
+  "publisher": "Springer Nature",
+  "manuscript_title": "SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs",
+  "author": {
+    "name": "Soroush Vahidi",
+    "email": "sv96@njit.edu",
+    "orcid": "0000-0003-1934-6282",
+    "institution": "New Jersey Institute of Technology"
+  },
+  "git": {
+    "starting_head": "af34d57d3a921c1be50a61f990c2d85ff8d97df3",
+    "origin_main_at_start": "af34d57d3a921c1be50a61f990c2d85ff8d97df3",
+    "local_equals_remote_at_start": true,
+    "dry_run_cited_commit": "04ba2c3",
+    "reconciliation": "04ba2c3 is an ancestor of af34d57; no discrepancy; history intact"
+  },
+  "upload_files": [
+    {
+      "filename": "Vahidi_COAP_Manuscript.pdf",
+      "sha256": "97eb61238a81e12e2597a6963926f0f092ad994f3f369b89715f36e9e06d0898",
+      "size_bytes": 333157,
+      "checksum_verified": "OK"
+    },
+    {
+      "filename": "Vahidi_COAP_Cover_Letter.pdf",
+      "sha256": "df6622bd7b19f2ed73e5d54c38e953a2092f9436f574db4da86b374efe6496f8",
+      "size_bytes": 24732,
+      "checksum_verified": "OK"
+    },
+    {
+      "filename": "Vahidi_COAP_Manuscript_Source.zip",
+      "sha256": "0fd2b2c138c31798ff334a47f7d5c917fd32ec83aa5b05b932c82c20a32f7b38",
+      "size_bytes": 145760,
+      "checksum_verified": "OK"
+    },
+    {
+      "filename": "Vahidi_Online_Resource_1_MWFAS.pdf",
+      "sha256": "8cc1479fb7aebe9e8b4c219aada0bf87f6c0383f53345a2d851b776b581aa0ea",
+      "size_bytes": 130236,
+      "checksum_verified": "OK"
+    },
+    {
+      "filename": "Vahidi_Online_Resource_1_MWFAS.zip",
+      "sha256": "5dc3875acad386f992266a43d1406b96787c95fa1d3acde7124be327ee29495e",
+      "size_bytes": 1116197,
+      "checksum_verified": "OK"
+    },
+    {
+      "filename": "Vahidi_Related_Manuscripts_Statement.pdf",
+      "sha256": "7e5ee12c4200ff0a006f350b379d63a1dc38dccbc588ab7dbb62e241a08b519e",
+      "size_bytes": 22804,
+      "checksum_verified": "OK"
+    }
+  ],
+  "validation": {
+    "main_tests": "90 passed, 1 skipped",
+    "or1_validation": "VALIDATION PASSED",
+    "or1_packaged_tests": "79 passed, 7 skipped",
+    "upload_checksums": "6/6 OK",
+    "security_scan": "CLEAN",
+    "abstract_words": 238,
+    "keywords_count": 6
+  },
+  "reviewer_note": "Task instructions listed 'Martin Hanauer' — correct name is 'Kathrin Hanauer' per University of Vienna public profile",
+  "concurrent_submission_status": {
+    "joco_d_26_00099": "UNKNOWN — requires author confirmation from submission records",
+    "da19469": "UNKNOWN — requires author confirmation from submission records",
+    "caie_package": "UNKNOWN — whether formally submitted is in author records only",
+    "ejco_package": "UNKNOWN — whether formally submitted is in author records only"
+  },
+  "submission_status": "NOT SUBMITTED",
+  "freeze_verdict": "SUBMISSION READY — pending author confirmation of JOCO/DAM concurrent submission status",
+  "freeze_commit": "to be recorded after git commit",
+  "tag": "coap-submission-ready-2026-06-12"
+}
