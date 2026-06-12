@@ -6,5 +6,7 @@
   "pytest": "90 passed, 1 skipped",
   "or1_validation": "passed",
   "manuscript_pages": 45,
-  "upload_files": 6
+  "upload_files": 6,
+  "final_commit": "04ca3ad861cc127a704da5694a903bfab3dfdc1e",
+  "tracked_files_after": 6410
 }
