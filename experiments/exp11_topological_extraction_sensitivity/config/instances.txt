@@ -1,0 +1,7 @@
+# EXP11 nonnegative calibration subset (6 instances)
+graph-benchmarks/core-bad/bad1.d
+graph-benchmarks/core/gr10.d
+graph-benchmarks/iscas-small/s420.d
+graph-benchmarks/iscas-small/s349.d
+graph-benchmarks/iscas-small/s641.d
+graph-benchmarks/core/example.new.d

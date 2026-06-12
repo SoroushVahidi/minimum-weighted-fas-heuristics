@@ -1,0 +1,54 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{url}
+\geometry{margin=2.2cm}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}[proposition]{Lemma}
+
+\title{%
+  \textbf{Online Resource 1}\\[0.5em]
+  \large Algorithms, Proofs, Reproducibility Materials, and Extended Computational Results\\[1em]
+  \normalsize Companion to:\\
+  \textit{SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs}\\[0.8em]
+  Computational Optimization and Applications (COAP), Springer Nature
+}
+\author{%
+  Soroush Vahidi\thanks{Corresponding author: \texttt{sv96@njit.edu}}\\
+  Department of Computer Science\\
+  New Jersey Institute of Technology\\
+  Newark, NJ 07102, USA
+}
+\date{Version 2026-06-12 \quad Source commit: \texttt{80b3144d}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\input{sections/S01_purpose}
+\input{sections/S02_problem}
+\input{sections/S03_algorithms}
+\input{sections/S04_proofs}
+\input{sections/S05_provenance}
+\input{sections/S06_topological_order}
+\input{sections/S07_parameters}
+\input{sections/S08_benchmarks}
+\input{sections/S09_protocol}
+\input{sections/S10_extended_results}
+\input{sections/S11_exp10}
+\input{sections/S12_exp11}
+\input{sections/S13_tests}
+\input{sections/S14_reproduction}
+\input{sections/S15_limitations}
+
+\end{document}

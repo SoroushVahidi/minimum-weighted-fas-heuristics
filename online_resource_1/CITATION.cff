@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: "Online Resource 1 — SCC-Local Destroy-and-Repair Heuristics for MWFAS"
+message: "Companion supplementary material for COAP manuscript."
+authors:
+  - family-names: Vahidi
+    given-names: Soroush
+    affiliation: New Jersey Institute of Technology
+    orcid: https://orcid.org/0000-0003-1934-6282
+repository-code: https://github.com/SoroushVahidi/minimum-weighted-fas-heuristics
+license: MIT
+version: 2026-06-12
+keywords:
+  - feedback arc set
+  - minimum weighted feedback arc set
+  - heuristic
+  - reproducibility

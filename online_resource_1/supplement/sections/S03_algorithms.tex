@@ -1,0 +1,51 @@
+\section{Complete algorithm specifications}
+\label{sec:or1-algorithms}
+
+This section summarizes the implemented algorithms in \texttt{code/src/mwfas/}. Components are labeled as \textbf{inherited}, \textbf{engineered}, or \textbf{newly integrated}.
+
+\subsection{LR-TA (inherited lineage, engineered implementation)}
+
+\textbf{Source lineage:} Demetrescu--Finocchi local-ratio cycle reduction \cite{DF03}; engineered sparse-graph variant with recorded removals and heavy-first add-back.
+
+\textbf{Phase I (cycle reduction):} Repeatedly detect a directed cycle $C$ in the active subgraph, compute $\varepsilon(C)=\min_{e\in C}W[e]$, subtract $\varepsilon$ from all cycle arcs, deactivate arcs with residual weight $\le\tau$.
+
+\textbf{Phase II (add-back):} Process removed arcs in nonincreasing \emph{original} weight order. Accept forward arcs by rank shortcut; accept backward arcs only after negative reachability test; recompute topological order after backward acceptance.
+
+\textbf{Determinism:} Phase I cycle detection uses iterative DFS with deterministic edge-index order. Floating-point subtraction may introduce tie cases handled by $\tau$.
+
+\subsection{WMSF-style seed (inherited pipeline, engineered variant)}
+
+\textbf{Source lineage:} Cavallaro--Cutello minimal-and-stable weighted FAS \cite{CC25}.
+
+\textbf{Pipeline per nontrivial SCC:} \texttt{removeArcs} $\rightarrow$ \texttt{minimizeFas} $\rightarrow$ \texttt{StabilizeFas} $\rightarrow$ \texttt{minimizeFas}. Safe-edge bookkeeping restores temporarily deleted arcs. Global composition uses Kosaraju SCC decomposition.
+
+\textbf{Note:} Stabilization may change objective; the manuscript does not claim global non-worsening for stabilization passes.
+
+\subsection{IPSNS (newly integrated destroy-and-repair)}
+
+\textbf{Seeds:} Run LR-TA and full WMSF seed; keep better incumbent $\pi^{(0)}$.
+
+\textbf{Iteration $t=1,\ldots,T$:}
+\begin{enumerate}
+  \item Score each nontrivial SCC by backward-weight contribution under current rank.
+  \item Select SCC from weighted top-$K$ pool (default $K=15$) using RNG seed.
+  \item \textbf{Destroy A:} reactivate up to $\lfloor f_{\mathrm{add}}\cdot|r_S|\rfloor$ heaviest removed internal arcs.
+  \item \textbf{Destroy B:} deactivate up to $\lfloor f_{\mathrm{rem}}\cdot|a_S|\rfloor$ lightest active internal arcs.
+  \item \textbf{Repair:} restricted LR-TA cycle reduction + heavy-first add-back inside SCC neighborhood on original graph.
+  \item Accept only if repaired ordering is acyclic and $\mathrm{BW}$ strictly improves; else exact rollback.
+\end{enumerate}
+
+\textbf{Defaults:} $T=400$, $f_{\mathrm{add}}=0.30$, $f_{\mathrm{rem}}=0.02$, $\tau=10^{-12}$, \texttt{wmsf\_seed\_mode=full}.
+
+\subsection{Exact DP}
+
+Bitmask dynamic programming over vertex subsets for $n\le 20$ (implementation limit). Used for exact-validation cross-checks only.
+
+\subsection{Objective evaluation}
+
+Independent backward-weight scan: for ordering $\pi$, sum weights of arcs $(u,v)$ with $\pi(u)>\pi(v)$. Parser and evaluator consistency is tested by the 78-test gate.
+
+\begin{thebibliography}{9}
+\bibitem{DF03} C.~Demetrescu and I.~Finocchi. Local-ratio approximation algorithms. \emph{Handbook of Approximation Algorithms and Metaheuristics}, 2007.
+\bibitem{CC25} A.~Cavallaro and A.~Cutello. A minimal and stable weighted feedback arc set heuristic. \emph{Computers \& Operations Research}, 2025.
+\end{thebibliography}

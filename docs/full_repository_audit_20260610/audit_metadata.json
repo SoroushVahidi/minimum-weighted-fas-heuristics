@@ -1,0 +1,56 @@
+{
+  "audit_id": "full_repository_audit_20260610",
+  "audit_date": "2026-06-10",
+  "auditor_mode": "read-only",
+  "repository_root": "/home/soroush/minimum-weighted-fas-heuristics",
+  "branch": "main",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "origin_main": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "local_matches_origin": true,
+  "working_tree": {
+    "staged": 0,
+    "modified_tracked": 0,
+    "deleted_tracked": 0,
+    "untracked": [
+      "experiments/coap_ipsns_holdout/checkpoints/",
+      "experiments/coap_ipsns_holdout/results/",
+      "logs/coap_ipsns_holdout/"
+    ]
+  },
+  "submodules": [],
+  "git_lfs": "not configured (no tracked LFS objects observed)",
+  "repository_size": {
+    "workspace_bytes_approx": "253M",
+    "git_dir_bytes_approx": "not separately measured"
+  },
+  "active_experiment": {
+    "name": "coap_ipsns_holdout",
+    "tmux_session": "coap_ipsns_holdout",
+    "launch_commit": "90af46494ccfeb19b6ecf725379d7a74f4784f86",
+    "launch_clean": true,
+    "note": "Launched one commit before current HEAD; driver/plan frozen at launch per user instruction"
+  },
+  "holdout_snapshot_at_audit": {
+    "expected_runs": 1290,
+    "pending_at_launch": 1286,
+    "log_progress": "540/1286",
+    "checkpoints": 544,
+    "runs_jsonl_lines": 540,
+    "failures_jsonl": "absent",
+    "completed_ok": false,
+    "process_pid": 1488925,
+    "healthy": true
+  },
+  "coap_manuscript_pdf": {
+    "path": "paper_coap/main.pdf",
+    "sha256": "b596f694da1637a0c742ceb03ea85e1debf7ac0eb77bcf8cb034ee4aaacca712",
+    "pages": 40,
+    "creation_date": "2026-06-10 18:55:44 EDT"
+  },
+  "constraints_observed": [
+    "No source/manuscript/experiment/git modifications",
+    "No commits or pushes",
+    "No new experiments launched",
+    "No tmux session disruption"
+  ]
+}

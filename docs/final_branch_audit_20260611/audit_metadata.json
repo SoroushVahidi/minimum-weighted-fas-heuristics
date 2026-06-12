@@ -1,0 +1,78 @@
+{
+  "audit_id": "final_branch_audit_20260611",
+  "audit_date": "2026-06-11",
+  "auditor": "Claude Sonnet 4.6 (automated)",
+  "repository": "minimum-weighted-fas-heuristics",
+  "branch": "main",
+  "head_commit": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "upstream": "origin/main",
+  "upstream_status": "up to date",
+  "target_journal": "Computational Optimization and Applications (COAP), Springer Nature",
+  "audit_scope": "full repository — source, manuscript, experiments, tests, security, compliance",
+  "audit_type": "final pre-submission readiness audit",
+  "prior_audit_directory": "docs/full_repository_audit_20260610/",
+  "files_audited": {
+    "source_files": ["src/mwfas/lrta.py","src/mwfas/wmsf.py","src/mwfas/ipsns.py","src/mwfas/exact.py","src/mwfas/evaluation.py","src/mwfas/io.py"],
+    "manuscript_files": ["paper_coap/main.tex","paper_coap/sections/01_introduction.tex","paper_coap/sections/02_related_work.tex","paper_coap/sections/03_problem_definition.tex","paper_coap/sections/04_algorithmic_framework.tex","paper_coap/sections/04_formal_analysis.tex","paper_coap/sections/05_experimental_design.tex","paper_coap/sections/06_results.tex","paper_coap/sections/07_discussion.tex","paper_coap/sections/08_conclusion.tex","paper_coap/declarations/statements_and_declarations.tex"],
+    "experiment_dirs": ["experiments/exp1b_core_benchmark_full_wmsf_seed","experiments/exp2_ablation","experiments/exp3_exact_small","experiments/exp4_external_baselines","experiments/exp5_lolib_dense","experiments/exp6_ipsns_budget_curve","experiments/exp7_plain_local_search","experiments/exp8_medium_mip_baseline","experiments/exp9_application_case","experiments/coap_ipsns_holdout","experiments/coap_ipsns_sensitivity","experiments/exp10_stochastic_robustness"],
+    "test_files": [],
+    "audit_docs": ["docs/full_repository_audit_20260610/ (34 files)"]
+  },
+  "running_processes": {
+    "exp10_ipsns": {
+      "pid": 24482,
+      "status": "active",
+      "progress_at_audit_start": "1215/1860 runs complete (65%)",
+      "progress_at_audit_end": "1279/1860 runs complete (68.8%)",
+      "current_instance_at_start": "parker1986"
+    }
+  },
+  "key_claims_verified": {
+    "ipsns_96_of_97_best": true,
+    "ipsns_37_55_1_vs_drmaciver": true,
+    "mean_rel_gain_21_6_pct": true,
+    "exact_56_of_57": true,
+    "zero_incumbent_violations": true
+  },
+  "test_suite_status": "NO TESTS — pytest collects 0 tests",
+  "issues_by_severity": {
+    "BLOCKER": 2,
+    "CRITICAL": 3,
+    "MAJOR": 4,
+    "MODERATE": 5,
+    "MINOR": 5,
+    "INFORMATIONAL": 4
+  },
+  "source_files_modified": true,
+  "manuscript_files_modified": false,
+  "final_verdict": "CONDITIONALLY READY — EXP10 must complete before final verdict; manuscript scientifically valid; core claims verified; test gap is significant; see FINAL_ACTION_PLAN.md",
+  "audit_output_files": [
+    "audit_metadata.json",
+    "EXECUTIVE_SUMMARY.md",
+    "BRANCH_AND_WORKTREE_AUDIT.md",
+    "BRANCH_DIFF_REGISTER.csv",
+    "CANONICAL_SOURCE_MAP.md",
+    "LRTA_AUDIT.md",
+    "WMSF_AUDIT.md",
+    "IPSNS_AUDIT.md",
+    "EXACT_SOLVER_AUDIT.md",
+    "CODE_CORRECTNESS_AUDIT.md",
+    "TEST_AND_CI_AUDIT.md",
+    "RUNNING_PROCESS_AUDIT.md",
+    "EXPERIMENT_STATUS_AUDIT.md",
+    "EXPERIMENT_RESULT_VALIDATION.md",
+    "STATISTICAL_AUDIT.md",
+    "MANUSCRIPT_SCIENTIFIC_AUDIT.md",
+    "MANUSCRIPT_NUMERICAL_TRACEABILITY.csv",
+    "RELATED_WORK_AND_DISCLOSURE_AUDIT.md",
+    "COAP_COMPLIANCE_AUDIT.md",
+    "REPRODUCIBILITY_AND_ARTIFACT_AUDIT.md",
+    "LICENSE_SECURITY_PRIVACY_AUDIT.md",
+    "MASTER_ISSUE_REGISTER.csv",
+    "FINAL_ACTION_PLAN.md",
+    "COMMIT_PLAN.md",
+    "inventory.json"
+  ],
+  "audit_complete": true,
+  "timestamp": "2026-06-11T18:00:00Z"
+}

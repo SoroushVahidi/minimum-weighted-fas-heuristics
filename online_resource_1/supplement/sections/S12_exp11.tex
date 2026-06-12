@@ -1,0 +1,38 @@
+\section{EXP11: topological-extraction sensitivity}
+\label{sec:or1-exp11}
+
+EXP11 is a post-hoc calibration study on LR-TA final active DAGs. It does not modify LR-TA, WMSF, IPSNS, or any headline benchmark output.
+
+\subsection{Motivation}
+Linear extensions of a fixed active DAG are not unique; $\mathrm{BW}(\pi)$ can depend on the extraction rule (Proposition~\ref{prop:or1-subset}, Equation~\eqref{eq:or1-inequality}). EXP11 tests whether alternative deterministic extractions change reported backward weight on a small nonnegative calibration subset.
+
+\subsection{Frozen protocol}
+\begin{itemize}
+    \item \textbf{Instances:} six nonnegative calibration graphs (\texttt{bad1}, \texttt{gr10}, \texttt{s420}, \texttt{s349}, \texttt{s641}, \texttt{example.new}).
+    \item \textbf{State:} LR-TA final $(F,H)$ reconstructed from source (active flags not stored in committed summaries).
+    \item \textbf{Rules:} (i)~repository Kahn min-vertex-id; (ii)~Kahn max-vertex-id; (iii)~Kahn weighted net-score priority; (iv)~one-pass precedence-preserving insertion refinement respecting active-DAG precedence.
+    \item \textbf{Metrics:} $\mathrm{BW}(\pi)$, $w(F)-\mathrm{BW}(\pi)$, relative improvement with $\varepsilon=10^{-9}$.
+    \item \textbf{Runtime:} ${\sim}9$\,s on the frozen subset (source commit in front matter).
+\end{itemize}
+
+An exploratory broader run was stopped before completion; the first insertion-refinement prototype did not enforce active-DAG precedence and was corrected before the frozen valid run recorded here.
+
+\subsection{Results}
+\begin{center}
+\begin{tabular}{lrrr}
+\toprule
+Instance & $\mathrm{BW}(\pi)$ (all rules) & $w(F)-\mathrm{BW}(\pi)$ & Improved? \\
+\midrule
+bad1 & 94 & 0 & no \\
+gr10 & 62\,435 & 0 & no \\
+s420 & 158 & 0 & no \\
+s349 & 6\,729 & 0 & no \\
+s641 & 2\,403 & 0 & no \\
+example.new & 18\,638 & 0 & no \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Conclusion:} zero backward-weight changes; zero headline impact on EXP4/EXP10 comparisons. Full CSV: \texttt{results/exp11/summary/exp11\_per\_instance.csv}.
+
+\paragraph{Limitation.} Six-instance calibration only; does not prove extraction optimality on the full 97-instance benchmark.

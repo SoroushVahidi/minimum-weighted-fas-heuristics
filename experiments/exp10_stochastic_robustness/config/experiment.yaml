@@ -1,0 +1,60 @@
+# EXP10 Stochastic Robustness Experiment Configuration
+# Purpose: Assess whether IPSNS sparse-benchmark advantage over DRMacIver is robust
+#          across repeated randomized runs.
+
+experiment_id: exp10_stochastic_robustness
+date_created: "2026-06-11"
+
+# Git state at experiment design
+git_commit: "80b3144"  # HEAD at experiment design time; recorded again at runtime
+
+# Instance sets
+instances:
+  common_93: config/common_93_instances.txt      # 93-instance paired comparison set
+  diagnostic: config/diagnostic_subset.txt        # 25-instance detailed analysis set
+
+# Algorithm settings
+ipsns:
+  iters: 400
+  topK_scc: 15
+  destroy_addback_frac: 0.30
+  destroy_remove_frac: 0.02
+  tol: 1.0e-12
+  seed_ordering: "L2"
+  wmsf_seed_mode: "full"
+  scc_select_mode: "weighted"
+  log_every: 0                 # silent for batch runs
+  return_info: true
+  seeds: config/seed_schedule.txt   # 0..19 (20 seeds)
+
+drmaciver:
+  binary: "experiments/exp4_external_baselines/external_tools/Feedback-Arc-Set/fas"
+  commit: "16ff24a92fde886e58819180a9fe686e60991c5c"
+  timeout_seconds: 300
+  n_repetitions: 20
+  # Note: DRMacIver uses srand(time|pid) internally; seeds cannot be controlled.
+  # Runs are serialized with a minimum inter-launch gap to ensure distinct time seeds.
+  min_inter_launch_gap_seconds: 0.1
+
+# Protocol
+protocol:
+  n_seeds_ipsns: 20
+  n_reps_drmaciver: 20
+  tie_tolerance: 1.0e-9          # |ipsns_bw - dr_bw| < tol => tie
+  min_valid_reps_required: 8     # per algorithm per instance for paired comparison
+
+# Reproducibility
+source_sha256_check: true        # verify canonical src/mwfas/*.py at runtime
+
+# Output
+output:
+  raw_ipsns: raw/ipsns/
+  raw_drmaciver: raw/drmaciver/
+  checkpoints: checkpoints/
+  logs: logs/
+  summary: summary/
+  tables: tables/
+  figures: figures/
+
+# Completion
+completion_marker: summary/COMPLETED.ok

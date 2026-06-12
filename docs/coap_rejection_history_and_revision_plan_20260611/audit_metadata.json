@@ -1,0 +1,52 @@
+{
+  "audit_date": "2026-06-11",
+  "audit_type": "rejection_history_and_editorial_risk",
+  "target_journal": "Computational Optimization and Applications (COAP), Springer Nature",
+  "repository": "https://github.com/SoroushVahidi/minimum-weighted-fas-heuristics",
+  "branch": "main",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "audit_mode": "read_only",
+  "exp10_modified": false,
+  "manuscript_modified": false,
+  "source_code_modified": false,
+  "exp10_passive_status_at_audit": {
+    "drmaciver_checkpoints_done": 394,
+    "expected_total": 1860,
+    "runner_active": true,
+    "note": "Passive pgrep/count only; no process interaction"
+  },
+  "counts": {
+    "predecessor_submissions_identified": 6,
+    "current_target_submission": 1,
+    "decision_letters_found": 0,
+    "reviewer_reports_found": 0,
+    "planning_audit_documents_examined": 18,
+    "documented_criticism_items": 32,
+    "editorial_risk_inferences": 14,
+    "unresolved_high_risk_issues": 8,
+    "fully_resolved_criticism_items": 14,
+    "partially_resolved_criticism_items": 10,
+    "impossible_to_assess_until_exp10": 3
+  },
+  "critical_evidence_gap": "No locally saved referee reports, decision emails, or decision PDFs exist in the repository. Rejection history is reconstructed from predecessor manuscripts, internal planning notes, experiment README revision rationales, and repository git history.",
+  "output_files": [
+    "EXECUTIVE_SUMMARY.md",
+    "SUBMISSION_LINEAGE.md",
+    "PRIOR_DECISION_AND_REVIEW_REGISTER.csv",
+    "REJECTION_REASON_TAXONOMY.md",
+    "REJECTION_REASON_MASTER_REGISTER.csv",
+    "OBJECTION_RESOLUTION_AUDIT.md",
+    "COAP_EDITORIAL_RISK_MAP.md",
+    "CURRENT_FRAMING_RISK_AUDIT.md",
+    "FINAL_SCIENTIFIC_NARRATIVE.md",
+    "REJECTION_PROOFING_REVISION_MATRIX.csv",
+    "ADDITIONAL_EXPERIMENT_DECISION.md",
+    "MANUSCRIPT_RESTRUCTURING_PLAN.md",
+    "COVER_LETTER_CONTENT_PLAN.md",
+    "SUBMISSION_PACKAGE_GAP_ANALYSIS.md",
+    "FINAL_PRE_SUBMISSION_SEQUENCE.md",
+    "audit_metadata.json",
+    "source_document_inventory.json"
+  ],
+  "verdict": "CONDITIONALLY CREDIBLE PATH TO COAP SUBMISSION — scientific positioning substantially improved; disclosure and artifact gaps remain blockers; EXP10 completion mandatory before final manuscript integration"
+}

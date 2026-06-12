@@ -1,0 +1,24 @@
+\section{Extended computational results}
+\label{sec:or1-extended}
+
+Committed summaries supporting the main manuscript tables:
+
+\begin{table}[h]
+\centering\small
+\caption{Principal manuscript numbers and OR1 source files.}
+\begin{tabular}{ll}
+\toprule
+Claim & Source file \\
+\midrule
+96/97 IPSNS best (sparse) & \texttt{results/exp4/summary/exp4\_external\_stats.json} \\
+21.61\% DRMacIver mean excess & same \\
+56/57 exact matches & \texttt{results/exp3/summary/exp3\_exact\_stats.json} \\
+0 incumbent violations (105) & \texttt{results/exp1/summary/exp1b\_core\_benchmark\_stats.json} \\
+5.9\% add-back ablation & \texttt{results/exp2/summary/exp2\_ablation\_stats.json} \\
+LOLIB 45 DRMacIver wins & \texttt{results/exp5/summary/exp5\_lolib\_stats.json} \\
+HiGHS 7/15 optimal & \texttt{results/exp8/summary/exp8\_mip\_summary.json} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Full per-instance CSV tables: \texttt{results/combined/tables/}, \texttt{results/exp4/summary/exp4\_raw\_summary.csv}, and experiment-specific \texttt{tables/} directories. Regenerate via \texttt{scripts/reproduce\_principal\_tables.sh}.

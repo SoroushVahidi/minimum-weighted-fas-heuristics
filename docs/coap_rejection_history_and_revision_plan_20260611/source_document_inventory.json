@@ -1,0 +1,89 @@
+{
+  "inventory_date": "2026-06-11",
+  "search_roots": [
+    "docs/",
+    "paper/",
+    "paper_coap/",
+    "submission_package/",
+    "submission_files_for_download/",
+    "archive/predecessor_projects/",
+    "paper/source_material/extracted_archives/",
+    "experiments/exp7_plain_local_search/",
+    "experiments/exp8_medium_mip_baseline/",
+    "git history"
+  ],
+  "decision_and_review_documents": {
+    "found": [],
+    "note": "paper/notes/rejection_audit/extracted_review_text/README.txt states no locally saved reviewer report or decision PDF was found."
+  },
+  "submission_packages": [
+    {
+      "id": "PKG-CAIE",
+      "path": "paper/, submission_package/files_for_upload/ (gitignored PDFs referenced in docs/final_repository_status_20260606.md)",
+      "journal": "Computers & Industrial Engineering (Elsevier)",
+      "git_anchor": "d496b8a Finalize CAIE submission package"
+    },
+    {
+      "id": "PKG-EJCO",
+      "path": "submission_package/ejco_source/, submission_package/ejco_reproducibility_artifact/",
+      "journal": "EURO Journal on Computational Optimization (Springer)",
+      "git_anchor": "581ee35 Track final EJCO submission package"
+    },
+    {
+      "id": "PKG-COAP",
+      "path": "paper_coap/",
+      "journal": "Computational Optimization and Applications (Springer Nature)",
+      "git_anchor": "7e8e0b7 Create Springer COAP manuscript version"
+    }
+  ],
+  "predecessor_manuscripts": [
+    {
+      "id": "PRED-JOCO",
+      "path": "archive/predecessor_projects/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO.zip",
+      "extracted": "paper/source_material/extracted_archives/Fast_Local_Ratio_Cycle_Reduction_with_Topological_Add_Back_for_Weighted_Feedback_Arc_Sets_JOCO/main.tex"
+    },
+    {
+      "id": "PRED-DAM",
+      "path": "archive/predecessor_projects/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem.zip",
+      "extracted": "paper/source_material/extracted_archives/Incumbent_Protected_SCC_Neighborhood_Search_for_the_Weighted_Feedback_Arc_Set_Problem/elsarticle-template-harv.tex"
+    }
+  ],
+  "planning_and_audit_documents": [
+    "docs/manuscript_results_and_claims_20260606.md",
+    "docs/venue_decision_notes_20260606.md",
+    "docs/paper_status_20260606.md",
+    "docs/provenance/predecessor_project_manifest.md",
+    "paper/notes/rejection_response_matrix.md",
+    "paper/notes/rejection_concern_action_items.md",
+    "paper/notes/rejection_audit/search_hits.md",
+    "paper/notes/reuse_risk_report.md",
+    "paper/notes/final_submission_audit/pdf_text/cover_letter.txt",
+    "paper/cover_letter_draft.tex",
+    "submission_package/ejco_source/main.tex",
+    "docs/full_repository_audit_20260610/RELATED_MANUSCRIPTS_AUDIT.md",
+    "docs/full_repository_audit_20260610/NOVELTY_AND_PRIOR_WORK_AUDIT.md",
+    "docs/full_repository_audit_20260610/RELATED_MANUSCRIPT_CONTRIBUTION_MATRIX.md",
+    "docs/full_repository_audit_20260610/MANUSCRIPT_POSITIONING_RECOMMENDATIONS.md",
+    "docs/final_branch_audit_20260611/COAP_COMPLIANCE_AUDIT.md",
+    "docs/final_branch_audit_20260611/RELATED_WORK_AND_DISCLOSURE_AUDIT.md",
+    "docs/final_branch_audit_20260611/MANUSCRIPT_SCIENTIFIC_AUDIT.md"
+  ],
+  "external_predecessor_not_in_repo": [
+    {
+      "id": "ARXIV-VK",
+      "cite": "arXiv:2412.16181",
+      "url": "https://arxiv.org/abs/2412.16181",
+      "note": "Referenced in JOCO predecessor bibliography; full text not stored locally"
+    }
+  ],
+  "journals_mentioned_but_not_documented_as_submitted": [
+    "Computers & Operations Research (considered in venue notes only)",
+    "Engineering Applications of Artificial Intelligence",
+    "Applied Intelligence",
+    "Digital Engineering",
+    "Machine Learning Journal",
+    "Knowledge-Based Systems",
+    "OPSEARCH",
+    "Elsevier journal (generic label in predecessor manifest for IPSNS paper; resolved to DAM in extracted manuscript)"
+  ]
+}

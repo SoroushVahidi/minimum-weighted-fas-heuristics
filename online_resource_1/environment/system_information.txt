@@ -1,0 +1,6 @@
+OS: Linux (tested Ubuntu 24.04)
+CPU: Intel Core i7-12700K
+RAM: 62 GiB
+Python: 3.12.3
+DRMacIver binary SHA-256: 907b7abe96ff8fb54d8b70910eb3068744f765e72da5520f2c7aacf70ba996bd
+IPSNS code SHA-256 (git tree): see provenance/source_commit.txt

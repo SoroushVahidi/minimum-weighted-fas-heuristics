@@ -1,0 +1,14 @@
+{
+  "branch": "main",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "n_instances": 6,
+  "n_instances_nonneg": 6,
+  "runtime_seconds": 6.2,
+  "median_improvement_best_alt": 0.0,
+  "max_improvement_best_alt_nonneg": 0.0,
+  "instances_improved": 0,
+  "instances_improved_nonneg": 0,
+  "instances_tied": 6,
+  "median_extraction_gap_wF_minus_bw": 0.0,
+  "notes": "Six-instance nonnegative calibration subset; peterson instances excluded from publication subset"
+}

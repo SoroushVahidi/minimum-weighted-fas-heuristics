@@ -1,0 +1,13 @@
+{
+  "cohens_dz": -0.3136937499071569,
+  "bootstrap_mean_diff_ci95": [
+    -41786.84139784946,
+    -10718.043548387099
+  ],
+  "bootstrap_mean_rel_excess_ci95": [
+    15.388095443771698,
+    28.10032279263309
+  ],
+  "bootstrap_seed": 42,
+  "n_bootstrap": 10000
+}

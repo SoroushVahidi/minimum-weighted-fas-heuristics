@@ -14,6 +14,20 @@ An ordering \(\pi\) assigns each vertex a distinct position. An arc \((u,v)\) is
 
 For any ordering \(\pi\), the set of backward arcs is a feedback arc set: all remaining forward arcs point from earlier to later positions and therefore form an acyclic graph. Conversely, every acyclic subgraph admits a topological order. The weighted feedback arc set problem can therefore be treated as the problem of finding an ordering with minimum backward weight \cite{F90,K72}.
 
+Many constructive heuristics in this study first build an acyclic \emph{active} subgraph \(H=(V,A\setminus F)\) by deleting a set \(F\subseteq A\), and then extract a linear extension \(\pi\) of \(H\). For such a pair \((F,\pi)\), define the backward arc set induced by \(\pi\) on the original graph as
+\begin{equation}
+    B_{\pi}
+    =
+    \{(u,v)\in A:\ \pi(v)<\pi(u)\}.
+    \label{eq:backward-set}
+\end{equation}
+Every active arc is forward under \(\pi\), so \(B_{\pi}\subseteq F\). For nonnegative weights,
+\begin{equation}
+    \operatorname{bw}(\pi)=w(B_{\pi})\le w(F).
+    \label{eq:fas-order-inequality}
+\end{equation}
+Equality holds for a given \(\pi\) if and only if every removed arc that carries positive weight is backward under \(\pi\); equivalently, \(w(F\setminus B_{\pi})=0\). If all removed arcs have strictly positive weight, then \(\operatorname{bw}(\pi)=w(F)\) if and only if \(B_{\pi}=F\). Topological extraction is therefore \emph{not} objective-neutral in general: different linear extensions of the same active DAG can yield different values of \(\operatorname{bw}(\pi)\). The implementation reports the ordering objective \(\operatorname{bw}(\pi)\) recomputed from the returned ranking, not the removed-set weight \(w(F)\) alone.
+
 Dense linear ordering problem benchmarks are often stated in terms of a complete weight matrix \(C\), where an ordering \(\pi=(\pi_1,\ldots,\pi_n)\) is evaluated by the forward weight. In that notation,
 
 \begin{equation}

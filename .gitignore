@@ -2,6 +2,12 @@ __pycache__/
 *.py[cod]
 *.pyo
 .pytest_cache/
+.coverage
+coverage.xml
+logs/
+docs/**/*stale*.zip
+docs/**/paper_coap_pre_edit_backup/
+docs/**/paper_coap_pre_topo_audit_backup/
 .mypy_cache/
 *.egg-info/
 dist/

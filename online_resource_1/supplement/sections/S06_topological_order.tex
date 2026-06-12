@@ -1,0 +1,12 @@
+\section{Topological-order extraction}
+\label{sec:or1-topo}
+
+Multiple topological orders may exist for an acyclic digraph. The implementation uses Kahn's algorithm with a \textbf{min-heap on vertex index} as tie-breaker: among vertices with indegree zero, the smallest vertex ID is extracted first.
+
+\paragraph{Implications.} The extracted order is deterministic for a fixed active graph but depends on vertex numbering. Objective evaluation uses the returned order directly; no post-hoc reordering is applied.
+
+\paragraph{Removed-set versus ordering objective.} On the final LR-TA active DAG, every positive-weight removed arc is backward under the repository extraction rule on the nonnegative calibration instances tested in EXP11; hence $w(F)=\mathrm{BW}(\pi)$ there. In general $B_\pi\subseteq F$ and $\mathrm{BW}(\pi)\le w(F)$; set equality is not required for weight equality when zero-weight removed arcs exist.
+
+\paragraph{EXP11.} Post-hoc comparison of Kahn min-vertex-id, max-vertex-id, weighted-net priority, and one-pass precedence-preserving insertion refinement on LR-TA final active graphs found no backward-weight change on six nonnegative calibration instances; full CSV in \texttt{experiments/exp11\_topological\_extraction\_sensitivity/summary/exp11\_per\_instance.csv} (main manuscript Table~EXP11).
+
+\paragraph{Limitation.} A different linear extension can yield a different $\mathrm{BW}(\pi)$ even for fixed $F$; the manuscript reports observed performance under the stated deterministic rule without claiming extraction optimality.

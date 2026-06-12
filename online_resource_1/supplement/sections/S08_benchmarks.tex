@@ -1,0 +1,15 @@
+\section{Benchmark inventory}
+\label{sec:or1-benchmarks}
+
+Instance identifiers and participation flags are recorded in committed summaries:
+\begin{itemize}
+  \item \textbf{Sparse primary:} 105 instances (EXP1b internal), 97 standard nonnegative (EXP4);
+  \item \textbf{Exact small:} 57 standard instances with $n\le 20$ (EXP3);
+  \item \textbf{HiGHS MIP:} 15 medium instances, $n\le 318$ (EXP8);
+  \item \textbf{LOLIB dense:} 50 complete ordering instances (EXP5);
+  \item \textbf{EXP10 common subset:} 93 instances (manifest \texttt{manifests/common\_93\_instances.txt}).
+\end{itemize}
+
+Per-instance vertex counts, arc counts, densities, and checksums appear in \texttt{results/exp4/summary/exp4\_raw\_summary.csv}, \texttt{results/exp10/summary/paired\_median\_comparison.csv}, and related files. Public sources: graph-benchmarks repository and LOLIB (URLs in main manuscript).
+
+\paragraph{Handling.} Nonnegative sparse standard set excludes eight negative-weight instances. Self-loops and parallel arcs are aggregated at parse time per DIMACS-style input contract tested in \texttt{code/tests/}.

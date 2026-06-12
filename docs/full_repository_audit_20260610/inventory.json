@@ -1,0 +1,97 @@
+{
+  "audit_date": "2026-06-10",
+  "repository_root": "/home/soroush/minimum-weighted-fas-heuristics",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "top_level_directories": {
+    "archive": {
+      "path": "archive",
+      "file_count": 3,
+      "tracked_count": 3,
+      "classification": "archived historical material"
+    },
+    "configs": {
+      "path": "configs",
+      "file_count": 5,
+      "tracked_count": 5,
+      "classification": "configuration defaults"
+    },
+    "docs": {
+      "path": "docs",
+      "file_count": 13,
+      "tracked_count": 13,
+      "classification": "documentation and prior audits"
+    },
+    "experiments": {
+      "path": "experiments",
+      "file_count": 7229,
+      "tracked_count": 369,
+      "classification": "active and archived experiments"
+    },
+    "logs": {
+      "path": "logs",
+      "file_count": 13,
+      "tracked_count": 9,
+      "classification": "temporary/log material"
+    },
+    "notebooks": {
+      "path": "notebooks",
+      "file_count": 2,
+      "tracked_count": 2,
+      "classification": "historical notebook/prototype"
+    },
+    "paper": {
+      "path": "paper",
+      "file_count": 283,
+      "tracked_count": 253,
+      "classification": "old Elsevier/EJCO/CAIE manuscript"
+    },
+    "paper_coap": {
+      "path": "paper_coap",
+      "file_count": 67,
+      "tracked_count": 62,
+      "classification": "active COAP manuscript"
+    },
+    "results": {
+      "path": "results",
+      "file_count": 331,
+      "tracked_count": 0,
+      "classification": "generated output (gitignored)"
+    },
+    "scripts": {
+      "path": "scripts",
+      "file_count": 28,
+      "tracked_count": 28,
+      "classification": "canonical production scripts"
+    },
+    "src": {
+      "path": "src",
+      "file_count": 14,
+      "tracked_count": 8,
+      "classification": "canonical production source"
+    },
+    "submission_files_for_download": {
+      "path": "submission_files_for_download",
+      "file_count": 8,
+      "tracked_count": 8,
+      "classification": "historical download bundle"
+    },
+    "submission_package": {
+      "path": "submission_package",
+      "file_count": 273,
+      "tracked_count": 146,
+      "classification": "EJCO submission package (stale for COAP)"
+    }
+  },
+  "hash_comparisons": {
+    "src/mwfas/lrta.py vs submission_package/ejco_reproducibility_artifact/src/mwfas/lrta.py": {
+      "a_sha256": "3e053ccc19013ac4e53708995f179538c39ebe3581666da7b4849188eede85d7",
+      "b_sha256": "3e053ccc19013ac4e53708995f179538c39ebe3581666da7b4849188eede85d7",
+      "match": true
+    },
+    "paper_coap/main.tex vs paper/main.tex": {
+      "a_sha256": "0b546d5a151badeff25e0668a09882bf0019ff102fa8f50d1625795b27fed9a8",
+      "b_sha256": "f9bb5e684ff0fed000a18305ab196b9ecf0a77c0bd8210d366922eaba8dc8281",
+      "match": false
+    }
+  }
+}

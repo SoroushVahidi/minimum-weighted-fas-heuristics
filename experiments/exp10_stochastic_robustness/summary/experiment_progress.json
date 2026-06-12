@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-06-12T03:32:08Z",
+  "status": "NONFINAL",
+  "ipsns_phase": {
+    "done": 1860,
+    "total": 1860,
+    "pct": 100.0,
+    "complete": true,
+    "log_tail": [
+      "Done. Completed 205 new runs, 0 errors.",
+      "Total done: 1860/1860  Elapsed: 298.3s",
+      "All IPSNS runs complete."
+    ]
+  },
+  "drmaciver_phase": {
+    "done": 1860,
+    "total": 1860,
+    "pct": 100.0,
+    "complete": true,
+    "log_tail": [],
+    "note": "production namespace only; smoke archive excluded"
+  },
+  "drmaciver_smoke_archive": {
+    "archived_checkpoints": 9,
+    "note": "preflight/smoke outputs quarantined from production namespace"
+  },
+  "drmaciver_prior_contamination_corrected": {
+    "prior_reported_done": 9,
+    "corrected_at": "2026-06-12T03:32:08Z",
+    "reason": "9 smoke checkpoints were previously counted in production namespace"
+  },
+  "active_pids": [],
+  "validation_done": true,
+  "summaries_done": true,
+  "preflight_done": true,
+  "completed_ok": true
+}

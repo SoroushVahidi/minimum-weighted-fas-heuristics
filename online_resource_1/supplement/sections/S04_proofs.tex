@@ -1,0 +1,60 @@
+\section{Full proofs and formal properties}
+\label{sec:or1-proofs}
+
+Proofs correspond to Propositions in the main manuscript \S\ref{subsec:formal-analysis}. Labels indicate \emph{inherited theorem}, \emph{framework lemma}, \emph{implementation invariant}, or \emph{empirical observation}.
+
+\subsection{LR-TA feasibility and termination}
+
+\begin{proposition}[LR-TA feasibility and termination]
+Under nonnegative original weights and the edge-indexed active-graph representation, LR-TA satisfies cycle-reduction progress, Phase~I termination in at most $m$ iterations, acyclic Phase~I output, add-back feasibility, and a valid final ordering.
+\end{proposition}
+
+\begin{proof}[Framework lemma / implementation invariant]
+\textbf{(1) Cycle reduction progress.} Each Phase~I iteration selects a directed cycle $C$ and subtracts $\varepsilon(C)=\min_{e\in C}W[e]$. If $\varepsilon(C)>\tau$, at least one cycle arc reaches residual weight $\le\tau$ and is deactivated. If $\varepsilon(C)\le\tau$, the implementation deactivates one cycle arc directly. In either case at least one active arc is removed from the active subgraph.
+
+\textbf{(2) Termination.} At most $m$ iterations occur because each iteration deactivates $\ge 1$ active arc and there are $m$ arcs initially.
+
+\textbf{(3) Acyclic Phase~I output.} The loop stops only when no directed cycle is detected; the active subgraph is then acyclic.
+
+\textbf{(4) Add-back feasibility.} A forward arc $(u,v)$ with $\mathrm{rank}(u)<\mathrm{rank}(v)$ cannot close a cycle upon reactivation. A backward arc is reactivated only after a reachability test certifying no $v\leadsto u$ path in the current active graph; accepted backward arcs trigger topological recomputation before later tests.
+
+\textbf{(5) Valid ordering.} The final active graph is acyclic and yields a topological order; removed arcs define a feasible FAS under the ordering objective.
+\end{proof}
+
+\subsection{Add-back inclusion minimality}
+
+\begin{proposition}[One-pass heavy-first add-back]
+On an acyclic active graph, processing removed arcs in nonincreasing original-weight order with the stated acceptance rules yields an inclusion-minimal reinsertion set on the current acyclic state.
+\end{proposition}
+
+\begin{proof}[Framework lemma]
+Items (1)--(3) follow from the rank and reachability arguments above. For (4), suppose arc $e$ was reinserted and could be removed while preserving acyclicity. Then $e$ was accepted after all heavier removed arcs were processed; removing $e$ earlier would have been considered in the same state or a state with fewer reinserted arcs. The one-pass heavy-first rule prevents reinserting a lighter arc that would subsume a heavier feasible insertion on the same state. The returned set is inclusion-minimal among reinsertions reachable by this pass, though not necessarily globally minimum-weight.
+\end{proof}
+
+\subsection{IPSNS incumbent protection}
+
+\begin{proposition}[IPSNS feasibility, monotonicity, and budgeted termination]
+Let $\pi^{(0)}$ be the better seed and $\pi^{(t)}$ the incumbent after iteration $t$. Then every accepted candidate is feasible, failed or non-improving moves revert exactly, $\mathrm{BW}(\pi^{(t+1)})\le \mathrm{BW}(\pi^{(t)})\le \mathrm{BW}(\pi^{(0)})$, and the loop executes at most $T$ iterations.
+\end{proposition}
+
+\begin{proof}[Implementation invariant]
+(1) Acceptance requires a valid global topological order after repair. (2)--(3) The implementation snapshots activity vectors and removed sets before each move; on repair failure, infeasibility, or non-strict improvement, state is restored from the snapshot. (4) Follows from (3). (5) The outer loop counter is bounded by $T$ by construction; early stopping occurs when no nontrivial SCC has positive backward contribution.
+\end{proof}
+
+\subsection{Exact DP correctness}
+
+\begin{proposition}[Exact DP on small instances]
+For $n\le 20$ vertices, the bitmask DP enumerates all vertex orderings implicitly via subset states and returns the minimum backward weight among feasible orderings, matching brute-force enumeration on tested instances.
+\end{proposition}
+
+\begin{proof}[Implementation invariant]
+The DP state records the last vertex placed and accumulated backward weight from arcs to earlier vertices in the ordering. Transitions add one vertex at a time; the minimum over full permutations is returned. The pytest gate cross-checks against independent brute force for $n\le 8$ and regression fixtures.
+\end{proof}
+
+\subsection{Qualified approximation-transfer statement}
+
+The Demetrescu--Finocchi local-ratio framework provides approximation results under exact arithmetic and specific cycle-selection policies. The floating-point engineered implementation here does \emph{not} automatically inherit those ratio bounds; any approximation claim in the main paper is explicitly qualified as inherited literature, not re-proved for this code path.
+
+\subsection{Topological extraction inequalities}
+
+Proposition~\ref{prop:or1-subset} and Equations~\eqref{eq:or1-backward-set}--\eqref{eq:or1-inequality} are proved in \S\ref{sec:or1-problem}. Six independent counterexamples are automated in \texttt{tests/unit/test\_topo\_extraction\_math.py}.

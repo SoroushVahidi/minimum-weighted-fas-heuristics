@@ -1,0 +1,146 @@
+{
+  "timestamp": "2026-06-11T22:47:15Z",
+  "branch": "main",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "prior_contaminated_count": {
+    "raw": 9,
+    "checkpoints": 9
+  },
+  "corrected_production_count": {
+    "raw": 0,
+    "checkpoints": 0
+  },
+  "smoke_archive_count": 9,
+  "note": "experiment_progress.json previously reported DRMacIver 9/1860 because smoke checkpoints were counted in the production namespace; corrected after quarantine.",
+  "quarantine_result": {
+    "ok": true,
+    "moves": [
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/raw/drmaciver/drmaciver_r20_60_run00.json",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/raw/drmaciver_r20_60_run00.json",
+        "sha256_before": "a486b8e4cb2095473bae64d0c2417d4b439feee47181ccc0e957cb942dd91641",
+        "sha256_after": "a486b8e4cb2095473bae64d0c2417d4b439feee47181ccc0e957cb942dd91641",
+        "artifact_type": "raw_json"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/checkpoints/drmaciver_r20_60_run00.done",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/checkpoints/drmaciver_r20_60_run00.done",
+        "sha256_before": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "sha256_after": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "artifact_type": "checkpoint"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/raw/drmaciver/drmaciver_r20_60_run01.json",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/raw/drmaciver_r20_60_run01.json",
+        "sha256_before": "1277285f11c1473c6ef59e44310b851560ed8bd86f0cf79e1d21fc137ef4769a",
+        "sha256_after": "1277285f11c1473c6ef59e44310b851560ed8bd86f0cf79e1d21fc137ef4769a",
+        "artifact_type": "raw_json"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/checkpoints/drmaciver_r20_60_run01.done",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/checkpoints/drmaciver_r20_60_run01.done",
+        "sha256_before": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "sha256_after": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "artifact_type": "checkpoint"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/raw/drmaciver/drmaciver_r20_60_run02.json",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/raw/drmaciver_r20_60_run02.json",
+        "sha256_before": "1f6083135e1017f9fb7bdef755062f1fa6908b78fc5a259a550e1704d421916d",
+        "sha256_after": "1f6083135e1017f9fb7bdef755062f1fa6908b78fc5a259a550e1704d421916d",
+        "artifact_type": "raw_json"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/checkpoints/drmaciver_r20_60_run02.done",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/checkpoints/drmaciver_r20_60_run02.done",
+        "sha256_before": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "sha256_after": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "artifact_type": "checkpoint"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/raw/drmaciver/drmaciver_s27_run00.json",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/raw/drmaciver_s27_run00.json",
+        "sha256_before": "00cbe9dd654f51587b448316eb1baf381b310a9e1a00fe7bb7d5915a6c7d353b",
+        "sha256_after": "00cbe9dd654f51587b448316eb1baf381b310a9e1a00fe7bb7d5915a6c7d353b",
+        "artifact_type": "raw_json"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/checkpoints/drmaciver_s27_run00.done",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/checkpoints/drmaciver_s27_run00.done",
+        "sha256_before": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "sha256_after": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "artifact_type": "checkpoint"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/raw/drmaciver/drmaciver_s27_run01.json",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/raw/drmaciver_s27_run01.json",
+        "sha256_before": "4a2473ac01548bddf129f30228ee02912fa9fae9c05cb059998e01f4d5392161",
+        "sha256_after": "4a2473ac01548bddf129f30228ee02912fa9fae9c05cb059998e01f4d5392161",
+        "artifact_type": "raw_json"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/checkpoints/drmaciver_s27_run01.done",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/checkpoints/drmaciver_s27_run01.done",
+        "sha256_before": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "sha256_after": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "artifact_type": "checkpoint"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/raw/drmaciver/drmaciver_s27_run02.json",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/raw/drmaciver_s27_run02.json",
+        "sha256_before": "26f2a4f07457110213c95c6eb6a9f7fe302594d6f4ad7ab807f542292a4bcda3",
+        "sha256_after": "26f2a4f07457110213c95c6eb6a9f7fe302594d6f4ad7ab807f542292a4bcda3",
+        "artifact_type": "raw_json"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/checkpoints/drmaciver_s27_run02.done",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/checkpoints/drmaciver_s27_run02.done",
+        "sha256_before": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "sha256_after": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "artifact_type": "checkpoint"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/raw/drmaciver/drmaciver_stg_run00.json",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/raw/drmaciver_stg_run00.json",
+        "sha256_before": "c1710078f522a1a0b8d237655a5bdcb7309658d41b665196abe9bfd1113812ae",
+        "sha256_after": "c1710078f522a1a0b8d237655a5bdcb7309658d41b665196abe9bfd1113812ae",
+        "artifact_type": "raw_json"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/checkpoints/drmaciver_stg_run00.done",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/checkpoints/drmaciver_stg_run00.done",
+        "sha256_before": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "sha256_after": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "artifact_type": "checkpoint"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/raw/drmaciver/drmaciver_stg_run01.json",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/raw/drmaciver_stg_run01.json",
+        "sha256_before": "0ca287d1951b81a7c245a8a671a1afcb6421f80c4bf47f6309b9c7451713128b",
+        "sha256_after": "0ca287d1951b81a7c245a8a671a1afcb6421f80c4bf47f6309b9c7451713128b",
+        "artifact_type": "raw_json"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/checkpoints/drmaciver_stg_run01.done",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/checkpoints/drmaciver_stg_run01.done",
+        "sha256_before": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "sha256_after": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "artifact_type": "checkpoint"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/raw/drmaciver/drmaciver_stg_run02.json",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/raw/drmaciver_stg_run02.json",
+        "sha256_before": "8e80bd0401a2884f24dcb0a23cf93a11d98100c7936fc947ce0ea7f801f5024e",
+        "sha256_after": "8e80bd0401a2884f24dcb0a23cf93a11d98100c7936fc947ce0ea7f801f5024e",
+        "artifact_type": "raw_json"
+      },
+      {
+        "original_path": "experiments/exp10_stochastic_robustness/checkpoints/drmaciver_stg_run02.done",
+        "new_path": "experiments/exp10_stochastic_robustness/smoke_archive/drmaciver/checkpoints/drmaciver_stg_run02.done",
+        "sha256_before": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "sha256_after": "d117fa006ba9208500b2930ce69cbde436c647afa917cb7396a9bc9111a46dd2",
+        "artifact_type": "checkpoint"
+      }
+    ]
+  }
+}

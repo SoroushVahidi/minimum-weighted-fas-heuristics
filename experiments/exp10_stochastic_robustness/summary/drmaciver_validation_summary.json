@@ -1,0 +1,24 @@
+{
+  "validation_passed": true,
+  "expected_keys": 1860,
+  "records_found": 1860,
+  "pass": 1860,
+  "fail": 0,
+  "contamination": 0,
+  "duplicates": 0,
+  "duplicate_keys": [],
+  "missing_keys": 0,
+  "unexplained_missing": 0,
+  "status_counts": {
+    "ok": 1860
+  },
+  "timeout_count": 0,
+  "error_count": 0,
+  "tmp_files": 0,
+  "unique_pids": 1860,
+  "total_pids_recorded": 1860,
+  "manifest_sha256": "df6cdbfce6f5cf25e979f63d0183e9ee3b576894e6def033931bdf9ff55b5426",
+  "binary_sha256": "907b7abe96ff8fb54d8b70910eb3068744f765e72da5520f2c7aacf70ba996bd",
+  "git_commit": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "smoke_excluded": true
+}

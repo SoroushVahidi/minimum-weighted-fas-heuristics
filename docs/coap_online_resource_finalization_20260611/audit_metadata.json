@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-06-12T03:13:05.355342+00:00",
+  "branch": "main",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "main_pdf_pages": 45,
+  "main_pdf_sha256": "33bffde0a8a054bfe3a50c0f90baf13d71d292f0ec6b57b26c00bde21d1669c2",
+  "supplement_pdf_pages": 12,
+  "supplement_pdf_sha256": "8cc1479fb7aebe9e8b4c219aada0bf87f6c0383f53345a2d851b776b581aa0ea",
+  "zip_filename": "Vahidi_Online_Resource_1_MWFAS.zip",
+  "zip_bytes": 1116197,
+  "zip_sha256": "5dc3875acad386f992266a43d1406b96787c95fa1d3acde7124be327ee29495e",
+  "zip_file_count": 216,
+  "stale_zip": "Vahidi_Online_Resource_1_MWFAS_stale_20260612.zip",
+  "stale_zip_sha256": "c95e09dd86b5bebc7e33c6fe9b78d50aa408b2c24d2c5af8214dc80ae63e40c5",
+  "stale_zip_bytes": 1042550,
+  "full_repo_pytest": "90 passed, 1 skipped, 2 warnings",
+  "or1_pytest": "79 passed, 7 skipped",
+  "validation": "PASSED",
+  "clean_extraction_validation": "PASSED"
+}

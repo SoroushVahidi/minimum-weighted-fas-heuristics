@@ -1,0 +1,25 @@
+\section{Parameter provenance}
+\label{sec:or1-params}
+
+\begin{table}[h]
+\centering\footnotesize
+\caption{Principal parameters (defaults used in reported experiments).}
+\begin{tabular}{llllp{3.5cm}}
+\toprule
+Parameter & Algorithm & Default & Evidence & Notes \\
+\midrule
+Iterations $T$ & IPSNS & 400 & EXP6 saturation & Identical mean BW at 10--400 on subset \\
+top-$K$ SCC & IPSNS & 15 & Holdout & Holdout-supported default \\
+$f_{\mathrm{add}}$ & IPSNS & 0.30 & Frozen & Destroy A fraction \\
+$f_{\mathrm{rem}}$ & IPSNS & 0.02 & Frozen & Destroy B fraction \\
+$\tau$ & All & $10^{-12}$ & Code default & Numerical safeguard \\
+RNG seed & IPSNS & 1 (EXP4); 0--19 (EXP10) & EXP10 & Explicit integer seeds \\
+WMSF ordering & WMSF & L2 (global) & Ablation & L1/L2 compared per SCC \\
+MIP timeout & EXP8 & 120\,s & Protocol & HiGHS time cap \\
+DRMacIver reps & EXP10 & 20 & Frozen & PID/time seeding \\
+Tie tolerance & EXP10 & $10^{-9}$ & Frozen & Median comparison \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Holdout and sensitivity summaries: \texttt{results/coap\_ipsns\_sensitivity/}. EXP10 confirms frozen IPSNS configuration showed zero cross-seed objective variation on 93/93 instances.

@@ -1,0 +1,29 @@
+\section{Scope and use}
+\label{sec:or1-purpose}
+
+Online Resource~1 accompanies the COAP manuscript on SCC-local destroy-and-repair heuristics for minimum weighted feedback arc set (MWFAS) on sparse digraphs.
+
+\subsection{Contents}
+
+\begin{itemize}
+  \item definitions and proofs, including topological-extraction inequalities (\S\ref{sec:or1-problem}, \S\ref{sec:or1-proofs});
+  \item algorithm specifications and provenance (\S\ref{sec:or1-algorithms}--\S\ref{sec:or1-provenance});
+  \item experiment registry EXP1--EXP11 and extended results;
+  \item EXP10 stochastic-robustness evidence (\S\ref{sec:or1-exp10});
+  \item EXP11 extraction-sensitivity calibration (\S\ref{sec:or1-exp11});
+  \item automated tests (91 collected; \S\ref{sec:or1-tests}) and reproduction scripts.
+\end{itemize}
+
+\subsection{Claims supported}
+
+Principal manuscript claims traceable here include: IPSNS 96/97 best observed sparse; DRMacIver 21.6\% mean excess; EXP10 median 38/55/0; 1860/1860 valid runs; exact 56/57 matches; LOLIB scope boundary; EXP11 zero extraction change on calibration subset.
+
+\subsection{Reproduction levels}
+
+\begin{description}
+  \item[Level A--B:] seconds-scale smoke and pytest validation from included source;
+  \item[Level C:] principal table verification from committed summaries (no benchmark reruns);
+  \item[Level D:] optional full reruns (documented only).
+\end{description}
+
+Committed files in \texttt{results/} are authoritative for headline numbers unless a full rerun is explicitly performed.

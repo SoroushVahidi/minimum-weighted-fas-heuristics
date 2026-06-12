@@ -1,0 +1,52 @@
+\section{Definitions and notation}
+\label{sec:or1-problem}
+
+Let $G=(V,A,w)$ be a directed graph with vertex set $V$, arc set $A$, and nonnegative arc weights $w:A\to\mathbb{R}_{\ge 0}$.
+Parallel arcs are aggregated by summing weights; self-loops are deactivated at tolerance $\tau$ when present.
+
+A \emph{feedback arc set} (FAS) is a set $F\subseteq A$ whose removal makes $G$ acyclic.
+The \emph{active DAG} is
+\begin{equation}
+    H=(V,A\setminus F).
+    \label{eq:or1-active-dag}
+\end{equation}
+A \emph{vertex ordering} (linear extension) $\pi$ assigns each vertex a distinct rank.
+The backward arc set induced by $\pi$ on the original graph is
+\begin{equation}
+    B_\pi=\{(u,v)\in A:\ \pi(v)<\pi(u)\},
+    \label{eq:or1-backward-set}
+\end{equation}
+with ordering backward weight
+\begin{equation}
+    \mathrm{BW}(\pi)=w(B_\pi)=\sum_{(u,v)\in B_\pi} w(u,v).
+    \label{eq:or1-bw}
+\end{equation}
+The removed-set weight is $w(F)=\sum_{a\in F} w(a)$.
+
+\begin{proposition}[Backward subset and weight inequality]
+\label{prop:or1-subset}
+If $\pi$ is a topological order of $H$, then $B_\pi\subseteq F$. For nonnegative weights,
+\begin{equation}
+    \mathrm{BW}(\pi)=w(B_\pi)\le w(F).
+    \label{eq:or1-inequality}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Every arc of $H$ is forward under $\pi$, so no active arc belongs to $B_\pi$; hence $B_\pi\subseteq F$. Nonnegativity gives $w(B_\pi)\le w(F)$.
+\end{proof}
+
+\paragraph{Equality conditions.}
+Weight equality $\mathrm{BW}(\pi)=w(F)$ holds iff $w(F\setminus B_\pi)=0$.
+If every removed arc has strictly positive weight, then $\mathrm{BW}(\pi)=w(F)$ iff $B_\pi=F$.
+Set equality is \emph{not} required for weight equality when zero-weight removed arcs exist.
+
+\paragraph{Reported objective.}
+Constructive methods build $(F,H)$ and extract $\pi$ by Kahn topological sorting with min-heap vertex-id tie-breaking.
+Experiments report $\mathrm{BW}(\pi)$ recomputed from the returned ranking, not $w(F)$ alone.
+
+The \emph{minimum weighted feedback arc set} (MWFAS) problem asks for an ordering minimizing $\mathrm{BW}(\pi)$; it is NP-hard in general.
+
+\paragraph{Scope.} Sparse nonnegative weighted digraphs are the primary regime; dense LOLIB instances are a separate scope boundary.
+
+\paragraph{Tolerances.} Implementation zero tolerance $\tau=10^{-12}$; EXP10 tie tolerance $10^{-9}$.

@@ -1,0 +1,71 @@
+{
+  "audit_id": "coap_manuscript_reframing_20260611",
+  "audit_date": "2026-06-11",
+  "repository": "https://github.com/SoroushVahidi/minimum-weighted-fas-heuristics",
+  "branch": "main",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "exp10_modified": false,
+  "source_code_modified_by_this_task": false,
+  "pre_edit_backup": "docs/coap_manuscript_reframing_20260611/paper_coap_pre_edit_backup/",
+  "pre_edit_pdf": {
+    "path": "docs/coap_manuscript_reframing_20260611/paper_coap_pre_edit_backup/main.pdf",
+    "sha256": "b596f694da1637a0c742ceb03ea85e1debf7ac0eb77bcf8cb034ee4aaacca712",
+    "pages": 40,
+    "title": "Local-Ratio Seeding and SCC-Based Refinement for the Minimum Weighted Feedback Arc Set Problem"
+  },
+  "post_edit_pdf": {
+    "path": "paper_coap/main.pdf",
+    "sha256": "95d1c7fca809adefe7189ac2579160ee869fe07a0dc5c9b4ff8c47593fc8c9f2",
+    "pages": 42,
+    "title": "SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs",
+    "build_command": "~/.local/bin/latexmk -pdf -interaction=nonstopmode main.tex",
+    "build_status": "success",
+    "undefined_references": 0,
+    "undefined_citations": 0,
+    "duplicate_labels": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 56,
+    "exp10_placeholder_in_pdf": false,
+    "author_status_comment_in_pdf": false
+  },
+  "manuscript_files_modified": [
+    "paper_coap/main.tex",
+    "paper_coap/bibliography/references.bib",
+    "paper_coap/declarations/statements_and_declarations.tex",
+    "paper_coap/sections/01_introduction.tex",
+    "paper_coap/sections/02_related_work.tex",
+    "paper_coap/sections/04_algorithmic_framework.tex",
+    "paper_coap/sections/04_formal_analysis.tex",
+    "paper_coap/sections/05_experimental_design.tex",
+    "paper_coap/sections/06_results.tex",
+    "paper_coap/sections/07_discussion.tex",
+    "paper_coap/sections/08_conclusion.tex",
+    "paper_coap/tables/table_algorithm_components.tex",
+    "paper_coap/main.pdf"
+  ],
+  "claim_register_counts": {
+    "pre_edit_total_matches": 114,
+    "pre_edit_high_risk_items": 2,
+    "post_edit_total_matches": 115,
+    "post_edit_removed_or_qualified_from_pre_high_risk": 2,
+    "post_edit_qualified": 33,
+    "post_edit_retained_with_evidence": 81,
+    "post_edit_pending_or1": 1,
+    "post_edit_pending_exp10_comment_anchors": 6
+  },
+  "selected_title": "SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs",
+  "conflicts_resolved": [
+    {
+      "topic": "Primary contribution ordering",
+      "resolution": "IPSNS leads title, abstract, introduction, contributions, algorithm section, and conclusion; LR-TA/WMSF explicitly supporting seeds."
+    },
+    {
+      "topic": "CCP24 citation",
+      "resolution": "Added verified JoCO 2024 entry (CCP24) alongside SEKE 2025 CC25 for WMSF lineage; CC25 remains primary weighted source."
+    },
+    {
+      "topic": "Formal analysis prominence",
+      "resolution": "Section retitled supporting correctness properties; proofs deferred to Online Resource 1; Prop 4 merged into Prop 3."
+    }
+  ]
+}

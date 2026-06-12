@@ -1,0 +1,21 @@
+{
+  "validation_date": "2026-06-11T19:00:56Z",
+  "expected_runs": 1860,
+  "raw_files_found": 1860,
+  "n_pass": 1860,
+  "n_fail": 0,
+  "n_missing": 0,
+  "n_extra": 0,
+  "n_duplicate": 0,
+  "n_parse_error": 0,
+  "validation_passed": true,
+  "blocker_errors": [],
+  "git_commit_verified": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "ipsns_sha_verified": "46a3f2b549897df1037ebe257e47b17490bddaa97effb2e31bce20a50ea54b36",
+  "n_instances": 93,
+  "n_seeds": 20,
+  "n_improved_over_seed": 240,
+  "pct_improved": 12.9,
+  "n_accepted_moves_gt0": 240,
+  "pct_accepted_moves_gt0": 12.9
+}

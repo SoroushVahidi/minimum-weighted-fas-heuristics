@@ -1,0 +1,28 @@
+\section{Automated tests}
+\label{sec:or1-tests}
+
+The artifact includes the current pytest gate (\texttt{tests/}, \texttt{src/mwfas/}).
+
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+Metric & Count \\
+\midrule
+Collected & 86 \\
+Passed & 79 \\
+Skipped & 7 \\
+Failed & 0 \\
+Errors & 0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{History.} The full repository gate collects 91 tests (90 passed, 1 skipped after EXP11). The packaged OR1 archive excludes live EXP10 production scripts/checkpoints; its pytest summary is 79 passed, 7 skipped (86 collected) because EXP10 namespace tests skip when the live experiment tree is absent.
+
+\textbf{Full-repository command:} \texttt{PYTHONPATH=src python3 -m pytest tests/ -q} from the complete checkout yields 90 passed, 1 skipped.
+
+\textbf{Command:} \texttt{PYTHONPATH=src python3 -m pytest tests/ -q}
+
+\textbf{Categories:} objective equivalence; $B_\pi\subseteq F$ and weight inequalities; topological extraction counterexamples; I/O parser contracts; LR-TA feasibility; WMSF safe-edge regression; IPSNS rollback; exact DP; CLI smoke; EXP10 namespace patterns.
+
+\paragraph{Limitation.} Tests certify implementation behavior on small graphs; they do not constitute formal verification.

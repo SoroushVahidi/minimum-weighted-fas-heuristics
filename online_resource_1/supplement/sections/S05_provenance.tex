@@ -1,0 +1,23 @@
+\section{Algorithm provenance and implementation deviations}
+\label{sec:or1-provenance-table}
+
+\begin{table}[h]
+\centering\small
+\caption{Component provenance (summary). Full detail in \texttt{results/} experiment manifests.}
+\begin{tabular}{p{2.2cm}p{2.5cm}p{2.5cm}p{1.5cm}p{2.8cm}}
+\toprule
+Component & Prior source & Current impl. & Status & Manuscript role \\
+\midrule
+LR-TA peeling & Demetrescu--Finocchi & \texttt{lrta.py} & Engineered & Seed \\
+Topological add-back & Engineered & \texttt{lrta.py} & New integration & Dominant ablation gain \\
+WMSF pipeline & Cavallaro--Cutello & \texttt{wmsf.py} & Engineered variant & Seed \\
+SCC scoring & --- & \texttt{ipsns.py} & New & IPSNS selection \\
+Destroy A/B & LNS literature & \texttt{ipsns.py} & New integration & IPSNS perturbation \\
+Strict rollback & --- & \texttt{ipsns.py} & New & Incumbent protection \\
+Exact DP & Standard & \texttt{exact.py} & Standard & Validation \\
+DRMacIver wrapper & DRMacIver/FAS & external & Wrapper only & Baseline \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{IPSNS novelty.} The novelty lies in the FAS-specific combination (fixed original-graph SCC neighborhoods, contribution scoring, weighted top-$K$, two-sided destroy, SCC-restricted repair, strict incumbent protection), not in generic LNS, rollback, or SCC decomposition alone.

@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\noindent
+12 June 2026
+
+\vspace{0.75em}
+\noindent
+Editor-in-Chief\\
+\textit{Computational Optimization and Applications}\\
+Springer Nature
+
+\vspace{0.75em}
+\noindent
+\textbf{Re: Submission of research article --- ``SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs''}
+
+\vspace{0.75em}
+Dear Editor-in-Chief,
+
+I am pleased to submit the enclosed research article for consideration as an \textbf{Original Research} contribution to \textit{Computational Optimization and Applications}. The paper studies the \textbf{minimum weighted feedback arc set (MWFAS)} problem on sparse nonnegative weighted digraphs and presents an integrated algorithm-engineering framework whose primary new contribution is \textbf{IPSNS} (incumbent-protected SCC neighborhood search), an SCC-local destroy-and-repair heuristic with contribution-based SCC scoring, weighted top-$K$ neighborhood selection, two-sided perturbation, restricted repair, and strict incumbent protection.
+
+\textbf{Scientific contribution.} IPSNS is the main algorithmic advance. It is supported by a dual-seed framework that reuses a refined \textbf{LR-TA} local-ratio seed (implementation-consistent with an earlier author LR-TA manuscript) and an engineered \textbf{WMSF}-style seed adapted from recent minimal-and-stable feedback arc set heuristics. The study combines exact bitmask dynamic programming, time-capped mixed-integer validation, broad sparse benchmarks with external baselines, ablation and sensitivity analyses, a holdout check, a dense LOLIB scope-boundary transfer, a repeated-run stochastic-robustness study (EXP10), and a post-hoc topological-extraction calibration (EXP11). On the evaluated sparse benchmark, IPSNS attains the best observed backward weight among the compared methods on 96 of 97 standard instances; a 93-instance median comparison against DRMacIver/FAS (20 repetitions per method) yields 38 wins, 55 ties, and 0 losses for IPSNS, with DRMacIver mean relative excess 21.60\%. The paper does not claim a new approximation-ratio theorem or universal state-of-the-art dominance; it reports bounded computational evidence and explicit scope limitations.
+
+\textbf{Fit with COAP.} The manuscript aligns with COAP's scope in computational algorithm development, algorithm engineering, and rigorous computational evaluation for optimization problems on graphs. It contributes reproducible software, formal supporting analysis, and extensive empirical comparison rather than a purely theoretical breakthrough.
+
+\textbf{Related manuscripts and preprint.} This submission integrates and substantially extends several related strands of my prior work rather than presenting every component as newly invented. A public preprint with Ioannis Koutis (arXiv:2412.16181, December 2024) introduced ranking-from-pairwise-comparisons MWFAS heuristics including local-ratio-inspired cycle reduction and topological extraction; the present paper cites that work and does not claim those foundations as new. An earlier author manuscript on LR-TA was submitted to the \textit{Journal of Combinatorial Optimization} (manuscript ID JOCO-D-26-00099); a separate author manuscript on IPSNS was submitted to \textit{Discrete Applied Mathematics} (manuscript ID DA19469). Repository packages were also prepared for \textit{Computers \& Industrial Engineering} and the \textit{EURO Journal on Computational Optimization}; preparation of a package does not by itself establish submission history, and any CAIE/EJCO submission dates are disclosed separately in the enclosed related-manuscript statement. The COAP manuscript unifies LR-TA, WMSF, and IPSNS; adds consolidated formal properties; expands validation (exact DP, HiGHS, LOLIB, holdout, EXP10, EXP11); and retargets the narrative to sparse general digraphs with explicit scope boundaries. A one-page related-manuscript statement accompanies this letter.
+
+\textbf{Publication status.} I submit this manuscript only to \textit{Computational Optimization and Applications}. I am the sole author and approve this submission. I confirm that no substantially overlapping manuscript by me is under consideration elsewhere at the time of submission. Related prior manuscripts identified above are disclosed to the editorial office; permissions for previously published material are not required beyond the cited public preprint and my own prior unpublished submissions.
+
+\textbf{Reproducibility.} Online Resource~1 (supplementary PDF and artifact archive) provides source code, automated tests, frozen configurations, validated summary outputs, and scripts to regenerate principal tables without expensive benchmark reruns.
+
+Thank you for your consideration. I would be pleased to suggest qualified reviewers through the submission portal if requested.
+
+\vspace{1em}
+\noindent
+Sincerely,
+
+\vspace{1.5em}
+\noindent
+Soroush Vahidi\\
+Corresponding Author\\
+Department of Computer Science\\
+New Jersey Institute of Technology\\
+Newark, NJ 07102, USA\\
+\href{mailto:sv96@njit.edu}{sv96@njit.edu}\\
+ORCID: \href{https://orcid.org/0000-0003-1934-6282}{0000-0003-1934-6282}
+
+\end{document}

@@ -1,0 +1,34 @@
+{
+  "primary_paired_median": {
+    "wilcoxon_stat": 0.0,
+    "wilcoxon_p_two_sided": 7.739732463297963e-08,
+    "sign_test_p_two_sided": 7.275957614183426e-12,
+    "sign_test_n_ipsns_better": 38,
+    "sign_test_n_dr_better": 0,
+    "sign_test_n_tie": 55,
+    "bootstrap_mean_diff_ci95": [
+      -41786.84139784946,
+      -10718.043548387099
+    ],
+    "bootstrap_mean_rel_excess_ci95": [
+      15.388095443771698,
+      28.10032279263309
+    ],
+    "cohens_dz": -0.3136937499071569,
+    "mean_paired_diff": -23964.317204301075,
+    "median_paired_diff": 0.0,
+    "mean_rel_excess_dr_over_ipsns_pct": 21.601773263726717,
+    "median_rel_excess_dr_over_ipsns_pct": 0.0,
+    "n_ipsns_wins": 38,
+    "n_ties": 55,
+    "n_dr_wins": 0,
+    "tie_tolerance": 1e-09,
+    "bootstrap_seed": 42,
+    "exp4_recomputed_wtl": {
+      "ipsns": 37,
+      "ties": 56,
+      "dr": 8
+    }
+  },
+  "confirmatory": true
+}

@@ -1,0 +1,33 @@
+\section{Reproduction instructions}
+\label{sec:or1-reproduce}
+
+\subsection{Level A --- Smoke validation}
+
+\begin{verbatim}
+./scripts/reproduce_smoke.sh
+\end{verbatim}
+Runs LR-TA, exact DP, and topological fixtures on bundled tiny graphs.
+
+\subsection{Level B --- Test suite}
+
+\begin{verbatim}
+./scripts/reproduce_tests.sh
+\end{verbatim}
+Expected pytest summary: \textbf{90 passed, 1 skipped} (91 collected).
+
+\subsection{Level C --- Principal table verification}
+
+\begin{verbatim}
+./scripts/reproduce_principal_tables.sh
+\end{verbatim}
+Verifies EXP4, EXP3, EXP10, EXP11, and combined manuscript tables from committed summaries.
+
+\subsection{Level D --- Full rerun (optional)}
+
+See \texttt{scripts/optional\_full\_reproduction.sh}. Requires external datasets and binaries; not part of ordinary validation.
+
+\subsection{Artifact validation}
+
+\begin{verbatim}
+./scripts/validate_artifact.sh
+\end{verbatim}

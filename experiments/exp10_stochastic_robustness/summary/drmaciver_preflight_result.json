@@ -1,0 +1,50 @@
+{
+  "preflight_passed": true,
+  "blockers": [],
+  "warnings": [],
+  "checks": {
+    "ipsns_complete": {
+      "done": 1860,
+      "expected": 1860,
+      "ok": true
+    },
+    "ipsns_validated": {
+      "ok": true,
+      "detail": "passed"
+    },
+    "binary_ok": {
+      "ok": true,
+      "message": "Binary OK: experiments/exp4_external_baselines/external_tools/Feedback-Arc-Set/fas SHA=907b7abe96ff8fb5..."
+    },
+    "smoke_tests": {
+      "ok": true,
+      "results": "{\"('stg', 0)\": 'OK', \"('stg', 1)\": 'OK', \"('stg', 2)\": 'OK', \"('r20_60', 0)\": 'OK', \"('r20_60', 1)\": 'OK', \"('r20_60', 2)\": 'OK', \"('s27', 0)\": 'OK', \"('s27', 1)\": 'OK', \"('s27', 2)\": 'OK'}"
+    },
+    "instances_accessible": {
+      "ok": true,
+      "missing": "[]"
+    },
+    "disk_space": {
+      "ok": true,
+      "free_gb": 643.59
+    },
+    "no_competing_process": {
+      "ok": true,
+      "pids": "[]"
+    },
+    "dr_output_namespace_clean": {
+      "ok": true,
+      "detail": "{'raw_count': 0, 'checkpoint_count': 0, 'sample_raw': [], 'sample_checkpoints': []}"
+    },
+    "dr_existing_runs": {
+      "ok": true,
+      "done": 0,
+      "note": "production namespace clean (0 done files)"
+    },
+    "git_commit": {
+      "ok": true,
+      "actual": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+      "expected": "80b3144d5fdbbe250faed8a4fe671dde2da76c89"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "audit_id": "coap_exp10_manuscript_integration_20260611",
+  "audit_date": "2026-06-12",
+  "branch": "main",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "exp10_complete": true,
+  "completed_ok_created": true,
+  "drmaciver_completed": 1860,
+  "ipsns_completed": 1860,
+  "validation_passed": true,
+  "median_wtl": "38/55/0",
+  "mean_rel_excess_pct": 21.601773263726717,
+  "wilcoxon_p": 7.739732463297963e-08,
+  "manuscript_pdf_pages": 44,
+  "manuscript_pdf_sha256": "4318e8c80c0f0e10b1f75e9122c955be251681ddb9b473811fb926e7cb254fb6",
+  "exp10_integration_anchors_remaining": 0,
+  "additional_experiments_required": false,
+  "ready_for_or1": true,
+  "production_source_modified": false,
+  "exp10_raw_outputs_modified": false
+}

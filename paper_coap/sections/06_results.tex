@@ -1,7 +1,7 @@
 \section{Computational results}
 \label{sec:results}
 
-The computational evidence should be read in the same order as the experimental design. The paper first establishes the main sparse-benchmark result, then checks exact small-instance quality, then uses ablations to interpret the engineering choices, and finally tests transfer to dense LOLIB instances. This ordering matters because the main claim is intentionally scoped: IPSNS is presented as a strong, reproducible heuristic framework for nonnegative sparse weighted directed graphs.
+The computational evidence should be read in the same order as the experimental design. The paper first establishes the main sparse-benchmark result, then checks exact small-instance quality, then uses ablations to interpret the engineering choices, and finally tests transfer to dense LOLIB instances. This ordering matters because the main claim is intentionally scoped: IPSNS is presented as a strong heuristic framework for nonnegative sparse weighted directed graphs among the evaluated methods.
 
 \subsection{Sparse weighted graph benchmarks}
 
@@ -23,7 +23,7 @@ The primary result comes from the standard nonnegative sparse benchmark, with th
     \label{fig:exp4-win-counts}
 \end{figure}
 
-The main outcome is clear on this benchmark. IPSNS achieves the lowest observed backward weight among the tested methods on 96 of the 97 standard instances. Its mean BW is 37,698, compared with 38,327 for LR-TA and 40,005 for WMSF. Among the external methods, DRMacIver/FAS is the strongest comparator, but its mean BW is still 53,173 on the completed standard instances, or about 21.61\% above IPSNS. DRMacIver/FAS completes 93 of 97 instances; the remaining four cases are two DAG inputs rejected by the wrapper and two large sparse instances that time out in the wrapper used here. Sparse-comparison averages for DRMacIver/FAS are computed on completed runs only; incompletions are reported separately and are not hidden. The remaining baselines are substantially weaker on average, with the Eades variants about 30\% higher than IPSNS and the simpler Borda and random baselines far behind.
+The main outcome is clear on this benchmark. IPSNS achieves the lowest observed backward weight among the evaluated methods on 96 of the 97 standard instances. Its mean BW is 37,698, compared with 38,327 for LR-TA and 40,005 for WMSF. Among the external methods, DRMacIver/FAS is the strongest comparator, but its mean BW is still 53,173 on the completed standard instances, or about 21.61\% above IPSNS. DRMacIver/FAS completes 93 of 97 instances; the remaining four cases are two DAG inputs rejected by the wrapper and two large sparse instances that time out in the wrapper used here. Sparse-comparison averages for DRMacIver/FAS are computed on completed runs only; incompletions are reported separately and are not hidden. The remaining baselines are substantially weaker on average, with the Eades variants about 30\% higher than IPSNS and the simpler Borda and random baselines far behind.
 
 This result addresses baseline strength directly. The sparse-benchmark claim is not based only on a comparison among internal variants. It survives contact with a strong external comparator, a widely available graph-library heuristic, and several simple but informative ranking baselines. The most important external comparison is DRMacIver/FAS, not because it wins the benchmark, but because it remains competitive on much of the sparse set despite being a matrix-based pairwise-ordering heuristic rather than a sparse-digraph-native method. Even there, the gap is small only on one instance: \texttt{r20\_60}, where DRMacIver/FAS beats IPSNS by 3 BW units. That same instance is also the only IPSNS near-miss in the exact-validation study below, which makes the sparse story internally consistent rather than contradictory.
 
@@ -46,11 +46,33 @@ A supplementary budget study (EXP6) tests how IPSNS quality varies with the iter
 \label{fig:ipsns_budget_curve}
 \end{figure}
 
+Supplementary experiment EXP11 tests whether alternative deterministic linear extensions of the same LR-TA final active DAG change the reported backward weight on a nonnegative calibration subset. Kahn tie-break variants (minimum vertex id, maximum vertex id, weighted net-score priority) and one-pass precedence-preserving insertion refinement all matched the repository rule on every tested instance; moreover \(w(F)-\operatorname{bw}(\pi)=0\) throughout (Table~\ref{tab:exp11-extraction}). This supports using the current extraction convention for the headline sparse comparisons without claiming extraction optimality in general.
+
+\input{tables/table_exp11_extraction}
+
 EXP7 asks whether IPSNS improvements over LR-TA can be matched by simpler order-local improvement heuristics. On the 18 non-negative instances of the representative subset, adjacent-swap local search (accepting any adjacent pair swap that reduces backward weight) finds no improvements: LR-TA already constitutes an adjacent-swap local optimum on every instance. Single-vertex insertion local search (finding the globally best position for each vertex in turn) improves over LR-TA on 4 instances and achieves mean backward weight 95,779, but it still loses to IPSNS on 5 instances, all large sparse graphs ($n \ge 1{,}000$). Using the better of LR-TA and WMSF as the insertion seed narrows the gap slightly (mean BW 95,617) but leaves 3 losses to IPSNS. The instances where insertion LS falls short overlap directly with the highest-gain IPSNS instances in EXP4. Table~\ref{tab:plain_local_search} reports the comparison.
 
 \input{tables/table_plain_local_search}
 
 The sparse results cover a broad but intentionally scoped benchmark. The comparison uses 97 standard nonnegative sparse instances after exclusions and includes eight algorithms in total. These results are specific to this setting and do not extend to negative-weight cases or dense complete ordering benchmarks.
+
+\subsection{Stochastic robustness (EXP10)}
+\label{subsec:exp10-results}
+
+Table~\ref{tab:exp10-stochastic-robustness} and Figure~\ref{fig:exp10-median-scatter} summarize the confirmatory repeated-run comparison on the 93-instance common sparse subset. IPSNS and DRMacIver/FAS were each executed 20 times per instance under the frozen EXP10 protocol (Section~\ref{subsec:exp10-protocol}). The primary analysis compares per-instance medians of backward weight.
+
+\input{tables/table_exp10_stochastic_robustness}
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.72\linewidth]{figures/exp10_median_scatter.pdf}
+    \caption{Per-instance medians of backward weight on the 93-instance common sparse subset (EXP10). Points below the diagonal indicate lower IPSNS median BW; the dashed line is $y=x$.}
+    \label{fig:exp10-median-scatter}
+\end{figure}
+
+On per-instance medians, IPSNS wins on 38 instances, ties on 55, and loses on 0. This strengthens the single-run EXP4 paired outcome (37/55/1): the sole EXP4 DRMacIver/FAS win on \texttt{r20\_60} does not persist under median aggregation (IPSNS median 1688 versus DRMacIver/FAS median 1698). Mean paired relative excess of DRMacIver/FAS over IPSNS remains 21.6\%, matching the EXP4 single-run figure. Wilcoxon and sign tests both yield $p<0.001$, supporting the observed win--tie asymmetry without claiming optimality.
+
+Variability differs markedly between methods. IPSNS produced a single distinct backward-weight value on all 93 instances across 20 seeds; seed~0 matched the best observed IPSNS objective on every instance. DRMacIver/FAS showed objective variation on 40 of 93 instances (53 instances with zero spread). Best-of-$k$ analysis shows DRMacIver/FAS can benefit from restarts on a small number of instances (expected best-of-20 yields 2 DR wins versus 0 at $k=1$), whereas additional IPSNS seeds confer no objective benefit under the frozen configuration. Runtime medians are 0.011\,s for IPSNS and 0.008\,s for DRMacIver/FAS on this subset; the comparison is quality-focused rather than equal-time, and intermediate DRMacIver/FAS solutions are not retained for anytime analysis.
 
 \subsection{Exact validation and ablation evidence}
 
@@ -99,4 +121,4 @@ The family breakdown explains why. DRMacIver/FAS wins 24 of the 25 SGB instances
 
 This finding sharpens the overall claim. Retaining the dense transfer study shows that the framework transfers nontrivially to a dense benchmark, remains competitive on a structured IO subset, and still preserves the internal no-worsening invariant, but dense complete ordering is not the framework's strongest regime.
 
-Across the section as a whole, the empirical message is coherent. The strongest claim belongs to the sparse nonnegative benchmark, where IPSNS attains the best observed backward weight among the tested methods on 96 of 97 standard instances and never returns a result worse than the better internal seed. The exact-validation subset shows that the quality story is not merely relative to heuristics, and the ablation study shows that the gains are not coming from an uninterpretable black box. The dense transfer study then marks the boundary of that success case. The framework is a strong and reproducible method for the sparse weighted-digraph regime, and the computational evidence shows how far that statement can be pushed.
+Across the section as a whole, the empirical message is coherent. The strongest claim belongs to the sparse nonnegative benchmark, where IPSNS attains the best observed backward weight among the evaluated methods on 96 of 97 standard instances and never returns a result worse than the better internal seed. EXP10 corroborates this pattern on the 93-instance common subset under repeated executions. The exact-validation subset shows that the quality story is not merely relative to heuristics, and the ablation study shows that the gains are not coming from an uninterpretable black box. The dense transfer study then marks the boundary of that success case. The framework is a strong observed method for the sparse weighted-digraph regime among the evaluated methods, and the computational evidence shows how far that statement can be pushed.

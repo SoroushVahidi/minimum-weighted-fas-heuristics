@@ -6,9 +6,9 @@
 \toprule
 Component & Primary mechanism & Role in this paper \\
 \midrule
-LR-TA & Global local-ratio cycle reduction followed by heavy-first add-back & Engineered reproducible seed; main constructive method derived from prior local-ratio ideas \\
-WMSF\-style seed & Ordered arc removal, minimization, stabilization, and re-minimization inside SCCs & Complementary internal seed and baseline; broadens incumbent quality before refinement \\
-IPSNS & SCC-local destroy--repair moves with restricted local-ratio repair and restricted add-back & Main refinement framework; improves only when the global objective decreases \\
+LR-TA & Global local-ratio cycle reduction followed by heavy-first add-back & Refined inherited seed from \cite{DF03,VahidiKoutis2024arxiv}; engineered sparse-graph implementation \\
+WMSF-style seed & Weighted removeArcs--minimize--stabilize pipeline & Engineered implementation variant of \cite{CC25}; complementary constructive seed \\
+IPSNS & SCC-local destroy-and-repair with incumbent protection & Primary new integrated heuristic in this manuscript \\
 \bottomrule
 \end{tabular}
 \end{table}

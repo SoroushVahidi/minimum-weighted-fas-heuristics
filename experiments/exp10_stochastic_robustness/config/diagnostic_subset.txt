@@ -1,0 +1,34 @@
+# Diagnostic 25-instance stratified subset for EXP10
+# Selection rule: documented BEFORE seeing new repeated-run results.
+# Selection criteria:
+#   - Covers small (n<20), medium (n=20-300), large (n=300-2000), very large (n>2000)
+#   - Covers all EXP4 outcome categories: IPSNS win (large gap), IPSNS win (small gap), tie, DR win
+#   - Covers range of densities (low: s5378 ~0.0005; high: r1000 ~0.004; very high: complete9 ~0.89)
+#   - Includes the one DRMacIver win (r20_60)
+#   - Includes known difficult/large instances with long IPSNS runtimes
+#   - Format: instance_name<TAB>EXP4_winner<TAB>n<TAB>m<TAB>notes
+complete9	tie	9	72	very_small_high_density_tie
+stg	tie	20	30	small_tie
+r20_60	DR	20	60	THE_DRMacIver_win_instance
+gr10	IPSNS_small_gap	47	83	medium_small_gap_1pct
+s27	IPSNS_small_gap	54	87	medium_small_gap
+s208	IPSNS_large_gap	83	119	medium_large_gap_48pct
+s420	IPSNS_huge_gap	101	178	medium_huge_gap_685pct
+mm4a	IPSNS	170	454	medium_large
+s344	IPSNS	274	388	medium_large
+mult16a	IPSNS	293	582	medium_large
+s526	IPSNS	318	576	medium_large
+mult32a	IPSNS	565	1142	large
+s641	IPSNS_huge_gap	477	612	large_huge_gap_664pct
+s713	IPSNS_huge_gap	515	688	large_huge_gap_903pct
+mm9a	IPSNS_large_gap	631	1182	large_large_gap
+s838	IPSNS	665	941	large
+s953	IPSNS_huge_gap	730	1090	large_huge_gap_581pct
+r1000	IPSNS_small_gap	999	3960	large_dense_small_gap_28pct
+grid	IPSNS	1001	3000	large_grid
+s1423	IPSNS	916	1448	large
+mm9b	IPSNS_large_gap	777	1452	large_large_gap_633pct
+daio_receiver	IPSNS_large_gap	1942	3749	very_large_large_gap
+rd_big	IPSNS_large_gap	1000	2999	large_random
+s5378	IPSNS_huge_gap	3076	4589	very_large_huge_gap
+dsip	IPSNS_huge_gap	4079	6602	very_large_huge_gap

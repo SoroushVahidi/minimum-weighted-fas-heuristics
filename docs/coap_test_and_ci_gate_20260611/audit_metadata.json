@@ -1,0 +1,35 @@
+{
+  "audit_id": "coap_test_and_ci_gate_20260611",
+  "audit_date": "2026-06-11",
+  "branch": "main",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "exp10_modified": false,
+  "production_source_modified_by_task": false,
+  "python_version": "3.12.3",
+  "tests_collected": 78,
+  "tests_passed": 77,
+  "tests_failed": 0,
+  "tests_skipped": 1,
+  "tests_errors": 0,
+  "duration_seconds": 2.3,
+  "coverage_total_percent": 70,
+  "coverage_by_module": {
+    "evaluation.py": 100,
+    "io.py": 97,
+    "exact.py": 92,
+    "lrta.py": 87,
+    "wmsf.py": 85,
+    "ipsns.py": 66
+  },
+  "production_defects_found": 0,
+  "experiments_rerun_required": false,
+  "no_tests_blocker_resolved": true,
+  "ci_workflow": ".github/workflows/tests.yml",
+  "ci_remote_verified": false,
+  "ci_local_validated": true,
+  "exp10_passive_status": {
+    "drmaciver_checkpoints": 1860,
+    "ipsns_checkpoints": 1860,
+    "runner_active": false
+  }
+}

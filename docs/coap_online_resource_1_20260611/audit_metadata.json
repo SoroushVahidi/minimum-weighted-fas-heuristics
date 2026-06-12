@@ -1,0 +1,20 @@
+{
+  "audit_id": "coap_online_resource_1_20260611",
+  "audit_date": "2026-06-12",
+  "branch": "main",
+  "head": "80b3144d5fdbbe250faed8a4fe671dde2da76c89",
+  "or1_created": true,
+  "or1_pdf_pages": 11,
+  "or1_pdf_sha256": "11679d9a17eabe0d03430c5b3368ba1ed42758b9cc41a5aae54e1c3940a525fa",
+  "zip_file": "Vahidi_Online_Resource_1_MWFAS.zip",
+  "zip_bytes": 1019136,
+  "zip_sha256": "c95e09dd86b5bebc7e33c6fe9b78d50aa408b2c24d2c5af8214dc80ae63e40c5",
+  "manifest_files": 271,
+  "tests_or1": {"collected": 78, "passed": 76, "skipped": 2, "failed": 0},
+  "tests_full_repo": {"collected": 78, "passed": 77, "skipped": 1, "failed": 0},
+  "manuscript_pages": 44,
+  "manuscript_pdf_sha256": "61e15c523791e3d7f942d8953be6aef2a02e4b83a7971d68b249e0eb18a55ecc",
+  "ci_remote_verified": false,
+  "ci_local_validated": true,
+  "submission_ready": true
+}

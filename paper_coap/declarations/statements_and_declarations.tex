@@ -9,8 +9,22 @@ The author declares that there are no known competing financial or non-financial
 \subsection*{Author contributions}
 Soroush Vahidi: Conceptualization, Methodology, Software, Formal analysis, Investigation, Validation, Data curation, Visualization, Writing -- original draft, Writing -- review \& editing.
 
+\subsection*{Related manuscripts and prior author work}
+This manuscript extends related author work on minimum weighted feedback arc set and ranking-as-ordering heuristics. Section~\ref{subsec:prior-work} summarizes the relationship to the arXiv preprint \cite{VahidiKoutis2024arxiv}, archived LR-TA and IPSNS predecessor manuscripts, and prepared CAIE/EJCO packages. Submission history and manuscript identifiers for those predecessors will be disclosed in the cover letter where author records are complete.
+
 \subsection*{Data and code availability}
-The code, experiment scripts, manifests, and processed result summaries for this study will be provided as supplementary material in Online Resource~1. Public benchmark instances are cited in the manuscript, and the supplementary material will document the conversion and preprocessing steps used in this study.
+\textbf{Online Resource~1} (supplementary PDF and artifact archive) accompanies this submission. It contains: (i)~complete proofs deferred from the main text, including topological-extraction inequalities; (ii)~extended computational tables, EXP10 stochastic-robustness materials, and EXP11 extraction-sensitivity calibration; (iii)~the implementation (\texttt{src/mwfas/}), a 91-test automated correctness gate (90 passed, 1 skipped at freeze), and reproduction scripts; and (iv)~committed CSV/JSON summaries for reported experiments (EXP1b--EXP11). Public benchmark instances are cited in the manuscript; instance download and preprocessing steps are documented in OR1.
+
+\textbf{Reproduction levels.} Level~A (smoke validation) and Level~B (test suite) complete in seconds on a standard workstation. Level~C regenerates principal manuscript tables from committed summaries without rerunning expensive benchmarks. Level~D (full benchmark reruns) is optional and documented but not required to verify the reported numbers.
+
+\textbf{Command (Level~B):}
+\begin{verbatim}
+pip install -r requirements-dev.txt
+PYTHONPATH=src python3 -m pytest tests/ -q
+\end{verbatim}
+Expected result when run from the full repository checkout: 90 passed, 1 skipped (91 collected). The OR1 artifact archive uses the same test tree; one EXP10 namespace test is skipped when the DRMacIver runner is inactive.
+
+We do not claim machine-checked formal verification; the test suite provides regression and correctness coverage on tiny graphs with independent brute-force cross-checks.
 
 \subsection*{Generative AI and AI-assisted technologies}
 During the preparation of this work, the author used AI-assisted tools, including ChatGPT, Codex, Claude, and Perplexity AI, to support literature exploration, organization of material, language editing, and coding assistance. The author reviewed and edited all outputs, verified the relevant sources and experimental results, and takes full responsibility for the content of the submitted manuscript.

@@ -1,0 +1,37 @@
+{
+  "triangle": {
+    "lr_ta_bw": 1.0,
+    "wmsf_bw": 1.0,
+    "exact_bw": 1.0,
+    "ipsns_bw": 1.0,
+    "ipsns_iters": 5,
+    "ipsns_seed": 1,
+    "derivation": {
+      "exact_bw": "brute_force_min_backward and exact_min_fas_dp on triangle.d (n=3, weights 3+2+1)",
+      "lr_ta_bw": "independent backward-weight recomputation from LR-TA ordering",
+      "wmsf_bw": "independent backward-weight recomputation from WMSF ordering"
+    }
+  },
+  "two_cycle": {
+    "lr_ta_bw": 2.0,
+    "wmsf_bw": 2.0,
+    "exact_bw": 2.0,
+    "ipsns_bw": 2.0,
+    "ipsns_iters": 5,
+    "ipsns_seed": 1,
+    "derivation": {
+      "exact_bw": "brute_force_min_backward and exact_min_fas_dp on two_cycle.d (min remove weight 2)"
+    }
+  },
+  "dag_path": {
+    "lr_ta_bw": 0.0,
+    "wmsf_bw": 0.0,
+    "exact_bw": 0.0,
+    "ipsns_bw": 0.0,
+    "ipsns_iters": 5,
+    "ipsns_seed": 1,
+    "derivation": {
+      "exact_bw": "DAG has optimal backward weight 0"
+    }
+  }
+}
