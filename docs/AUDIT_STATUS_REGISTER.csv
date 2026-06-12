@@ -1,0 +1,14 @@
+directory,date,purpose,status,superseded_by,public_value,editorial_internal,retain_location,navigation_visibility,notes
+final_coap_adversarial_audit_20260612,2026-06-12,Pre-submission adversarial COAP gate,authoritative,,high,no,docs/,high,FINAL_SUBMISSION_VERDICT.md
+full_branch_repository_audit_20260612,2026-06-12,Full repository reconciliation,authoritative,,high,no,docs/,high,Precedes cleanup pass
+coap_online_resource_finalization_20260611,2026-06-11,OR1 freeze and checksums,supporting,full_branch_repository_audit_20260612,high,no,docs/,medium,
+coap_cover_letter_and_upload_20260612,2026-06-12,Portal copy-ready text,supporting,,medium,no,docs/,medium,Abstract synced to 238 words
+coap_test_and_ci_gate_20260611,2026-06-11,Test/CI evidence,supporting,,medium,no,docs/,low,
+coap_exp10_manuscript_integration_20260611,2026-06-11,EXP10 integration audit,supporting,,medium,no,docs/,low,
+coap_topological_extraction_audit_20260611,2026-06-11,EXP11 audit,supporting,,medium,no,docs/,low,
+coap_manuscript_reframing_20260611,2026-06-11,Manuscript reframing,supporting,,medium,no,docs/,low,
+coap_online_resource_1_20260611,2026-06-11,Early OR1 audit,superseded,coap_online_resource_finalization_20260611,low,no,docs/,low,
+final_branch_audit_20260611,2026-06-11,Branch audit,superseded,full_branch_repository_audit_20260612,low,no,docs/,low,
+full_repository_audit_20260610,2026-06-10,Early full audit,superseded,full_branch_repository_audit_20260612,low,no,docs/,low,
+archive/internal/coap_rejection_history_and_revision_plan_20260611,2026-06-11,Rejection analysis and strategy,internal,,low,yes,docs/archive/internal/,none,Review before public release
+repository_maintenance/cleanup_20260612,2026-06-12,Repository cleanup pass,maintenance,,medium,no,docs/,medium,Living cleanup record

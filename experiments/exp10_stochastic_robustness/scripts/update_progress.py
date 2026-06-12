@@ -1,6 +1,6 @@
 """
 EXP10: Update experiment_progress.json dashboard.
-Run at any time for a non-final progress snapshot.
+When COMPLETED.ok exists and both phases are 100%, status is COMPLETE (frozen).
 """
 import json, os, subprocess, datetime, glob
 
@@ -49,9 +49,25 @@ pids = active_pids()
 ipsns_log = os.path.join(EXP_DIR, "logs", "ipsns_full_run.log")
 dr_log = os.path.join(EXP_DIR, "logs", "drmaciver_runner.log")
 
+completed_ok = os.path.exists(os.path.join(SUMMARY_DIR, "COMPLETED.ok"))
+ipsns_complete = ipsns_done == ipsns_total and ipsns_total > 0
+dr_complete = dr_done == dr_total and dr_total > 0
+final_status = "COMPLETE" if completed_ok and ipsns_complete and dr_complete and not pids else "NONFINAL"
+
+# Preserve timestamp when experiment is finalized (avoid noisy diffs on dashboard reads).
+progress_path = os.path.join(SUMMARY_DIR, "experiment_progress.json")
+prev_ts = None
+if final_status == "COMPLETE" and os.path.exists(progress_path):
+    try:
+        with open(progress_path) as pf:
+            prev_ts = json.load(pf).get("timestamp")
+    except Exception:
+        prev_ts = None
+timestamp = prev_ts or datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 progress = {
-    "timestamp": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-    "status": "NONFINAL",
+    "timestamp": timestamp,
+    "status": final_status,
     "ipsns_phase": {
         "done": ipsns_done, "total": ipsns_total,
         "pct": round(100 * ipsns_done / ipsns_total, 1),
@@ -71,17 +87,17 @@ progress = {
     },
     "drmaciver_prior_contamination_corrected": {
         "prior_reported_done": 9,
-        "corrected_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "corrected_at": "2026-06-12T03:35:42Z",
         "reason": "9 smoke checkpoints were previously counted in production namespace",
     },
     "active_pids": pids,
     "validation_done": os.path.exists(os.path.join(SUMMARY_DIR, "ipsns_validation_summary.json")),
     "summaries_done": os.path.exists(os.path.join(SUMMARY_DIR, "ipsns_phase_conclusions.md")),
     "preflight_done": os.path.exists(os.path.join(SUMMARY_DIR, "drmaciver_preflight_report.md")),
-    "completed_ok": os.path.exists(os.path.join(SUMMARY_DIR, "COMPLETED.ok")),
+    "completed_ok": completed_ok,
 }
 
-out = os.path.join(SUMMARY_DIR, "experiment_progress.json")
+out = progress_path
 with open(out, "w") as f:
     json.dump(progress, f, indent=2)
 

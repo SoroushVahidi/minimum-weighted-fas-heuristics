@@ -1,0 +1,7 @@
+main_reference,or1_target,exists,status
+Formal proofs S4,online_resource_1/supplement/sections/S04_proofs.tex,yes,matches
+EXP10 materials S11,online_resource_1/supplement/sections/S11_exp10.tex,yes,38/55/0
+EXP11 S12,online_resource_1/supplement/sections/S12_exp11.tex,yes,6-instance calibration
+Test count 90/1 full repo,online_resource_1/supplement/sections/S13_tests.tex,yes,OR1 package 79/7 skipped
+Root OR1 PDF mirror,Vahidi_Online_Resource_1_MWFAS.pdf,yes,sha matches final_upload
+Abstract 238 words,paper_coap/main.tex,yes,post 6c04ff1

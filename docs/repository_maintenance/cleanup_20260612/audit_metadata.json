@@ -1,0 +1,10 @@
+{
+  "cleanup": "repository_maintenance_cleanup_20260612",
+  "starting_commit": "6c04ff1cc19d1887bd5b1b2bd1d1f31dc2b6924a",
+  "tracked_files_before": 6336,
+  "moves_archived": 413,
+  "pytest": "90 passed, 1 skipped",
+  "or1_validation": "passed",
+  "manuscript_pages": 45,
+  "upload_files": 6
+}

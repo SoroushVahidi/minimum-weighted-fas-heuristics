@@ -1,0 +1,31 @@
+{
+  "experiment": "coap_ipsns_holdout",
+  "status": "COMPLETE",
+  "n_runs": 1290,
+  "n_ok": 1290,
+  "incumbent_violations": 0,
+  "configs": [
+    "iters_10",
+    "iters_400",
+    "iters_50",
+    "iters_50_addback25",
+    "iters_50_topk5",
+    "seed_only"
+  ],
+  "splits": [
+    "holdout",
+    "tuning"
+  ],
+  "holdout_instances": 25,
+  "tuning_instances": 18,
+  "seeds_per_config": 5,
+  "notes": "Generated from committed runs.jsonl; supports holdout-supported default narrative.",
+  "holdout_median_final_bw_by_config": {
+    "iters_10": 16351.0,
+    "iters_400": 16351.0,
+    "iters_50": 16351.0,
+    "iters_50_addback25": 16351.0,
+    "iters_50_topk5": 16351.0,
+    "seed_only": 16351.0
+  }
+}

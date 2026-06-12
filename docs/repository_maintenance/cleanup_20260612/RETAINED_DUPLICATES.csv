@@ -1,0 +1,4 @@
+path,purpose,canonical
+online_resource_1/src/mwfas/,OR1 frozen snapshot,src/mwfas/
+paper_coap/submission/final_upload/,portal bundle,paper_coap/ + online_resource_1/
+Vahidi_Online_Resource_1_MWFAS.*,root discoverability,online_resource_1/

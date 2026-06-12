@@ -1,0 +1,13 @@
+{
+  "audit": "full_branch_repository_audit_20260612",
+  "generated_at": "2026-06-12T04:01:36.628076+00:00",
+  "head": "6c04ff1cc19d1887bd5b1b2bd1d1f31dc2b6924a",
+  "files_inventoried": 17898,
+  "tracked_files_in_inventory": 6336,
+  "ignored_files_in_inventory": 11562,
+  "pytest": "90 passed, 1 skipped, 2 warnings",
+  "ci_run": 27393186733,
+  "ci_status": "passed",
+  "manuscript_pages": 45,
+  "or1_pages": 12
+}

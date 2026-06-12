@@ -1,0 +1,10 @@
+module,purpose,canonical,tested,public_api_count,duplicate_logic,rng_behavior,input_validation,manuscript_consistency,technical_debt,severity,recommended_future_action
+src/mwfas/__init__.py,Package version marker,yes,no,1,none,none,n/a,n/a,minimal,low,export public API explicitly
+src/mwfas/baselines.py,External-style baseline orderings (Borda Eades random),yes,indirect via EXP4 not unit,4,none,random_multistart uses random,dimacs path,aligned,weighted_eades fails on negative weight,low,add unit smoke tests
+src/mwfas/evaluation.py,Forward/backward weight computation from vertex scores,yes,yes test_evaluation.py,1,none,deterministic,assumes_valid_scores,aligned,minimal,low,none
+src/mwfas/exact.py,Bitmask DP exact MWFAS for small n,yes,yes test_exact.py,2,none,deterministic,n_limit guard,aligned,minimal,low,none
+src/mwfas/io.py,DIMACS graph ingestion with parallel-edge aggregation,yes,yes test_io.py,1,none,deterministic,partial_accepts_negative_weights,aligned,negative weights accepted not rejected,low,document or reject negative weights
+src/mwfas/ipsns.py,Incumbent-protected SCC neighborhood search LNS,yes,yes test_ipsns.py test_ipsns_rollback property,18,embeds legacy WMSF/LR helpers; full seed calls wmsf pipeline,random.seed in LNS,tol;wmsf_seed_mode,aligned post-seedfix,large module; legacy wmsf_seed_solution retained,medium,retire legacy seed path after EXP1 archive
+src/mwfas/lrta.py,LR-TA local-ratio FAS heuristic with optional add-back,yes,yes test_lrta.py test_known_instances,6,cycle/topo helpers overlap ipsns wmsf,deterministic,tol parameter,aligned,duplicated graph helpers vs ipsns,medium,consider shared graph kernel module
+src/mwfas/topo_extraction.py,Post-hoc topological extraction rules for EXP11,yes,yes test_topo_extraction_math.py,12,none,deterministic,active set checks,aligned,new module post manuscript freeze,low,keep synced with EXP11
+src/mwfas/wmsf.py,Per-SCC WMSF pipeline ranking heuristic,yes,yes test_wmsf.py test_wmsf_safe_edge,10,SCC pipeline reused by ipsns,deterministic,tol parameter,aligned,stabilization may change objective documented,low,none

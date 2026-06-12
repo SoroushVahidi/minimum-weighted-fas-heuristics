@@ -1,0 +1,10 @@
+issue_id,area,finding,evidence,severity,desk_rejection_risk,review_rejection_risk,required_before_submission,recommended_future_action,file,status
+FBR-001,git,Local=remote at 6c04ff1,git rev-parse,informational,none,no,none,n/a,closed,
+FBR-002,experiments,EXP10 progress status NONFINAL despite completion,experiment_progress.json,minor,low,low,no,Update script final status when convenient,experiments/exp10_stochastic_robustness/scripts/update_progress.py,open
+FBR-003,experiments,holdout lacks committed summary/,coap_ipsns_holdout/,moderate,low,low,no,Commit summary or document checkpoint-only state,experiments/coap_ipsns_holdout/,open
+FBR-004,repository,submission_package EJCO-era stale,submission_package/,moderate,low,low,no,Label archive; exclude from COAP uploads,submission_package/,open
+FBR-005,repository,Code triplication src/OR1/EJCO artifact,three trees,informational,none,no,no,Keep OR1 sync; mark EJCO stale,"src/, online_resource_1/, submission_package/",accepted
+FBR-006,disclosure,AUTHOR-STATUS comments in related work,02_related_work.tex,minor,low,low,no,Author confirm JOCO/DAM/CAIE/EJCO,paper_coap/sections/02_related_work.tex,author
+FBR-007,repository,Private GitHub vs OR1 reproducibility,README + gh api,informational,low,low,no,Decide public release timing,README.md,author
+FBR-008,manuscript,Orphan table_runtime_quality_tradeoff.tex,not in main.pdf,minor,none,no,no,Move to OR1 or remove,paper_coap/tables/,open
+FBR-009,combined,manuscript_results_digest predates EXP6-11,experiments/combined/,minor,none,no,no,Regenerate digest or mark historical,experiments/combined/,open

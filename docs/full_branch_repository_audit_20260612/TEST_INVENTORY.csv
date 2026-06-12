@@ -1,0 +1,92 @@
+test_file,test_name,category,depends_on_raw_data,depends_on_external_binary,skipped_condition,canonical,duplicate_in_or1
+tests/property/test_objective_equivalence.py,test_exact_matches_brute_many_seeds,property,no,no,,yes,yes
+tests/property/test_objective_equivalence.py,test_ipsns_not_worse_than_seed,property,no,no,,yes,yes
+tests/property/test_objective_equivalence.py,test_lrta_fas_invariant[0],property,no,no,pytest.skip empty edge set,yes,yes
+tests/property/test_objective_equivalence.py,test_lrta_fas_invariant[1],property,no,no,pytest.skip empty edge set,yes,yes
+tests/property/test_objective_equivalence.py,test_lrta_fas_invariant[2],property,no,no,pytest.skip empty edge set,yes,yes
+tests/property/test_objective_equivalence.py,test_lrta_fas_invariant[3],property,no,no,pytest.skip empty edge set,yes,yes
+tests/property/test_objective_equivalence.py,test_lrta_fas_invariant[4],property,no,no,pytest.skip empty edge set,yes,yes
+tests/property/test_objective_equivalence.py,test_objective_equivalence_random_scores,property,no,no,,yes,yes
+tests/regression/test_cli_smoke.py,test_cli_smoke[run_exact.py-extra2],regression,no,yes,,yes,yes
+tests/regression/test_cli_smoke.py,test_cli_smoke[run_ipsns.py-extra3],regression,no,yes,,yes,yes
+tests/regression/test_cli_smoke.py,test_cli_smoke[run_lrta.py-extra0],regression,no,yes,,yes,yes
+tests/regression/test_cli_smoke.py,test_cli_smoke[run_wmsf.py-extra1],regression,no,yes,,yes,yes
+tests/regression/test_exp10_namespace.py,test_no_stale_tmp_during_active_run,regression,yes,no,skipif EXP10 absent or DRMacIver runner active,yes,yes
+tests/regression/test_exp10_namespace.py,test_production_checkpoint_count_when_complete,regression,yes,no,skipif EXP10 absent or still running or checkpoint count mismatch,yes,yes
+tests/regression/test_exp10_namespace.py,test_smoke_archive_present,regression,yes,no,skipif EXP10 directory absent,yes,yes
+tests/regression/test_exp10_namespace.py,test_smoke_checksum_preservation,regression,yes,no,skipif archive manifest absent,yes,yes
+tests/regression/test_exp10_namespace.py,test_smoke_excluded_from_progress_counter,regression,yes,no,skipif EXP10 absent or progress file absent,yes,yes
+tests/regression/test_exp10_namespace.py,test_smoke_inventory_classification,regression,yes,no,skipif smoke inventory absent,yes,yes
+tests/regression/test_exp10_namespace.py,test_smoke_objective_metadata_valid,regression,yes,no,skipif smoke sample absent,yes,yes
+tests/regression/test_experiment_infrastructure.py,test_atomic_write_pattern,regression,no,no,,yes,yes
+tests/regression/test_experiment_infrastructure.py,test_checkpoint_done_gating,regression,no,no,,yes,yes
+tests/regression/test_experiment_infrastructure.py,test_exp10_namespace_helpers_importable,regression,no,no,,yes,yes
+tests/regression/test_experiment_infrastructure.py,test_isolated_checkpoint_resume,regression,no,no,,yes,yes
+tests/regression/test_experiment_infrastructure.py,test_malformed_json_rejected,regression,no,no,,yes,yes
+tests/regression/test_fixture_derivation.py,test_exact_bw_matches_brute_force_and_dp[dag_path],regression,no,no,,yes,yes
+tests/regression/test_fixture_derivation.py,test_exact_bw_matches_brute_force_and_dp[triangle],regression,no,no,,yes,yes
+tests/regression/test_fixture_derivation.py,test_exact_bw_matches_brute_force_and_dp[two_cycle],regression,no,no,,yes,yes
+tests/regression/test_known_instances.py,test_known_instance_objectives[dag_path],regression,no,no,,yes,yes
+tests/regression/test_known_instances.py,test_known_instance_objectives[triangle],regression,no,no,,yes,yes
+tests/regression/test_known_instances.py,test_known_instance_objectives[two_cycle],regression,no,no,,yes,yes
+tests/unit/test_evaluation.py,test_backward_matches_reference,unit,no,no,,yes,yes
+tests/unit/test_evaluation.py,test_dag_has_zero_backward,unit,no,no,,yes,yes
+tests/unit/test_evaluation.py,test_equivalent_orderings_same_objective,unit,no,no,,yes,yes
+tests/unit/test_evaluation.py,test_integer_weights,unit,no,no,,yes,yes
+tests/unit/test_evaluation.py,test_zero_weight_edges,unit,no,no,,yes,yes
+tests/unit/test_exact.py,test_dag_optimal_zero_backward,unit,no,no,,yes,yes
+tests/unit/test_exact.py,test_empty_graph,unit,no,no,,yes,yes
+tests/unit/test_exact.py,test_n_limit_raises,unit,no,no,,yes,yes
+tests/unit/test_exact.py,test_parallel_edges_aggregated_in_dp,unit,no,no,,yes,yes
+tests/unit/test_exact.py,test_seeded_random_small_graphs,unit,no,no,,yes,yes
+tests/unit/test_exact.py,test_triangle_matches_brute_force,unit,no,no,,yes,yes
+tests/unit/test_exact.py,test_two_cycle,unit,no,no,,yes,yes
+tests/unit/test_io.py,test_aggregates_parallel_edges,unit,no,no,,yes,yes
+tests/unit/test_io.py,test_empty_file,unit,no,no,,yes,yes
+tests/unit/test_io.py,test_malformed_rows_skipped,unit,no,no,,yes,yes
+tests/unit/test_io.py,test_negative_weights_currently_accepted,unit,no,no,,yes,yes
+tests/unit/test_io.py,test_noncontiguous_vertex_ids,unit,no,no,,yes,yes
+tests/unit/test_io.py,test_scientific_notation,unit,no,no,,yes,yes
+tests/unit/test_io.py,test_skips_comments_and_blank_lines,unit,no,no,,yes,yes
+tests/unit/test_io.py,test_tiny_fixture_triangle,unit,no,no,,yes,yes
+tests/unit/test_ipsns.py,test_incumbent_not_worse_than_seeds,unit,no,no,,yes,yes
+tests/unit/test_ipsns.py,test_ipsns_sets_random_seed,unit,no,no,,yes,yes
+tests/unit/test_ipsns.py,test_scc_scoring,unit,no,no,,yes,yes
+tests/unit/test_ipsns.py,test_seeded_reproducible,unit,no,no,,yes,yes
+tests/unit/test_ipsns.py,test_zero_iters_returns_seed,unit,no,no,,yes,yes
+tests/unit/test_ipsns_rollback.py,test_ipsns_rejects_non_improving_moves,unit,no,no,,yes,yes
+tests/unit/test_ipsns_rollback.py,test_lns_step_failed_repair_restores_state,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_addback_inclusion_minimal,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_addback_uses_original_weights_not_residual,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_dag_no_removals_needed,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_deterministic_on_triangle,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_parallel_arcs_supported,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_phase1_only_still_acyclic,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_residual_weights_nonnegative,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_simple_cycle_extraction_finds_cycle,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_triangle_returns_acyclic_fas,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_two_cycle_peeling,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_w0_not_corrupted,unit,no,no,,yes,yes
+tests/unit/test_lrta.py,test_zero_weight_cycle_edge_handled,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_all_topo_orders_valid_linear_extensions,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_backward_subset_of_removed_for_active_dag,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_counterexample_backward_strict_subset_of_removed,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_counterexample_insertion_improves,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_counterexample_min_id_worse_than_max_id,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_counterexample_removed_edge_forward_in_order,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_counterexample_two_orders_differ,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_counterexample_zero_weight_removed_set_inequality,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_extraction_determinism,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_extraction_gap_nonnegative,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_independent_recomputation_matches_production,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_nonnegative_weight_inequality,unit,no,no,,yes,yes
+tests/unit/test_topo_extraction_math.py,test_strict_positive_equality_iff_set_equality,unit,no,no,,yes,yes
+tests/unit/test_wmsf.py,test_kosaraju_single_scc_triangle,unit,no,no,,yes,yes
+tests/unit/test_wmsf.py,test_minimizeFas_inclusion_minimal,unit,no,no,,yes,yes
+tests/unit/test_wmsf.py,test_removeArcs_makes_acyclic,unit,no,no,,yes,yes
+tests/unit/test_wmsf.py,test_safe_edge_recursive_chain,unit,no,no,,yes,yes
+tests/unit/test_wmsf.py,test_safe_edges_restored,unit,no,no,,yes,yes
+tests/unit/test_wmsf.py,test_stabilization_may_change_objective_documented,unit,no,no,,yes,yes
+tests/unit/test_wmsf.py,test_two_cycle_l1_vs_l2_selection,unit,no,no,,yes,yes
+tests/unit/test_wmsf_safe_edge.py,test_safe_edge_closure_revisits_in_and_out_adjacency,unit,no,no,,yes,yes
+tests/unit/test_wmsf_safe_edge.py,test_wrong_adjacency_would_fail_on_fork_graph,unit,no,no,,yes,yes

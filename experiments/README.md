@@ -16,6 +16,14 @@ Raw outputs and logs are **gitignored** (regenerable). Summary CSVs/JSONs/MDs an
 | **EXP3** | Exact small-instance optimality check | Complete | `exp3_exact_small/summary/` |
 | **EXP4** | External baseline comparison | Complete | `exp4_external_baselines/summary/` |
 | **EXP5** | LOLIB dense benchmark | Complete | `exp5_lolib_dense/summary/` |
+| **EXP6** | IPSNS iteration budget curve | Complete | `exp6_ipsns_budget_curve/summary/` |
+| **EXP7** | Plain local-search controls | Complete | `exp7_plain_local_search/summary/` |
+| **EXP8** | Medium-instance MIP/LP baseline | Complete | `exp8_medium_mip_baseline/summary/` |
+| **EXP9** | Wiki-Vote application case | Complete | `exp9_application_case/summary/` |
+| **EXP10** | Stochastic robustness (20 reps) | Complete | `exp10_stochastic_robustness/summary/` |
+| **EXP11** | Topological extraction sensitivity | Complete | `exp11_topological_extraction_sensitivity/summary/` |
+| coap_ipsns_sensitivity | IPSNS parameter OAT (stage 1) | Complete | `coap_ipsns_sensitivity/summary/` |
+| coap_ipsns_holdout | IPSNS tuning/holdout (stage 2) | Complete | `coap_ipsns_holdout/summary/` |
 | EXP1 | Legacy core benchmark (superseded) | Archived | `exp1_core_benchmark/summary/` |
 
 ---
@@ -108,7 +116,7 @@ Only loss: `r20_60`, DRMaciver wins by 3 units (0.18%) — same instance as EXP3
 
 ---
 
-## EXP5 — LOLIB Dense Benchmark (In Progress)
+## EXP5 — LOLIB Dense Benchmark
 
 **Purpose:** Evaluate LR-TA, WMSF, and IPSNS on dense tournament graphs from the
 LOLIB benchmark set. LOLIB instances are denser than the alidasdan graph-benchmarks

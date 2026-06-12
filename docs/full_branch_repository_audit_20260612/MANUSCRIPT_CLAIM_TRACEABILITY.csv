@@ -1,0 +1,8 @@
+claim,experiment,canonical_result_file,status,manuscript_match
+96/97 best observed sparse,EXP4,experiments/exp4_external_baselines/summary/exp4_external_stats.json,committed,yes
+38/55/0 EXP10 medians,EXP10,experiments/exp10_stochastic_robustness/summary/ipsns_validation_summary.json,committed,yes
+56/57 exact DP match,EXP3,experiments/exp3_exact_small/summary/exp3_exact_stats.json,committed,yes
+21.6% DRMacIver mean excess,EXP4,experiments/exp4_external_baselines/summary/exp4_external_stats.json,committed,yes
+LOLIB scope boundary 45/50 DRMacIver wins,EXP5,experiments/exp5_lolib_dense/summary/exp5_lolib_stats.json,committed,yes
+EXP11 zero median extraction change,EXP11,experiments/exp11_topological_extraction_sensitivity/summary/exp11_aggregate.json,committed,yes
+0 incumbent violations 105 instances,EXP1b,experiments/exp1b_core_benchmark_full_wmsf_seed/summary/exp1b_core_benchmark_stats.json,committed,yes

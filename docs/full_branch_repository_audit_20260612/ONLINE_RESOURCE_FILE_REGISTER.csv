@@ -1,0 +1,19 @@
+path,category,contents,canonical,notes
+CITATION.cff,top_level_file,,yes,size_bytes=543
+LICENSE,top_level_file,,yes,size_bytes=1071
+MANIFEST.sha256,top_level_file,,yes,size_bytes=22812
+Online_Resource_1.pdf,top_level_file,,yes,size_bytes=130236
+README.md,top_level_file,,yes,size_bytes=1620
+code/,top_level_directory,scripts,yes,1 immediate children
+environment/,top_level_directory,dependency_lock_or_freeze.txt|python_version.txt|requirements-dev.txt|requirements.txt|system_information.txt,yes,5 immediate children
+experiments/,top_level_directory,,yes,0 immediate children
+manifests/,top_level_directory,common_93_instances.txt|manuscript_results_digest.json,yes,2 immediate children
+provenance/,top_level_directory,claim_to_artifact_map.csv|experiment_registry.csv|file_inventory.csv|known_limitations.md|pytest_20260612T030743Z.log|pytest_20260612T030952Z.log|pytest_20260612T031009Z.log|pytest_20260612T031023Z.log|pytest_20260612T031046Z.log|pytest_20260612T031101Z.log|pytest_20260612T031140Z.log|pytest_20260612T031217Z.log|pytest_20260612T031310Z.log|pytest_20260612T031426Z.log|pytest_20260612T033515Z.log|pytest_20260612T033907Z.log|pytest_20260612T033951Z.log|source_commit.txt,yes,18 immediate children
+pytest.ini,top_level_file,,yes,size_bytes=230
+requirements-dev.txt,top_level_file,,yes,size_bytes=48
+requirements.txt,top_level_file,,yes,size_bytes=34
+results/,top_level_directory,combined|exp1|exp10|exp11|exp2|exp3|exp4|exp5|exp6|exp7|exp8|exp9,yes,12 immediate children
+scripts/,top_level_directory,finalize_or1.py|optional_full_reproduction.sh|reproduce_principal_tables.sh|reproduce_smoke.sh|reproduce_tests.sh|run_exact.py|run_ipsns.py|run_lrta.py|run_wmsf.py|validate_artifact.sh,yes,10 immediate children
+src/,top_level_directory,mwfas,yes,1 immediate children
+supplement/,top_level_directory,figures|online_resource_1.log|online_resource_1.pdf|online_resource_1.tex|sections,yes,5 immediate children
+tests/,top_level_directory,__pycache__|conftest.py|data|helpers|property|regression|unit,yes,7 immediate children

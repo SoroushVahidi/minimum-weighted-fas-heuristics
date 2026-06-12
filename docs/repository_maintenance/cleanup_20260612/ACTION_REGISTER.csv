@@ -1,0 +1,9 @@
+action,source,target,notes
+archive,submission_package/,docs/archive/legacy_submission_packages/ejco_submission_package/,EJCO stale
+archive,paper/,docs/archive/predecessor_manuscripts/paper_legacy_pre_coap/,legacy manuscript
+archive,docs/coap_rejection_history_*,docs/archive/internal/,editorial internal
+fix,EXP10 experiment_progress.json,COMPLETE,metadata reconciliation
+summarize,coap_ipsns_holdout/,summary/holdout_aggregate.json,from runs.jsonl
+deprecate,experiments/combined/,README scope note,predates EXP6-11
+update,EDITORIAL_MANAGER_COPY_READY_TEXT.md,238-word abstract,portal sync
+docs,docs/INDEX.md + registries,navigation layer,repository polish

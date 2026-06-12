@@ -1,0 +1,82 @@
+file,category,canonical,in_pdf,notes
+.gitignore,config,yes,no,gitignore for build artifacts
+COAP_TEMPLATE_AND_GUIDELINES_AUDIT.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+bibliography/references.bib,bibliography,yes,no,
+declarations/statements_and_declarations.tex,declaration,yes,yes,
+figures/exp10_median_scatter.pdf,figure,yes,yes,
+figures/exp4_relative_bw.pdf,figure,yes,yes,
+figures/exp4_win_counts.pdf,figure,yes,yes,
+figures/exp5_lolib_scope.pdf,figure,yes,yes,
+figures/exp6_ipsns_budget_curve.pdf,figure,yes,yes,
+figures/framework_overview.tex,figure,yes,yes,
+main.aux,build_artifact,yes,no,LaTeX build output
+main.bbl,build_artifact,yes,no,LaTeX build output
+main.blg,build_artifact,yes,no,LaTeX build output
+main.log,build_artifact,yes,no,LaTeX build output
+main.out,build_artifact,yes,no,LaTeX build output
+main.pdf,other,yes,no,
+main.tex,main,yes,yes,
+notes/COAP_DEFAULT_SELECTION_DECISION.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_FORMAL_ANALYSIS_CHANGE_REPORT.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_FORMAL_ANALYSIS_IMPLEMENTATION_AUDIT.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_PARAMETER_SENSITIVITY_DESIGN.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_PARAMETER_SENSITIVITY_RESULTS.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_PASS1_MIGRATION_NOTES.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_PASS1_STALE_TERM_AUDIT.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_PASS1_VISUAL_AUDIT.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_PASS2_BUILD_WARNING_AUDIT.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_PASS2_VISUAL_AUDIT.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/COAP_REFERENCE_CLEANUP_REPORT.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+notes/RELATED_MANUSCRIPTS_AUDIT_NEEDED.md,internal_note,yes,no,COAP migration/audit working notes not in PDF
+sections/01_introduction.tex,section,yes,yes,
+sections/02_related_work.tex,section,yes,yes,
+sections/03_problem_definition.tex,section,yes,yes,
+sections/04_algorithmic_framework.tex,section,yes,yes,
+sections/04_formal_analysis.tex,section,yes,yes,
+sections/05_experimental_design.tex,section,yes,yes,
+sections/06_results.tex,section,yes,yes,
+sections/07_discussion.tex,section,yes,yes,
+sections/08_conclusion.tex,section,yes,yes,
+sn-apacite.bst,bibliography_style_or_class,yes,no,
+sn-aps.bst,bibliography_style_or_class,yes,no,
+sn-basic.bst,bibliography_style_or_class,yes,no,
+sn-chicago.bst,bibliography_style_or_class,yes,no,
+sn-jnl.cls,bibliography_style_or_class,yes,no,
+sn-mathphys-ay.bst,bibliography_style_or_class,yes,no,
+sn-mathphys-num.bst,bibliography_style_or_class,yes,no,
+sn-nature.bst,bibliography_style_or_class,yes,no,
+sn-vancouver-ay.bst,bibliography_style_or_class,yes,no,
+sn-vancouver-num.bst,bibliography_style_or_class,yes,no,
+submission/README_BUILD.txt,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/cover_letter.pdf,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/cover_letter.tex,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/final_upload/Vahidi_COAP_Cover_Letter.pdf,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/final_upload/Vahidi_COAP_Manuscript.pdf,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/final_upload/Vahidi_COAP_Manuscript_Source.zip,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/final_upload/Vahidi_Online_Resource_1_MWFAS.pdf,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/final_upload/Vahidi_Online_Resource_1_MWFAS.zip,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/final_upload/Vahidi_Related_Manuscripts_Statement.pdf,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/related_manuscripts_statement.pdf,submission_support,yes,no,Cover letter and related-manuscripts support tex
+submission/related_manuscripts_statement.tex,submission_support,yes,no,Cover letter and related-manuscripts support tex
+supplementary/README.md,supplementary,yes,no,
+tables/table_ablation.tex,table,yes,yes,
+tables/table_algorithm_components.tex,table,yes,yes,
+tables/table_algorithm_invariants.tex,table,yes,yes,
+tables/table_application_case.tex,table,yes,yes,
+tables/table_exact_validation.tex,table,yes,yes,
+tables/table_exp10_stochastic_robustness.tex,table,yes,yes,
+tables/table_exp11_extraction.tex,table,yes,yes,
+tables/table_experiment_overview.tex,table,yes,yes,
+tables/table_ipsns_budget_curve.tex,table,yes,yes,
+tables/table_lolib_scope.tex,table,yes,yes,
+tables/table_medium_mip_baseline.tex,table,yes,yes,
+tables/table_paired_sparse_tests.tex,table,yes,yes,
+tables/table_plain_local_search.tex,table,yes,yes,
+tables/table_runtime_quality_tradeoff.tex,table,yes,no,present but not input in current main.tex build
+tables/table_sparse_external_baselines.tex,table,yes,yes,
+tables/table_structural_diagnostic.tex,table,yes,yes,
+template_reference/sn-article-template.zip,template_reference,yes,no,Springer template reference only
+template_reference/sn-article.tex,template_reference,yes,no,Springer template reference only
+template_reference/sn-jnl-official-dec2024.zip,template_reference,yes,no,Springer template reference only
+template_reference/sn-jnl-template-v3.1-dec2024-local-mirror.zip,template_reference,yes,no,Springer template reference only
+template_reference/user-manual.pdf,template_reference,yes,no,Springer template reference only

@@ -1,0 +1,7 @@
+name,path,included,role,used_by,reproducible,risk
+DRMacIver/FAS,experiments/exp4_external_baselines/external_tools/,gitignored,R binary pairwise ordering,EXP4 EXP5 EXP9 EXP10,partial,timeout on large sparse
+python-igraph Eades,pip package,PyPI,igraph approx Eades,EXP4 EXP5,yes,library baseline
+HiGHS via scipy MILP,pip/scipy,SciPy,EXP8 MIP/LP,EXP8,yes,time-capped
+sfas,reference only,literature,SST16 etc,not rerun,n/a,excluded by scope
+fas-smartAE,reference only,literature,n/a,not rerun,n/a,excluded
+GNNRank,excluded,n/a,n/a,not used,n/a,scope exclusion documented

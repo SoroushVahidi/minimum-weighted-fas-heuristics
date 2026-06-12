@@ -1,0 +1,8 @@
+name,included_or_external,source_url,citation_key,license,path,used_by_experiments,manuscript_use,notes
+graph-benchmarks sparse,external,https://github.com/alidasdan/graph-benchmarks,graph_benchmarks_repo,external_download,configs/benchmark_instances.txt,EXP1b-EXP4 EXP10,yes,DIMACS .d aggregated parallel arcs
+LOLIB dense,external,https://www.uv.es/~rmarti/paper/lop.html,lolib_library,external_download,experiments/exp5_lolib_dense/,EXP5,yes,complete matrix ordering
+SNAP wiki-Vote,external,https://snap.stanford.edu/data/wiki-Vote.html,LHK10WikiVote,external_download,experiments/exp9_application_case/,EXP9,yes,top-50 subgraph
+exact-validation subset,derived,n/a,n/a,derived,experiments/exp3_exact_small/config/,EXP3,yes,n<=20 filter
+EXP10 common 93,derived,n/a,n/a,derived,experiments/exp10_stochastic_robustness/config/,EXP10,yes,paired DRMacIver subset
+EXP11 calibration 6,derived,n/a,n/a,derived,experiments/exp11_topological_extraction_sensitivity/summary/exp11_aggregate.json,EXP11,yes,post-hoc extraction
+holdout 25,derived,n/a,n/a,committed_config,experiments/coap_ipsns_holdout/config/,holdout,partial,disjoint from tuning
