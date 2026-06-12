@@ -1,36 +1,17 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Why SCC-local refinement helps on sparse graphs}
-
 The sparse-benchmark results fit the intended mechanism of IPSNS. LR-TA and the WMSF-style seed already produce strong feasible orderings, but they do so through different biases: LR-TA emphasizes cycle reduction and heavy-first repair, while the WMSF-style seed emphasizes ordered removals and stabilization. IPSNS inherits the better of those two constructions and then spends its search budget only where backward weight still remains concentrated.
 
 That focus matters on sparse graphs because the difficult part of the objective is often localized. Large acyclic or weakly cyclic regions do not justify broad perturbation. The ablation evidence is consistent with that interpretation: most of the gain comes from engineering a strong seed, and IPSNS then improves the harder residue without ever sacrificing the better seed. The gains can be numerically modest because the starting point is already strong, but consistency matters here more than large changes on every instance.
 
-The repeated-run comparison sharpens this interpretation. The EXP10 median outcomes are tie-heavy, so the typical common instance does not show a dramatic change between IPSNS and DRMacIver/FAS. But the non-tied outcomes are one-sided in favor of IPSNS, and the aggregate mean reduction remains large. That is the profile one would expect from a protected refinement layer: many instances are already effectively solved by the seed or are insensitive to local refinement, while a smaller subset carries the material gains.
+The repeated-run comparison sharpens this interpretation. The median outcomes are tie-heavy, so the typical common instance does not show a dramatic change between IPSNS and DRMacIver/FAS. But the non-tied outcomes are one-sided in favor of IPSNS, and the aggregate mean comparator-normalized reduction remains large. That is the profile one would expect from a protected refinement layer: many instances are already effectively solved by the seed or are insensitive to local refinement, while a smaller subset carries the material gains.
 
-\subsection{Sparse versus dense regimes}
-
-The LOLIB transfer test is not a contradiction to the sparse result; it identifies the boundary of the method's intended operating regime. Dense complete ordering instances collapse much of the distinction between cyclic core and acyclic background. When every ordered pair carries weight, a matrix-based pairwise-ordering heuristic is working with a model that is better aligned to the benchmark than a sparse-graph SCC-local heuristic.
-
-This is why the paper keeps the dense result visible. IPSNS remains second overall on LOLIB, yet the overall dense result still belongs to DRMacIver/FAS. The sparse claim is therefore strong but bounded: IPSNS is a useful method for sparse nonnegative weighted digraphs among the evaluated methods, not a universal winner across ordering models.
-
-\subsection{Practical implications}
-
-The experiments suggest a simple practical division of labor. LR-TA is the right choice when runtime is tight and a strong deterministic sparse-graph seed is sufficient. The WMSF-style seed is useful because it broadens the initial solution set and occasionally provides the better incumbent from which refinement should start. IPSNS is preferable when solution quality on sparse nonnegative weighted digraphs matters more than seed-level latency and when exact rollback is desirable. Matrix-based methods such as DRMacIver/FAS are better choices on dense complete ordering inputs.
-
-The study also suggests a methodological point for future heuristic design. Much of the value comes not from inventing entirely new primitive operations, but from integrating known ingredients under a disciplined acceptance rule.
-
-\subsection{Limitations}
-
-\begin{enumerate}
-    \item IPSNS is a heuristic framework with supporting feasibility and monotonicity properties; it does not come with a new approximation guarantee.
-    \item The main claim is restricted to nonnegative weighted digraphs; negative-weight instances are outside the setting in which the present local-ratio and incumbent-protection interpretation is used.
-    \item The external baseline ecosystem is fragmented: some relevant methods lack accessible weighted implementations in a comparable pipeline, so the paper's strongest claims are explicitly relative to the evaluated methods and subsets.
-    \item Runtime comparisons depend on implementation choices, data representation, and external wrappers; the quality comparisons are cleaner than any claim of machine-independent speed ranking.
-    \item Dense complete ordering remains a weaker regime for IPSNS than for matrix-based pairwise-ordering heuristics, as the LOLIB results show.
-    \item Zero observed IPSNS variation across 20 seeds in EXP10 documents empirical stability for the tested configuration, not mathematical determinism.
-    \item Full benchmark reruns require the documented external data, binaries, and computational resources distributed across the companion resource package.
-\end{enumerate}
+Three limitations deserve emphasis.
+\begin{itemize}
+    \item \textbf{Nonnegative scope.} Negative-weight instances are excluded because the local-ratio and incumbent-protection statements are developed for nonnegative weights.
+    \item \textbf{Dense transfer boundary.} The single-run LOLIB study shows that the selected complete-ordering benchmark and evaluated implementations favored DRMacIver/FAS; this should not be read as a statement about all matrix-based ordering methods.
+    \item \textbf{Stochastic interpretation.} Zero observed IPSNS objective variance across 20 seeds documents stable final objective values for the tested configuration, not mathematical determinism or identical search trajectories.
+\end{itemize}
 
 Within those limits, the main conclusion remains intact: incumbent-protected SCC-local refinement is a useful algorithm-engineering strategy for sparse nonnegative weighted digraphs. It builds on attributed seed methods, improves them selectively, and reports clearly where that advantage does not transfer.

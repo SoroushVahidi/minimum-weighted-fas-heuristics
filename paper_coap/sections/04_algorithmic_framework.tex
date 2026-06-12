@@ -10,9 +10,9 @@ All methods operate on the aggregated weighted digraph of Section~\ref{sec:probl
 
 LR-TA is an engineered seed derived from the directed local-ratio lineage of \cite{DF03} and from earlier author work \cite{VahidiKoutis2024arxiv}. It is not presented as a new approximation result. Its role in the present paper is to provide a strong sparse-graph seed whose output can later be improved, or preserved, by IPSNS.
 
-Phase I repeatedly finds any directed cycle in the active graph and subtracts the minimum residual weight on that cycle from every arc in the cycle. If \(C\) is the detected cycle, the reduction amount is
+Phase I repeatedly finds any directed cycle in the active graph and subtracts the minimum residual weight on that cycle from every arc in the cycle. Let \(W(e)\) denote the mutable residual weight of active arc \(e\) and \(W_0(e)\) the original aggregated weight. If \(C\) is the detected cycle, the reduction amount is
 \begin{equation}
-    \varepsilon(C)=\min_{e\in C} w(e).
+    \varepsilon(C)=\min_{e\in C} W(e).
     \label{eq:lrta-epsilon}
 \end{equation}
 At least one arc becomes tight and is removed from the active graph. Phase I ends when the active graph is acyclic.
@@ -62,7 +62,7 @@ IPSNS first computes the two seeds and chooses the better ordering as the initia
 
 Within the selected SCC, IPSNS executes a destroy-and-repair move. The destroy stage temporarily reactivates a heavy fraction of currently removed internal arcs and removes a light fraction of currently active internal arcs. The repair stage reruns local-ratio cycle reduction and one-pass heavy-first add-back only on the chosen SCC neighborhood, with original weights restored on that neighborhood. All edits outside the neighborhood remain fixed.
 
-The candidate is accepted only if it induces a valid global ordering and strictly decreases backward weight. Otherwise the pre-move state is restored exactly. IPSNS therefore never returns a worse solution than the better seed from which it started. The method is stochastic because SCC selection and perturbation choices depend on the configured random seed, but it is reproducible for fixed input, parameter settings, and seed.
+The candidate is accepted only if it induces a valid global ordering and strictly decreases backward weight. Otherwise the pre-move state is restored exactly. IPSNS therefore never returns a worse solution than the better seed from which it started. IPSNS is stochastic through score-weighted SCC selection from the top-\(K\) positive-score SCCs. Conditional on the selected SCC and current state, the heavy-add-back and light-removal prefixes are deterministic under the specified tie-breaking rules: removed internal arcs are sorted by descending weight and a prefix of length \(k_{\mathrm{add}}=\lfloor f_{\mathrm{add}}|F_{\cap}|\rfloor\) is reactivated; active internal arcs are sorted by ascending weight and a prefix of length \(k_{\mathrm{rem}}=\lfloor f_{\mathrm{rem}}|A_{\cap}|\rfloor\) is removed. For small SCCs one or both counts may be zero. The method is reproducible for fixed input, parameter settings, and seed.
 
 Algorithm~\ref{alg:ipsns} summarizes the driver.
 

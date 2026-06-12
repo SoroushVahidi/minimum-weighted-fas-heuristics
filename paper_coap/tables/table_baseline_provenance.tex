@@ -1,23 +1,22 @@
 \begin{table}[t]
 \centering
-\tiny
-\caption{Baseline provenance and comparison scope.}
+\footnotesize
+\caption{Methods compared in the main sparse and supporting studies. Software provenance, wrapper behavior, and reproducibility details appear in Online Resource~1 (\S S5, S9).}
 \label{tab:baseline-provenance}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\linewidth}{@{}p{1.35cm}p{1.05cm}p{1.25cm}p{1.35cm}p{1.35cm}cp{2.0cm}p{1.25cm}@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}X@{}}
 \toprule
-Method & Role & Origin & External / in-repo & Problem model & Weighted & Implementation behavior & Evaluation subset \\
+Method & Role & Origin & Problem model & Execution behavior \\
 \midrule
-LR-TA & internal seed & \cite{DF03,VahidiKoutis2024arxiv} & in-repo & sparse FAS / ordering & yes & deterministic for fixed input and tie-breaking & sparse, exact, holdout \\
-WMSF-style seed & internal seed & adapted from \cite{CC25,CCP24} & in-repo adaptation & sparse FAS & yes & deterministic for fixed input & sparse, exact, LOLIB \\
-IPSNS & proposed method & this study & in-repo & sparse FAS refinement & yes & stochastic but reproducible for fixed configuration and seed & sparse, exact, holdout, LOLIB \\
-Borda / net score & calibration & \cite{CFR10} & in-repo & ordering score rule & yes & deterministic & sparse, LOLIB \\
-Weighted Eades adaptation & adaptation & adapted from \cite{ELS93,EL95} & in-repo adaptation & sparse ordering heuristic & yes & deterministic & sparse, LOLIB \\
-Random multistart & calibration & standard multistart & in-repo & ordering heuristic & yes & stochastic & sparse, LOLIB \\
-igraph Eades & external baseline & \cite{python_igraph_feedback_arc_set} & external maintained implementation & graph-library FAS heuristic & yes & deterministic as evaluated & sparse, LOLIB \\
-DRMacIver/FAS & external baseline & \cite{drmaciver_feedback_arc_set} & external executable & matrix ordering & yes & evaluated executable shows run-to-run variation under internal initialization & sparse, EXP10, LOLIB, EXP9 \\
-Exact DP & exact validator & repository implementation & in-repo & sparse FAS, \(n\le 20\) & yes & deterministic & exact validation \\
-HiGHS MIP & exact validator & \cite{HuangfuHall2018} via \texttt{scipy.optimize.milp} & external maintained implementation & sparse-digraph MIP & yes & deterministic under fixed settings & medium MIP \\
+LR-TA & internal seed & \cite{DF03,VahidiKoutis2024arxiv} & sparse FAS / ordering & deterministic for fixed input and tie-breaking \\
+WMSF-style seed & internal seed & adapted from \cite{CC25,CCP24} & sparse FAS & deterministic for fixed input \\
+IPSNS & proposed method & this study & sparse FAS refinement & stochastic through score-weighted SCC selection; deterministic destroy/repair prefixes conditional on the selected SCC \\
+Borda / net score & calibration & \cite{CFR10} & ordering score rule & deterministic \\
+Weighted Eades adaptation & adaptation & adapted from \cite{ELS93,EL95} & sparse ordering heuristic & deterministic \\
+Random multistart & calibration & standard multistart & ordering heuristic & stochastic \\
+igraph Eades & external baseline & \cite{python_igraph_feedback_arc_set} & graph-library FAS heuristic & deterministic as evaluated \\
+DRMacIver/FAS & external baseline & \cite{drmaciver_feedback_arc_set} & matrix ordering & evaluated executable shows run-to-run variation under internal initialization \\
+Exact DP & exact validator & repository implementation & sparse FAS, \(n\le 20\) & deterministic \\
+HiGHS MIP & exact validator & \cite{HuangfuHall2018} via \texttt{scipy.optimize.milp} & sparse-digraph MIP & deterministic under fixed settings \\
 \bottomrule
 \end{tabularx}
 \end{table}

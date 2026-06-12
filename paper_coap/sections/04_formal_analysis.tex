@@ -10,17 +10,17 @@ Assume nonnegative original weights and the active-graph representation used in 
 
 \begin{proposition}[One-pass add-back minimality]
 \label{prop:addback-correctness}
-Let \(G'=(V,A')\) be the current active acyclic graph with topological order \(\pi\). After every candidate removed arc has been processed once and reinserted whenever insertion preserves acyclicity, the remaining removed set \(F\) is inclusion-minimal in the feedback-arc-set sense:
+Let \(H_i=(V,A_i)\) be the active acyclic graph after Phase I and let \(H_f=(V,A_f)\) denote the final active graph after one-pass add-back. After every candidate removed arc has been processed once and reinserted whenever insertion preserves acyclicity, the remaining removed set \(F_f\) is inclusion-minimal in the feedback-arc-set sense:
 \begin{equation}
-    \forall e\in F,\quad G'+e \text{ is cyclic}.
+    \forall e\in F_f,\quad (V,A_f\cup\{e\}) \text{ is cyclic}.
     \label{eq:addback-minimality}
 \end{equation}
-Equivalently, for every \(e\in F\), restoring \(e\) to \(A'\) creates a directed cycle, or \(A'\cup\{e\}\) is cyclic.
+Equivalently, for every \(e\in F_f\), restoring \(e\) to \(A_f\) creates a directed cycle.
 
 If inserting \(e=(u,v)\) is rejected, a directed path \(v\leadsto u\) already exists in the current active graph. Later accepted insertions only add arcs and cannot destroy that path, so \(e\) cannot become feasible later in the same pass. Heavy-first ordering therefore affects which inclusion-minimal feedback arc set is obtained, not whether inclusion-minimality holds. Inclusion-minimality does not imply minimum weight, and this statement applies to one-pass acyclicity-preserving add-back rather than to WMSF stabilization swaps.
 \end{proposition}
 
-\begin{proposition}[IPSNS incumbent non-worsening]
+\begin{proposition}[Incumbent non-worsening invariant]
 \label{prop:ipsns-monotonicity}
 Let \(\pi^{(0)}\) be the better of the LR-TA and WMSF-style seeds, and let \(\pi^{(t)}\) denote the incumbent after iteration \(t\) of IPSNS. Then every accepted candidate is feasible, every infeasible or non-improving candidate is rolled back exactly, and
 \begin{equation}
@@ -49,4 +49,4 @@ with \(r_S\) the number of add-back candidates processed in SCC \(S\). One IPSNS
     O\!\left(m + s\log s + c_S(n_S+m_S) + r_S\log r_S + r_S(n_S+m_S)\right),
     \label{eq:ipsns-iter-complexity}
 \end{equation}
-where \(s\) is the number of eligible SCCs and \(c_S\) is the number of restricted cycle-reduction rounds. These are conservative implementation-level bounds; practical runtime depends strongly on SCC structure, density, and the selected iteration budget.
+where \(s\) is the number of eligible SCCs and \(c_S\) is the number of restricted cycle-reduction rounds. These are conservative implementation-cost summaries; seed construction plus \(T\) IPSNS iterations compose the full practical cost. Expanded justification appears in Online Resource~1.

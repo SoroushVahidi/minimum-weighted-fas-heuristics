@@ -1,12 +1,11 @@
 \begin{table}[t]
 \centering
-\scriptsize
-\setlength{\tabcolsep}{3.5pt}
-\caption{Dense LOLIB transfer test on 50 complete weighted ordering instances. Lower BW is better. Best counts every method attaining the minimum observed BW on an instance; ties are credited to all tied methods. Family-level detail is deferred to Online Resource~1.}
+\footnotesize
+\caption{Dense LOLIB transfer study on 50 complete weighted ordering instances (\(n=94\) median; complete pairwise structure). Lower BW is better. Best counts every method attaining the minimum observed BW, with ties credited to all tied methods.}
 \label{tab:lolib-scope}
-\begin{tabularx}{\linewidth}{@{}lrrX@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X r r r@{}}
 \toprule
-Method & Mean BW & Best & Mean RT (s) \\
+Method & Mean BW & Best & Mean runtime (s) \\
 \midrule
 DRMacIver/FAS & 571,687 & 45/50 & 1.01 \\
 IPSNS (ours) & 582,354 & 5/50 & 37.92 \\
@@ -18,7 +17,4 @@ Random multistart & 883,664 & 0/50 & 0.02 \\
 Borda net score & 1,066,045 & 0/50 & 0.00 \\
 \bottomrule
 \end{tabularx}
-\vspace{2pt}
-
-{\footnotesize\raggedright DRMacIver/FAS is tournament-native and is the best overall dense LOLIB method in this study (45/50 instances, 3.88\% lower mean BW than IPSNS). EXP5 is therefore a transfer test and scope boundary.}
 \end{table}

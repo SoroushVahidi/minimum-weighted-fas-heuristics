@@ -1,23 +1,36 @@
 \begin{table}[t]
 \centering
 \scriptsize
-\caption{Primary sparse comparison on the 97 standard nonnegative instances. BW denotes backward weight; lower values are better. Best counts every method attaining the minimum observed BW on an instance; ties are credited to all tied methods. Relative excess is the mean percentage reduction achieved by IPSNS under the baseline-normalized convention \((X-\mathrm{IPSNS})/X\times 100\), where \(X\) is the comparator BW on completed instances.}
+\setlength{\tabcolsep}{4pt}
+\caption{Primary sparse comparison on the 97 standard nonnegative instances. Panel~A reports all methods on the 93-instance subset completed by DRMacIver/FAS; Panel~B reports completion availability. BW denotes backward weight (lower is better). Best counts every method attaining the minimum observed BW on an instance, with ties credited to all tied methods. IPSNS reduction is the mean comparator-normalized reduction \((X-\mathrm{IPSNS})/X\times 100\) over Panel~A instances with \(X>0\); zero-zero pairs contribute 0\%.}
 \label{tab:sparse-external-baselines}
-\begin{tabular}{@{}lrrrrr@{}}
+\begin{tabularx}{\linewidth}{@{}lrrrr@{}}
 \toprule
-Method & Complete & Mean BW & Mean RT (s) & Best & Relative excess \\
+\multicolumn{5}{l}{\textbf{Panel A: common 93-instance subset}}\\
+Method & Mean BW & Median BW & Best & IPSNS reduction (\%) \\
 \midrule
-IPSNS (ours) & 97/97 & 37,698 & 21.92 & 96 & 0.00\% \\
-LR-TA (ours) & 97/97 & 38,327 & 0.08 & 80 & 0.71\% \\
-WMSF seed & 97/97 & 40,005 & 1.31 & 61 & 2.06\% \\
-DRMacIver/FAS & 93/97 & 53,173 & 4.00 & 56 & 21.61\% \\
-igraph Eades & 97/97 & 95,920 & 0.01 & 40 & 30.54\% \\
-Weighted Eades & 97/97 & 99,689 & 0.11 & 42 & 30.48\% \\
-Borda net score & 97/97 & 512,277 & 0.00 & 27 & 55.55\% \\
-Random multistart & 97/97 & 1,075,258 & 0.03 & 42 & 49.76\% \\
+IPSNS (ours) & 29,586 & 5,118 & 92 & 0.00 \\
+LR-TA (ours) & 30,197 & 5,118 & 78 & 0.70 \\
+WMSF seed & 31,535 & 5,118 & 59 & 1.96 \\
+DRMacIver/FAS & 53,173 & 5,649 & 56 & 21.14 \\
+igraph Eades & 64,438 & 6,120 & 38 & 28.97 \\
+Weighted Eades & 67,418 & 6,343 & 40 & 28.89 \\
+Borda net score & 270,430 & 12,394 & 25 & 54.67 \\
+Random multistart & 597,760 & 8,860 & 40 & 48.72 \\
+\midrule
+\multicolumn{5}{l}{\textbf{Panel B: completion on all 97 standard instances}}\\
+\midrule
+Method & Att. & Comp. & \multicolumn{2}{l}{Incompletion notes} \\
+\midrule
+IPSNS (ours) & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+LR-TA (ours) & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+WMSF seed & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+DRMacIver/FAS & 97 & 93/97 & \multicolumn{2}{@{}>{\raggedright\arraybackslash}X}{%
+\texttt{gr00}, \texttt{gr7}: interface failure on DAG inputs; \texttt{s38417}, \texttt{s38584}: timeout} \\
+igraph Eades & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+Weighted Eades & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+Borda net score & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+Random multistart & 97 & 97/97 & \multicolumn{2}{l}{---} \\
 \bottomrule
-\end{tabular}
-\vspace{2pt}
-
-{\footnotesize\raggedright DRMacIver/FAS is the main external comparator on this benchmark, but it completes 93 of 97 instances because two DAG cases return empty-tournament errors and two large sparse instances time out in the wrapper used here. Its mean relative excess of 21.61\% is a comparator-normalized reduction relative to IPSNS, not an IPSNS-normalized percent-worse score.}
+\end{tabularx}
 \end{table}

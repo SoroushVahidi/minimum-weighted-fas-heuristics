@@ -24,7 +24,11 @@ Cohen's $d_z$ & $-0.31$ \\
 
 \subsection{Variability}
 
-IPSNS: zero objective variation on 93/93 instances; seed 0 matched best on all 93. DRMacIver: 40/93 instances with multiple distinct objectives; 1860 unique PIDs.
+IPSNS: zero objective variation on 93/93 instances across 20 seeds; 87.1\% of IPSNS runs accepted no improving move and only 12/93 instances ever improved over the best seed. DRMacIver: 40/93 instances with multiple distinct objectives; 1860 unique PIDs.
+
+\subsection{Statistical tests}
+
+Wilcoxon signed-rank test on paired median differences (SciPy 1.17.1, \texttt{zero\_method="wilcox"}): $W=0$, two-sided $p<0.001$. Sign test on 38 nonzero differences: two-sided $p<0.001$.
 
 \subsection{\texttt{r20\_60} reversal}
 

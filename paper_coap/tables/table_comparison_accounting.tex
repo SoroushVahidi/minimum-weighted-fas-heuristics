@@ -1,19 +1,18 @@
 \begin{table}[t]
 \centering
-\tiny
-\caption{Comparison accounting for the main experiments.}
+\footnotesize
+\caption{Main experimental studies and their accounting rules. Timeout rules, subset definitions, and traceability identifiers are documented in Online Resource~1.}
 \label{tab:comparison-accounting}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{\linewidth}{@{}p{1.45cm}p{1.8cm}p{1.15cm}p{1.6cm}p{1.0cm}p{0.95cm}p{1.25cm}p{1.35cm}@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{2.5cm}r r>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.2cm}@{}}
 \toprule
-Experiment & Purpose & Instances attempted & Common / completed subset & Runs per method & Timeout & Primary metric & Statistical unit \\
+Study & Purpose & Inst. & Reps & Reference / completion rule & Primary analysis \\
 \midrule
-Primary sparse (EXP4) & main sparse comparison & 97 std.\ nonneg. & 97 internal; 93 paired with DR & 1 & wrapper; 4 DR incomplete & BW & instance \\
-Exact DP (EXP3) & small-instance certification & 57 & 57 certified optima & 1 & \(n\le 20\) & gap to exact optimum & instance \\
-MIP validation (EXP8) & medium-instance certification & 15 & 7 proven-optimal, 8 time-limited & 1 & 120\,s & gap when certified & instance \\
-Holdout check & default selection & 43 total & 25 holdout instances & 5 & none & final BW by configuration & instance/config aggregate \\
-Repeated-run (EXP10) & typical repeated-run behavior & 93 & 93 common sparse instances & 20 & EXP4 wrappers & median BW & paired instance difference \\
-Dense transfer (EXP5) & complete-ordering boundary & 50 LOLIB & 50 & 1 & standard wrappers & BW & instance \\
+Primary sparse comparison & main sparse benchmark & 97 & 1 & all methods complete except DRMacIver/FAS (93/97); paired means use the 93-instance common subset & mean BW, best/tie counts, comparator-normalized reduction \\
+Exact-validation study & small-instance certification & 57 & 1 & DP optimum for \(n>0\) standard instances & optimum-normalized gap \\
+MIP-validation study & medium-instance certification & 15 & 1 & 7 proven-optimal within 120\,s; 8 time-limited & gap when certified \\
+Holdout parameter study & default selection & 43 & 5 & 18 tuning + 25 holdout instances & holdout median final BW \\
+Repeated-run comparison & typical repeated-run behavior & 93 & 20 & common sparse subset completed by IPSNS and DRMacIver/FAS & paired per-instance medians and tests \\
+Dense transfer study & complete-ordering boundary & 50 & 1 & single run per method & mean BW and best/tie counts \\
 \bottomrule
 \end{tabularx}
 \end{table}
