@@ -1,0 +1,88 @@
+{
+  "audit_id": "coap_related_status_resolution_20260612",
+  "task": "Task 4 — Related Manuscript Status Resolution",
+  "date": "2026-06-12",
+  "purpose": "Establish controlled-vocabulary statuses for all five related manuscripts/preprints; verify concurrent-submission compliance; synchronize disclosures; correct factual errors",
+  "manuscript": {
+    "title": "SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs",
+    "author": "Soroush Vahidi",
+    "institution": "New Jersey Institute of Technology",
+    "email": "sv96@njit.edu",
+    "target_journal": "Computational Optimization and Applications (COAP)",
+    "publisher": "Springer"
+  },
+  "git_state": {
+    "head_at_start": "28a798be7f93bb7202417adc06f513e225ef4f1a",
+    "freeze_commit": "e1c27c74b1e0ec9001eee189b8ae4dc05ee374f9",
+    "freeze_tag": "coap-submission-ready-2026-06-12",
+    "branch": "main"
+  },
+  "related_item_statuses": {
+    "arxiv_2412_16181": {
+      "status": "PREPRINT_ONLY",
+      "confidence": "HIGH",
+      "concurrent_submission_risk": "NONE"
+    },
+    "JOCO_D_26_00099": {
+      "status": "STATUS_UNVERIFIED",
+      "inferred_from_internal_notes": "REJECTED",
+      "confidence": "LOW",
+      "concurrent_submission_risk": "LOW_IF_CONFIRMED_INACTIVE"
+    },
+    "DA19469": {
+      "status": "STATUS_UNVERIFIED",
+      "inferred_from_internal_notes": "REJECTED",
+      "confidence": "LOW",
+      "concurrent_submission_risk": "LOW_IF_CONFIRMED_INACTIVE"
+    },
+    "CAIE_package": {
+      "status": "STATUS_UNVERIFIED",
+      "inferred_from_git_evidence": "PROBABLY_SUBMITTED_PROBABLY_INACTIVE",
+      "confidence": "MODERATE_FOR_PREPARATION_LOW_FOR_OUTCOME",
+      "concurrent_submission_risk": "LOW_IF_CONFIRMED_INACTIVE"
+    },
+    "EJCO_package": {
+      "status": "STATUS_UNVERIFIED",
+      "inferred_from_git_evidence": "PACKAGE_PREPARED_SUBMISSION_UNCONFIRMED",
+      "confidence": "HIGH_FOR_PACKAGE_LOW_FOR_SUBMISSION",
+      "concurrent_submission_risk": "LOW_IF_NOT_FORMALLY_SUBMITTED"
+    }
+  },
+  "overall_verdict": "STATUS_EVIDENCE_INSUFFICIENT",
+  "cover_letter_declaration_assessment": "CONSISTENT_WITH_REPOSITORY_EVIDENCE_NOT_FORMALLY_VERIFIED",
+  "disclosure_changes_required": false,
+  "factual_corrections_made": {
+    "eduardo_uchoa_email": {
+      "from": "eduardo_uchoa@id.uff.br",
+      "to": "uchoa@producao.uff.br",
+      "files_corrected": [
+        "paper_coap/submission/EDITORIAL_MANAGER_FINAL_COPY_READY_TEXT.md",
+        "docs/coap_submission_freeze_20260612/FINAL_REVIEWER_RECOMMENDATIONS.csv",
+        "paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md"
+      ]
+    }
+  },
+  "artifacts_regenerated": false,
+  "upload_artifact_checksums_unchanged": true,
+  "test_results": {
+    "pytest_main": "90 passed, 1 skipped",
+    "or1_pytest": "79 passed, 7 skipped (from Task 3 validation — unchanged)"
+  },
+  "confidential_material_committed": false,
+  "files_created": [
+    "docs/coap_related_status_resolution_20260612/EVIDENCE_METHOD.md",
+    "docs/coap_related_status_resolution_20260612/RELATED_ITEM_STATUS_MATRIX.csv",
+    "docs/coap_related_status_resolution_20260612/CONCURRENT_SUBMISSION_COMPLIANCE.md",
+    "docs/coap_related_status_resolution_20260612/SUBMISSION_DECISION.md",
+    "docs/coap_related_status_resolution_20260612/DISCLOSURE_SURFACE_REGISTER.csv",
+    "docs/coap_related_status_resolution_20260612/DISCLOSURE_CHANGE_LOG.md",
+    "docs/coap_related_status_resolution_20260612/FINAL_SUGGESTED_REVIEWERS.csv",
+    "docs/coap_related_status_resolution_20260612/UPLOAD_ARTIFACT_STATUS.md",
+    "docs/coap_related_status_resolution_20260612/CONFIDENTIAL_EVIDENCE_EXCLUSION_CHECK.md",
+    "docs/coap_related_status_resolution_20260612/VALIDATION_RESULTS.md",
+    "docs/coap_related_status_resolution_20260612/FINAL_AUTHOR_ACTIONS.md",
+    "docs/coap_related_status_resolution_20260612/REPOSITORY_STATE.md",
+    "docs/coap_related_status_resolution_20260612/EXECUTIVE_SUMMARY.md",
+    "docs/coap_related_status_resolution_20260612/audit_metadata.json"
+  ]
+}

@@ -135,7 +135,7 @@ A public preprint (arXiv:2412.16181) and previously submitted author manuscripts
    Expertise: combinatorial optimization, graph drawing, algorithm engineering
 3. Giuseppe Lancia, University of Udine — giuseppe.lancia@uniud.it  
    Expertise: combinatorial optimization, integer programming, bioinformatics scheduling
-4. Eduardo Uchoa, Universidade Federal Fluminense — eduardo_uchoa@id.uff.br  
+4. Eduardo Uchoa, Universidade Federal Fluminense — uchoa@producao.uff.br  
    Expertise: branch-and-cut, vehicle routing, exact and heuristic methods
 5. Ivana Ljubic, ESSEC Business School — ljubic@essec.edu  
    Expertise: network design, combinatorial optimization, MIP

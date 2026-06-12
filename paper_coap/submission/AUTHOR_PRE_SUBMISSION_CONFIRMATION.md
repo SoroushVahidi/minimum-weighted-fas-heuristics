@@ -41,7 +41,7 @@ Complete every box before clicking Submit in Editorial Manager. If any box canno
 ## Reviewers and portal
 
 - [ ] **Suggested reviewers have no known conflicts.** (Kathrin Hanauer, Petra Mutzel, Giuseppe Lancia, Eduardo Uchoa, Ivana Ljubic — author has verified no direct advisor/advisee or recent coauthorship relationship; see `docs/coap_submission_freeze_20260612/FINAL_REVIEWER_RECOMMENDATIONS.csv`.)
-- [ ] **Eduardo Uchoa's email address is current.** (`eduardo_uchoa@id.uff.br` — verify this email is active; UFF domain may have changed.)
+- [ ] **Eduardo Uchoa's email address is current.** (`uchoa@producao.uff.br` — corrected from `eduardo_uchoa@id.uff.br` during Task 4 audit; domain `producao.uff.br` corresponds to UFF Department of Production Engineering; verify before entering.)
 - [ ] **Portal-generated PDF was inspected and approved.** (Title, author, abstract, supplementary all correct; cover letter NOT visible in reviewer PDF.)
 - [ ] **The six upload files match the frozen checksums in `paper_coap/submission/final_upload/MANIFEST.sha256`.**
 
