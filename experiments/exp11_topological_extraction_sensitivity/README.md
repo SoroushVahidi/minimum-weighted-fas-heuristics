@@ -6,7 +6,7 @@ prior experiment outputs.
 
 ## Scope
 
-- Methods: LR-TA and IPSNS final active graphs on a 12-instance calibration subset.
+- Methods: LR-TA final active graphs on the 6-instance nonnegative calibration subset.
 - Rules: `current_min_id` (repository default), `max_id`, `weighted_net`, insertion refinement.
 - Metric: backward weight `w(B_pi)` and extraction gap `w(F)-w(B_pi)`.
 

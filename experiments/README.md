@@ -149,6 +149,51 @@ it on LOLIB. Primary claim (sparse DIMACS, EXP4) is unaffected.
 
 ---
 
+## Raw Output and Checkpoint Policy
+
+### Raw output
+
+| Category | Status |
+|---|---|
+| Per-run rankings/BW CSV | Gitignored; regenerable from committed configs |
+| Experiment logs | Gitignored |
+| EXP10 1860+1860 checkpoint files | Local-only; not in git |
+| EXP10 committed summaries | **Authoritative** — do not overwrite |
+| coap_ipsns_sensitivity canonical_runs/ | Committed checkpoints (140 runs) |
+| coap_ipsns_holdout checkpoints/ | Committed (partial study; used for summary) |
+
+Raw outputs from EXP1b–EXP9 and EXP11 are not required to reproduce manuscript tables:
+use `online_resource_1/scripts/` table-regeneration scripts with committed summaries.
+
+### Checkpoint policy
+
+Checkpoints are committed only when they constitute the primary provenance record:
+- `coap_ipsns_sensitivity`: 140-run OAT grid (not regenerable without external compute)
+- `coap_ipsns_holdout`: parameter-grid tuning/holdout (committed as provenance)
+
+Checkpoints should be deleted after validation only when committed summaries and manifests
+fully replace their provenance value. EXP10 raw checkpoints are local-only pending
+external backup.
+
+### Result hierarchy
+
+1. **Frozen configuration** (`configs/`)
+2. **Manifest / checkpoint** (where applicable)
+3. **Validated raw records** (local only for large studies)
+4. **Committed summary** (JSON/MD/CSV in `summary/`)
+5. **Manuscript table/figure** (via LaTeX in `paper_coap/tables/`)
+
+Manuscript claims are grounded in the committed summaries listed in `docs/EXPERIMENT_REGISTRY.csv`.
+
+---
+
+## EXP6–EXP9, EXP11, COAP studies
+
+See individual `README.md` in each experiment directory and `docs/EXPERIMENT_REGISTRY.csv`
+for detailed purpose, status, and canonical summary paths.
+
+---
+
 ## EXP1 — Legacy Core Benchmark (Superseded)
 
 **Purpose:** Initial run of LR-TA, WMSF, and IPSNS using the old (legacy) WMSF seed mode.
