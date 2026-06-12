@@ -1,0 +1,40 @@
+=== OR1 artifact validation ===
+OK: README.md
+OK: LICENSE
+OK: MANIFEST.sha256
+OK: supplement/online_resource_1.tex
+OK: provenance/source_commit.txt
+OK: provenance/claim_to_artifact_map.csv
+OK: src/mwfas/topo_extraction.py
+OK: results/exp11/summary/exp11_aggregate.json
+OK: no /home/soroush paths
+OK: no cache files
+OK: JSON parse
+=== OR1 smoke validation ===
+OK dag_path.d: lrta_bw=0 exact_bw=0
+OK triangle.d: lrta_bw=1 exact_bw=1
+OK two_cycle.d: lrta_bw=2 exact_bw=2
+OK topo_extraction smoke
+Smoke validation PASSED
+OK: smoke
+............sssssss..................................................... [ 83%]
+..............                                                           [100%]
+79 passed, 7 skipped in 1.38s
+Summary: 79 passed, 7 skipped in 1.38s
+PASS: OR1 packaged artifact gate (EXP10 live tree not bundled)
+PASS: test gate
+OK: tests
+PASS: EXP4 DR rel gap -> 21.6076
+PASS: EXP3 IPSNS optimal -> 56/57 (98.2%)
+PASS: EXP10 median wins -> 38
+PASS: EXP10 ties -> 55
+PASS: EXP10 DR wins -> 0
+PASS: EXP10 mean rel excess -> 21.601773263726717
+PASS: EXP11 median improvement -> 0.0
+PASS: EXP11 instances improved (nonneg) -> 0
+PASS: Digest exists -> None
+PASS: Combined external table -> None
+
+All principal table checks PASSED
+OK: tables
+=== VALIDATION PASSED ===

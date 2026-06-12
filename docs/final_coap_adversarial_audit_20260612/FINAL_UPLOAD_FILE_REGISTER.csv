@@ -1,0 +1,7 @@
+filename,purpose,portal_designation,size,sha256,opens_successfully,correct_title,correct_authors,correct_target_journal,contains_placeholders,contains_internal_paths,contains_confidential_material,current_or_stale,upload_or_exclude
+Vahidi_COAP_Manuscript.pdf,Main manuscript PDF,Manuscript PDF,333157,97eb61238a81e12e2597a6963926f0f092ad994f3f369b89715f36e9e06d0898,yes,yes,yes,yes,no,no,no,current,upload
+Vahidi_COAP_Manuscript_Source.zip,LaTeX source archive,LaTeX Source,145760,0fd2b2c138c31798ff334a47f7d5c917fd32ec83aa5b05b932c82c20a32f7b38,yes,yes,yes,yes,no,no,no,current,upload
+Vahidi_COAP_Cover_Letter.pdf,Cover letter to editors,Cover Letter (editor-only),24732,df6622bd7b19f2ed73e5d54c38e953a2092f9436f574db4da86b374efe6496f8,yes,yes,yes,yes,no,no,no,current_from_f306c15,upload
+Vahidi_Online_Resource_1_MWFAS.pdf,Supplementary PDF (Online Resource 1),Online Resource 1 PDF,130236,8cc1479fb7aebe9e8b4c219aada0bf87f6c0383f53345a2d851b776b581aa0ea,yes,yes,yes,yes,no,no,no,current_from_f306c15,upload
+Vahidi_Online_Resource_1_MWFAS.zip,Supplementary artifact archive (Online Resource 1),Online Resource 1 ZIP,1116197,5dc3875acad386f992266a43d1406b96787c95fa1d3acde7124be327ee29495e,yes,yes,yes,yes,no,no,no,current_from_f306c15,upload
+Vahidi_Related_Manuscripts_Statement.pdf,Related manuscripts disclosure,Related Manuscripts Statement (editor-only),22804,7e5ee12c4200ff0a006f350b379d63a1dc38dccbc588ab7dbb62e241a08b519e,yes,yes,yes,yes,no,no,no,current_from_f306c15,upload

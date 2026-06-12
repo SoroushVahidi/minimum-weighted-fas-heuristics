@@ -5,6 +5,7 @@ __pycache__/
 .coverage
 coverage.xml
 logs/
+!docs/final_coap_adversarial_audit_20260612/logs/
 docs/**/*stale*.zip
 docs/**/paper_coap_pre_edit_backup/
 docs/**/paper_coap_pre_topo_audit_backup/
@@ -29,12 +30,14 @@ experiments/*/raw/
 !experiments/coap_ipsns_sensitivity/summary/*.json
 !experiments/coap_ipsns_holdout/config/*.csv
 !experiments/coap_ipsns_sensitivity/config/*.csv
+!docs/final_coap_adversarial_audit_20260612/*.csv
 !experiments/coap_ipsns_holdout/config/*.json
 experiments/coap_ipsns_sensitivity/tmp_rankings/
 experiments/coap_ipsns_holdout/tmp_rankings/
 .DS_Store
 .env
 *.log
+!docs/final_coap_adversarial_audit_20260612/logs/*.log
 venv/
 .venv/
 experiments/*/external_tools/

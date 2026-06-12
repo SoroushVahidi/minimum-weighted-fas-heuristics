@@ -1,0 +1,17 @@
+main_text_reference,or1_target,exists,verified,notes
+Online Resource~1 (§ S4) detailed proofs,online_resource_1/supplement/sections/S04_proofs.tex,yes,yes,Formal analysis defers Propositions to S4 proofs
+Proofs of Propositions deferred to Online Resource~1,online_resource_1/supplement/sections/S04_proofs.tex,yes,yes,sections/04_formal_analysis.tex line 49
+Online Resource~1 EXP10 stochastic-robustness materials,online_resource_1/supplement/sections/S11_exp10.tex,yes,yes,Declarations item (ii); EXP10 results §6
+Online Resource~1 EXP11 extraction-sensitivity calibration,online_resource_1/supplement/sections/S12_exp11.tex,yes,yes,Declarations item (ii); EXP11 table in main
+Full EXP10 per-instance tables and diagnostic figures,online_resource_1/supplement/sections/S11_exp10.tex,yes,yes,sections/05_experimental_design.tex EXP10 protocol paragraph
+Complete experimental protocol,online_resource_1/supplement/sections/S09_protocol.tex,yes,yes,Referenced from EXP10 design section
+Extended computational tables EXP1b--EXP11,online_resource_1/supplement/sections/S10_extended_results.tex,yes,yes,Declarations item (iv)
+Implementation src/mwfas/ and reproduction scripts,online_resource_1/supplement/sections/S14_reproduction.tex,yes,yes,Declarations item (iii)
+91-test automated correctness gate,online_resource_1/supplement/sections/S13_tests.tex,yes,yes,Declarations item (iii); 90 passed 1 skipped at freeze
+Instance download and preprocessing documented in OR1,online_resource_1/supplement/sections/S08_benchmarks.tex,yes,yes,Data availability / declarations
+Online Resource~1 code configurations summary outputs,online_resource_1/supplement/sections/S01_purpose.tex,yes,yes,Abstract and conclusion OR1 pointer
+Algorithm descriptions in supplement,online_resource_1/supplement/sections/S03_algorithms.tex,yes,yes,Supporting algorithm detail
+Topological ordering conventions,online_resource_1/supplement/sections/S06_topological_order.tex,yes,yes,EXP11 extraction context
+Parameter defaults and freeze,online_resource_1/supplement/sections/S07_parameters.tex,yes,yes,Reproducibility support
+Data provenance,online_resource_1/supplement/sections/S05_provenance.tex,yes,yes,Benchmark lineage
+Limitations deferred discussion,online_resource_1/supplement/sections/S15_limitations.tex,yes,yes,Supplement scope boundary

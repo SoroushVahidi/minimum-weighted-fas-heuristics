@@ -1,0 +1,25 @@
+identifier,page,source_file,purpose,font_legible,axis_legible,caption_self_contained,fits_page,clipping,overfull,consistent_style,necessary,action
+tab:experiment-overview,~12,paper_coap/tables/table_experiment_overview.tex,Experiment overview mapping questions to components,yes,n/a,yes,yes,no,no,yes,yes,none
+tab:algorithm-components,~8,paper_coap/tables/table_algorithm_components.tex,Component roles in integrated framework,yes,n/a,yes,yes,no,no,yes,yes,none
+tab:algorithm-invariants,~8,paper_coap/tables/table_algorithm_invariants.tex,Algorithmic invariants preserved by implementation,yes,n/a,yes,yes,no,no,yes,yes,none
+tab:sparse-external-baselines,~22,paper_coap/tables/table_sparse_external_baselines.tex,Primary sparse benchmark comparison (EXP4),yes,n/a,yes,yes,no,no,yes,yes,none
+tab:paired_sparse_tests,~23,paper_coap/tables/table_paired_sparse_tests.tex,Paired statistical test summary sparse benchmark,yes,n/a,yes,yes,no,no,yes,yes,none
+tab:ipsns_budget_curve,~24,paper_coap/tables/table_ipsns_budget_curve.tex,IPSNS iteration budget study (EXP6),yes,n/a,yes,yes,no,no,yes,yes,none
+tab:exp11-extraction,~24,paper_coap/tables/table_exp11_extraction.tex,Topological extraction sensitivity (EXP11),yes,n/a,yes,yes,no,no,yes,yes,none
+tab:plain_local_search,~25,paper_coap/tables/table_plain_local_search.tex,Plain local-search controls (EXP7),yes,n/a,yes,yes,no,no,yes,yes,none
+tab:exp10-stochastic-robustness,~26,paper_coap/tables/table_exp10_stochastic_robustness.tex,Stochastic robustness summary (EXP10),yes,n/a,yes,yes,no,no,yes,yes,none
+tab:exact-validation,~27,paper_coap/tables/table_exact_validation.tex,Exact DP validation small instances,yes,n/a,yes,yes,no,no,yes,yes,none
+tab:ablation,~27,paper_coap/tables/table_ablation.tex,Component ablation study,yes,n/a,yes,yes,no,no,yes,yes,none
+tab:medium-mip-baseline,~28,paper_coap/tables/table_medium_mip_baseline.tex,Time-capped MIP validation (EXP8),yes,n/a,yes,yes,no,no,yes,yes,none
+tab:application-case,~28,paper_coap/tables/table_application_case.tex,Wikipedia vote application case (EXP9),yes,n/a,yes,yes,no,no,yes,yes,none
+tab:lolib-scope,~29,paper_coap/tables/table_lolib_scope.tex,Dense LOLIB transfer test (EXP5),yes,n/a,yes,yes,no,no,yes,yes,none
+tab:structural_diagnostic,~31,paper_coap/tables/table_structural_diagnostic.tex,Sparse vs dense structural diagnostics,yes,n/a,yes,yes,no,no,yes,yes,none
+tab:runtime_quality_tradeoff,not_in_main,paper_coap/tables/table_runtime_quality_tradeoff.tex,Runtime-quality tradeoff (generated; not included in main PDF),yes,n/a,yes,n/a,no,no,yes,no,exclude_from_main; available for reviewer response
+fig:framework-overview,~7,paper_coap/figures/framework_overview.tex,Integrated framework data-flow diagram (TikZ),yes,n/a,yes,yes,no,no,yes,yes,none
+fig:exp4-relative-bw,~22,paper_coap/figures/exp4_relative_bw.pdf,Mean BW excess over IPSNS sparse benchmark,yes,yes,yes,yes,no,no,yes,yes,none
+fig:exp4-win-counts,~22,paper_coap/figures/exp4_win_counts.pdf,Instance win counts sparse benchmark,yes,yes,yes,yes,no,no,yes,yes,none
+fig:ipsns_budget_curve,~24,paper_coap/figures/exp6_ipsns_budget_curve.pdf,IPSNS budget saturation curves (EXP6),yes,yes,yes,yes,no,no,yes,yes,none
+fig:exp10-median-scatter,~26,paper_coap/figures/exp10_median_scatter.pdf,EXP10 per-instance median scatter,yes,yes,yes,yes,no,no,yes,yes,none
+fig:exp5-lolib-scope,~29,paper_coap/figures/exp5_lolib_scope.pdf,LOLIB family win counts,yes,yes,yes,yes,no,no,yes,yes,none
+alg:lrta,~9,paper_coap/sections/04_algorithmic_framework.tex,LR-TA seed construction pseudocode,yes,n/a,yes,yes,no,no,yes,yes,none
+alg:ipsns,~10,paper_coap/sections/04_algorithmic_framework.tex,IPSNS incumbent-protected driver pseudocode,yes,n/a,yes,yes,no,no,yes,yes,none

@@ -1,0 +1,12 @@
+...............s........................................................ [ 79%]
+...................                                                      [100%]
+=============================== warnings summary ===============================
+tests/regression/test_experiment_infrastructure.py::test_exp10_namespace_helpers_importable
+  /home/soroush/minimum-weighted-fas-heuristics/experiments/exp10_stochastic_robustness/scripts/update_progress.py:53: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    "timestamp": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+
+tests/regression/test_experiment_infrastructure.py::test_exp10_namespace_helpers_importable
+  /home/soroush/minimum-weighted-fas-heuristics/experiments/exp10_stochastic_robustness/scripts/update_progress.py:74: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    "corrected_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
