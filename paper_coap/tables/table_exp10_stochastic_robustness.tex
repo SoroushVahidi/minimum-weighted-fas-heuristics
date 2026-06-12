@@ -11,7 +11,7 @@ IPSNS vs.\ DRMacIver/FAS & 38/55/0 & 38 & 21.60 & 0.0 & Wilcoxon \(W=0\), \(p<0.
 \bottomrule
 \end{tabularx}
 \par\vspace{2pt}\parbox{\linewidth}{\footnotesize
-Two-sided tests compare paired per-instance median differences (IPSNS minus DRMacIver/FAS) on the 93 common instances using SciPy 1.17.1 \texttt{scipy.stats.wilcoxon} with \texttt{alternative="two-sided"} and \texttt{zero\_method="wilcox"}; the sign test excludes ties from the win/loss count.
+Two-sided tests compare paired per-instance median differences (IPSNS minus DRMacIver/FAS) on the 93 common instances using SciPy 1.17.1 \texttt{scipy.stats.wilcoxon} with \texttt{alternative="two-sided"}, \texttt{zero\_method="wilcox"}, and default \texttt{method="auto"}; the sign test excludes ties from the win/loss count.
 Cohen's \(d_z=-0.31\); 95\% bootstrap CI for the mean paired BW difference is \([-41{,}787,-10{,}718]\).
 DRMacIver/FAS shows more than one distinct BW value on 40 of 93 instances across 20 runs; IPSNS shows one distinct BW value on all 93 instances under the fixed configuration.}
 \end{table}
