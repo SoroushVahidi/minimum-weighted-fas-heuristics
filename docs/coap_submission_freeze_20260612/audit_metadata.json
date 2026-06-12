@@ -73,6 +73,6 @@
   },
   "submission_status": "NOT SUBMITTED",
   "freeze_verdict": "SUBMISSION READY — pending author confirmation of JOCO/DAM concurrent submission status",
-  "freeze_commit": "to be recorded after git commit",
+  "freeze_commit": "e1c27c74b1e0ec9001eee189b8ae4dc05ee374f9",
   "tag": "coap-submission-ready-2026-06-12"
 }

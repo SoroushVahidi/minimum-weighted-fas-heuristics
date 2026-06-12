@@ -13,8 +13,8 @@
 | Starting HEAD (before freeze commit) | `af34d57d3a921c1be50a61f990c2d85ff8d97df3` |
 | origin/main at start | `af34d57d3a921c1be50a61f990c2d85ff8d97df3` |
 | Local = Remote at start | YES |
-| Freeze commit SHA | *recorded after push — see below* |
-| origin/main after push | *recorded after push* |
+| Freeze commit SHA | `e1c27c74b1e0ec9001eee189b8ae4dc05ee374f9` |
+| origin/main after push | `e1c27c74b1e0ec9001eee189b8ae4dc05ee374f9` |
 
 ---
 
