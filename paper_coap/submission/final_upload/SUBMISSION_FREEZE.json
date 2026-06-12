@@ -32,7 +32,8 @@
       "reviewer_visibility": "yes",
       "canonical_source": "paper_coap/main.tex",
       "v2_sha256": "13aec51a53baf5e34d7ed5391c32e4af5c12f67daee551627499be85817e6563",
-      "change_reason": "Rebuilt from the current live manuscript source after finalization; hash and size refreshed."
+      "change_reason": "Unchanged manuscript bytes; recopied for bundle sync.",
+      "changed": false
     },
     {
       "filename": "Vahidi_COAP_Cover_Letter.pdf",
@@ -46,33 +47,34 @@
     },
     {
       "filename": "Vahidi_COAP_Manuscript_Source.zip",
-      "sha256": "78fd84444f20fce08db467b22f7e794da4295225ad9b6a0e80f44a2541104f65",
-      "size_bytes": 1234244,
+      "sha256": "45fad248180419929be41e4489f5d2760a51f9dacce323399a1913d8bdb35033",
+      "size_bytes": 1854310,
       "portal_designation": "LaTeX Source Files",
       "reviewer_visibility": "production-use-only",
       "canonical_source": "paper_coap/ directory LaTeX source archive",
       "v2_sha256": "ed198a719a29abb2bf6ba7e4bde1423d6770ee184cfd546a24d562da8c52c1c5",
-      "change_reason": "Rebuilt from the current paper_coap source tree after finalization; hash and size refreshed."
+      "change_reason": "Repacked from current paper_coap source tree.",
+      "changed": true
     },
     {
       "filename": "Vahidi_Online_Resource_1_MWFAS.pdf",
-      "sha256": "956b068e823da6276508a713100a3da764f2a33ba880d1f028ce1741c21e3956",
-      "size_bytes": 137937,
+      "sha256": "5c3bfa97b0e465acb1bb74a2d70c245cfb3859a55bb870dda24332432aa4dc2d",
+      "size_bytes": 136495,
       "portal_designation": "Supplementary Information",
       "reviewer_visibility": "yes",
       "canonical_source": "online_resource_1/supplement/online_resource_1.tex",
-      "changed": false,
-      "change_reason": "Rebuilt from the live OR1 supplement source after finalization; hash and size refreshed."
+      "changed": true,
+      "change_reason": "Rebuilt after OR1 front-matter and provenance-display correction."
     },
     {
       "filename": "Vahidi_Online_Resource_1_MWFAS.zip",
-      "sha256": "87df8bf8f6d36ab7cabc2153f628cf004b39b87b4ebe740b118949a042bb6bda",
-      "size_bytes": 1136708,
+      "sha256": "ed593e84402ecb4e2403811cc82ad93851a729409688029f63f2ac16904660e4",
+      "size_bytes": 1158514,
       "portal_designation": "Supplementary Material (Data/Code)",
       "reviewer_visibility": "yes",
       "canonical_source": "online_resource_1/ tree archive (current live supplement state)",
-      "changed": false,
-      "change_reason": "Rebuilt from the current live OR1 tree after finalization; hash and size refreshed."
+      "changed": true,
+      "change_reason": "Rebuilt after OR1 front-matter and provenance-display correction."
     },
     {
       "filename": "Vahidi_Related_Manuscripts_Statement.pdf",
@@ -118,5 +120,6 @@
   "related_manuscript_statement_upload_policy": "Do not upload Vahidi_Related_Manuscripts_Statement.pdf at initial submission. Supply only if the COAP portal or editor explicitly requests a related-manuscript statement, prior-submission history, or overlap document.",
   "checksum_manifest": "MANIFEST.sha256 (in this directory)",
   "canonical_portal_text": "paper_coap/submission/EDITORIAL_MANAGER_FINAL_COPY_READY_TEXT.md",
-  "author_checklist": "paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md"
+  "author_checklist": "paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md",
+  "or1_scientific_source_snapshot": "b37cf9287b90898d346ea47fadb21f4dc9ebf6f6"
 }
