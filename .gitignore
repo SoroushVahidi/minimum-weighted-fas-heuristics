@@ -6,6 +6,10 @@ __pycache__/
 coverage.xml
 logs/
 !docs/final_coap_adversarial_audit_20260612/logs/
+!docs/full_branch_repository_audit_20260612/logs/
+!docs/repository_maintenance/**/logs/
+!logs/coap_ipsns_holdout/
+!logs/coap_ipsns_holdout/**
 docs/**/*stale*.zip
 docs/**/paper_coap_pre_edit_backup/
 docs/**/paper_coap_pre_topo_audit_backup/
@@ -31,6 +35,8 @@ experiments/*/raw/
 !experiments/coap_ipsns_holdout/config/*.csv
 !experiments/coap_ipsns_sensitivity/config/*.csv
 !docs/final_coap_adversarial_audit_20260612/*.csv
+!docs/full_branch_repository_audit_20260612/*.csv
+!docs/repository_maintenance/**/*.csv
 !experiments/coap_ipsns_holdout/config/*.json
 experiments/coap_ipsns_sensitivity/tmp_rankings/
 experiments/coap_ipsns_holdout/tmp_rankings/
@@ -38,15 +44,17 @@ experiments/coap_ipsns_holdout/tmp_rankings/
 .env
 *.log
 !docs/final_coap_adversarial_audit_20260612/logs/*.log
+!docs/full_branch_repository_audit_20260612/logs/*.log
+!docs/repository_maintenance/**/logs/*.log
 venv/
 .venv/
 experiments/*/external_tools/
 experiments/*/downloads/
 experiments/*/logs/
-submission_package/files_for_upload/*.pdf
-submission_package/files_for_upload/*.txt
-submission_package/anonymous_artifact/*.zip
-submission_package/anonymous_artifact/staging/
+docs/archive/legacy_submission_packages/**/files_for_upload/*.pdf
+docs/archive/legacy_submission_packages/**/files_for_upload/*.txt
+docs/archive/legacy_submission_packages/**/anonymous_artifact/*.zip
+docs/archive/legacy_submission_packages/**/anonymous_artifact/staging/
 
 # LaTeX build artifacts
 *.aux
@@ -57,11 +65,11 @@ submission_package/anonymous_artifact/staging/
 *.out
 *.spl
 *.synctex.gz
-paper/title_page.pdf
-paper/cover_letter_draft.pdf
-paper/main_anonymized.pdf
-paper/contact_*.log
+docs/archive/predecessor_manuscripts/**/title_page.pdf
+docs/archive/predecessor_manuscripts/**/cover_letter_draft.pdf
+docs/archive/predecessor_manuscripts/**/main_anonymized.pdf
+docs/archive/predecessor_manuscripts/**/contact_*.log
 
 # Diagnostic renders from warning/readthrough passes
-paper/notes/final_warning_pass/rendered_pages/
-paper/notes/final_warning_pass/contact_sheets/
+docs/archive/predecessor_manuscripts/**/notes/final_warning_pass/rendered_pages/
+docs/archive/predecessor_manuscripts/**/notes/final_warning_pass/contact_sheets/
