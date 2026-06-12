@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "freeze_date": "2026-06-12",
-  "artifact_revision": "v5 \u2014 differential audit: LOLIB metric wording, Wilcoxon documentation, bibliography Rudra correction, table headers",
+  "artifact_revision": "v6 \u2014 final layout polish: remove one-row repeated-run table, fix blank page, title-page address/email, Table 8 renumbering",
   "target_journal": "Computational Optimization and Applications",
   "publisher": "Springer Nature",
   "portal": "editorialmanager.com/coap",
@@ -26,13 +26,13 @@
   "files": [
     {
       "filename": "Vahidi_COAP_Manuscript.pdf",
-      "sha256": "36a01f9235d1d5971f06dd0cfb28a55b05f4ddc2ffa26300dcc495d0520ad144",
-      "size_bytes": 201092,
+      "sha256": "aebdf183f3a1c794b42b5b8a362524e396eaf7f7c8dd379c6c5b48f4a23bca77",
+      "size_bytes": 199822,
       "portal_designation": "Manuscript",
       "reviewer_visibility": "yes",
       "canonical_source": "paper_coap/main.tex",
-      "v2_sha256": "13aec51a53baf5e34d7ed5391c32e4af5c12f67daee551627499be85817e6563",
-      "change_reason": "Rebuilt after differential audit metric and bibliography corrections.",
+      "v2_sha256": "36a01f9235d1d5971f06dd0cfb28a55b05f4ddc2ffa26300dcc495d0520ad44",
+      "change_reason": "Rebuilt after final layout polish: removed one-row repeated-run table, fixed blank page and title-page metadata.",
       "changed": true
     },
     {
@@ -47,13 +47,13 @@
     },
     {
       "filename": "Vahidi_COAP_Manuscript_Source.zip",
-      "sha256": "eb5476030c34bf526fd7fb71021f0f11881f59be9bc6af8cb5ee11154d2b21a2",
-      "size_bytes": 15442453,
+      "sha256": "9196e304fe38c62a6c650f4e8ed7db03aa824e53685dbaff1194aab376b25ad8",
+      "size_bytes": 1857702,
       "portal_designation": "LaTeX Source Files",
       "reviewer_visibility": "production-use-only",
       "canonical_source": "paper_coap/ directory LaTeX source archive",
-      "v2_sha256": "ed198a719a29abb2bf6ba7e4bde1423d6770ee184cfd546a24d562da8c52c1c5",
-      "change_reason": "Repacked from current paper_coap source tree.",
+      "v2_sha256": "eb5476030c34bf526fd7fb71021f0f11881f59be9bc6af8cb5ee11154d2b21a2",
+      "change_reason": "Repacked from current paper_coap source tree (excludes final_upload binaries).",
       "changed": true
     },
     {
@@ -100,7 +100,7 @@
     "exp10_instances": 93,
     "exp10_reps_per_method": 20,
     "exp10_total_runs": 1860,
-    "exp10_mean_dr_excess_pct": 21.6,
+    "exp10_mean_dr_excess_pct": 21.60,
     "exp3_exact_matches": "56 of 57",
     "exp11_nonneg_instances": 6,
     "exp11_instances_improved": 0,
