@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2",
   "freeze_date": "2026-06-12",
-  "artifact_revision": "v4 \u2014 COAP manuscript corrections: title page, tables, metrics, seed-contribution analysis, OR1 sync; 24-page manuscript",
+  "artifact_revision": "v5 \u2014 differential audit: LOLIB metric wording, Wilcoxon documentation, bibliography Rudra correction, table headers",
   "target_journal": "Computational Optimization and Applications",
   "publisher": "Springer Nature",
   "portal": "editorialmanager.com/coap",
@@ -26,13 +26,13 @@
   "files": [
     {
       "filename": "Vahidi_COAP_Manuscript.pdf",
-      "sha256": "5ae415c68fa307fa3fa6726b39eb4af67ac78dbc1b37bff856f30732aa67827e",
-      "size_bytes": 199379,
+      "sha256": "36a01f9235d1d5971f06dd0cfb28a55b05f4ddc2ffa26300dcc495d0520ad144",
+      "size_bytes": 201092,
       "portal_designation": "Manuscript",
       "reviewer_visibility": "yes",
       "canonical_source": "paper_coap/main.tex",
       "v2_sha256": "13aec51a53baf5e34d7ed5391c32e4af5c12f67daee551627499be85817e6563",
-      "change_reason": "Rebuilt after COAP experimental-reporting and presentation corrections.",
+      "change_reason": "Rebuilt after differential audit metric and bibliography corrections.",
       "changed": true
     },
     {
@@ -47,8 +47,8 @@
     },
     {
       "filename": "Vahidi_COAP_Manuscript_Source.zip",
-      "sha256": "a8447862a1113219632a843b8f218fbdaf2057575535635f300b80ed24dadfd0",
-      "size_bytes": 8643275,
+      "sha256": "eb5476030c34bf526fd7fb71021f0f11881f59be9bc6af8cb5ee11154d2b21a2",
+      "size_bytes": 15442453,
       "portal_designation": "LaTeX Source Files",
       "reviewer_visibility": "production-use-only",
       "canonical_source": "paper_coap/ directory LaTeX source archive",
@@ -58,23 +58,23 @@
     },
     {
       "filename": "Vahidi_Online_Resource_1_MWFAS.pdf",
-      "sha256": "c110b37e7e011d157e372152432ad1b1e24703bdd6a544b5f204767ad52ca356",
-      "size_bytes": 139031,
+      "sha256": "3b90f21cd1d2e922fd3d3ee40b613e0a3b17d9590e5ca4eb2134a23a3aded922",
+      "size_bytes": 139204,
       "portal_designation": "Supplementary Information",
       "reviewer_visibility": "yes",
       "canonical_source": "online_resource_1/supplement/online_resource_1.tex",
       "changed": true,
-      "change_reason": "Rebuilt after COAP manuscript corrections and OR1 synchronization."
+      "change_reason": "Rebuilt after differential audit synchronization."
     },
     {
       "filename": "Vahidi_Online_Resource_1_MWFAS.zip",
-      "sha256": "04c65f2658b8fd9101333048b4eaf9e46397188606edb5d56f7266ba0749651b",
-      "size_bytes": 1165573,
+      "sha256": "0c4ef12d03266c65b2ef63d4c9f8c69f2348054e696c37065062b85bc2a248db",
+      "size_bytes": 1166610,
       "portal_designation": "Supplementary Material (Data/Code)",
       "reviewer_visibility": "yes",
       "canonical_source": "online_resource_1/ tree archive (current live supplement state)",
       "changed": true,
-      "change_reason": "Rebuilt after COAP manuscript corrections and OR1 synchronization."
+      "change_reason": "Rebuilt after differential audit synchronization."
     },
     {
       "filename": "Vahidi_Related_Manuscripts_Statement.pdf",
