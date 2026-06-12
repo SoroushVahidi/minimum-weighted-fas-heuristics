@@ -1,13 +1,13 @@
 {
   "schema_version": "1.2",
   "freeze_date": "2026-06-12",
-  "artifact_revision": "v3 — rejection history removed from reviewer-facing and manuscript materials; scientific provenance retained; related-manuscript statement made editor-only on-request document",
+  "artifact_revision": "v3 \u2014 rejection history removed from reviewer-facing and manuscript materials; scientific provenance retained; related-manuscript statement made editor-only on-request document",
   "target_journal": "Computational Optimization and Applications",
   "publisher": "Springer Nature",
   "portal": "editorialmanager.com/coap",
   "manuscript_title": "IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs",
   "repository_remote": "https://github.com/SoroushVahidi/minimum-weighted-fas-heuristics",
-  "submission_status": "NOT SUBMITTED — this freeze marks the submission-ready snapshot; it does not indicate that submission has occurred",
+  "submission_status": "NOT SUBMITTED \u2014 this freeze marks the submission-ready snapshot; it does not indicate that submission has occurred",
   "author": {
     "name": "Soroush Vahidi",
     "email": "sv96@njit.edu",
@@ -56,8 +56,8 @@
     },
     {
       "filename": "Vahidi_Online_Resource_1_MWFAS.pdf",
-      "sha256": "8dbba6129bbfb3b7fb7cce6b9d119a1ccdfb0b816d81df8cb74f99b87b6a0a66",
-      "size_bytes": 137821,
+      "sha256": "956b068e823da6276508a713100a3da764f2a33ba880d1f028ce1741c21e3956",
+      "size_bytes": 137937,
       "portal_designation": "Supplementary Information",
       "reviewer_visibility": "yes",
       "canonical_source": "online_resource_1/supplement/online_resource_1.tex",
@@ -66,8 +66,8 @@
     },
     {
       "filename": "Vahidi_Online_Resource_1_MWFAS.zip",
-      "sha256": "623a07eb37a64010915c6956ee883cd626eb9a2b614dd44b57e1512e97f4401d",
-      "size_bytes": 1131382,
+      "sha256": "57ef06140f2ad2ad3fee45701fb3c69029b23034b87167fcaea3a1bde50be19a",
+      "size_bytes": 1136455,
       "portal_designation": "Supplementary Material (Data/Code)",
       "reviewer_visibility": "yes",
       "canonical_source": "online_resource_1/ tree archive (current live supplement state)",
@@ -78,7 +78,7 @@
       "filename": "Vahidi_Related_Manuscripts_Statement.pdf",
       "sha256": "d5a53ddde6bc0fdaa2112a3497db42ad7cb472904925ea23da7dad94f56abc17",
       "size_bytes": 22567,
-      "portal_designation": "Cover Letter (Other — editor-only) — SUPPLY ON REQUEST ONLY",
+      "portal_designation": "Cover Letter (Other \u2014 editor-only) \u2014 SUPPLY ON REQUEST ONLY",
       "reviewer_visibility": "editor-only",
       "upload_policy": "Do not upload at initial submission. Retain as an editor-response document. Supply if the editor or portal explicitly requests a related-manuscript statement or prior-submission overlap description.",
       "canonical_source": "paper_coap/submission/related_manuscripts_statement.tex",
@@ -102,7 +102,7 @@
     "exp3_exact_matches": "56 of 57",
     "exp11_nonneg_instances": 6,
     "exp11_instances_improved": 0,
-    "abstract_word_count": 238,
+    "abstract_word_count": 235,
     "keywords_count": 6
   },
   "author_confirmations_pending": [
