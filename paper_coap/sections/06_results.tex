@@ -32,11 +32,9 @@ The holdout parameter study is intentionally conservative. Across 18 tuning and 
 \subsection{Repeated-run comparison with DRMacIver/FAS}
 \label{subsec:exp10-results}
 
-Table~\ref{tab:exp10-stochastic-robustness} summarizes the repeated-run comparison on the 93-instance common sparse subset.
+On the 93-instance common sparse subset, each method was run 20 times per instance and compared through per-instance median backward weight (BW). IPSNS records 38 wins, 55 ties, and no losses against the evaluated DRMacIver/FAS executable, so the effective nonzero sample size is 38. The mean comparator-normalized reduction is 21.60\%, while the median reduction is 0.0\% because ties dominate the paired medians.
 
-\input{tables/table_exp10_stochastic_robustness}
-
-The per-instance median comparison yields 38 wins, 55 ties, and no losses for IPSNS. Thus, the typical common instance is a tie, but the non-tied outcomes are strongly asymmetric in favor of IPSNS, and several large improvements produce a mean comparator-normalized reduction of 21.6\% relative to DRMacIver/FAS. The median paired reduction is 0.0\% because ties dominate.
+The paired differences are significant under both a two-sided Wilcoxon signed-rank test (\(W=0\), \(p<0.001\)) and a two-sided sign test (\(p<0.001\)). Cohen's \(d_z\) is \(-0.31\), and the paired 95\% bootstrap confidence interval for the mean BW difference is \([-41{,}787,-10{,}718]\). Thus, the typical common instance is a tie, but the non-tied outcomes are strongly asymmetric in favor of IPSNS, and several large improvements drive the positive mean reduction.
 
 Run-level logs show that 87.1\% of IPSNS runs accept no improving move and only 12 of the 93 common instances ever improve over the best seed under the tested configuration. IPSNS nevertheless shows one distinct BW value on all 93 instances across 20 seeds. Zero objective variance therefore indicates stable final objective values under the tested configuration; it does not by itself establish that search trajectories or final orderings are identical, and the randomized SCC-selection step had little effect on final BW in this study. DRMacIver/FAS, by contrast, shows run-to-run objective variation on 40 of the 93 instances, which is why a single execution is not always representative for that executable.
 

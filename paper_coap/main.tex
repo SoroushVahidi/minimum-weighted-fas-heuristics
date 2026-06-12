@@ -23,6 +23,7 @@
 \gdef\orcid#1{}
 \patchcmd{\@maketitle}{Corresponding author(s). E-mail(s):}{Corresponding author:}{}{}
 \def\email#1{%
+  \global\advance\emailcnt by 1\relax
   \if@corauemail
     \g@addto@macro\corrauthemail{\texttt{#1}}%
   \else
@@ -50,7 +51,7 @@
 
 \author*[1]{\fnm{Soroush} \sur{Vahidi}}\email{sv96@njit.edu}
 
-\affil*[1]{\orgdiv{Department of Computer Science}, \orgname{New Jersey Institute of Technology}, \orgaddress{\city{Newark}, \postcode{07102}, \state{NJ}, \country{USA}}\\[4pt]
+\affil*[1]{\orgdiv{Department of Computer Science}, \orgname{New Jersey Institute of Technology}, \orgaddress{\city{Newark, NJ 07102, USA}}\\[4pt]
 \small ORCID: \href{https://orcid.org/0000-0003-1934-6282}{0000-0003-1934-6282}}
 
 \abstract{%
@@ -58,7 +59,7 @@ The minimum weighted feedback arc set problem seeks a minimum-weight arc set who
 
 We introduce IPSNS (incumbent-protected SCC neighborhood search), an SCC-local destroy-and-repair heuristic that refines the better of two attributed seeds: a local-ratio topological add-back construction and a WMSF-style weighted minimal/stable construction. IPSNS scores SCCs by backward contribution, applies deterministic perturbation prefixes inside a randomly selected SCC neighborhood, repairs with SCC-restricted local-ratio reduction and heavy-first add-back, and accepts only strict global improvements.
 
-On the primary sparse benchmark, IPSNS attains the minimum observed backward weight among the evaluated methods on 96 of 97 standard nonnegative instances, with ties credited to every tied method. Relative to the better seed on the same instances, IPSNS yields 14 strict improvements, 83 ties, and 0 regressions. On the 57-instance exact-validation subset, the mean optimum-normalized gap is 0.003\%. In a repeated-run comparison on the 93-instance common sparse subset, per-instance medians over 20 runs give 38 wins, 55 ties, and 0 losses versus the evaluated DRMacIver/FAS executable, with a mean comparator-normalized reduction of 21.6\%. A single-run dense LOLIB transfer study favored DRMacIver/FAS on 45 of 50 instances, marking the scope boundary between sparse digraphs and complete weighted orderings.
+On the primary sparse benchmark, IPSNS attains the minimum observed backward weight among the evaluated methods on 96 of 97 standard nonnegative instances, with ties credited to every tied method. Relative to the better seed on the same instances, IPSNS yields 14 strict improvements, 83 ties, and 0 regressions. On the 57-instance exact-validation subset, the mean optimum-normalized gap is 0.003\%. In a repeated-run comparison on the 93-instance common sparse subset, per-instance medians over 20 runs give 38 wins, 55 ties, and 0 losses versus the evaluated DRMacIver/FAS executable, with a mean comparator-normalized reduction of 21.60\%. A single-run dense LOLIB transfer study favored DRMacIver/FAS on 45 of 50 instances, marking the scope boundary between sparse digraphs and complete weighted orderings.
 }
 
 \keywords{Minimum weighted feedback arc set, Combinatorial optimization, Local-ratio algorithm, Strongly connected components, Heuristic search, Algorithm engineering}
