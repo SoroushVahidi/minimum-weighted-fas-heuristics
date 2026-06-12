@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\tiny
+\caption{Baseline provenance and comparison scope.}
+\label{tab:baseline-provenance}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}p{1.35cm}p{1.05cm}p{1.25cm}p{1.35cm}p{1.35cm}cp{2.0cm}p{1.25cm}@{}}
+\toprule
+Method & Role & Origin & External / in-repo & Problem model & Weighted & Implementation behavior & Evaluation subset \\
+\midrule
+LR-TA & internal seed & \cite{DF03,VahidiKoutis2024arxiv} & in-repo & sparse FAS / ordering & yes & deterministic for fixed input and tie-breaking & sparse, exact, holdout \\
+WMSF-style seed & internal seed & adapted from \cite{CC25,CCP24} & in-repo adaptation & sparse FAS & yes & deterministic for fixed input & sparse, exact, LOLIB \\
+IPSNS & proposed method & this study & in-repo & sparse FAS refinement & yes & stochastic but reproducible for fixed configuration and seed & sparse, exact, holdout, LOLIB \\
+Borda / net score & calibration & \cite{CFR10} & in-repo & ordering score rule & yes & deterministic & sparse, LOLIB \\
+Weighted Eades adaptation & adaptation & adapted from \cite{ELS93,EL95} & in-repo adaptation & sparse ordering heuristic & yes & deterministic & sparse, LOLIB \\
+Random multistart & calibration & standard multistart & in-repo & ordering heuristic & yes & stochastic & sparse, LOLIB \\
+igraph Eades & external baseline & \cite{python_igraph_feedback_arc_set} & external maintained implementation & graph-library FAS heuristic & yes & deterministic as evaluated & sparse, LOLIB \\
+DRMacIver/FAS & external baseline & \cite{drmaciver_feedback_arc_set} & external executable & matrix ordering & yes & evaluated executable shows run-to-run variation under internal initialization & sparse, EXP10, LOLIB, EXP9 \\
+Exact DP & exact validator & repository implementation & in-repo & sparse FAS, \(n\le 20\) & yes & deterministic & exact validation \\
+HiGHS MIP & exact validator & \cite{HuangfuHall2018} via \texttt{scipy.optimize.milp} & external maintained implementation & sparse-digraph MIP & yes & deterministic under fixed settings & medium MIP \\
+\bottomrule
+\end{tabularx}
+\end{table}

@@ -11,4 +11,4 @@ Upload these six files only (current submission):
 6. Vahidi_Related_Manuscripts_Statement.pdf -> Related manuscripts (editor-only)
 
 Verify SHA-256 against MANIFEST.sha256 before upload.
-Abstract in portal must match paper_coap/main.tex (238 words).
+Abstract in portal must match paper_coap/main.tex (235 words).

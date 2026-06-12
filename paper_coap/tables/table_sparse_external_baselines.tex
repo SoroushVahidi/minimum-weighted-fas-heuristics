@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \scriptsize
-\caption{Comparison on the 97 standard nonnegative sparse instances used for the primary claim-bearing benchmark. BW denotes backward weight; lower values are better. Relative excess is the mean percentage by which an algorithm's BW exceeds IPSNS on completed instances.}
+\caption{Primary sparse comparison on the 97 standard nonnegative instances. BW denotes backward weight; lower values are better. Best counts every method attaining the minimum observed BW on an instance; ties are credited to all tied methods. Relative excess is the mean percentage reduction achieved by IPSNS under the baseline-normalized convention \((X-\mathrm{IPSNS})/X\times 100\), where \(X\) is the comparator BW on completed instances.}
 \label{tab:sparse-external-baselines}
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
@@ -19,5 +19,5 @@ Random multistart & 97/97 & 1,075,258 & 0.03 & 42 & 49.76\% \\
 \end{tabular}
 \vspace{2pt}
 
-{\footnotesize\raggedright DRMacIver/FAS is the strongest external comparator on this benchmark, but it completes 93 of 97 instances because two DAG cases return empty-tournament errors and two large sparse instances time out in the wrapper used here.}
+{\footnotesize\raggedright DRMacIver/FAS is the main external comparator on this benchmark, but it completes 93 of 97 instances because two DAG cases return empty-tournament errors and two large sparse instances time out in the wrapper used here. Its mean relative excess of 21.61\% is a comparator-normalized reduction relative to IPSNS, not an IPSNS-normalized percent-worse score.}
 \end{table}

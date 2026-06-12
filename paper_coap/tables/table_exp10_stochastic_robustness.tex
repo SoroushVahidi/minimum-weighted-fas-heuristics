@@ -1,25 +1,20 @@
 \begin{table}[t]
 \centering
 \footnotesize
-\caption{Stochastic robustness comparison (EXP10) on the 93-instance common sparse subset
-completed by both IPSNS and DRMacIver/FAS.
-Each method was run 20 times per instance; outcomes are compared using per-instance medians
-of backward weight (BW). Tie tolerance $10^{-9}$.
-Relative excess uses the EXP4 convention $(\mathrm{DR}-\mathrm{IPSNS})/\mathrm{DR}\times 100$
-on paired medians.}
+\caption{Repeated-run comparison (EXP10) on the 93-instance common sparse subset completed by both IPSNS and DRMacIver/FAS. Each method was run 20 times per instance; outcomes use per-instance median backward weight (BW) with tie tolerance $10^{-9}$. Relative excess uses $(\mathrm{DR}-\mathrm{IPSNS})/\mathrm{DR}\times 100$ on paired medians.}
 \label{tab:exp10-stochastic-robustness}
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lrrrr}
 \toprule
-Method & Reps & Median W/T/L & Distinct BW & Med.\ runtime (s) & Stat.\ test \\
+Method & Reps & Median W/T/L & Distinct BW & Stat.\ test \\
 \midrule
-IPSNS & 20 & 38/55/0 & 1 value on 93/93 inst. & 0.011 & Wilcoxon $p{<}0.001$ \\
-DRMacIver/FAS & 20 & --- & ${>}1$ value on 40/93 inst. & 0.008 & Sign test $p{<}0.001$ \\
+IPSNS & 20 & 38/55/0 & 1 value on 93/93 inst. & Wilcoxon $p{<}0.001$ \\
+DRMacIver/FAS & 20 & --- & ${>}1$ value on 40/93 inst. & Sign test $p{<}0.001$ \\
 \bottomrule
-\multicolumn{6}{p{0.95\linewidth}}{\footnotesize
+\multicolumn{5}{p{0.95\linewidth}}{\footnotesize
 W/T/L counts IPSNS wins, ties, and losses versus DRMacIver/FAS on per-instance medians.
 Mean paired relative excess of DRMacIver/FAS over IPSNS is 21.6\% (unchanged from the EXP4 single-run figure).
 Cohen's $d_z=-0.31$ for paired median differences; 95\% bootstrap CI for mean paired difference in BW units is $[-41{,}787,-10{,}718]$.
-IPSNS showed zero cross-seed objective variation under the frozen configuration; this documents empirical stability, not mathematical determinism.
+The median paired relative excess is 0.0\% because 55 of 93 instances are exact ties under the median comparison. IPSNS showed zero cross-seed objective variation under the fixed configuration; this documents empirical stability, not mathematical determinism.
 } \\
 \end{tabular}
 \end{table}

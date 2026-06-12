@@ -5,7 +5,7 @@
   "target_journal": "Computational Optimization and Applications",
   "publisher": "Springer Nature",
   "portal": "editorialmanager.com/coap",
-  "manuscript_title": "SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs",
+  "manuscript_title": "IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs",
   "repository_remote": "https://github.com/SoroushVahidi/minimum-weighted-fas-heuristics",
   "submission_status": "NOT SUBMITTED — this freeze marks the submission-ready snapshot; it does not indicate that submission has occurred",
   "author": {
@@ -26,62 +26,64 @@
   "files": [
     {
       "filename": "Vahidi_COAP_Manuscript.pdf",
-      "sha256": "2da6f051a353b55350ad46bb3f945a17aa6953c726e5b6fd3b3c5d4d90f84b87",
-      "size_bytes": 331574,
+      "sha256": "db55a6b4a29773bc0f987c5bcaefc49b4d8de37d79e295f56afec186ebd65cb7",
+      "size_bytes": 193821,
       "portal_designation": "Manuscript",
       "reviewer_visibility": "yes",
       "canonical_source": "paper_coap/main.tex",
       "v2_sha256": "13aec51a53baf5e34d7ed5391c32e4af5c12f67daee551627499be85817e6563",
-      "change_reason": "§2 updated: journal IDs and rejection language removed; CAIE/EJCO paragraph removed; scientific attribution retained. Declarations updated: rejection list removed; replaced with concise statement."
+      "change_reason": "Rebuilt from the current live manuscript source after finalization; hash and size refreshed."
     },
     {
       "filename": "Vahidi_COAP_Cover_Letter.pdf",
-      "sha256": "ef3ea9cd08b1d922435d07c9b6b3d2bacec00d95ef0307af4434c51196a7880a",
-      "size_bytes": 21601,
+      "sha256": "1dc1e4c9e1798b93be6515d8b520a2c850f3247e01e2fd199d237e095689f9e0",
+      "size_bytes": 21558,
       "portal_designation": "Cover Letter",
       "reviewer_visibility": "editor-only",
       "canonical_source": "paper_coap/submission/cover_letter.tex",
       "v2_sha256": "b0fd9d0ab4d760a16b75a3336bfa450685b825a9ec32f5cb74c4a685c54e1c29",
-      "change_reason": "Related manuscripts paragraph rewritten to use Phase 3 preferred wording: arXiv preprint disclosed; concurrent-submission declaration retained; rejection outcomes removed from cover letter."
+      "change_reason": "Rebuilt after tone cleanup in the cover letter source; hash and size refreshed."
     },
     {
       "filename": "Vahidi_COAP_Manuscript_Source.zip",
-      "sha256": "f748c7a32fd83cff2291abf105b6b1d8b09dc5d1a77a9294b71fc09fe9c816ec",
-      "size_bytes": 1344838,
+      "sha256": "78fd84444f20fce08db467b22f7e794da4295225ad9b6a0e80f44a2541104f65",
+      "size_bytes": 1234244,
       "portal_designation": "LaTeX Source Files",
       "reviewer_visibility": "production-use-only",
       "canonical_source": "paper_coap/ directory LaTeX source archive",
       "v2_sha256": "ed198a719a29abb2bf6ba7e4bde1423d6770ee184cfd546a24d562da8c52c1c5",
-      "change_reason": "Source archive rebuilt to include updated §2, declarations, cover letter, and related-manuscript statement source files."
+      "change_reason": "Rebuilt from the current paper_coap source tree after finalization; hash and size refreshed."
     },
     {
       "filename": "Vahidi_Online_Resource_1_MWFAS.pdf",
-      "sha256": "8cc1479fb7aebe9e8b4c219aada0bf87f6c0383f53345a2d851b776b581aa0ea",
-      "size_bytes": 130236,
+      "sha256": "8dbba6129bbfb3b7fb7cce6b9d119a1ccdfb0b816d81df8cb74f99b87b6a0a66",
+      "size_bytes": 137821,
       "portal_designation": "Supplementary Information",
       "reviewer_visibility": "yes",
-      "canonical_source": "online_resource_1/docs/main.tex (frozen supplementary PDF)",
-      "changed": false
+      "canonical_source": "online_resource_1/supplement/online_resource_1.tex",
+      "changed": false,
+      "change_reason": "Rebuilt from the live OR1 supplement source after finalization; hash and size refreshed."
     },
     {
       "filename": "Vahidi_Online_Resource_1_MWFAS.zip",
-      "sha256": "5dc3875acad386f992266a43d1406b96787c95fa1d3acde7124be327ee29495e",
-      "size_bytes": 1116197,
+      "sha256": "623a07eb37a64010915c6956ee883cd626eb9a2b614dd44b57e1512e97f4401d",
+      "size_bytes": 1131382,
       "portal_designation": "Supplementary Material (Data/Code)",
       "reviewer_visibility": "yes",
-      "canonical_source": "online_resource_1/ directory frozen artifact archive",
-      "changed": false
+      "canonical_source": "online_resource_1/ tree archive (current live supplement state)",
+      "changed": false,
+      "change_reason": "Rebuilt from the current live OR1 tree after finalization; hash and size refreshed."
     },
     {
       "filename": "Vahidi_Related_Manuscripts_Statement.pdf",
-      "sha256": "86fc208163d36d89a3683df90731d41cfa5b840d83c72a04681cda968b90ddd6",
-      "size_bytes": 22949,
+      "sha256": "d5a53ddde6bc0fdaa2112a3497db42ad7cb472904925ea23da7dad94f56abc17",
+      "size_bytes": 22567,
       "portal_designation": "Cover Letter (Other — editor-only) — SUPPLY ON REQUEST ONLY",
       "reviewer_visibility": "editor-only",
       "upload_policy": "Do not upload at initial submission. Retain as an editor-response document. Supply if the editor or portal explicitly requests a related-manuscript statement or prior-submission overlap description.",
       "canonical_source": "paper_coap/submission/related_manuscripts_statement.tex",
       "v2_sha256": "9af3b73e9c6ad06c8843c42864acd15e7321cd236a78fd85847ea8779cbb4636",
-      "change_reason": "Rejected status language replaced with neutral 'earlier unpublished author manuscript; no longer under consideration'; journal names removed from labels; summary table updated."
+      "change_reason": "Rebuilt from the current related-manuscripts source after finalization; hash and size refreshed."
     }
   ],
   "tests": {
@@ -96,7 +98,7 @@
     "exp10_instances": 93,
     "exp10_reps_per_method": 20,
     "exp10_total_runs": 1860,
-    "exp10_mean_dr_excess_pct": 21.60,
+    "exp10_mean_dr_excess_pct": 21.6,
     "exp3_exact_matches": "56 of 57",
     "exp11_nonneg_instances": 6,
     "exp11_instances_improved": 0,

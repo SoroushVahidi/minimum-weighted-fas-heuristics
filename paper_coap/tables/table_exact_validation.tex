@@ -1,6 +1,6 @@
 \begin{table}[t]
 \centering
-\caption{Exact validation on the 57 standard nonnegative instances with $n \le 20$. Mean gap is measured against exact bitmask dynamic programming on each instance.}
+\caption{Exact validation on the 57 standard nonnegative instances with $n \le 20$. Mean gap follows the generator's total-weight normalization, while the single miss on \texttt{r20\_60} is discussed in the text using the exact-optimum denominator.}
 \label{tab:exact-validation}
 \begin{tabular}{lrrr}
 \toprule
@@ -11,5 +11,5 @@ LR-TA (ours) & 55/57 & 96.5\% & 0.0590\% \\
 WMSF seed & 51/57 & 89.5\% & 0.0961\% \\
 \bottomrule
 \end{tabular}
-\par\vspace{2pt}\parbox{0.94\linewidth}{\footnotesize This table supports empirical near-optimality on small instances only; it does not imply a general approximation guarantee. The only IPSNS near-miss is instance \texttt{r20\_60}.}
+\par\vspace{2pt}\parbox{0.94\linewidth}{\footnotesize This table supports empirical near-optimality on small instances only; it does not imply a general approximation guarantee. The only IPSNS near-miss is instance \texttt{r20\_60}, where the BW gap is 3 and the optimum-normalized gap is 0.178\% even though the table's mean-gap convention averages \(\text{gap}/\text{total weight}\).}
 \end{table}
