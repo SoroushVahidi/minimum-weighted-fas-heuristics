@@ -1,0 +1,52 @@
+{
+  "audit_id": "coap_final_author_status_gate_20260612",
+  "task": "Task 5 — Apply Author-Confirmed Rejection Statuses and Finalize COAP Submission Package",
+  "date": "2026-06-12",
+  "starting_sha": "caa5a7ed2a2e3ea1bad5f2ce457294486aa5c860",
+  "author": "Soroush Vahidi",
+  "target_journal": "Computational Optimization and Applications (COAP), Springer Nature",
+  "verdict": "SUBMIT NOW",
+  "author_confirmed_statuses": {
+    "arXiv_2412_16181": "PREPRINT_ONLY",
+    "JOCO_D_26_00099": "REJECTED",
+    "DA19469": "REJECTED",
+    "CAIE": "REJECTED",
+    "EJCO": "REJECTED"
+  },
+  "concurrent_submission_conflict": "NONE",
+  "cover_letter_declaration_safe": true,
+  "disclosure_changes": {
+    "cover_letter_tex": "JOCO and DAM stated as rejected; CAIE and EJCO changed from package-prepared inference to submitted-and-rejected; inactive status stated for all four",
+    "related_manuscripts_statement_tex": "All four statuses updated to 'rejected; no longer under consideration'; summary table added",
+    "sections_02_related_work_tex": "Inline IDs and rejected status added for JOCO and DAM; CAIE/EJCO paragraph updated; three AUTHOR-STATUS comments removed",
+    "declarations_statements_and_declarations_tex": "Related-manuscripts subsection updated with confirmed IDs and rejected statuses",
+    "EDITORIAL_MANAGER_FINAL_COPY_READY_TEXT_md": "Gate block removed; confirmed portal text added",
+    "AUTHOR_PRE_SUBMISSION_CONFIRMATION_md": "CLEARED header added; blocker checkboxes replaced with confirmed records"
+  },
+  "artifacts_rebuilt": [
+    "Vahidi_COAP_Cover_Letter.pdf",
+    "Vahidi_COAP_Manuscript.pdf",
+    "Vahidi_COAP_Manuscript_Source.zip",
+    "Vahidi_Related_Manuscripts_Statement.pdf"
+  ],
+  "artifacts_unchanged": [
+    "Vahidi_Online_Resource_1_MWFAS.pdf",
+    "Vahidi_Online_Resource_1_MWFAS.zip"
+  ],
+  "final_hashes": {
+    "Vahidi_COAP_Manuscript_pdf": "13aec51a53baf5e34d7ed5391c32e4af5c12f67daee551627499be85817e6563",
+    "Vahidi_COAP_Cover_Letter_pdf": "b0fd9d0ab4d760a16b75a3336bfa450685b825a9ec32f5cb74c4a685c54e1c29",
+    "Vahidi_COAP_Manuscript_Source_zip": "ed198a719a29abb2bf6ba7e4bde1423d6770ee184cfd546a24d562da8c52c1c5",
+    "Vahidi_Online_Resource_1_MWFAS_pdf": "8cc1479fb7aebe9e8b4c219aada0bf87f6c0383f53345a2d851b776b581aa0ea",
+    "Vahidi_Online_Resource_1_MWFAS_zip": "5dc3875acad386f992266a43d1406b96787c95fa1d3acde7124be327ee29495e",
+    "Vahidi_Related_Manuscripts_Statement_pdf": "9af3b73e9c6ad06c8843c42864acd15e7321cd236a78fd85847ea8779cbb4636"
+  },
+  "test_result": "90 passed, 1 skipped",
+  "or1_unchanged": true,
+  "numerical_results_changed": false,
+  "algorithm_changed": false,
+  "scientific_conclusions_changed": false,
+  "confidential_material_committed": false,
+  "rejection_reasons_committed": false,
+  "v2_tag": "coap-submission-ready-2026-06-12-v2"
+}

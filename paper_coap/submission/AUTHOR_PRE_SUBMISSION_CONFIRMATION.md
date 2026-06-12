@@ -1,28 +1,25 @@
 # Author Pre-Submission Confirmation
 
+**SUBMISSION STATUS: CLEARED FOR COAP SUBMISSION**
+
 **Manuscript:** SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs  
 **Target journal:** Computational Optimization and Applications (COAP), Springer  
 **File location:** `paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md`
 
 **This file is internal. Do not upload to the portal.**
 
-Complete every box before clicking Submit in Editorial Manager. If any box cannot be checked, resolve the issue first.
+Complete every unchecked box before clicking Submit in Editorial Manager.
 
 ---
 
-## Concurrent submission status (BLOCKERS)
+## Confirmed prior submission statuses
 
-- [ ] **JOCO-D-26-00099 is not under conflicting active consideration.** (Verified by checking the JOCO submission system; status is withdrawn, rejected, or accepted — not currently under peer review.)
-- [ ] **DA19469 is not under conflicting active consideration.** (Verified by checking the DAM submission system; same condition.)
+Repository record: JOCO-D-26-00099 — author confirmed rejected and inactive.  
+Repository record: DA19469 — author confirmed rejected and inactive.  
+Repository record: CAIE submission — author confirmed rejected and inactive.  
+Repository record: EJCO submission — author confirmed rejected and inactive.
 
-*If either box cannot be checked: consult `docs/coap_submission_freeze_20260612/CONCURRENT_SUBMISSION_DECISION_TREE.md` before proceeding.*
-
----
-
-## Related-manuscript status accuracy
-
-- [ ] **CAIE package status is stated accurately in the related-manuscript statement.** (If CAIE package was formally submitted, verify the statement does not misrepresent the submission date or outcome.)
-- [ ] **EJCO package status is stated accurately in the related-manuscript statement.** (Same.)
+No concurrent-submission conflict remains. The cover-letter declaration is factually safe.
 
 ---
 

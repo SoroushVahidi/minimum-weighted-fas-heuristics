@@ -6,18 +6,15 @@
 
 ---
 
-> **PRE-SUBMISSION GATE — AUTHOR CONFIRMATION REQUIRED BEFORE PASTING ANY TEXT**
->
-> The cover letter contains the declaration: "I confirm that no substantially overlapping manuscript by me is under consideration elsewhere at the time of submission."
->
-> This file does **not** assert that JOCO-D-26-00099 or DA19469 are currently inactive. Their statuses are documented in author submission records, not in repository files. Before opening the portal and pasting any text below:
->
-> 1. Check whether JOCO-D-26-00099 (LR-TA, Journal of Combinatorial Optimization) is currently under active peer review.
-> 2. Check whether DA19469 (IPSNS, Discrete Applied Mathematics) is currently under active peer review.
-> 3. If either is still under active peer review, do not paste the cover-letter statement as written — consult the CONCURRENT_SUBMISSION_DECISION_TREE.md for required action.
-> 4. If both are inactive (withdrawn, rejected, or accepted), the cover-letter statement is accurate and submission may proceed.
->
-> Fields below are organized as: **PASTE VERBATIM** (safe without confirmation) and **CONFIRM BEFORE PASTING** (depends on JOCO/DAM status).
+**Submission status:** CLEARED FOR COAP SUBMISSION
+
+All four prior journal submissions have been author-confirmed rejected and are no longer under consideration:
+- JOCO-D-26-00099 (Journal of Combinatorial Optimization) — rejected
+- DA19469 (Discrete Applied Mathematics) — rejected
+- CAIE submission (Computers & Industrial Engineering) — rejected
+- EJCO submission (EURO Journal on Computational Optimization) — rejected
+
+The concurrent-submission declaration is factually safe. Paste all fields verbatim.
 
 ---
 
@@ -115,13 +112,13 @@ During the preparation of this work, the author used AI-assisted tools, includin
 
 ---
 
-## Related work / originality statement
+## Related manuscripts / prior submissions
 
 *(Paste in the portal's "Comments to the editor" or "Related manuscripts" free-text field if present, or reference the uploaded related-manuscript statement.)*
 
-**PASTE VERBATIM — does not assert JOCO/DAM status; discloses prior work accurately regardless of status:**
+**PASTE VERBATIM:**
 
-A public preprint (arXiv:2412.16181) and previously submitted author manuscripts (JOCO-D-26-00099; DA19469) are disclosed. Prepared CAIE/EJCO packages are described in the enclosed related-manuscript statement. This COAP submission integrates and extends those strands; IPSNS is the primary new integrated contribution.
+The manuscript extends a disclosed preliminary preprint, arXiv:2412.16181, and relates to four earlier journal submissions that are no longer under consideration: JOCO-D-26-00099, DA19469, and related submissions to Computers & Industrial Engineering and the EURO Journal on Computational Optimization. All four journal submissions were rejected. The uploaded related-manuscript statement identifies inherited components and the substantial new contributions of the present COAP manuscript. No substantially overlapping manuscript is currently under consideration elsewhere.
 
 ---
 
@@ -173,18 +170,13 @@ arXiv:2412.16181 (December 2024) — "Minimum Weighted Feedback Arc Sets for Ran
 
 ## Notes for author at portal time
 
-- Complete the PRE-SUBMISSION GATE at the top of this file before opening the portal
 - Verify the generated PDF preview before approving: check title page, abstract, keyword section, all supplementary entries
-- Reviewer email addresses were drawn from public faculty pages as of 2026-06-12; verify they are current before entering
-- The cover letter statement "no substantially overlapping manuscript by me is under consideration elsewhere" must be accurate at the moment of clicking Submit — see CONCURRENT_SUBMISSION_DECISION_TREE.md
-- Do not submit if either JOCO or DAM is still under peer review without first amending the cover letter
+- Reviewer email addresses were drawn from public faculty pages as of 2026-06-12; verify Eduardo Uchoa's email (uchoa@producao.uff.br) before entering
 - Complete AUTHOR_PRE_SUBMISSION_CONFIRMATION.md and sign off all checkboxes before clicking Submit
 
 ## Field classification legend
 
-**PASTE VERBATIM** — text is factually correct independent of JOCO/DAM status; safe to paste as written.
-
-**CONFIRM BEFORE PASTING** — text depends on JOCO/DAM status or other author-only facts; verify first.
+**PASTE VERBATIM** — text is factually correct; safe to paste as written.
 
 **PORTAL SELECTION** — not text to paste; describes which portal option to choose.
 

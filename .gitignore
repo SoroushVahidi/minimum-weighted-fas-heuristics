@@ -40,6 +40,7 @@ experiments/*/raw/
 !docs/coap_submission_dry_run_20260612/*.csv
 !docs/coap_submission_freeze_20260612/*.csv
 !docs/coap_related_status_resolution_20260612/*.csv
+!docs/coap_final_author_status_gate_20260612/*.csv
 !docs/EXPERIMENT_REGISTRY.csv
 !docs/AUDIT_STATUS_REGISTER.csv
 !experiments/coap_ipsns_holdout/config/*.json
