@@ -8,13 +8,7 @@
 
 **Submission status:** CLEARED FOR COAP SUBMISSION
 
-All four prior journal submissions have been author-confirmed rejected and are no longer under consideration:
-- JOCO-D-26-00099 (Journal of Combinatorial Optimization) — rejected
-- DA19469 (Discrete Applied Mathematics) — rejected
-- CAIE submission (Computers & Industrial Engineering) — rejected
-- EJCO submission (EURO Journal on Computational Optimization) — rejected
-
-The concurrent-submission declaration is factually safe. Paste all fields verbatim.
+No substantially overlapping manuscript is currently under consideration elsewhere. All prior unpublished author manuscripts sharing components with this submission are inactive. Paste all fields verbatim.
 
 ---
 
@@ -112,13 +106,23 @@ During the preparation of this work, the author used AI-assisted tools, includin
 
 ---
 
-## Related manuscripts / prior submissions
+## Standard concurrent-submission declaration
 
-*(Paste in the portal's "Comments to the editor" or "Related manuscripts" free-text field if present, or reference the uploaded related-manuscript statement.)*
+*(Include in cover letter or wherever the portal requests a concurrent-submission declaration.)*
 
 **PASTE VERBATIM:**
 
-The manuscript extends a disclosed preliminary preprint, arXiv:2412.16181, and relates to four earlier journal submissions that are no longer under consideration: JOCO-D-26-00099, DA19469, and related submissions to Computers & Industrial Engineering and the EURO Journal on Computational Optimization. All four journal submissions were rejected. The uploaded related-manuscript statement identifies inherited components and the substantial new contributions of the present COAP manuscript. No substantially overlapping manuscript is currently under consideration elsewhere.
+No substantially overlapping manuscript is currently under consideration elsewhere.
+
+---
+
+## Editor-only related-work field (paste only if portal explicitly requests prior submission history)
+
+*(Use only if the portal has a specific field for "related manuscripts," "previous submissions," "overlapping submissions," or similar. Do not paste in reviewer-visible fields.)*
+
+**PASTE VERBATIM — editor-only:**
+
+The manuscript extends the publicly disclosed preliminary preprint arXiv:2412.16181. Earlier unpublished author manuscripts containing portions of the LR-TA, WMSF, and IPSNS development are no longer under consideration elsewhere. The present submission substantially expands the framework, formal analysis, computational evidence, robustness studies, and reproducibility package. A detailed component-level overlap statement is available upon request.
 
 ---
 
@@ -157,14 +161,14 @@ arXiv:2412.16181 (December 2024) — "Minimum Weighted Feedback Arc Sets for Ran
 
 ## Upload file checklist
 
-| Order | File | Designation |
-|---|---|---|
-| 1 | Vahidi_COAP_Manuscript.pdf | Manuscript |
-| 2 | Vahidi_COAP_Cover_Letter.pdf | Cover Letter (editor-only) |
-| 3 | Vahidi_COAP_Manuscript_Source.zip | LaTeX Source Files |
-| 4 | Vahidi_Online_Resource_1_MWFAS.pdf | Supplementary Information / Online Resource |
-| 5 | Vahidi_Online_Resource_1_MWFAS.zip | Supplementary Material (Data/Code) |
-| 6 | Vahidi_Related_Manuscripts_Statement.pdf | Cover Letter (Other — editor-only) |
+| Order | File | Designation | Required? |
+|---|---|---|---|
+| 1 | Vahidi_COAP_Manuscript.pdf | Manuscript | Required |
+| 2 | Vahidi_COAP_Cover_Letter.pdf | Cover Letter (editor-only) | Required |
+| 3 | Vahidi_COAP_Manuscript_Source.zip | LaTeX Source Files | Required |
+| 4 | Vahidi_Online_Resource_1_MWFAS.pdf | Supplementary Information / Online Resource | Required |
+| 5 | Vahidi_Online_Resource_1_MWFAS.zip | Supplementary Material (Data/Code) | Required |
+| 6 | Vahidi_Related_Manuscripts_Statement.pdf | Cover Letter (Other — editor-only) | **On request only** — do not upload at initial submission unless the portal explicitly requires a related-manuscript statement or prior-submission disclosure. Supply if the editor or portal specifically asks for an overlap document. |
 
 ---
 

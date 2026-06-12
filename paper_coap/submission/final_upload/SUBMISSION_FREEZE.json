@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "freeze_date": "2026-06-12",
-  "artifact_revision": "v2 — author-confirmed rejected status for all prior journal submissions; disclosure wording synchronized",
+  "artifact_revision": "v3 — rejection history removed from reviewer-facing and manuscript materials; scientific provenance retained; related-manuscript statement made editor-only on-request document",
   "target_journal": "Computational Optimization and Applications",
   "publisher": "Springer Nature",
   "portal": "editorialmanager.com/coap",
@@ -17,42 +17,42 @@
   },
   "prior_submission_statuses_author_confirmed": {
     "arXiv_2412_16181": "PREPRINT_ONLY",
-    "JOCO_D_26_00099": "REJECTED",
-    "DA19469": "REJECTED",
-    "CAIE": "REJECTED",
-    "EJCO": "REJECTED",
+    "JOCO_D_26_00099": "INACTIVE",
+    "DA19469": "INACTIVE",
+    "CAIE": "INACTIVE",
+    "EJCO": "INACTIVE",
     "concurrent_submission_conflict": "NONE"
   },
   "files": [
     {
       "filename": "Vahidi_COAP_Manuscript.pdf",
-      "sha256": "13aec51a53baf5e34d7ed5391c32e4af5c12f67daee551627499be85817e6563",
-      "size_bytes": 333231,
+      "sha256": "2da6f051a353b55350ad46bb3f945a17aa6953c726e5b6fd3b3c5d4d90f84b87",
+      "size_bytes": 331574,
       "portal_designation": "Manuscript",
       "reviewer_visibility": "yes",
       "canonical_source": "paper_coap/main.tex",
-      "v1_sha256": "97eb61238a81e12e2597a6963926f0f092ad994f3f369b89715f36e9e06d0898",
-      "change_reason": "Sections 2 and declarations updated: AUTHOR-STATUS comments replaced with confirmed rejected statuses; CAIE/EJCO text updated from package-prepared inference to confirmed-rejected statements"
+      "v2_sha256": "13aec51a53baf5e34d7ed5391c32e4af5c12f67daee551627499be85817e6563",
+      "change_reason": "§2 updated: journal IDs and rejection language removed; CAIE/EJCO paragraph removed; scientific attribution retained. Declarations updated: rejection list removed; replaced with concise statement."
     },
     {
       "filename": "Vahidi_COAP_Cover_Letter.pdf",
-      "sha256": "b0fd9d0ab4d760a16b75a3336bfa450685b825a9ec32f5cb74c4a685c54e1c29",
-      "size_bytes": 24716,
+      "sha256": "ef3ea9cd08b1d922435d07c9b6b3d2bacec00d95ef0307af4434c51196a7880a",
+      "size_bytes": 21601,
       "portal_designation": "Cover Letter",
       "reviewer_visibility": "editor-only",
       "canonical_source": "paper_coap/submission/cover_letter.tex",
-      "v1_sha256": "df6622bd7b19f2ed73e5d54c38e953a2092f9436f574db4da86b374efe6496f8",
-      "change_reason": "Related manuscripts paragraph updated to state all four prior journal submissions were rejected and none is currently under consideration"
+      "v2_sha256": "b0fd9d0ab4d760a16b75a3336bfa450685b825a9ec32f5cb74c4a685c54e1c29",
+      "change_reason": "Related manuscripts paragraph rewritten to use Phase 3 preferred wording: arXiv preprint disclosed; concurrent-submission declaration retained; rejection outcomes removed from cover letter."
     },
     {
       "filename": "Vahidi_COAP_Manuscript_Source.zip",
-      "sha256": "ed198a719a29abb2bf6ba7e4bde1423d6770ee184cfd546a24d562da8c52c1c5",
-      "size_bytes": 1366646,
+      "sha256": "f748c7a32fd83cff2291abf105b6b1d8b09dc5d1a77a9294b71fc09fe9c816ec",
+      "size_bytes": 1344838,
       "portal_designation": "LaTeX Source Files",
       "reviewer_visibility": "production-use-only",
       "canonical_source": "paper_coap/ directory LaTeX source archive",
-      "v1_sha256": "0fd2b2c138c31798ff334a47f7d5c917fd32ec83aa5b05b932c82c20a32f7b38",
-      "change_reason": "Source archive rebuilt to include updated section 2, declarations, cover letter, and related manuscripts statement source files"
+      "v2_sha256": "ed198a719a29abb2bf6ba7e4bde1423d6770ee184cfd546a24d562da8c52c1c5",
+      "change_reason": "Source archive rebuilt to include updated §2, declarations, cover letter, and related-manuscript statement source files."
     },
     {
       "filename": "Vahidi_Online_Resource_1_MWFAS.pdf",
@@ -74,13 +74,14 @@
     },
     {
       "filename": "Vahidi_Related_Manuscripts_Statement.pdf",
-      "sha256": "9af3b73e9c6ad06c8843c42864acd15e7321cd236a78fd85847ea8779cbb4636",
-      "size_bytes": 23672,
-      "portal_designation": "Cover Letter (Other / Author Statement)",
+      "sha256": "86fc208163d36d89a3683df90731d41cfa5b840d83c72a04681cda968b90ddd6",
+      "size_bytes": 22949,
+      "portal_designation": "Cover Letter (Other — editor-only) — SUPPLY ON REQUEST ONLY",
       "reviewer_visibility": "editor-only",
+      "upload_policy": "Do not upload at initial submission. Retain as an editor-response document. Supply if the editor or portal explicitly requests a related-manuscript statement or prior-submission overlap description.",
       "canonical_source": "paper_coap/submission/related_manuscripts_statement.tex",
-      "v1_sha256": "7e5ee12c4200ff0a006f350b379d63a1dc38dccbc588ab7dbb62e241a08b519e",
-      "change_reason": "Status wording updated to 'rejected; no longer under consideration' for all four journal submissions; summary table added"
+      "v2_sha256": "9af3b73e9c6ad06c8843c42864acd15e7321cd236a78fd85847ea8779cbb4636",
+      "change_reason": "Rejected status language replaced with neutral 'earlier unpublished author manuscript; no longer under consideration'; journal names removed from labels; summary table updated."
     }
   ],
   "tests": {
@@ -108,12 +109,12 @@
     "Competing-interests statement is accurate",
     "AI-use disclosure is accurate",
     "Suggested reviewers have no known conflicts",
-    "Eduardo Uchoa email (uchoa@producao.uff.br) personally verified",
+    "Eduardo Uchoa email (uchoa@producao.uff.br) personally verified before portal entry",
     "Portal-generated PDF inspected and approved",
     "Upload file checksums verified against MANIFEST.sha256"
   ],
+  "related_manuscript_statement_upload_policy": "Do not upload Vahidi_Related_Manuscripts_Statement.pdf at initial submission. Supply only if the COAP portal or editor explicitly requests a related-manuscript statement, prior-submission history, or overlap document.",
   "checksum_manifest": "MANIFEST.sha256 (in this directory)",
-  "submission_documentation": "docs/coap_submission_dry_run_20260612/ and docs/coap_submission_freeze_20260612/ and docs/coap_related_status_resolution_20260612/ and docs/coap_final_author_status_gate_20260612/",
   "canonical_portal_text": "paper_coap/submission/EDITORIAL_MANAGER_FINAL_COPY_READY_TEXT.md",
   "author_checklist": "paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md"
 }

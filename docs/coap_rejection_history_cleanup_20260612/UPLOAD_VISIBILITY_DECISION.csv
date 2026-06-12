@@ -1,0 +1,7 @@
+file,reviewer_visible,editor_only,required,optional,do_not_upload_unless_requested,upload_designation,policy_rationale
+Vahidi_COAP_Manuscript.pdf,yes,no,yes,no,no,Manuscript,Primary scientific document; always required; no rejection history present after cleanup
+Vahidi_COAP_Cover_Letter.pdf,no,yes,yes,no,no,Cover Letter (editor-only),Standard cover letter; required; rejection outcomes removed; concurrent-submission declaration retained
+Vahidi_COAP_Manuscript_Source.zip,no,no,yes (production),no,no,LaTeX Source Files,Production use only; no rejection history in updated sources
+Vahidi_Online_Resource_1_MWFAS.pdf,yes,no,yes,no,no,Supplementary Information / Online Resource,OR1 supplementary document; required; no editorial history present
+Vahidi_Online_Resource_1_MWFAS.zip,yes,no,yes,no,no,Supplementary Material (Data/Code),OR1 artifact archive; required; no editorial history present
+Vahidi_Related_Manuscripts_Statement.pdf,no,yes,no,no,yes,"Cover Letter (Other — editor-only) — SUPPLY ON REQUEST ONLY","Not required at initial submission. Do not upload proactively. Supply only if: (a) portal has mandatory related-manuscripts field, (b) editor requests an overlap description, or (c) portal explicitly asks for prior submission history. If uploaded, designated editor-only. Rejection outcomes replaced with neutral 'no longer under consideration' language."
