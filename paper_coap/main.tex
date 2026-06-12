@@ -25,6 +25,13 @@
 \makeatother
 
 \raggedbottom
+\setlength{\textfloatsep}{10pt plus 2pt minus 4pt}
+\setlength{\floatsep}{8pt plus 2pt minus 3pt}
+\setlength{\intextsep}{10pt plus 2pt minus 4pt}
+\setlength{\abovecaptionskip}{6pt}
+\setlength{\belowcaptionskip}{0pt}
+\setlength{\abovedisplayskip}{8pt plus 2pt minus 4pt}
+\setlength{\belowdisplayskip}{8pt plus 2pt minus 4pt}
 
 \theoremstyle{thmstyleone}%
 \newtheorem{theorem}{Theorem}%
@@ -32,18 +39,18 @@
 
 \begin{document}
 
-\title[SCC-Local Heuristics for MWFAS on Sparse Digraphs]{SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs}
+\title[IPSNS for MWFAS on Sparse Digraphs]{IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs}
 
 \author*[1]{\fnm{Soroush} \sur{Vahidi}\orcid{https://orcid.org/0000-0003-1934-6282}}\email{sv96@njit.edu}
 
 \affil*[1]{\orgdiv{Department of Computer Science}, \orgname{New Jersey Institute of Technology}, \orgaddress{\street{Newark}, \postcode{07102}, \state{NJ}, \country{USA}}}
 
 \abstract{%
-The minimum weighted feedback arc set (MWFAS) problem asks for a minimum-weight set of arcs whose removal makes a nonnegative weighted directed graph acyclic, equivalently a vertex ordering minimizing backward arc weight on sparse digraphs. Despite its NP-hardness, scalable heuristics are needed where exact solvers are too expensive and dense tournament methods are structurally mismatched.
+The minimum weighted feedback arc set problem seeks a minimum-weight arc set whose removal makes a directed graph acyclic, or equivalently a vertex ordering minimizing backward-arc weight. We study sparse nonnegative weighted digraphs, where exact methods do not scale broadly and dense matrix-based ordering heuristics are not always structurally aligned.
 
-We introduce IPSNS (incumbent-protected SCC neighborhood search), an SCC-local destroy-and-repair heuristic that scores strongly connected components by backward contribution, applies weighted top-\(K\) neighborhood selection, performs two-sided perturbations and repairs within fixed original-graph SCC neighborhoods, and accepts moves only under strict incumbent protection. IPSNS uses an integrated framework with a refined LR-TA seed from the Demetrescu--Finocchi local-ratio lineage and an engineered WMSF-style seed from Cavallaro and Cutello's weighted feedback arc set method.
+We introduce IPSNS (incumbent-protected SCC neighborhood search), an SCC-local destroy-and-repair heuristic centered on strongly connected components (SCCs) that still contribute backward weight after constructive seeding. IPSNS starts from the better of two attributed seeds: a local-ratio topological add-back construction derived from prior local-ratio work and a WMSF-style weighted minimal/stable construction adapted from Cavallaro and Cutello. It scores SCCs by incumbent backward contribution, perturbs fixed SCC neighborhoods, repairs them with SCC-restricted local-ratio reduction and heavy-first add-back, and accepts a candidate only under strict global improvement. The supporting analysis establishes feasibility, add-back minimality, and incumbent non-worsening, but no new approximation ratio.
 
-This study is not an approximation-ratio theorem. On the evaluated sparse nonnegative weighted-digraph benchmark, IPSNS attains the best observed backward weight among compared methods on 96 of 97 standard instances. A repeated-run study on the 93-instance common sparse subset (20 IPSNS seeds and 20 DRMacIver/FAS repetitions) compares per-instance medians and corroborates the IPSNS advantage (38 wins, 55 ties, 0 losses). Exact validation on 57 small instances matches the bitmask dynamic-programming optimum on 56 cases; time-capped mixed-integer validation on medium instances adds certified reference points. A dense LOLIB transfer study identifies a scope boundary where matrix-based pairwise-ordering methods are stronger. Online Resource~1 supplies code, configurations, summary outputs, and reproduction scripts (see Data Availability).
+On the primary sparse benchmark, IPSNS attains the minimum observed backward weight among the evaluated methods on 96 of 97 standard nonnegative instances. On the 57-instance exact-validation subset, it matches the exact dynamic-programming optimum on 56 instances. In a repeated-run comparison on the 93-instance common sparse subset, per-instance medians over 20 runs give 38 wins, 55 ties, and 0 losses versus the evaluated DRMacIver/FAS executable. A dense LOLIB transfer test marks the scope boundary: matrix-based ordering methods remain preferable on complete weighted ordering instances.
 }
 
 \keywords{Minimum weighted feedback arc set, Combinatorial optimization, Local-ratio algorithm, Strongly connected components, Heuristic search, Algorithm engineering}

@@ -16,10 +16,10 @@ $\tau$ & All & $10^{-12}$ & Code default & Numerical safeguard \\
 RNG seed & IPSNS & 1 (EXP4); 0--19 (EXP10) & EXP10 & Explicit integer seeds \\
 WMSF ordering & WMSF & L2 (global) & Ablation & L1/L2 compared per SCC \\
 MIP timeout & EXP8 & 120\,s & Protocol & HiGHS time cap \\
-DRMacIver reps & EXP10 & 20 & Frozen & PID/time seeding \\
-Tie tolerance & EXP10 & $10^{-9}$ & Frozen & Median comparison \\
+DRMacIver reps & EXP10 & 20 & Fixed & PID/time seeding \\
+Tie tolerance & EXP10 & $10^{-9}$ & Fixed & Median comparison \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Holdout and sensitivity summaries: \texttt{results/coap\_ipsns\_sensitivity/}. EXP10 confirms frozen IPSNS configuration showed zero cross-seed objective variation on 93/93 instances.
+Holdout and sensitivity summaries: \texttt{results/coap\_ipsns\_sensitivity/}. EXP10 confirms the fixed IPSNS configuration showed zero cross-seed objective variation on 93/93 instances.

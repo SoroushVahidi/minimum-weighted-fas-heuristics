@@ -20,14 +20,14 @@ Springer Nature
 
 \vspace{0.75em}
 \noindent
-\textbf{Re: Submission of research article --- ``SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs''}
+\textbf{Re: Submission of research article --- ``IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs''}
 
 \vspace{0.75em}
 Dear Editor-in-Chief,
 
 I am pleased to submit the enclosed research article for consideration as an \textbf{Original Research} contribution to \textit{Computational Optimization and Applications}. The paper studies the \textbf{minimum weighted feedback arc set (MWFAS)} problem on sparse nonnegative weighted digraphs and presents an integrated algorithm-engineering framework whose primary new contribution is \textbf{IPSNS} (incumbent-protected SCC neighborhood search), an SCC-local destroy-and-repair heuristic with contribution-based SCC scoring, weighted top-$K$ neighborhood selection, two-sided perturbation, restricted repair, and strict incumbent protection.
 
-\textbf{Scientific contribution.} IPSNS is the main algorithmic advance. It is supported by a dual-seed framework that reuses a refined \textbf{LR-TA} local-ratio seed (implementation-consistent with an earlier author LR-TA manuscript) and an engineered \textbf{WMSF}-style seed adapted from recent minimal-and-stable feedback arc set heuristics. The study combines exact bitmask dynamic programming, time-capped mixed-integer validation, broad sparse benchmarks with external baselines, ablation and sensitivity analyses, a holdout check, a dense LOLIB scope-boundary transfer, a repeated-run stochastic-robustness study (EXP10), and a post-hoc topological-extraction calibration (EXP11). On the evaluated sparse benchmark, IPSNS attains the best observed backward weight among the compared methods on 96 of 97 standard instances; a 93-instance median comparison against DRMacIver/FAS (20 repetitions per method) yields 38 wins, 55 ties, and 0 losses for IPSNS, with DRMacIver mean relative excess 21.60\%. The paper does not claim a new approximation-ratio theorem or universal state-of-the-art dominance; it reports bounded computational evidence and explicit scope limitations.
+\textbf{Scientific contribution.} IPSNS is the main algorithmic advance. It is supported by a dual-seed framework that reuses a refined \textbf{LR-TA} local-ratio seed (implementation-consistent with an earlier author LR-TA manuscript) and an engineered \textbf{WMSF}-style seed adapted from recent minimal-and-stable feedback arc set heuristics. The study combines exact bitmask dynamic programming, time-capped mixed-integer validation, broad sparse benchmarks with external baselines, ablation and sensitivity analyses, a holdout check, a dense LOLIB scope-boundary transfer, a repeated-run stochastic-robustness study (EXP10), and a post-hoc topological-extraction calibration (EXP11). On the evaluated sparse benchmark, IPSNS attains the best observed backward weight among the compared methods on 96 of 97 standard instances; a 93-instance median comparison against DRMacIver/FAS (20 repetitions per method) yields 38 wins, 55 ties, and 0 losses for IPSNS, with IPSNS reducing backward weight by 21.60\% relative to DRMacIver/FAS under the baseline-normalized convention. The paper does not claim a new approximation-ratio theorem or universal state-of-the-art dominance; it reports bounded computational evidence and explicit scope limitations.
 
 \textbf{Fit with COAP.} The manuscript aligns with COAP's scope in computational algorithm development, algorithm engineering, and rigorous computational evaluation for optimization problems on graphs. It contributes reproducible software, formal supporting analysis, and extensive empirical comparison rather than a purely theoretical breakthrough.
 
@@ -35,7 +35,7 @@ I am pleased to submit the enclosed research article for consideration as an \te
 
 \textbf{Publication status.} I submit this manuscript only to \textit{Computational Optimization and Applications}. I am the sole author and approve this submission.
 
-\textbf{Reproducibility.} Online Resource~1 (supplementary PDF and artifact archive) provides source code, automated tests, frozen configurations, validated summary outputs, and scripts to regenerate principal tables without expensive benchmark reruns.
+\textbf{Reproducibility.} Online Resource~1 (supplementary PDF and artifact archive) provides source code, automated tests, archived configurations, validated summary outputs, and scripts to regenerate principal tables without expensive benchmark reruns.
 
 Thank you for your consideration. I would be pleased to suggest qualified reviewers through the submission portal if requested.
 

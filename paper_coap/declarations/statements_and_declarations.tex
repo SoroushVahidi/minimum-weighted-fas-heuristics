@@ -10,21 +10,12 @@ The author declares that there are no known competing financial or non-financial
 Soroush Vahidi: Conceptualization, Methodology, Software, Formal analysis, Investigation, Validation, Data curation, Visualization, Writing -- original draft, Writing -- review \& editing.
 
 \subsection*{Related manuscripts and prior author work}
-This manuscript extends related author work on minimum weighted feedback arc set and ranking-as-ordering heuristics. Section~\ref{subsec:prior-work} describes the relationship to the public preprint \cite{VahidiKoutis2024arxiv} and the unpublished predecessor manuscripts that share the LR-TA, WMSF, and IPSNS components with the present study. No substantially overlapping manuscript is currently under consideration elsewhere.
+This manuscript extends related author work on minimum weighted feedback arc set and ranking-as-ordering heuristics. Section~\ref{subsec:prior-work} describes the relationship to the public preprint \cite{VahidiKoutis2024arxiv} and explains how the LR-TA and WMSF-style components are attributed. No substantially overlapping manuscript is currently under consideration elsewhere.
 
 \subsection*{Data and code availability}
-\textbf{Online Resource~1} (supplementary PDF and artifact archive) accompanies this submission. It contains: (i)~complete proofs deferred from the main text, including topological-extraction inequalities; (ii)~extended computational tables, EXP10 stochastic-robustness materials, and EXP11 extraction-sensitivity calibration; (iii)~the implementation (\texttt{src/mwfas/}), a 91-test automated correctness gate (90 passed, 1 skipped at freeze), and reproduction scripts; and (iv)~committed CSV/JSON summaries for reported experiments (EXP1b--EXP11). Public benchmark instances are cited in the manuscript; instance download and preprocessing steps are documented in OR1.
+Online Resource~1 accompanies the manuscript and contains the source code, parameter configurations, processed outputs, extended tables, deferred proofs, and scripts for regenerating the principal manuscript tables and figures. It also includes a test suite, small-instance cross-checks, and the processed exact and MIP validation materials used in the supporting studies. The public benchmark families used in the paper are cited in the manuscript, and Online Resource~1 documents the corresponding acquisition and preprocessing procedures.
 
-\textbf{Reproduction levels.} Level~A (smoke validation) and Level~B (test suite) complete in seconds on a standard workstation. Level~C regenerates principal manuscript tables from committed summaries without rerunning expensive benchmarks. Level~D (full benchmark reruns) is optional and documented but not required to verify the reported numbers.
-
-\textbf{Command (Level~B):}
-\begin{verbatim}
-pip install -r requirements-dev.txt
-PYTHONPATH=src python3 -m pytest tests/ -q
-\end{verbatim}
-Expected result when run from the full repository checkout: 90 passed, 1 skipped (91 collected). The OR1 artifact archive uses the same test tree; one EXP10 namespace test is skipped when the DRMacIver runner is inactive.
-
-We do not claim machine-checked formal verification; the test suite provides regression and correctness coverage on tiny graphs with independent brute-force cross-checks.
+Reproducing the full benchmark runs additionally requires the documented external data, third-party tools, and computational resources described in the supplementary material. The package is intended to make the reported evidence traceable without requiring every reader to rerun the most expensive computations.
 
 \subsection*{Generative AI and AI-assisted technologies}
 During the preparation of this work, the author used AI-assisted tools, including ChatGPT, Codex, Claude, and Perplexity AI, to support literature exploration, organization of material, language editing, and coding assistance. The author reviewed and edited all outputs, verified the relevant sources and experimental results, and takes full responsibility for the content of the submitted manuscript.

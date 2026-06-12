@@ -14,7 +14,7 @@ No substantially overlapping manuscript is currently under consideration elsewhe
 
 ## Manuscript title
 
-SCC-Local Destroy-and-Repair Heuristics for Minimum Weighted Feedback Arc Set on Sparse Digraphs
+IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs
 
 ---
 
@@ -34,7 +34,7 @@ Original Research Article
 
 ## Abstract
 
-*(238 words — within COAP 150–250 guideline. Paste as plain text; do not include LaTeX commands.)*
+*(235 words — within COAP 150–250 guideline. Paste as plain text; do not include LaTeX commands.)*
 
 The minimum weighted feedback arc set (MWFAS) problem asks for a minimum-weight set of arcs whose removal makes a nonnegative weighted directed graph acyclic, equivalently a vertex ordering minimizing backward arc weight on sparse digraphs. Despite its NP-hardness, scalable heuristics are needed where exact solvers are too expensive and dense tournament methods are structurally mismatched.
 

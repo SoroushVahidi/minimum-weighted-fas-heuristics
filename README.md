@@ -26,7 +26,7 @@ A manuscript has been **prepared for submission** to *Computational Optimization
 | `tests/` | Pytest suite (91 collected) |
 | `scripts/` | CLI runners |
 | `experiments/` | EXP1b–EXP11 + COAP sensitivity/holdout |
-| `paper_coap/` | **COAP manuscript** (45 pages) |
+| `paper_coap/` | **COAP manuscript** (23 pages) |
 | `paper_coap/submission/final_upload/` | **Portal upload bundle** (6 files) |
 | `online_resource_1/` | Online Resource 1 source + validation |
 | `docs/INDEX.md` | Documentation navigation |

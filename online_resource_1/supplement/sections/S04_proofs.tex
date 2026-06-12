@@ -24,11 +24,11 @@ Under nonnegative original weights and the edge-indexed active-graph representat
 \subsection{Add-back inclusion minimality}
 
 \begin{proposition}[One-pass heavy-first add-back]
-On an acyclic active graph, processing removed arcs in nonincreasing original-weight order with the stated acceptance rules yields an inclusion-minimal reinsertion set on the current acyclic state.
+On an acyclic active graph, after every candidate removed arc has been processed once and reinserted whenever insertion preserves acyclicity, the remaining removed set is inclusion-minimal in the feedback-arc-set sense: for every remaining removed arc \(e\), restoring \(e\) to the current active DAG creates a directed cycle.
 \end{proposition}
 
 \begin{proof}[Framework lemma]
-Items (1)--(3) follow from the rank and reachability arguments above. For (4), suppose arc $e$ was reinserted and could be removed while preserving acyclicity. Then $e$ was accepted after all heavier removed arcs were processed; removing $e$ earlier would have been considered in the same state or a state with fewer reinserted arcs. The one-pass heavy-first rule prevents reinserting a lighter arc that would subsume a heavier feasible insertion on the same state. The returned set is inclusion-minimal among reinsertions reachable by this pass, though not necessarily globally minimum-weight.
+Items (1)--(3) follow from the rank and reachability arguments above. For (4), suppose arc $e=(u,v)$ remains in the removed set after the pass; then $e$ was rejected during processing, meaning a directed path $v\leadsto u$ existed in the active graph at the time of rejection. Subsequent insertions accepted in the same pass only add arcs to the active graph; adding arcs cannot destroy an existing directed path. Therefore the path $v\leadsto u$ persists after the pass completes, and $e$ cannot be reinserted into the final active graph without creating a cycle. Since every remaining removed arc was rejected for this reason, the remaining removed set is inclusion-minimal. Heavy-first ordering determines which inclusion-minimal set is obtained; it does not affect the validity of inclusion-minimality. The returned set is inclusion-minimal but not necessarily globally minimum-weight.
 \end{proof}
 
 \subsection{IPSNS incumbent protection}

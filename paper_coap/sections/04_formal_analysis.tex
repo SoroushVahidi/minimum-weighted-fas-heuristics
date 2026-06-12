@@ -1,97 +1,52 @@
 \subsection{Supporting correctness properties and complexity}
 \label{subsec:formal-analysis}
 
-This subsection records basic correctness properties supported by the implementation in \texttt{src/mwfas/}. These statements are supporting analysis for algorithm credibility rather than the central theoretical contribution of the paper. Detailed proofs appear in Online Resource~1 (\S S4). Throughout, let \(n=|V|\), \(m=|A|\) after aggregation, and let \(\tau>0\) denote the numerical tolerance used in code (default \(10^{-12}\)). For LR-TA, let \(c\) be the number of Phase~I cycle-reduction iterations and \(r=|F_{\mathrm{LR}}|\) the number of removed arcs processed in Phase~II add-back. For IPSNS, let \(T\) be the iteration budget and \(K\) the top-\(K\) SCC pool size. For a selected SCC \(S\), write \(n_S=|V(S)|\), \(m_S=|A(S)|\), and let \(c_S\) and \(r_S\) denote the numbers of restricted cycle-reduction rounds and restricted add-back candidates inside \(S\) during one destroy-and-repair move.
+The following properties formalize feasibility and monotonicity of the implemented framework; they are supporting guarantees rather than new approximation results. Detailed proofs are deferred to Online Resource~1 (\S S4). Throughout, \(n=|V|\), \(m=|A|\), \(T\) is the IPSNS iteration budget, and for a selected SCC \(S\) we write \(n_S=|V(S)|\) and \(m_S=|A(S)|\).
 
-All bounds below are worst-case upper bounds for the implemented procedures. Practical runtime depends on graph density, SCC structure, the number of detected cycles, how often backward add-back triggers reachability search or topological recomputation, and the configured IPSNS budget.
-
-\begin{proposition}[LR-TA feasibility and termination]
+\begin{proposition}[LR-TA feasibility and progress]
 \label{prop:lrta-feasibility}
-Assume nonnegative original weights and the edge-indexed active-graph representation used in \texttt{local\_ratio\_fas\_fast}. Then LR-TA satisfies the following properties.
-\begin{enumerate}
-    \item \textbf{Cycle reduction progress.} In each Phase~I iteration on a detected directed cycle \(C\), the implementation subtracts \(\varepsilon(C)=\min_{e\in C}W[e]\) from every arc of \(C\). If \(\varepsilon(C)>\tau\), at least one arc on \(C\) reaches weight \(\le\tau\) after the subtraction and is deactivated; if \(\varepsilon(C)\le\tau\), one arc of \(C\) is deactivated directly.
-    \item \textbf{Phase~I termination.} Phase~I executes at most \(m\) iterations, because each iteration deactivates at least one active arc.
-    \item \textbf{Acyclic output of Phase~I.} When Phase~I stops, the active subgraph contains no directed cycle and therefore admits a topological order.
-    \item \textbf{Add-back feasibility.} Phase~II reactivates an arc only by the forward-rank shortcut (Equation~\eqref{eq:lrta-fast-accept}) or after a negative reachability test certifying that reactivation preserves acyclicity; accepted backward restorations trigger recomputation of the topological order before later tests.
-    \item \textbf{Valid ordering.} The final topological order of the active graph together with the remaining removed set defines a feasible feedback arc set under the ordering objective of Section~\ref{sec:problem-definition}.
-\end{enumerate}
+Assume nonnegative original weights and the active-graph representation used in the implementation. Each Phase-I cycle reduction subtracts \(\varepsilon(C)\) from every arc in a detected directed cycle \(C\), so at least one active arc becomes tight and is deactivated. Phase I therefore terminates after finitely many iterations and leaves an acyclic active graph. Phase II restores a removed arc only when the current topological order already places it forward or when a reachability test certifies that restoration preserves acyclicity. The final active graph is acyclic and induces a feasible ordering for the objective of Section~\ref{sec:problem-definition}.
 \end{proposition}
 
-\begin{proposition}[Correctness of one-pass heavy-first add-back]
+\begin{proposition}[One-pass add-back minimality]
 \label{prop:addback-correctness}
-Let \(G'=(V,A')\) be the current active acyclic graph with topological order \(\pi\) and rank function \(\operatorname{rank}_\pi\). For a removed arc \((u,v)\):
-\begin{enumerate}
-    \item If \(\operatorname{rank}_\pi(u)<\operatorname{rank}_\pi(v)\), reactivating \((u,v)\) cannot create a directed cycle in \(G'\).
-    \item If \(\operatorname{rank}_\pi(u)>\operatorname{rank}_\pi(v)\) and there is no directed path \(v\leadsto u\) in \(G'\), then reactivating \((u,v)\) cannot create a directed cycle.
-    \item If a backward arc is reactivated under item (2), recomputing a topological order before subsequent add-back tests preserves the validity of later reachability and rank tests.
-    \item Processing removed arcs in nonincreasing original-weight order yields an inclusion-minimal reinsertion set on the current acyclic active state: no reinserted arc can be removed without changing feasibility, although the returned removed set need not be globally minimum-weight.
-\end{enumerate}
-The same acceptance rules are used in LR-TA Phase~II, WMSF-style add-back passes, and SCC-restricted add-back inside IPSNS.
+Let \(G'=(V,A')\) be the current active acyclic graph with topological order \(\pi\). After every candidate removed arc has been processed once and reinserted whenever insertion preserves acyclicity, the remaining removed set \(F\) is inclusion-minimal in the feedback-arc-set sense:
+\begin{equation}
+    \forall e\in F,\quad G'+e \text{ is cyclic}.
+    \label{eq:addback-minimality}
+\end{equation}
+Equivalently, for every \(e\in F\), restoring \(e\) to \(A'\) creates a directed cycle, or \(A'\cup\{e\}\) is cyclic.
+
+If inserting \(e=(u,v)\) is rejected, a directed path \(v\leadsto u\) already exists in the current active graph. Later accepted insertions only add arcs and cannot destroy that path, so \(e\) cannot become feasible later in the same pass. Heavy-first ordering therefore affects which inclusion-minimal feedback arc set is obtained, not whether inclusion-minimality holds. Inclusion-minimality does not imply minimum weight, and this statement applies to one-pass acyclicity-preserving add-back rather than to WMSF stabilization swaps.
 \end{proposition}
 
-\begin{proposition}[IPSNS feasibility, monotonicity, and budgeted termination]
+\begin{proposition}[IPSNS incumbent non-worsening]
 \label{prop:ipsns-monotonicity}
-Let \(\pi^{(0)}\) be the better of the two internal seeds and let \(\pi^{(t)}\) denote the incumbent ordering after iteration \(t\) of IPSNS. Then:
-\begin{enumerate}
-    \item Every accepted candidate admits a valid global topological order and therefore a feasible ordering.
-    \item If a destroy-and-repair move produces an invalid SCC-local state, or if the repaired global ordering is not acyclic, the implementation reverts to the pre-move incumbent.
-    \item If the repaired candidate is feasible but does not strictly improve backward weight, the incumbent is restored exactly.
-    \item Consequently,
-    \[
-        \operatorname{bw}\!\left(\pi^{(t+1)}\right)\le \operatorname{bw}\!\left(\pi^{(t)}\right)\le \operatorname{bw}\!\left(\pi^{(0)}\right)
-        \qquad \text{for all } t\ge 0.
-    \]
-    \item The outer loop executes at most \(T\) iterations and may stop earlier when every nontrivial SCC has zero backward contribution under the incumbent.
-\end{enumerate}
-This is a monotonicity guarantee on the incumbent sequence, not an approximation-ratio or global-optimality guarantee.
+Let \(\pi^{(0)}\) be the better of the LR-TA and WMSF-style seeds, and let \(\pi^{(t)}\) denote the incumbent after iteration \(t\) of IPSNS. Then every accepted candidate is feasible, every infeasible or non-improving candidate is rolled back exactly, and
+\begin{equation}
+    \operatorname{bw}\!\left(\pi^{(t+1)}\right)\le \operatorname{bw}\!\left(\pi^{(t)}\right)\le \operatorname{bw}\!\left(\pi^{(0)}\right)
+    \qquad \text{for all } t\ge 0.
+    \label{eq:ipsns-monotonicity}
+\end{equation}
+The outer loop executes at most \(T\) iterations and may terminate earlier when every eligible SCC has zero backward contribution.
 \end{proposition}
 
-Proofs of Propositions~\ref{prop:lrta-feasibility}--\ref{prop:ipsns-monotonicity} are deferred to Online Resource~1 and follow directly from the update rules in \texttt{lrta.py}, \texttt{wmsf.py}, and \texttt{ipsns.py}.
+The proof logic is straightforward. LR-TA progresses because each detected cycle reduction tightens at least one active arc. One-pass add-back is valid because rejected arcs remain blocked by an already existing reverse path. IPSNS is monotone because every failed or non-improving move is rolled back exactly before the next iteration.
 
-\paragraph{LR-TA time complexity.}
-Phase~I performs at most \(m\) iterations. Each iteration calls iterative DFS cycle detection \texttt{find\_any\_cycle\_eids}, which scans adjacency lists and touches each active edge only a constant number of times per search in the worst case, giving cost \(O(n+m)\) per iteration and
+\paragraph{Complexity summary.}
+The implementation uses sparse edge-indexed storage, so space usage is \(O(n+m)\). LR-TA Phase I performs repeated cycle detection in the active graph and Phase II performs one-pass add-back, giving the conservative bound
 \begin{equation}
-O\!\big(m(n+m)\big)
-\label{eq:lrta-phase1-complexity}
+    O\!\big(m(n+m)\big) + O\!\big(r\log r + r(n+m)\big),
+    \label{eq:lrta-complexity}
 \end{equation}
-overall for Phase~I. Phase~II sorts at most \(r\) removed arcs in \(O(r\log r)\), then processes each removed arc once. A forward-rank acceptance is \(O(1)\); a backward candidate may trigger one pruned reachability test and, if accepted, one topological recomputation, each costing \(O(n+m)\) in the worst case. Phase~II therefore costs
+where \(r\) is the number of removed arcs examined in add-back. The WMSF-style seed first decomposes the graph into SCCs and then performs ordered removals, add-back, and stabilization inside each nontrivial SCC, yielding the conservative aggregate bound
 \begin{equation}
-O\!\big(r\log r + r(n+m)\big).
-\label{eq:lrta-phase2-complexity}
+    O\!\left(n+m + \sum_{S}\big(m_S\log m_S + r_S(n_S+m_S)\big)\right),
+    \label{eq:wmsf-complexity}
 \end{equation}
-In practice, forward shortcuts and rank-bounded reachability often reduce the number of full traversals.
-
-\paragraph{WMSF-style seed time complexity.}
-The seed first computes SCCs by Kosaraju in \(O(n+m)\). For each nontrivial SCC with \(k\) vertices and \(m_S\) internal arcs, the pipeline \texttt{removeArcs} \(\rightarrow\) \texttt{MinimizeFas} \(\rightarrow\) \texttt{StabilizeFas} \(\rightarrow\) \texttt{MinimizeFas} performs:
-\begin{itemize}
-    \item arc sorting and ordered deletion in \(O(m_S\log m_S)\), with periodic acyclicity checks each costing up to \(O(k+m_S)\);
-    \item two heavy-first add-back passes with the same structure as LR-TA Phase~II on the SCC, hence up to \(O(r_S\log r_S + r_S(k+m_S))\) per pass;
-    \item up to \(O(\log k)\) stabilization passes, each scanning vertices in a topological order and touching incident arcs.
-\end{itemize}
-Summing over all nontrivial SCCs yields a conservative bound of
+with \(r_S\) the number of add-back candidates processed in SCC \(S\). One IPSNS iteration scores SCCs in \(O(m)\), selects one SCC, performs SCC-restricted destroy-and-repair, and then recomputes the global objective, so a conservative per-iteration bound is
 \begin{equation}
-O\!\left(n+m + \sum_{S}\big(m_S\log m_S + r_S(k+m_S) + \log(k)\,m_S\big)\right),
-\label{eq:wmsf-complexity}
+    O\!\left(m + s\log s + c_S(n_S+m_S) + r_S\log r_S + r_S(n_S+m_S)\right),
+    \label{eq:ipsns-iter-complexity}
 \end{equation}
-with the understanding that \(|S|\) here denotes the vertex set of SCC \(S\). When the entire graph is one nontrivial SCC, the implementation optionally runs both \(L1\) and \(L2\) orderings and keeps the better seed, doubling seed cost in that case only.
-
-\paragraph{IPSNS initialization.}
-Initialization builds both seeds, evaluates their backward weights by scanning all \(m\) arcs once, and computes SCCs and SCC edge lists in \(O(n+m)\). The cost is therefore the sum of one LR-TA run, one full WMSF-style seed run, and \(O(m)\) objective evaluation.
-
-\paragraph{IPSNS per-iteration cost.}
-One iteration scores every nontrivial SCC by scanning its internal arcs against the current rank vector, costing \(O(m)\) overall. Selecting a SCC from the top-\(K\) positive contributors adds \(O(s\log s)\) sorting, where \(s\) is the number of eligible SCCs, plus \(O(K)\) weighted sampling. On the chosen SCC \(S\), the destroy step touches only internal arcs; restricted cycle reduction performs at most \(c_S\) cycle searches and deactivations within \(S\), each costing \(O(n_S+m_S)\) in the worst case; restricted add-back sorts at most \(r_S\) candidates and may perform up to \(r_S\) reachability tests and topological recomputations on the SCC subgraph. The iteration finishes with one global topological sort and one full backward-weight scan, each \(O(n+m)\). A conservative per-iteration bound is therefore
-\begin{equation}
-O\!\left(m + s\log s + c_S(n_S+m_S) + r_S\log r_S + r_S(n_S+m_S)\right).
-\label{eq:ipsns-iter-complexity}
-\end{equation}
-
-\paragraph{Total IPSNS cost.}
-Let \(T'\le T\) be the number of executed iterations. Then
-\begin{equation}
-O\!\Big(\text{seed costs} + T'\big(m + s\log s\big) + \sum_{t=1}^{T'} \big(c_{S_t}(n_{S_t}+m_{S_t}) + r_{S_t}\log r_{S_t} + r_{S_t}(n_{S_t}+m_{S_t})\big)\Big),
-\label{eq:ipsns-total-complexity}
-\end{equation}
-where \(S_t\) is the SCC selected at iteration \(t\). This expression is intentionally conservative: SCC-local operations are not always cheaper than global ones, and large selected SCCs can dominate runtime.
-
-\paragraph{Space complexity.}
-All three components store the graph in sparse edge-indexed form: endpoint arrays, original and mutable weights where needed, activity flags, and outgoing adjacency lists, requiring \(O(n+m)\) space. Temporary DFS, reachability, and topological-sort structures also use \(O(n)\) or \(O(n+m)\) scratch memory. IPSNS additionally stores incumbent snapshots of the activity vector and removed-edge set, still within \(O(n+m)\) overall for the global state; SCC-local repair uses temporary allowed-node and allowed-edge masks of size \(O(n+m)\) but does not materialize dense matrices.
+where \(s\) is the number of eligible SCCs and \(c_S\) is the number of restricted cycle-reduction rounds. These are conservative implementation-level bounds; practical runtime depends strongly on SCC structure, density, and the selected iteration budget.

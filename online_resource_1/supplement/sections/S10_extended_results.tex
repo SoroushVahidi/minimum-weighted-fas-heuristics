@@ -11,7 +11,7 @@ Committed summaries supporting the main manuscript tables:
 Claim & Source file \\
 \midrule
 96/97 IPSNS best (sparse) & \texttt{results/exp4/summary/exp4\_external\_stats.json} \\
-21.61\% DRMacIver mean excess & same \\
+21.61\% IPSNS mean reduction relative to DRMacIver/FAS & same \\
 56/57 exact matches & \texttt{results/exp3/summary/exp3\_exact\_stats.json} \\
 0 incumbent violations (105) & \texttt{results/exp1/summary/exp1b\_core\_benchmark\_stats.json} \\
 5.9\% add-back ablation & \texttt{results/exp2/summary/exp2\_ablation\_stats.json} \\
@@ -22,3 +22,42 @@ HiGHS 7/15 optimal & \texttt{results/exp8/summary/exp8\_mip\_summary.json} \\
 \end{table}
 
 Full per-instance CSV tables: \texttt{results/combined/tables/}, \texttt{results/exp4/summary/exp4\_raw\_summary.csv}, and experiment-specific \texttt{tables/} directories. Regenerate via \texttt{scripts/reproduce\_principal\_tables.sh}.
+
+\subsection{Material condensed from the main manuscript}
+
+The revised main paper keeps only the claim-bearing tables needed for the IPSNS-centered sparse narrative. The following supporting items are therefore documented here.
+
+\begin{itemize}
+  \item \textbf{EXP4 paired sparse tests:} full win/tie/loss and paired-test summaries for IPSNS against all baselines remain in \texttt{results/exp4/tables/} and the manuscript table source \texttt{paper\_coap/tables/table\_paired\_sparse\_tests.tex}.
+  \item \textbf{EXP6 budget study:} the full quality-versus-budget table and curve are retained in \texttt{paper\_coap/tables/table\_ipsns\_budget\_curve.tex} and the corresponding figure assets; source summaries are in \texttt{results/exp6/summary/}.
+  \item \textbf{EXP7 local-search controls:} detailed adjacent-swap and insertion-local-search comparisons remain in \texttt{paper\_coap/tables/table\_plain\_local\_search.tex} and \texttt{results/exp7/summary/}.
+  \item \textbf{EXP8 medium MIP details:} per-instance certification outcomes remain in \texttt{results/exp8/summary/exp8\_mip\_summary.json}; the compact manuscript table source is \texttt{paper\_coap/tables/table\_medium\_mip\_baseline.tex}.
+  \item \textbf{EXP9 application example:} the public ordering example remains in \texttt{paper\_coap/tables/table\_application\_case.tex} with supporting summaries in \texttt{results/exp9/summary/}.
+  \item \textbf{EXP11 extraction sensitivity:} the full calibration table remains in Section~\ref{sec:or1-exp11}.
+  \item \textbf{Structural diagnostics:} sparse-versus-dense density and SCC summaries remain in \texttt{paper\_coap/tables/table\_structural\_diagnostic.tex} and the associated summary files.
+\end{itemize}
+
+\paragraph{Rows moved from the compact main-paper tables.}
+The compact ablation table in the manuscript omits the secondary control ``IPSNS, no SCC priority'', whose archived values are mean BW \(4239.1\), relative change \(-0.76\%\), and mean runtime \(5.727\) s on the 10-instance subset. The compact LOLIB table also omits family-level detail: IPSNS versus DRMacIver/FAS best counts are \(1/25\) versus \(24/25\) on SGB, \(4/10\) versus \(6/10\) on IO, and \(0/15\) versus \(15/15\) on RandA1, with mean BW pairs \(1{,}048{,}056 / 1{,}036{,}085\), \(36{,}996 / 32{,}860\), and \(169{,}755 / 156{,}909\), respectively.
+
+\begin{table}[h]
+\centering\small
+\caption{Ablation table moved from the main paper. Relative change is measured against LR-TA.}
+\begin{tabular}{lrrr}
+\toprule
+Variant & Mean BW & Relative change & Mean RT (s) \\
+\midrule
+LR without add-back & 4525.1 & +5.94\% & 0.017 \\
+LR-TA & 4271.5 & +0.00\% & 0.047 \\
+WMSF seed & 4332.5 & +1.43\% & 0.040 \\
+Best seed, no refinement & 4271.5 & +0.00\% & 0.069 \\
+IPSNS, 50 iterations & 4239.2 & -0.76\% & 0.778 \\
+IPSNS, 400 iterations (default) & 4239.2 & -0.76\% & 5.734 \\
+IPSNS, no SCC priority & 4239.1 & -0.76\% & 5.727 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Holdout-supported defaults}
+
+The IPSNS default settings reported in the main paper are supported by the archived holdout study under \texttt{experiments/coap\_ipsns\_holdout/}. The study contains 18 tuning instances, 25 holdout instances, six configurations, and five seeds per configuration-instance pair (1290 completed runs). The committed aggregate summary records zero incumbent violations and identical holdout median final BW across the tested configurations, so the defaults are treated as engineering choices rather than as uniquely optimal tuned parameters.
