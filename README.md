@@ -1,5 +1,18 @@
 # Minimum Weighted Feedback Arc Set Heuristics
 
+## Current COAP manuscript
+
+[Download the latest manuscript PDF](paper_coap/submission/final_upload/Vahidi_COAP_Manuscript.pdf?raw=1)
+
+Title: *IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs*
+
+Canonical manuscript source: `paper_coap/`  
+Active Online Resource 1: `online_resource_1/Online_Resource_1.pdf`  
+Current submission status: `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md`  
+Historical submission and audit directories under `docs/` are archival only and are not active upload materials.
+
+---
+
 Reproducible implementation and experiments for the **minimum weighted feedback arc set (MWFAS)** problem on **sparse nonnegative weighted digraphs**.
 
 **Primary contribution:** IPSNS (incumbent-protected SCC neighborhood search) — an SCC-local destroy-and-repair heuristic integrated with LR-TA and WMSF-style seeds. LR-TA and WMSF-style seeding inherit prior work (Demetrescu–Finocchi lineage; Cavallaro–Cutello pipeline); IPSNS is the new integrated framework.

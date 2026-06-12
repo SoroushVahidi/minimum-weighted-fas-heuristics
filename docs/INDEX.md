@@ -8,6 +8,7 @@
 | [`CANONICAL_SOURCE_MAP.md`](CANONICAL_SOURCE_MAP.md) | Where canonical code, manuscript, and artifacts live |
 | [`EXPERIMENT_REGISTRY.csv`](EXPERIMENT_REGISTRY.csv) | EXP1b–EXP11 + COAP studies status |
 | [`MANUSCRIPT_AND_ARTIFACT_STATUS.md`](MANUSCRIPT_AND_ARTIFACT_STATUS.md) | Submission files and builds |
+| [`EXP3_EXACT_GAP_VALIDATION.md`](EXP3_EXACT_GAP_VALIDATION.md) | Exact-validation `0.0006%` reconciliation |
 | [`../paper_coap/submission/final_upload/README.txt`](../paper_coap/submission/final_upload/README.txt) | COAP portal upload bundle |
 | [`final_coap_adversarial_audit_20260612/FINAL_SUBMISSION_VERDICT.md`](final_coap_adversarial_audit_20260612/FINAL_SUBMISSION_VERDICT.md) | Pre-submission readiness |
 | [`full_branch_repository_audit_20260612/EXECUTIVE_SUMMARY.md`](full_branch_repository_audit_20260612/EXECUTIVE_SUMMARY.md) | Full repo reconciliation |
