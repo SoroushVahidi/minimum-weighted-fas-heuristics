@@ -35,6 +35,6 @@ Backup source package: available but not recommended for initial upload unless r
 
 1. SNCS cover letter and related-manuscripts statement must be drafted using the wording in the overlap audit.
 2. A human author must review the full manuscript (not just the sections touched in this pass) for SNCS fit before upload.
-3. Pass 2 must add modern FAS/MWFAS references and related-work/baseline-selection paragraphs before actual SNCS submission.
+3. Pass 2B manuscript edits have addressed the rejection-risk audit findings; the next step is Pass 2C human review and final submission-readiness checking before actual SNCS submission.
 
 This bundle exists to validate that the manuscript, source, and Online Resource 1 build and package correctly. Recommended initial upload: PDF only. Keep `Vahidi_SNCS_Source.zip` as backup unless the portal explicitly requires LaTeX source files.

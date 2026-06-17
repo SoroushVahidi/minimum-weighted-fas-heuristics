@@ -1,7 +1,7 @@
 \section{Proposed methodology}
 \label{sec:algorithmic-framework}
 
-The framework has three components: two attributed constructive seeds and one refinement layer. IPSNS is the central method. LR-TA and the WMSF-style routine are included because they provide complementary feasible starting points and because the IPSNS incumbent-protection guarantee is interpreted relative to the better of those two seeds. Online Resource~1 provides a compact framework schematic.
+The framework has three components: two attributed constructive seeds and one refinement layer. IPSNS is the central method. LR-TA and the WMSF-style routine are included because they provide complementary feasible starting points and because the IPSNS incumbent-protection guarantee is interpreted relative to the better of those two seeds. The same reported IPSNS defaults are used across benchmark instances once selected by holdout; repeated runs differ only through the explicit random seed used in SCC selection. Online Resource~1 provides a compact framework schematic.
 
 All methods operate on the aggregated weighted digraph of Section~\ref{sec:problem-definition} and optimize backward weight.
 
@@ -44,25 +44,25 @@ Algorithm~\ref{alg:lrta} summarizes LR-TA.
 \end{algorithmic}
 \end{algorithm}
 
-The important point for the rest of the paper is that LR-TA delivers a feasible ordering together with a recorded removed set and a strong heavy-first repair stage. Extended implementation commentary, tolerance details, and proof expansions are deferred to Online Resource~1.
+The important point for the rest of the paper is that LR-TA delivers a feasible ordering together with a recorded removed set and a strong heavy-first repair stage. The essential main-text behavior is therefore self-contained: cycle reduction is performed on the active sparse graph, followed by one heavy-first add-back pass under fixed deterministic tie-breaking. Extended implementation commentary, tolerance details, and proof expansions are deferred to Online Resource~1.
 
 \subsection{WMSF-style seed construction}
 \label{subsec:wmsf}
 
 The second seed is an adapted implementation of the weighted minimal/stable feedback arc set line of Cavallaro and Cutello \cite{CC25}. It is carried as a complementary seed, not as a separate novel claim. The routine decomposes the graph into SCCs, processes each nontrivial SCC independently, removes arcs according to either an \(L1\) or \(L2\) weight-based ordering, then applies heavy-first add-back, stabilization, and a second add-back pass. When the full graph is one nontrivial SCC, both \(L1\) and \(L2\) are tried and the better ordering is retained.
 
-This seed provides a different bias from LR-TA: LR-TA is driven by cycle reduction in an active sparse graph, whereas the WMSF-style seed is driven by ordered removals and subsequent minimization/stabilization. Taking the better of the two before refinement therefore gives IPSNS a stronger incumbent than either seed alone. Step-by-step propagation details and source-to-code mapping appear in Online Resource~1.
+This seed provides a different bias from LR-TA: LR-TA is driven by cycle reduction in an active sparse graph, whereas the WMSF-style seed is driven by SCC-wise ordered removals and subsequent minimization/stabilization. Taking the better of the two before refinement therefore gives IPSNS a stronger incumbent than either seed alone. Step-by-step propagation details and source-to-code mapping appear in Online Resource~1.
 
 \subsection{Incumbent-protected SCC-neighborhood search}
 \label{subsec:ipsns}
 
 IPSNS is the primary contribution of the paper. Standard ingredients such as SCC decomposition, rollback, add-back, or destroy-and-repair are not claimed as new in isolation. What is new is their integration for sparse weighted MWFAS: fixed original-graph SCC neighborhoods, contribution-based SCC scoring, weighted top-\(K\) selection, two-sided perturbation, SCC-restricted local-ratio repair, SCC-restricted heavy-first add-back, and strict incumbent protection.
 
-IPSNS first computes the two seeds and chooses the better ordering as the initial incumbent. At each iteration, it scores each nontrivial original-graph SCC by the backward weight currently contributed by internal arcs under the incumbent order. Only SCCs with positive contribution are eligible. One SCC is then sampled from the top-\(K\) eligible SCCs using score-proportional random choice.
+IPSNS first computes the two seeds and chooses the better ordering as the initial incumbent. At each iteration, it scores each nontrivial original-graph SCC by the backward weight currently contributed by internal arcs under the incumbent order. Only SCCs with positive contribution are eligible, so the neighborhoods considered for repair are restricted to cyclic SCCs rather than the whole graph. One SCC is then sampled from the top-\(K\) eligible SCCs using score-proportional random choice.
 
 Within the selected SCC, IPSNS executes a destroy-and-repair move. The destroy stage temporarily reactivates a heavy fraction of currently removed internal arcs and removes a light fraction of currently active internal arcs. The repair stage reruns local-ratio cycle reduction and one-pass heavy-first add-back only on the chosen SCC neighborhood, with original weights restored on that neighborhood. All edits outside the neighborhood remain fixed.
 
-The candidate is accepted only if it induces a valid global ordering and strictly decreases backward weight. Otherwise the pre-move state is restored exactly. IPSNS therefore never returns a worse solution than the better seed from which it started. IPSNS is stochastic through score-weighted SCC selection from the top-\(K\) positive-score SCCs. Conditional on the selected SCC and current state, the heavy-add-back and light-removal prefixes are deterministic under the specified tie-breaking rules: removed internal arcs are sorted by descending weight and a prefix of length \(k_{\mathrm{add}}=\lfloor f_{\mathrm{add}}|F_{\cap}|\rfloor\) is reactivated; active internal arcs are sorted by ascending weight and a prefix of length \(k_{\mathrm{rem}}=\lfloor f_{\mathrm{rem}}|A_{\cap}|\rfloor\) is removed. For small SCCs one or both counts may be zero. The method is reproducible for fixed input, parameter settings, and seed.
+The candidate is accepted only if it induces a valid global ordering and strictly decreases backward weight. Otherwise the pre-move state is restored exactly. IPSNS therefore never returns a worse solution than the better seed from which it started. IPSNS is stochastic through score-weighted SCC selection from the top-\(K\) positive-score SCCs. Conditional on the selected SCC and current state, the heavy-add-back and light-removal prefixes are deterministic under the specified tie-breaking rules: removed internal arcs are sorted by descending weight and a prefix of length \(k_{\mathrm{add}}=\lfloor f_{\mathrm{add}}|F_{\cap}|\rfloor\) is reactivated; active internal arcs are sorted by ascending weight and a prefix of length \(k_{\mathrm{rem}}=\lfloor f_{\mathrm{rem}}|A_{\cap}|\rfloor\) is removed. For small SCCs one or both counts may be zero. The method is reproducible for fixed input, fixed parameter settings, and fixed seed.
 
 Algorithm~\ref{alg:ipsns} summarizes the driver.
 
@@ -97,6 +97,6 @@ Algorithm~\ref{alg:ipsns} summarizes the driver.
 \end{algorithmic}
 \end{algorithm}
 
-The parameterization is interpreted conservatively in this paper. Reported defaults are holdout-supported engineering choices, not claims of universal optimality. Full parameter grids, additional implementation commentary, and supplementary controls are deferred to Online Resource~1.
+The parameterization is interpreted conservatively in this paper. Reported defaults are holdout-supported engineering choices, not claims of universal optimality. The defaults in Table~\ref{tab:ipsns-parameters} are fixed across benchmark instances once selected; no instance-specific tuning is introduced in the reported comparisons. Full parameter grids, additional implementation commentary, and supplementary controls are deferred to Online Resource~1.
 
 \input{sections/04_formal_analysis}
