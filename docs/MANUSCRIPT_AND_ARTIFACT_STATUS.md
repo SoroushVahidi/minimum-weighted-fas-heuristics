@@ -8,9 +8,11 @@
 | Target | Status | Source | Notes |
 |---|---|---|---|
 | **Computational Optimization and Applications (COAP)** | **Declined / closed** — submitted and rejected on audience/fit grounds | `paper_coap/` | Historical snapshot only; not under consideration anywhere |
-| **SN Computer Science (SNCS)** | **Active target.** First retargeting draft, **not submission-ready** | `paper_sncs/` (branch `sncs-retargeting`) | See `docs/sncs_preparation_202606/SUBMISSION_PACKAGE_STATUS.md` |
+| **SN Computer Science (SNCS)** | **READY FOR HUMAN REVIEW BEFORE SNCS SUBMISSION** — active target, not yet ready for final journal upload | `paper_sncs/` (branch `sncs-retargeting`) | See `docs/sncs_preparation_202606/SUBMISSION_PACKAGE_STATUS.md` |
 
-**Author decision recorded:** COAP is closed after rejection. SN Computer Science is the active target for the revised IPSNS sparse-digraph manuscript. The SNCS manuscript must not be submitted until the pending Journal of Supercomputing overlap check is completed; see `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for the full disclosure analysis.
+**Author decision recorded:** COAP is closed after rejection. SN Computer Science is the active target for the revised IPSNS sparse-digraph manuscript.
+
+**Author confirmation recorded:** the Journal of Supercomputing manuscript concerning learning-free ranking from pairwise comparisons via feedback-arc-set pruning and add-back is related but distinct and is not a substantial overlap concern for the present SN Computer Science manuscript. The local workspace did not contain the Supercomputing PDF/source, so no text-level comparison was performed; however, the author has confirmed that the SNCS manuscript is a distinct sparse-digraph SCC-local refinement study and that no substantially overlapping manuscript is currently under consideration elsewhere. See `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for the full disclosure analysis.
 
 ## COAP version (`paper_coap/`, branch `main`)
 
@@ -71,14 +73,14 @@ One-file upload copy: `/home/soroush/COAP_initial_submission/Vahidi_COAP_Manuscr
 
 ### Submission status
 
-**Active target. Not yet submission-ready.** First retargeting pass only: title, structured abstract, keywords, introduction framing, related-work framing, and declarations were adapted for SN Computer Science; problem definition through conclusion are still byte-identical to `paper_coap/`. See `docs/sncs_preparation_202606/CHANGELOG_SNCS_PASS1.md` for the itemized diff and `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for the one remaining blocking item (the Journal of Supercomputing overlap audit, currently blocked because that manuscript could not be located in the repository or local workspace) that must be resolved by the author before any portal upload.
+**READY FOR HUMAN REVIEW BEFORE SNCS SUBMISSION.** First retargeting pass only: title, structured abstract, keywords, introduction framing, related-work framing, and declarations were adapted for SN Computer Science; problem definition through conclusion are still byte-identical to `paper_coap/`. See `docs/sncs_preparation_202606/CHANGELOG_SNCS_PASS1.md` for the itemized diff and `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for the full overlap analysis. The COAP-status and Journal of Supercomputing overlap items are both resolved (the latter by author confirmation, not by text-level comparison — the manuscript file remains unavailable locally). This is not yet ready for final journal upload. The remaining task before actual submission is Pass 2: modern FAS/MWFAS references and related-work/baseline-selection paragraphs.
 
 ### Canonical artifacts
 
 | Artifact | Path | Pages / size |
 |---|---|---|
-| Manuscript PDF | `paper_sncs/main.pdf` | 25 pages, 203,596 bytes |
-| Manuscript SHA-256 | `bcb8f30106f08f7e5eba791a5d5c585353e0062c3b16829a18b4bfed510bbe49` | (rebuilt 2026-06-17 after the COAP-status declaration correction; supersedes the pre-correction hash) |
+| Manuscript PDF | `paper_sncs/main.pdf` | 25 pages, 202,453 bytes |
+| Manuscript SHA-256 | `92301e20a4f8018f378aa1139fa376d998a3924157a8146e8080976c0ed364ab` | (rebuilt 2026-06-17 after the finalized declaration cleanup and bundle refresh in this continuation pass) |
 | Abstract | 246 words, structured (Purpose/Methods/Results/Conclusion), SNCS 150–250 guideline | |
 
 Checksums: `paper_sncs/submission/sncs_initial/MANIFEST.sha256`

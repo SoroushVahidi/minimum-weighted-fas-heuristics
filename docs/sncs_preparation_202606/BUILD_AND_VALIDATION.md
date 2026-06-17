@@ -93,3 +93,22 @@ Result: **succeeded**, exit code 0. `main.pdf` written, 203,596 bytes (was 203,0
 `git diff --check`: exit code 0, no whitespace errors. `git status --short` confirmed only the documentation files and the declarations/manuscript files described in this correction were touched; no changes to `paper_coap/`, `src/`, `tests/`, `scripts/`, `experiments/`, or `online_resource_1/`.
 
 The `paper_sncs/submission/sncs_initial/` bundle was refreshed to match: `Vahidi_SNCS_Manuscript.pdf` recopied from the new `main.pdf`; `Vahidi_SNCS_Source.zip` rebuilt (now also includes `template_reference/`, which the pass-1 zip omitted — this matches the packaging convention already used in the canonical COAP source zip, `paper_coap/submission/final_upload/Vahidi_COAP_Manuscript_Source.zip`, and is a packaging-completeness fix, not a scientific or textual content change); `MANIFEST.sha256` regenerated for all four bundle files.
+
+## Final cleanup continuation rebuild (same day, 2026-06-17)
+
+The active SNCS status and upload-compliance documents were updated to reflect the author's explicit confirmation that the related Journal of Supercomputing manuscript is distinct and not a substantial overlap concern, and to record the Editorial Manager PDF-first initial-upload plan. Because `paper_sncs/declarations/statements_and_declarations.tex` is part of the working-tree delta for this pass, the manuscript was rebuilt again in this continuation run via:
+
+```
+cd paper_sncs && latexmk -pdf main.tex
+```
+
+Result: **succeeded**, exit code 0. `main.pdf` written, 202,453 bytes, SHA-256 `92301e20a4f8018f378aa1139fa376d998a3924157a8146e8080976c0ed364ab`. Page count remained **25 pages**. The usual non-fatal underfull/overfull box warnings were present; no compile errors occurred.
+
+The `paper_sncs/submission/sncs_initial/` bundle was refreshed again to match: `Vahidi_SNCS_Manuscript.pdf` recopied from `main.pdf`; `Vahidi_SNCS_Source.zip` rebuilt as the backup source package; and `MANIFEST.sha256` regenerated. The refreshed bundle hashes are:
+
+- `Vahidi_SNCS_Manuscript.pdf`: `92301e20a4f8018f378aa1139fa376d998a3924157a8146e8080976c0ed364ab`
+- `Vahidi_SNCS_Source.zip`: `a870626d77105cf6168760058665733a8485cc751fcd8aad917130893acacf51`
+- `Vahidi_SNCS_Online_Resource_1.pdf`: `3b90f21cd1d2e922fd3d3ee40b613e0a3b17d9590e5ca4eb2134a23a3aded922`
+- `Vahidi_SNCS_Online_Resource_1.zip`: `0c4ef12d03266c65b2ef63d4c9f8c69f2348054e696c37065062b85bc2a248db`
+
+Editorial Manager guidance added in this continuation run: recommended initial upload is `Vahidi_SNCS_Manuscript.pdf` only; `Vahidi_SNCS_Source.zip` remains a backup package unless the portal explicitly requires LaTeX source files, in which case a separate flattened source package must be prepared later.

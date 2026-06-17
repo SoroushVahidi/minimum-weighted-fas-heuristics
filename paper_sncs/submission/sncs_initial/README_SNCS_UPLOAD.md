@@ -1,6 +1,6 @@
-# SN Computer Science Upload Bundle — Pass 1 (Draft, Not Submission-Ready)
+# SN Computer Science Upload Bundle — Pass 1 (READY FOR HUMAN REVIEW BEFORE SNCS SUBMISSION)
 
-**Status:** working draft prepared during the first SNCS retargeting pass (2026-06-17). See `docs/sncs_preparation_202606/SUBMISSION_PACKAGE_STATUS.md` for the full pass status and `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for the disclosure analysis that must be resolved before this bundle is actually uploaded to the SN Computer Science portal.
+**Status:** working draft prepared during the first SNCS retargeting pass (2026-06-17). See `docs/sncs_preparation_202606/SUBMISSION_PACKAGE_STATUS.md` for the full pass status and `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for the disclosure analysis. This bundle is ready for human review before SN Computer Science submission, but it is not yet ready for final journal upload.
 
 ## Contents
 
@@ -14,16 +14,27 @@
 
 Verify SHA-256 against `MANIFEST.sha256` before any upload.
 
+## Editorial Manager initial-upload plan
+
+For the initial SN Computer Science submission, upload `Vahidi_SNCS_Manuscript.pdf` as the main Manuscript file. The portal indicates that a single manuscript file is required as the minimum for first submissions and that authors may submit only a PDF at this stage.
+
+Do not upload `Vahidi_SNCS_Source.zip` as the main manuscript unless the portal requires LaTeX source files. Keep the source ZIP as backup for human review and later production.
+
+If full LaTeX source upload becomes necessary, prepare a separate flattened source package with all `.tex`, `.bib`, `.bst`, `.cls`, `.sty`, and figure files at the same folder level, with no subfolders. The main manuscript TeX file must be the first item and declared as Manuscript. TeX support/style files should be declared as LaTeX Supporting File(s), and figures should be uploaded as figure files. Do not use custom fonts, `.ps`, or `.dvi` files. Since this project uses pdfLaTeX/Springer Nature `sn-jnl`, do not add a XeLaTeX directive unless the manuscript is actually converted to XeLaTeX.
+
+Recommended initial upload: PDF only.
+
+Backup source package: available but not recommended for initial upload unless required.
+
 ## Deliberately not included in this pass
 
 - **SNCS cover letter** — not yet drafted. A COAP cover letter exists at `paper_coap/submission/cover_letter.tex` but is COAP-specific and must not be reused verbatim. See `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` §6b for the recommended disclosure paragraph to include once drafted.
-- **SNCS related-manuscripts statement** — not yet drafted, for the same reason; see the same audit document §6a/§6b for the required wording once the author has resolved the two open items in §6c (COAP real-world submission status; the unverified Journal of Supercomputing manuscript).
+- **SNCS related-manuscripts statement** — not yet drafted; see `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` §6a/§6b for the required wording.
 
-## Blocking items before this bundle can be uploaded for real
+## Remaining items before actual SNCS submission
 
-1. Author must confirm whether the COAP version has actually been submitted via Editorial Manager, and ensure only one of COAP/SNCS is under active consideration at a time (see overlap audit §5–6).
-2. Author must supply or rule out the Journal of Supercomputing manuscript referenced in the task that requested this pass; it could not be located anywhere in this repository (see overlap audit §2).
-3. SNCS cover letter and related-manuscripts statement must be drafted using the wording in the overlap audit.
-4. A human author must review the full manuscript (not just the sections touched in this pass) for SNCS fit before upload.
+1. SNCS cover letter and related-manuscripts statement must be drafted using the wording in the overlap audit.
+2. A human author must review the full manuscript (not just the sections touched in this pass) for SNCS fit before upload.
+3. Pass 2 must add modern FAS/MWFAS references and related-work/baseline-selection paragraphs before actual SNCS submission.
 
-This bundle exists to validate that the manuscript, source, and Online Resource 1 build and package correctly — not to certify submission readiness.
+This bundle exists to validate that the manuscript, source, and Online Resource 1 build and package correctly. Recommended initial upload: PDF only. Keep `Vahidi_SNCS_Source.zip` as backup unless the portal explicitly requires LaTeX source files.

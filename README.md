@@ -2,12 +2,16 @@
 
 ## Manuscript targets (active target: SN Computer Science — see status doc before acting on either)
 
-**Active target: SN Computer Science (SNCS). Historical target: Computational Optimization and Applications (COAP). COAP status: declined / closed.** The COAP version was formally submitted to *Computational Optimization and Applications* and was declined on journal-audience/fit grounds; `paper_coap/` is retained as a historical submission snapshot, not an active target. The SN Computer Science version retargets the same scientific contribution for a broader computer-science algorithms audience. Full status, artifact paths, and the remaining open disclosure item: `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md`.
+**Active target: SN Computer Science (SNCS). Historical target: Computational Optimization and Applications (COAP). COAP status: declined / closed.** The COAP version was formally submitted to *Computational Optimization and Applications* and was declined on journal-audience/fit grounds; `paper_coap/` is retained as a historical submission snapshot, not an active target. The SN Computer Science version retargets the same scientific contribution for a broader computer-science algorithms audience. Full status and artifact paths: `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md`.
+
+**Author decision recorded:** COAP is closed after rejection. SN Computer Science is the active target for the revised IPSNS sparse-digraph manuscript.
+
+**Author confirmation recorded:** the Journal of Supercomputing manuscript concerning learning-free ranking from pairwise comparisons via feedback-arc-set pruning and add-back is related but distinct and is not a substantial overlap concern for the present SN Computer Science manuscript. The local workspace did not contain the Supercomputing PDF/source, so no text-level comparison was performed; however, the author confirms that the SNCS manuscript is a distinct sparse-digraph SCC-local refinement study and that no substantially overlapping manuscript is currently under consideration elsewhere.
 
 | Target | Status | Source |
 |---|---|---|
 | Computational Optimization and Applications (COAP) | **Declined / closed** (historical submission snapshot) | `paper_coap/` (branch `main`) |
-| SN Computer Science (SNCS) | **Active target** — retargeting draft, not yet submission-ready (pending Journal of Supercomputing overlap audit) | `paper_sncs/` (branch `sncs-retargeting`) |
+| SN Computer Science (SNCS) | **READY FOR HUMAN REVIEW BEFORE SNCS SUBMISSION** — active target, not yet ready for final journal upload | `paper_sncs/` (branch `sncs-retargeting`) |
 
 [Download the COAP manuscript PDF](paper_coap/submission/final_upload/Vahidi_COAP_Manuscript.pdf?raw=1) — Title: *IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs* (historical, declined submission)
 
@@ -121,7 +125,7 @@ See [`experiments/README.md`](experiments/README.md) and [`docs/EXPERIMENT_REGIS
 
 ## Manuscript and submission
 
-See `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md` for the full status and the remaining open disclosure item.
+See `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md` for the full status.
 
 - **COAP manuscript (historical, declined):** `paper_coap/main.pdf`; upload files in `paper_coap/submission/final_upload/` (see `MANIFEST.sha256`)
 - **SNCS manuscript (active target, draft, branch `sncs-retargeting`):** `paper_sncs/main.pdf`; upload files in `paper_sncs/submission/sncs_initial/` (see `MANIFEST.sha256`)
