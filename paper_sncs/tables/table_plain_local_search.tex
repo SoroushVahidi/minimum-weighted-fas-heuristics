@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\centering
+\footnotesize
+\caption{Generic order-local improvement versus IPSNS on the 18 nonnegative
+instances of the EXP7 representative sparse subset (peterson1 and peterson2 are
+excluded due to negative arc weights).
+Adj-swap LS and insertion LS are seeded from LR-TA; best-seed insertion LS
+uses the better of LR-TA and WMSF as the starting point.
+W\,/\,T\,/\,L counts are against the 400-iteration IPSNS result from EXP4.}
+\label{tab:plain_local_search}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Method & Mean BW & Mean RT (s) & W\,/\,T\,/\,L vs LR-TA & W\,/\,T\,/\,L vs IPSNS \\
+\midrule
+\textit{LR-TA (seed)} & 97,185 & --- & --- & --- \\
+\textit{IPSNS (EXP4 full)} & 94,127 & --- & --- & --- \\
+Adj-swap LS from LR-TA & 97,185 & 0.026 & 0 / 18 / 0 & 0 / 11 / 7 \\
+Insertion LS from LR-TA & 95,779 & 0.234 & 4 / 14 / 0 & 1 / 12 / 5 \\
+Insertion LS from best seed & 95,617 & 0.383 & 7 / 11 / 0 & 1 / 14 / 3 \\
+\bottomrule
+\end{tabular}
+\vspace{3pt}
+{\footnotesize
+Adj-swap LS stops at local optimum (max 20 passes); insertion LS stops at local
+optimum, 200 accepted moves, or 60\,s per instance.
+Both seeded methods ran from LR-TA for comparability with IPSNS's starting seed.
+Negative-weight instances (peterson1, peterson2) are excluded from this table.}
+\end{table}

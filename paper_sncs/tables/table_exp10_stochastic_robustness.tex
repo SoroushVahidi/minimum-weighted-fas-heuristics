@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Repeated-run comparison on the 93-instance common sparse subset. Each method was run 20 times per instance; outcomes use per-instance median backward weight (BW) with tie tolerance \(10^{-9}\). Comparator-normalized reduction uses \((\mathrm{DR}-\mathrm{IPSNS})/\mathrm{DR}\times 100\) on paired medians with \(\mathrm{DR}>0\).}
+\label{tab:exp10-stochastic-robustness}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.8cm}rrrr>{\raggedright\arraybackslash}X@{}}
+\toprule
+Comparison & W/T/L & Nonzero \(n\) & Mean red.\ (\%) & Median red.\ (\%) & Tests \\
+\midrule
+IPSNS vs.\ DRMacIver/FAS & 38/55/0 & 38 & 21.60 & 0.0 & Wilcoxon \(W=0\), \(p<0.001\); sign test \(p<0.001\) \\
+\bottomrule
+\end{tabularx}
+\par\vspace{2pt}\parbox{\linewidth}{\footnotesize
+Two-sided tests compare paired per-instance median differences (IPSNS minus DRMacIver/FAS) on the 93 common instances using SciPy 1.17.1 \texttt{scipy.stats.wilcoxon} with \texttt{alternative="two-sided"}, \texttt{zero\_method="wilcox"}, and default \texttt{method="auto"}; the sign test excludes ties from the win/loss count.
+Cohen's \(d_z=-0.31\); 95\% bootstrap CI for the mean paired BW difference is \([-41{,}787,-10{,}718]\).
+DRMacIver/FAS shows more than one distinct BW value on 40 of 93 instances across 20 runs; IPSNS shows one distinct BW value on all 93 instances under the fixed configuration.}
+\end{table}

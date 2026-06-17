@@ -1,0 +1,102 @@
+\section{Proposed methodology}
+\label{sec:algorithmic-framework}
+
+The framework has three components: two attributed constructive seeds and one refinement layer. IPSNS is the central method. LR-TA and the WMSF-style routine are included because they provide complementary feasible starting points and because the IPSNS incumbent-protection guarantee is interpreted relative to the better of those two seeds. Online Resource~1 provides a compact framework schematic.
+
+All methods operate on the aggregated weighted digraph of Section~\ref{sec:problem-definition} and optimize backward weight.
+
+\subsection{Local-ratio topological add-back}
+\label{subsec:lrta}
+
+LR-TA is an engineered seed derived from the directed local-ratio lineage of \cite{DF03} and from earlier author work \cite{VahidiKoutis2024arxiv}. It is not presented as a new approximation result. Its role in the present paper is to provide a strong sparse-graph seed whose output can later be improved, or preserved, by IPSNS.
+
+Phase I repeatedly finds any directed cycle in the active graph and subtracts the minimum residual weight on that cycle from every arc in the cycle. Let \(W(e)\) denote the mutable residual weight of active arc \(e\) and \(W_0(e)\) the original aggregated weight. If \(C\) is the detected cycle, the reduction amount is
+\begin{equation}
+    \varepsilon(C)=\min_{e\in C} W(e).
+    \label{eq:lrta-epsilon}
+\end{equation}
+At least one arc becomes tight and is removed from the active graph. Phase I ends when the active graph is acyclic.
+
+Phase II performs one-pass heavy-first add-back. Removed arcs are processed in nonincreasing order of original weight. A removed arc is restored immediately if the current topological order already places it forward; otherwise it is restored only when a reachability test shows that reinsertion preserves acyclicity. Backward restorations trigger topological recomputation before later tests. The extracted topological order is deterministic under the chosen implementation rule, but it remains only one linear extension of the final DAG.
+
+Algorithm~\ref{alg:lrta} summarizes LR-TA.
+
+\begin{algorithm}[t]
+\caption{LR-TA seed construction}
+\label{alg:lrta}
+\footnotesize
+\begin{algorithmic}[1]
+\Require Weighted digraph \(G=(V,A,w)\) with \(w\ge 0\)
+\Ensure Ordering \(\pi_{\mathrm{LR}}\), removed-edge set \(F_{\mathrm{LR}}\)
+\State \(F_{\mathrm{LR}} \gets \emptyset\)
+\While{the active graph contains a directed cycle \(C\)}
+    \State \(\varepsilon \gets \min_{e\in C} W[e]\)
+    \State Subtract \(\varepsilon\) on \(C\); deactivate every newly tight active arc and add it to \(F_{\mathrm{LR}}\)
+\EndWhile
+\State Compute deterministic topological order \(\pi\) of the active graph
+\ForAll{\(e=(u,v)\in F_{\mathrm{LR}}\) in nonincreasing order of \(W_0[e]\)}
+    \If{\(\operatorname{rank}_{\pi}(u) < \operatorname{rank}_{\pi}(v)\) or \(v \not\leadsto u\) in the current active graph}
+        \State reactivate \(e\); remove \(e\) from \(F_{\mathrm{LR}}\)
+        \State recompute \(\pi\) if the accepted arc is backward under the previous order
+    \EndIf
+\EndFor
+\State \Return \(\pi_{\mathrm{LR}}, F_{\mathrm{LR}}\)
+\end{algorithmic}
+\end{algorithm}
+
+The important point for the rest of the paper is that LR-TA delivers a feasible ordering together with a recorded removed set and a strong heavy-first repair stage. Extended implementation commentary, tolerance details, and proof expansions are deferred to Online Resource~1.
+
+\subsection{WMSF-style seed construction}
+\label{subsec:wmsf}
+
+The second seed is an adapted implementation of the weighted minimal/stable feedback arc set line of Cavallaro and Cutello \cite{CC25}. It is carried as a complementary seed, not as a separate novel claim. The routine decomposes the graph into SCCs, processes each nontrivial SCC independently, removes arcs according to either an \(L1\) or \(L2\) weight-based ordering, then applies heavy-first add-back, stabilization, and a second add-back pass. When the full graph is one nontrivial SCC, both \(L1\) and \(L2\) are tried and the better ordering is retained.
+
+This seed provides a different bias from LR-TA: LR-TA is driven by cycle reduction in an active sparse graph, whereas the WMSF-style seed is driven by ordered removals and subsequent minimization/stabilization. Taking the better of the two before refinement therefore gives IPSNS a stronger incumbent than either seed alone. Step-by-step propagation details and source-to-code mapping appear in Online Resource~1.
+
+\subsection{Incumbent-protected SCC-neighborhood search}
+\label{subsec:ipsns}
+
+IPSNS is the primary contribution of the paper. Standard ingredients such as SCC decomposition, rollback, add-back, or destroy-and-repair are not claimed as new in isolation. What is new is their integration for sparse weighted MWFAS: fixed original-graph SCC neighborhoods, contribution-based SCC scoring, weighted top-\(K\) selection, two-sided perturbation, SCC-restricted local-ratio repair, SCC-restricted heavy-first add-back, and strict incumbent protection.
+
+IPSNS first computes the two seeds and chooses the better ordering as the initial incumbent. At each iteration, it scores each nontrivial original-graph SCC by the backward weight currently contributed by internal arcs under the incumbent order. Only SCCs with positive contribution are eligible. One SCC is then sampled from the top-\(K\) eligible SCCs using score-proportional random choice.
+
+Within the selected SCC, IPSNS executes a destroy-and-repair move. The destroy stage temporarily reactivates a heavy fraction of currently removed internal arcs and removes a light fraction of currently active internal arcs. The repair stage reruns local-ratio cycle reduction and one-pass heavy-first add-back only on the chosen SCC neighborhood, with original weights restored on that neighborhood. All edits outside the neighborhood remain fixed.
+
+The candidate is accepted only if it induces a valid global ordering and strictly decreases backward weight. Otherwise the pre-move state is restored exactly. IPSNS therefore never returns a worse solution than the better seed from which it started. IPSNS is stochastic through score-weighted SCC selection from the top-\(K\) positive-score SCCs. Conditional on the selected SCC and current state, the heavy-add-back and light-removal prefixes are deterministic under the specified tie-breaking rules: removed internal arcs are sorted by descending weight and a prefix of length \(k_{\mathrm{add}}=\lfloor f_{\mathrm{add}}|F_{\cap}|\rfloor\) is reactivated; active internal arcs are sorted by ascending weight and a prefix of length \(k_{\mathrm{rem}}=\lfloor f_{\mathrm{rem}}|A_{\cap}|\rfloor\) is removed. For small SCCs one or both counts may be zero. The method is reproducible for fixed input, parameter settings, and seed.
+
+Algorithm~\ref{alg:ipsns} summarizes the driver.
+
+\begin{algorithm}[t]
+\caption{IPSNS with incumbent protection}
+\label{alg:ipsns}
+\footnotesize
+\begin{algorithmic}[1]
+\Require Weighted digraph \(G=(V,A,w)\), iteration budget \(T\)
+\Ensure Ordering \(\pi^\star\) with objective no worse than the best internal seed
+\State Build WMSF-style seed \(\pi_{\mathrm{W}}\) and LR-TA seed \(\pi_{\mathrm{LR}}\)
+\State \(\pi^\star \gets \arg\min\{\operatorname{bw}(\pi_{\mathrm{W}}),\operatorname{bw}(\pi_{\mathrm{LR}})\}\)
+\For{\(t=1,\dots,T\)}
+    \State Score each nontrivial SCC by its current backward contribution
+    \If{all SCC scores are zero}
+        \State \textbf{break}
+    \EndIf
+    \State Sample one SCC from the top-\(K\) positive-score SCCs using weighted random choice
+    \State Save the current SCC state; reactivate heavy removed edges; remove light active edges
+    \State Apply SCC-restricted local-ratio repair and heavy-first add-back
+    \If{the candidate SCC state is invalid}
+        \State restore saved SCC state; \textbf{continue}
+    \EndIf
+    \State Recompute the global ordering and candidate objective
+    \If{the candidate objective is smaller than \(\operatorname{bw}(\pi^\star)\)}
+        \State accept the candidate and update \(\pi^\star\)
+    \Else
+        \State restore the previous incumbent exactly
+    \EndIf
+\EndFor
+\State \Return \(\pi^\star\)
+\end{algorithmic}
+\end{algorithm}
+
+The parameterization is interpreted conservatively in this paper. Reported defaults are holdout-supported engineering choices, not claims of universal optimality. Full parameter grids, additional implementation commentary, and supplementary controls are deferred to Online Resource~1.
+
+\input{sections/04_formal_analysis}

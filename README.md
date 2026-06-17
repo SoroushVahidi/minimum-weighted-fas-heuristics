@@ -1,14 +1,17 @@
 # Minimum Weighted Feedback Arc Set Heuristics
 
-## Current COAP manuscript
+## Manuscript targets (two in progress — see status doc before acting on either)
 
-[Download the latest manuscript PDF](paper_coap/submission/final_upload/Vahidi_COAP_Manuscript.pdf?raw=1)
+This repository currently carries two parallel manuscript drafts for the same algorithm and experiments. Full status, artifact paths, and the open disclosure item between them: `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md`.
 
-Title: *IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs*
+| Target | Status | Source |
+|---|---|---|
+| Computational Optimization and Applications (COAP) | Prepared, not yet submitted through the journal portal | `paper_coap/` (branch `main`) |
+| SN Computer Science (SNCS) | First retargeting draft, not submission-ready | `paper_sncs/` (branch `sncs-retargeting`) |
 
-Canonical manuscript source: `paper_coap/`  
-Active Online Resource 1: `online_resource_1/Online_Resource_1.pdf`  
-Current submission status: `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md`  
+[Download the COAP manuscript PDF](paper_coap/submission/final_upload/Vahidi_COAP_Manuscript.pdf?raw=1) — Title: *IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs*
+
+Active Online Resource 1: `online_resource_1/Online_Resource_1.pdf`
 Historical submission and audit directories under `docs/` are archival only and are not active upload materials.
 
 ---
@@ -17,9 +20,7 @@ Reproducible implementation and experiments for the **minimum weighted feedback 
 
 **Primary contribution:** IPSNS (incumbent-protected SCC neighborhood search) — an SCC-local destroy-and-repair heuristic integrated with LR-TA and WMSF-style seeds. LR-TA and WMSF-style seeding inherit prior work (Demetrescu–Finocchi lineage; Cavallaro–Cutello pipeline); IPSNS is the new integrated framework.
 
-A manuscript has been **prepared for submission** to *Computational Optimization and Applications* (COAP). See `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md`.
-
-> Repository is **private** during submission preparation. Online Resource 1 is the supplementary reproducibility artifact.
+> Repository is **public**. Online Resource 1 is the supplementary reproducibility artifact, shared by both manuscript targets.
 
 ---
 
@@ -39,9 +40,10 @@ A manuscript has been **prepared for submission** to *Computational Optimization
 | `tests/` | Pytest suite (91 collected) |
 | `scripts/` | CLI runners |
 | `experiments/` | EXP1b–EXP11 + COAP sensitivity/holdout |
-| `paper_coap/` | **COAP manuscript** (23 pages) |
+| `paper_coap/` | **COAP manuscript** (24 pages) |
 | `paper_coap/submission/final_upload/` | **Portal upload bundle** (6 files) |
-| `online_resource_1/` | Online Resource 1 source + validation |
+| `paper_sncs/` | **SNCS manuscript draft** (25 pages, branch `sncs-retargeting`, not submission-ready) |
+| `online_resource_1/` | Online Resource 1 source + validation (shared by both manuscript targets) |
 | `docs/INDEX.md` | Documentation navigation |
 | `docs/archive/` | Historical EJCO packages and legacy `paper/` tree |
 
@@ -119,9 +121,11 @@ See [`experiments/README.md`](experiments/README.md) and [`docs/EXPERIMENT_REGIS
 
 ## Manuscript and submission
 
-- **Manuscript:** `paper_coap/main.pdf`
-- **Upload files:** `paper_coap/submission/final_upload/` (see `MANIFEST.sha256`)
-- **Online Resource 1:** `Vahidi_Online_Resource_1_MWFAS.pdf` / `.zip` (mirrors `final_upload/`)
+See `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md` for the full dual-target status and the open disclosure item between the two targets.
+
+- **COAP manuscript:** `paper_coap/main.pdf`; upload files in `paper_coap/submission/final_upload/` (see `MANIFEST.sha256`)
+- **SNCS manuscript (draft, branch `sncs-retargeting`):** `paper_sncs/main.pdf`; upload files in `paper_sncs/submission/sncs_initial/` (see `MANIFEST.sha256`)
+- **Online Resource 1:** `online_resource_1/Online_Resource_1.pdf` / canonical ZIP in `paper_coap/submission/final_upload/Vahidi_Online_Resource_1_MWFAS.zip` (shared by both manuscripts; the loose root-level `Vahidi_Online_Resource_1_MWFAS.pdf`/`.zip` copies are a stale duplicate flagged in the status doc)
 
 ---
 

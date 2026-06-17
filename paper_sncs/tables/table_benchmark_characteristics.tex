@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Benchmark structural characteristics. Density is \(m/[n(n{-}1)]\) for directed simple graphs after parallel-arc aggregation. Sparse statistics use the 97 standard nonnegative \texttt{graph-benchmarks} instances; LOLIB statistics use the 50-instance transfer subset (25 SGB, 10 IO, 15 RandA1).}
+\label{tab:benchmark-characteristics}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+Characteristic & Sparse standard benchmark & Dense LOLIB transfer \\
+\midrule
+Instances & 97 & 50 \\
+\(n\) range / median & 1--24,255 / 10 & 50--150 / 94 \\
+\(m\) range / median & 1--34,876 / 21 & complete pairwise orderings \\
+Density median (Q1--Q3) & 0.114 (0.003--0.583) & \(\approx 1\) (complete order) \\
+DAG fraction & 4/97 & 0/50 \\
+Largest-SCC fraction (median) & 0.64 & 0.99 \\
+Nontrivial SCC count (median) & 11 & 1 \\
+Fraction in nontrivial SCCs (median) & 0.78 & 0.99 \\
+Input structure & sparse general digraphs with localized cyclic structure & complete weighted ordering instances with globally coupled pairwise structure \\
+\bottomrule
+\end{tabularx}
+\end{table}

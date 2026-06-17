@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{IPSNS engineering defaults verified from \texttt{src/mwfas/ipsns.py}. These are holdout-supported defaults, not claims of universal optimality.}
+\label{tab:ipsns-parameters}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.6cm}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+Parameter & Default & Role \\
+\midrule
+Iteration budget \(T\) & 400 & outer destroy-and-repair iterations \\
+Top-\(K\) SCC pool & 15 & score-weighted SCC candidate pool \\
+Destroy add-back fraction & 0.30 & heavy removed internal arcs reactivated \\
+Destroy removal fraction & 0.02 & light active internal arcs removed \\
+Numerical tolerance \(\tau\) & \(10^{-12}\) & tight-weight deactivation threshold \\
+Seed policy & better of LR-TA and WMSF & initial incumbent selection \\
+SCC-selection mode & weighted top-\(K\) & score-proportional random SCC choice \\
+\bottomrule
+\end{tabularx}
+\end{table}
