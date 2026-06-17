@@ -79,3 +79,17 @@ Confirms only the following are modified or newly added: `README.md` (modified),
 ## Conclusion
 
 The SNCS manuscript builds cleanly, all test suites pass at their documented baselines, the artifact validation gate passes, and no scope leakage outside `paper_sncs/` and the two documentation files occurred.
+
+## Rebuild after COAP-status correction (same day, 2026-06-17)
+
+`paper_sncs/declarations/statements_and_declarations.tex` was edited to correct the "Related manuscripts and prior author work" subsection (COAP disclosed as submitted-and-declined rather than "may be submitted concurrently"; Journal of Supercomputing manuscript disclosed as pending). Rebuilt via:
+
+```
+cd paper_sncs && latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+```
+
+Result: **succeeded**, exit code 0. `main.pdf` written, 203,596 bytes (was 203,032), SHA-256 `bcb8f30106f08f7e5eba791a5d5c585353e0062c3b16829a18b4bfed510bbe49` (was `26f314fba0f757a53cbd5c04b578e87352323534a292060bbdcd973a244f3efa`). Page count unchanged at **25 pages**. Only the usual underfull/overfull box warnings, no compile errors or undefined references.
+
+`git diff --check`: exit code 0, no whitespace errors. `git status --short` confirmed only the documentation files and the declarations/manuscript files described in this correction were touched; no changes to `paper_coap/`, `src/`, `tests/`, `scripts/`, `experiments/`, or `online_resource_1/`.
+
+The `paper_sncs/submission/sncs_initial/` bundle was refreshed to match: `Vahidi_SNCS_Manuscript.pdf` recopied from the new `main.pdf`; `Vahidi_SNCS_Source.zip` rebuilt (now also includes `template_reference/`, which the pass-1 zip omitted — this matches the packaging convention already used in the canonical COAP source zip, `paper_coap/submission/final_upload/Vahidi_COAP_Manuscript_Source.zip`, and is a packaging-completeness fix, not a scientific or textual content change); `MANIFEST.sha256` regenerated for all four bundle files.

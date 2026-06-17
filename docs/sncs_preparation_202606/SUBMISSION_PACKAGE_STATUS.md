@@ -1,7 +1,9 @@
 # SNCS Submission Package Status — Pass 1
 
-**Date:** 2026-06-17
+**Date:** 2026-06-17 (updated 2026-06-17 following an author correction of COAP's submission status)
 **Branch:** `sncs-retargeting`
+
+**Active target: SN Computer Science. Historical target: Computational Optimization and Applications. COAP status: declined / closed.** **Author decision recorded:** COAP is closed after rejection. SN Computer Science is the active target for the revised IPSNS sparse-digraph manuscript. The SNCS manuscript must not be submitted until the pending Journal of Supercomputing overlap check is completed.
 
 ## What exists after this pass
 
@@ -29,11 +31,11 @@
 
 These are carried over verbatim from `OVERLAP_AND_DISCLOSURE_AUDIT.md` §6c — repeated here because they gate this specific package, not just the audit document:
 
-1. **Author must confirm COAP's real submission status** (submitted / not submitted / withdrawn) and ensure only one of COAP or SNCS is under active consideration at any time. Repository evidence (a blank sign-off block in `paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md`, and a "Pending"/"Not yet submitted" status in `docs/archive/internal/coap_rejection_history_and_revision_plan_20260611/PRIOR_DECISION_AND_REVIEW_REGISTER.csv`) indicates COAP has very likely not yet been formally submitted, but the repository contains no explicit record of a decision between the two targets.
-2. **Author must supply or rule out the Journal of Supercomputing manuscript** named in the task that requested this pass (manuscript ID `OPSE-D-26-00226`, a specific UUID). An exhaustive repository search found no trace of it anywhere — no source file, no PDF, no mention in any audit or status document. This cannot be resolved from repository evidence alone.
-3. SNCS cover letter and related-manuscripts statement must be drafted (using the wording already prepared in the overlap audit) once items 1–2 are resolved.
+1. ~~Author must confirm COAP's real submission status~~ — **Resolved.** Author decision recorded: COAP was formally submitted and declined on journal-audience/fit grounds; the COAP submission is closed and not under consideration anywhere. SN Computer Science is the active target.
+2. **Author must supply the Journal of Supercomputing manuscript.** Its existence is confirmed (per the author's email records; it concerns "Learning-Free Ranking from Pairwise Comparisons via Feedback-Arc-Set Pruning and Add-Back"), but an exhaustive search of this repository and the entire local workspace found no trace of the file itself — no source file, no PDF, no mention in any audit or status document. This cannot be resolved without the author supplying the actual manuscript and **remains blocking.**
+3. SNCS cover letter and related-manuscripts statement must be drafted (using the wording already prepared in the overlap audit) once item 2 is resolved.
 4. A human author review of the full manuscript for SNCS fit, beyond the sections touched in this pass.
 
 ## Verdict for this package
 
-**Builds and validates correctly; not cleared for portal upload.** This bundle exists to prove the manuscript, source, and Online Resource 1 package correctly together — it is a packaging-readiness check, not a submission-readiness certification.
+**Builds and validates correctly; not cleared for portal upload.** This bundle exists to prove the manuscript, source, and Online Resource 1 package correctly together — it is a packaging-readiness check, not a submission-readiness certification. The remaining blocker before submission readiness is item 2 above (Journal of Supercomputing overlap audit blocked by missing manuscript).

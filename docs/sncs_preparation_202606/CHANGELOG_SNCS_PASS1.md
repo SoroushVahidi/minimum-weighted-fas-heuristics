@@ -73,3 +73,11 @@ These were COAP-portal-specific or asserted COAP-specific facts, and were delete
 - `paper_coap/` — byte-for-byte identical (verified via `git status --short paper_coap/` showing no modifications).
 - `src/`, `tests/`, `scripts/`, `experiments/`, `online_resource_1/` — untouched.
 - All verified scientific results (96/97, 14 strict bests, 14/83/0, 56/57 exact matches, 0.0031% mean gap, 38/55/0 vs. DRMacIver/FAS, 21.60% mean reduction, 45/50 dense LOLIB) — unchanged; only surrounding prose and one rounding-precision presentation choice (0.003% → 0.0031%) were touched, and only in `paper_sncs/`.
+
+## Pass 1 correction (same day, 2026-06-17): COAP status corrected to "submitted and declined"
+
+This pass's original COAP-status language (inferring "very likely not yet been formally submitted" from a blank sign-off block and a "Pending" CSV row) was factually wrong and has been corrected per an explicit author statement: **COAP was formally submitted to *Computational Optimization and Applications* and was declined** on journal-audience/fit grounds. `paper_coap/` is now documented as a historical, declined-submission snapshot; SN Computer Science is recorded as the active target.
+
+Files corrected: `README.md`, `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md`, `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md`, `docs/sncs_preparation_202606/SUBMISSION_PACKAGE_STATUS.md`, `docs/sncs_preparation_202606/README.md`, and `paper_sncs/declarations/statements_and_declarations.tex` ("Related manuscripts and prior author work": dropped the now-obsolete "ensure only one is under active consideration" framing in favor of disclosing the prior submission and decline, and added disclosure of the still-unresolved Journal of Supercomputing manuscript). The dated, archival documents under `docs/coap_related_status_resolution_20260612/`, `docs/coap_submission_freeze_20260612/`, and `docs/coap_submission_dry_run_20260612/` were intentionally left untouched as historical snapshots from before the actual submission/decline event.
+
+The Journal of Supercomputing manuscript search was also re-run across the entire local workspace (not just this repository) in this correction pass; it remains unlocated. Its existence is confirmed per the author's email records, but the overlap audit remains blocked pending the author supplying the actual manuscript file.

@@ -1,15 +1,15 @@
 # Minimum Weighted Feedback Arc Set Heuristics
 
-## Manuscript targets (two in progress — see status doc before acting on either)
+## Manuscript targets (active target: SN Computer Science — see status doc before acting on either)
 
-This repository currently carries two parallel manuscript drafts for the same algorithm and experiments. Full status, artifact paths, and the open disclosure item between them: `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md`.
+**Active target: SN Computer Science (SNCS). Historical target: Computational Optimization and Applications (COAP). COAP status: declined / closed.** The COAP version was formally submitted to *Computational Optimization and Applications* and was declined on journal-audience/fit grounds; `paper_coap/` is retained as a historical submission snapshot, not an active target. The SN Computer Science version retargets the same scientific contribution for a broader computer-science algorithms audience. Full status, artifact paths, and the remaining open disclosure item: `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md`.
 
 | Target | Status | Source |
 |---|---|---|
-| Computational Optimization and Applications (COAP) | Prepared, not yet submitted through the journal portal | `paper_coap/` (branch `main`) |
-| SN Computer Science (SNCS) | First retargeting draft, not submission-ready | `paper_sncs/` (branch `sncs-retargeting`) |
+| Computational Optimization and Applications (COAP) | **Declined / closed** (historical submission snapshot) | `paper_coap/` (branch `main`) |
+| SN Computer Science (SNCS) | **Active target** — retargeting draft, not yet submission-ready (pending Journal of Supercomputing overlap audit) | `paper_sncs/` (branch `sncs-retargeting`) |
 
-[Download the COAP manuscript PDF](paper_coap/submission/final_upload/Vahidi_COAP_Manuscript.pdf?raw=1) — Title: *IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs*
+[Download the COAP manuscript PDF](paper_coap/submission/final_upload/Vahidi_COAP_Manuscript.pdf?raw=1) — Title: *IPSNS for Minimum Weighted Feedback Arc Set on Sparse Digraphs* (historical, declined submission)
 
 Active Online Resource 1: `online_resource_1/Online_Resource_1.pdf`
 Historical submission and audit directories under `docs/` are archival only and are not active upload materials.
@@ -121,10 +121,10 @@ See [`experiments/README.md`](experiments/README.md) and [`docs/EXPERIMENT_REGIS
 
 ## Manuscript and submission
 
-See `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md` for the full dual-target status and the open disclosure item between the two targets.
+See `docs/MANUSCRIPT_AND_ARTIFACT_STATUS.md` for the full status and the remaining open disclosure item.
 
-- **COAP manuscript:** `paper_coap/main.pdf`; upload files in `paper_coap/submission/final_upload/` (see `MANIFEST.sha256`)
-- **SNCS manuscript (draft, branch `sncs-retargeting`):** `paper_sncs/main.pdf`; upload files in `paper_sncs/submission/sncs_initial/` (see `MANIFEST.sha256`)
+- **COAP manuscript (historical, declined):** `paper_coap/main.pdf`; upload files in `paper_coap/submission/final_upload/` (see `MANIFEST.sha256`)
+- **SNCS manuscript (active target, draft, branch `sncs-retargeting`):** `paper_sncs/main.pdf`; upload files in `paper_sncs/submission/sncs_initial/` (see `MANIFEST.sha256`)
 - **Online Resource 1:** `online_resource_1/Online_Resource_1.pdf` / canonical ZIP in `paper_coap/submission/final_upload/Vahidi_Online_Resource_1_MWFAS.zip` (shared by both manuscripts; the loose root-level `Vahidi_Online_Resource_1_MWFAS.pdf`/`.zip` copies are a stale duplicate flagged in the status doc)
 
 ---

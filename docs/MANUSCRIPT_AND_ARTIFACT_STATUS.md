@@ -1,16 +1,16 @@
 # Manuscript and Artifact Status
 
 **Repository:** [SoroushVahidi/minimum-weighted-fas-heuristics](https://github.com/SoroushVahidi/minimum-weighted-fas-heuristics) — **public**.
-**Repository branch:** `main` is the COAP-targeted snapshot below; the SNCS retargeting draft lives on branch `sncs-retargeting` (see `docs/sncs_preparation_202606/`) and has not been merged.
+**Repository branch:** `main` holds the historical COAP snapshot below; the active SN Computer Science retargeting draft lives on branch `sncs-retargeting` (see `docs/sncs_preparation_202606/`) and has not been merged.
 
-This repository currently carries **two parallel manuscript targets** describing the same algorithm and experiments:
+**Active target: SN Computer Science. Historical target: Computational Optimization and Applications. COAP status: declined / closed.** The COAP version is retained as a historical submission snapshot: the manuscript was submitted to *Computational Optimization and Applications* and was declined on journal-audience/fit grounds. The current SN Computer Science version retargets the same scientific contribution for a broader computer-science algorithms audience.
 
 | Target | Status | Source | Notes |
 |---|---|---|---|
-| **Computational Optimization and Applications (COAP)** | Prepared, **not yet submitted** through the journal portal (author action pending) | `paper_coap/` | Active/historical depending on author decision — see below |
-| **SN Computer Science (SNCS)** | First retargeting draft, **not submission-ready** | `paper_sncs/` (branch `sncs-retargeting`) | See `docs/sncs_preparation_202606/SUBMISSION_PACKAGE_STATUS.md` |
+| **Computational Optimization and Applications (COAP)** | **Declined / closed** — submitted and rejected on audience/fit grounds | `paper_coap/` | Historical snapshot only; not under consideration anywhere |
+| **SN Computer Science (SNCS)** | **Active target.** First retargeting draft, **not submission-ready** | `paper_sncs/` (branch `sncs-retargeting`) | See `docs/sncs_preparation_202606/SUBMISSION_PACKAGE_STATUS.md` |
 
-**Both targets must not be under active review concurrently.** The author has not yet recorded a decision on which target to pursue first; see `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for the full disclosure analysis. Update this section with that decision before submitting either version.
+**Author decision recorded:** COAP is closed after rejection. SN Computer Science is the active target for the revised IPSNS sparse-digraph manuscript. The SNCS manuscript must not be submitted until the pending Journal of Supercomputing overlap check is completed; see `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for the full disclosure analysis.
 
 ## COAP version (`paper_coap/`, branch `main`)
 
@@ -27,7 +27,7 @@ Historical audit directories under `docs/` are archival only.
 
 ### Submission status
 
-A manuscript has been **prepared for submission** to COAP. Portal submission is an author action; repository evidence (`paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md`, which has a blank sign-off block) indicates it has **not yet been formally submitted**.
+This manuscript was **formally submitted** to COAP and was **declined** on journal-audience/fit grounds. The COAP submission is now closed and is retained here only as a historical snapshot; it is not under consideration anywhere. `paper_coap/submission/AUTHOR_PRE_SUBMISSION_CONFIRMATION.md` predates the submission/decline event and its blank sign-off block should not be read as evidence about current status — it is superseded by this section.
 
 ### Canonical artifacts
 
@@ -71,14 +71,14 @@ One-file upload copy: `/home/soroush/COAP_initial_submission/Vahidi_COAP_Manuscr
 
 ### Submission status
 
-**Not submission-ready.** First retargeting pass only: title, structured abstract, keywords, introduction framing, related-work framing, and declarations were adapted for SN Computer Science; problem definition through conclusion are still byte-identical to `paper_coap/`. See `docs/sncs_preparation_202606/CHANGELOG_SNCS_PASS1.md` for the itemized diff and `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for two blocking disclosure items that must be resolved by the author before any portal upload.
+**Active target. Not yet submission-ready.** First retargeting pass only: title, structured abstract, keywords, introduction framing, related-work framing, and declarations were adapted for SN Computer Science; problem definition through conclusion are still byte-identical to `paper_coap/`. See `docs/sncs_preparation_202606/CHANGELOG_SNCS_PASS1.md` for the itemized diff and `docs/sncs_preparation_202606/OVERLAP_AND_DISCLOSURE_AUDIT.md` for the one remaining blocking item (the Journal of Supercomputing overlap audit, currently blocked because that manuscript could not be located in the repository or local workspace) that must be resolved by the author before any portal upload.
 
 ### Canonical artifacts
 
 | Artifact | Path | Pages / size |
 |---|---|---|
-| Manuscript PDF | `paper_sncs/main.pdf` | 25 pages, 203,032 bytes |
-| Manuscript SHA-256 | `26f314fba0f757a53cbd5c04b578e87352323534a292060bbdcd973a244f3efa` | |
+| Manuscript PDF | `paper_sncs/main.pdf` | 25 pages, 203,596 bytes |
+| Manuscript SHA-256 | `bcb8f30106f08f7e5eba791a5d5c585353e0062c3b16829a18b4bfed510bbe49` | (rebuilt 2026-06-17 after the COAP-status declaration correction; supersedes the pre-correction hash) |
 | Abstract | 246 words, structured (Purpose/Methods/Results/Conclusion), SNCS 150–250 guideline | |
 
 Checksums: `paper_sncs/submission/sncs_initial/MANIFEST.sha256`
