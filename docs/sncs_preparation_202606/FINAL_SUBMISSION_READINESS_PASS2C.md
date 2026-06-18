@@ -35,7 +35,7 @@ The manuscript now reads as a sparse-digraph algorithm-engineering paper with ex
 | Method/parameter self-containedness | P1 | Resolved | `paper_sncs/sections/04_algorithmic_framework.tex:4,47,59-65,100`; `paper_sncs/sections/05_experimental_design.tex:52-58` | None beyond human readability pass |
 | Scope/overclaiming | P1 | Resolved | `paper_sncs/main.tex:62-64`; `paper_sncs/sections/01_introduction.tex:14,24`; `paper_sncs/sections/07_discussion.tex:6,12-19`; `paper_sncs/sections/08_conclusion.tex:6-8` | None |
 | Declarations/submission risk | P1 in practice | Resolved | `paper_sncs/declarations/statements_and_declarations.tex:21-30` | None in manuscript; separate cover-letter drafting remains outside manuscript |
-| Editorial Manager upload compliance | P1 in practice | Resolved for documentation | `paper_sncs/submission/sncs_initial/README_SNCS_UPLOAD.md:17-27,34-40` | If the portal later requires source, prepare a flattened source package then |
+| Editorial Manager upload compliance | P1 in practice | Resolved for documentation | `paper_sncs/submission/sncs_initial/README_SNCS_UPLOAD.md:17-27,34-40` | Backup source ZIP is flattened to exactly one `.tex` file; upload it only if the portal requires LaTeX source |
 
 ## 4. Remaining risks
 
@@ -43,7 +43,7 @@ The remaining risks are limited and do not block a final human read:
 
 - The scientific claim is still intentionally narrow, so some reviewers may still call the refinement “incremental over strong seeds.” The manuscript now addresses that objection directly, but it remains the most likely substantive review pressure point.
 - TIGHT-CUT* remains the most plausible “why not this baseline?” question. The manuscript now explains why it is not included and labels it future work, but a determined reviewer could still ask for it.
-- The current source ZIP is a backup package, not a flattened Editorial Manager source upload. That is documented clearly, but the procedural risk remains if someone uploads it incorrectly.
+- The current source ZIP is a flattened backup package containing exactly one `.tex` file. The procedural risk is now limited to uploading it when PDF-only is sufficient.
 - The upload-bundle README still notes that the cover letter and separate related-manuscripts statement are not yet drafted. That is outside the manuscript itself but still part of overall submission preparation.
 
 ## 5. References and baseline adequacy
@@ -111,7 +111,7 @@ The documented initial-upload recommendation remains:
 - Upload `Vahidi_SNCS_Manuscript.pdf` as the main Manuscript file.
 - Recommended initial upload: **PDF only**.
 - `Vahidi_SNCS_Source.zip` is a **backup package**, not the recommended initial upload.
-- If source upload is later required, prepare a **flattened** source package with no subfolders and upload the main `.tex` first as Manuscript.
+- `Vahidi_SNCS_Source.zip` has been flattened so that it contains exactly one `.tex` file plus the required support files. Upload it only if source files are required.
 
 Evidence: `paper_sncs/submission/sncs_initial/README_SNCS_UPLOAD.md:17-27,40`
 
@@ -135,7 +135,7 @@ Assessment: upload guidance is clear and consistent with the earlier documented 
 Submission-bundle status after refresh:
 
 - `Vahidi_SNCS_Manuscript.pdf` copied from rebuilt `paper_sncs/main.pdf`
-- `Vahidi_SNCS_Source.zip` rebuilt as backup source package
+- `Vahidi_SNCS_Source.zip` rebuilt as a flattened backup source package with exactly one `.tex` file
 - `MANIFEST.sha256` regenerated
 - `sha256sum -c paper_sncs/submission/sncs_initial/MANIFEST.sha256`: all four files **OK**
 

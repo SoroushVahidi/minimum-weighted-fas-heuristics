@@ -13,8 +13,8 @@
 
 | File | Status |
 |---|---|
-| `Vahidi_SNCS_Manuscript.pdf` | Built in this pass from `paper_sncs/main.tex` (25 pages) |
-| `Vahidi_SNCS_Source.zip` | Built in this pass — zip of `paper_sncs/` excluding `main.pdf`, the `sncs_initial/` output directory itself, and LaTeX build artifacts (59 files) |
+| `Vahidi_SNCS_Manuscript.pdf` | Built from `paper_sncs/main.tex` (27 pages) |
+| `Vahidi_SNCS_Source.zip` | Flattened backup LaTeX source package containing exactly one `.tex` file plus required support files |
 | `Vahidi_SNCS_Online_Resource_1.pdf` | Copied unchanged from the frozen, hash-verified COAP bundle (`paper_coap/submission/final_upload/Vahidi_Online_Resource_1_MWFAS.pdf`) — content is venue-agnostic |
 | `Vahidi_SNCS_Online_Resource_1.zip` | Copied unchanged from the same frozen COAP bundle |
 | `MANIFEST.sha256` | Generated in this pass |
@@ -43,9 +43,8 @@ These are carried over verbatim from `OVERLAP_AND_DISCLOSURE_AUDIT.md` §6c — 
 
 For the initial SN Computer Science submission, upload `Vahidi_SNCS_Manuscript.pdf` as the main Manuscript file. The portal indicates that a single manuscript file is required as the minimum for first submissions and that authors may submit only a PDF at this stage.
 
-Do not upload `Vahidi_SNCS_Source.zip` as the main manuscript unless the portal requires LaTeX source files. Keep the source ZIP as backup for human review and later production.
-
-If full LaTeX source upload becomes necessary, prepare a separate flattened source package with all `.tex`, `.bib`, `.bst`, `.cls`, `.sty`, and figure files at the same folder level, with no subfolders. The main manuscript TeX file must be the first item and declared as Manuscript. TeX support/style files should be declared as LaTeX Supporting File(s), and figures should be uploaded as figure files. Do not use custom fonts, `.ps`, or `.dvi` files. Since this project uses pdfLaTeX/Springer Nature `sn-jnl`, do not add a XeLaTeX directive unless the manuscript is actually converted to XeLaTeX.
+The initial recommended upload remains PDF-only: upload `Vahidi_SNCS_Manuscript.pdf` as the main Manuscript file.
+`Vahidi_SNCS_Source.zip` is a backup source package. It has been flattened so that it contains exactly one `.tex` file, plus required bibliography/style/class/figure support files. Upload it only if Editorial Manager requires LaTeX source files.
 
 Recommended initial upload: PDF only.
 

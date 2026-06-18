@@ -85,4 +85,4 @@ An earlier version of this manuscript was submitted to Computational Optimizatio
 
 ## Editorial Manager note
 
-For initial submission, upload the PDF manuscript as the main Manuscript file. Do not upload the source ZIP unless the portal explicitly requires LaTeX source. If source upload becomes required, prepare a separate flattened no-subfolder LaTeX package.
+For initial submission, upload the PDF manuscript as the main Manuscript file. `Vahidi_SNCS_Source.zip` is backup only unless the portal explicitly requires LaTeX source. The backup ZIP has been flattened so that it contains exactly one `.tex` file plus the required support files.

@@ -32,4 +32,4 @@ Use this checklist while reading `paper_sncs/submission/sncs_initial/Vahidi_SNCS
 
 - Initial Editorial Manager upload should be the PDF manuscript only.
 - Do not upload the current source ZIP as the main manuscript.
-- If the portal later requires LaTeX source, prepare a separate flattened no-subfolder package first.
+- `Vahidi_SNCS_Source.zip` is already flattened to exactly one `.tex` file; upload it only if the portal requires LaTeX source.
