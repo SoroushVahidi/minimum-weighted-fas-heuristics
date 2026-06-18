@@ -18,8 +18,8 @@ Verify SHA-256 against `MANIFEST.sha256` before any upload.
 
 For the initial SN Computer Science submission, upload `Vahidi_SNCS_Manuscript.pdf` as the main Manuscript file. The portal indicates that a single manuscript file is required as the minimum for first submissions and that authors may submit only a PDF at this stage.
 
-The initial recommended upload remains PDF-only: upload `Vahidi_SNCS_Manuscript.pdf` as the main Manuscript file.
-`Vahidi_SNCS_Source.zip` is a backup source package. It has been flattened so that it contains exactly one `.tex` file, plus required bibliography/style/class/figure support files. Upload it only if Editorial Manager requires LaTeX source files.
+Recommended initial upload: upload `Vahidi_SNCS_Manuscript.pdf` as the main Manuscript file.
+`Vahidi_SNCS_Source.zip` is a backup LaTeX source package. It contains exactly one `.tex` file, `Vahidi_SNCS_Main.tex`, plus required bibliography/style/class/figure support files. Upload it only if Editorial Manager requests LaTeX source files.
 
 Recommended initial upload: PDF only.
 
