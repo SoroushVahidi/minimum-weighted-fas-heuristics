@@ -1,22 +1,23 @@
 \begin{table}[t]
 \centering
-\footnotesize
+\scriptsize
 \caption{Methods compared in the main sparse and supporting studies. Software provenance, wrapper behavior, and reproducibility details appear in Online Resource~1 (\S S5, S9).}
 \label{tab:baseline-provenance}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}X@{}}
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{1.85cm}>{\raggedright\arraybackslash}p{1.4cm}>{\raggedright\arraybackslash}p{3.05cm}>{\raggedright\arraybackslash}p{2.05cm}X@{}}
 \toprule
 Method & Role & Origin & Problem model & Execution behavior \\
 \midrule
 LR-TA & internal seed & \cite{DF03,VahidiKoutis2024arxiv} & sparse FAS / ordering & deterministic for fixed input and tie-breaking \\
 WMSF-style seed & internal seed & adapted from \cite{CC25,CCP24} & sparse FAS & deterministic for fixed input \\
-IPSNS & proposed method & this study & sparse FAS refinement & stochastic through score-weighted SCC selection; deterministic destroy/repair prefixes conditional on the selected SCC \\
+IPSNS & proposed method & this study & sparse FAS refinement & \parbox[t]{5.2cm}{stochastic through score-weighted SCC selection; deterministic\\destroy/repair prefixes conditional on the selected SCC} \\
 Borda / net score & calibration & \cite{CFR10} & ordering score rule & deterministic \\
 Weighted Eades adaptation & adaptation & adapted from \cite{ELS93,EL95} & sparse ordering heuristic & deterministic \\
 Random multistart & calibration & standard multistart & ordering heuristic & stochastic \\
 igraph Eades & external baseline & \cite{python_igraph_feedback_arc_set} & graph-library FAS heuristic & deterministic as evaluated \\
-DRMacIver/FAS & external baseline & \cite{drmaciver_feedback_arc_set} & matrix ordering & evaluated executable shows run-to-run variation under internal initialization \\
+DRMacIver/FAS & external baseline & \cite{drmaciver_feedback_arc_set} & matrix ordering & \parbox[t]{5.2cm}{evaluated executable shows run-to-run variation\\under internal initialization} \\
 Exact DP & exact validator & repository implementation & sparse FAS, \(n\le 20\) & deterministic \\
-HiGHS MIP & exact validator & \cite{HuangfuHall2018} via \texttt{scipy.optimize.milp} & sparse-digraph MIP & deterministic under fixed settings \\
+HiGHS MIP & exact validator & \parbox[t]{3.05cm}{SciPy milp\\HiGHS \cite{HuangfuHall2018}} & sparse MIP & deterministic \\
 \bottomrule
 \end{tabularx}
 \end{table}
