@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Dense LOLIB transfer study on 50 complete weighted ordering instances (\(n=94\) median; complete pairwise structure). Lower BW is better. Best counts every method attaining the minimum observed BW, with ties credited to all tied methods.}
+\label{tab:lolib-scope}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X r r r@{}}
+\toprule
+Method & Mean BW & Best & Mean runtime (s) \\
+\midrule
+DRMacIver/FAS & 571,687 & 45/50 & 1.01 \\
+IPSNS (ours) & 582,354 & 5/50 & 37.92 \\
+LR-TA (ours) & 582,948 & 2/50 & 0.22 \\
+WMSF seed & 585,926 & 1/50 & 0.19 \\
+igraph Eades & 659,570 & 0/50 & 0.01 \\
+Weighted Eades & 675,235 & 0/50 & 0.01 \\
+Random multistart & 883,664 & 0/50 & 0.02 \\
+Borda net score & 1,066,045 & 0/50 & 0.00 \\
+\bottomrule
+\end{tabularx}
+\end{table}

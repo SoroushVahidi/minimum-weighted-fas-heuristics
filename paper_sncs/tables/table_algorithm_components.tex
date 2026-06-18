@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering
+\caption{Algorithm components and their roles in the framework.}
+\label{tab:algorithm-components}
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{3.8cm} >{\raggedright\arraybackslash}p{5.8cm}}
+\toprule
+Component & Primary mechanism & Role in this paper \\
+\midrule
+LR-TA & Global local-ratio cycle reduction followed by heavy-first add-back & Refined inherited seed from \cite{DF03,VahidiKoutis2024arxiv}; engineered sparse-graph implementation \\
+WMSF-style seed & Weighted removeArcs--minimize--stabilize pipeline & Engineered implementation variant of \cite{CC25}; complementary constructive seed \\
+IPSNS & SCC-local destroy-and-repair with incumbent protection & Primary new integrated heuristic in this manuscript \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,84 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,shapes.geometric}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage{microtype}
+\usepackage{etoolbox}
+
+\makeatletter
+% Clean ORCID presentation on the title page.
+\gdef\orcid#1{}
+\patchcmd{\@maketitle}{Corresponding author(s). E-mail(s):}{Corresponding author:}{}{}
+\def\email#1{%
+  \global\advance\emailcnt by 1\relax
+  \if@corauemail
+    \g@addto@macro\corrauthemail{\texttt{#1}}%
+  \else
+    \g@addto@macro\authemail{\texttt{#1}}%
+  \fi
+}
+\makeatother
+
+\raggedbottom
+\setlength{\textfloatsep}{10pt plus 2pt minus 4pt}
+\setlength{\floatsep}{8pt plus 2pt minus 3pt}
+\setlength{\intextsep}{10pt plus 2pt minus 4pt}
+\setlength{\abovecaptionskip}{6pt}
+\setlength{\belowcaptionskip}{0pt}
+\setlength{\abovedisplayskip}{8pt plus 2pt minus 4pt}
+\setlength{\belowdisplayskip}{8pt plus 2pt minus 4pt}
+
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%
+\newtheorem{proposition}[theorem]{Proposition}%
+
+\begin{document}
+
+\title[Component-Local Heuristic for MWFAS]{An Incumbent-Protected Component-Local Heuristic for Minimum Weighted Feedback Arc Set on Sparse Digraphs}
+
+\author*[1]{\fnm{Soroush} \sur{Vahidi}}\email{sv96@njit.edu}
+
+\affil*[1]{\orgdiv{Department of Computer Science}, \orgname{New Jersey Institute of Technology}, \orgaddress{\city{Newark, NJ 07102, USA}}\\[4pt]
+\small ORCID: \href{https://orcid.org/0000-0003-1934-6282}{0000-0003-1934-6282}}
+
+\abstract{%
+\textbf{Purpose:} The minimum weighted feedback arc set problem seeks a minimum-weight arc set whose removal makes a directed graph acyclic, equivalently a vertex ordering of minimum backward-arc weight. It is NP-hard and arises in precedence aggregation, scheduling, and ranking from directed evidence. We target sparse nonnegative weighted digraphs, where exact methods do not scale broadly and dense ordering heuristics are not always well aligned.
+
+\textbf{Methods:} We propose an incumbent-protected, component-local destroy-and-repair heuristic. It scores strongly connected components (SCCs) by backward-weight contribution, perturbs a randomly selected component neighborhood, repairs it with local-ratio reduction and heavy-first add-back, and accepts only strict global improvements. We refer to this refinement method as incumbent-protected SCC neighborhood search (IPSNS). It refines the better of two attributed constructive seeds and is evaluated against exact, mixed-integer, graph-library, external-tool, and dense-transfer baselines.
+
+\textbf{Results:} Among the evaluated methods, the refinement attains the minimum observed backward weight on 96 of 97 standard nonnegative sparse instances, with ties credited to every tied method (14 strict improvements, 83 ties, 0 regressions versus the better seed). On a 57-instance exact-validation subset, the mean optimum-normalized gap is 0.0031\%. Repeated-run per-instance medians over 20 runs on a 93-instance common subset give 38 wins, 55 ties, and 0 losses against DRMacIver/FAS, with a mean comparator-normalized reduction of 21.60\%. On 50 dense LOLIB instances, the comparator was favored on 45.
+
+\textbf{Conclusion:} Incumbent-protected, component-local refinement is an effective sparse-digraph algorithm-engineering strategy among the evaluated methods, though it does not dominate dense complete-ordering benchmarks, where matrix-based heuristics remain preferable.
+}
+
+\keywords{Feedback arc set, Graph algorithms, Combinatorial optimization, Heuristic search, Strongly connected components, Algorithm engineering}
+
+\maketitle
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_problem_definition}
+\input{sections/04_algorithmic_framework}
+\input{sections/05_experimental_design}
+\input{sections/06_results}
+\input{sections/07_discussion}
+\input{sections/08_conclusion}
+
+\input{declarations/statements_and_declarations}
+
+\bibliography{bibliography/references}
+
+\end{document}

@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering\small
+\caption{Application-facing public ordering example: Wikipedia adminship vote network (EXP9).
+Lower backward weight is better.
+The instance is the top-50 vote-degree subset of the SNAP wiki-Vote
+network~\cite{LHK10WikiVote} converted to a nonnegative weighted directed
+graph ($n{=}50$, $m{=}752$, density $= 0.307$).}
+\label{tab:application-case}
+\begin{tabular}{lrr}
+\toprule
+Algorithm & BW & Runtime (s) \\
+\midrule
+DRMacIver/FAS & 135 & 0.79 \\
+LR-TA (ours)  & 141 & 0.23 \\
+IPSNS (ours)  & 141 & 0.72 \\
+WMSF seed     & 142 & 0.24 \\
+igraph Eades  & 153 & 0.31 \\
+Weighted Eades & 157 & 0.02 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\caption{Main experimental studies and their accounting rules. Timeout rules, subset definitions, and traceability identifiers are documented in Online Resource~1.}
+\label{tab:comparison-accounting}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{2.5cm}r r>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.2cm}@{}}
+\toprule
+Study & Purpose & Inst. & Reps & Reference / completion rule & Primary analysis \\
+\midrule
+Primary sparse comparison & main sparse benchmark & 97 & 1 & all methods complete except DRMacIver/FAS (93/97); paired means use the 93-instance common subset & mean BW, best/tie counts, comparator-normalized reduction \\
+Exact-validation study & small-instance certification & 57 & 1 & DP optimum for \(n>0\) standard instances & optimum-normalized gap \\
+MIP-validation study & medium-instance certification & 15 & 1 & 7 proven-optimal within 120\,s; 8 time-limited & gap when certified \\
+Holdout parameter study & default selection & 43 & 5 & 18 tuning + 25 holdout instances & holdout median final BW \\
+Repeated-run comparison & typical repeated-run behavior & 93 & 20 & common sparse subset completed by IPSNS and DRMacIver/FAS & paired per-instance medians and tests \\
+Dense transfer study & complete-ordering boundary & 50 & 1 & single run per method & mean BW and best/tie counts \\
+\bottomrule
+\end{tabularx}
+\end{table}

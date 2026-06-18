@@ -1,0 +1,36 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Primary sparse comparison on the 97 standard nonnegative instances. Panel~A reports all methods on the 93-instance subset completed by DRMacIver/FAS; Panel~B reports completion availability. BW denotes backward weight (lower is better). Best counts every method attaining the minimum observed BW on an instance, with ties credited to all tied methods. IPSNS reduction is the mean comparator-normalized reduction \((X-\mathrm{IPSNS})/X\times 100\) over Panel~A instances with \(X>0\); zero-zero pairs contribute 0\%.}
+\label{tab:sparse-external-baselines}
+\begin{tabularx}{\linewidth}{@{}lrrrr@{}}
+\toprule
+\multicolumn{5}{l}{\textbf{Panel A: common 93-instance subset}}\\
+Method & Mean BW & Median BW & Best & Mean inst.-level IPSNS red.\ (\%) \\
+\midrule
+IPSNS (ours) & 29,586 & 5,118 & 92 & 0.00 \\
+LR-TA (ours) & 30,197 & 5,118 & 78 & 0.70 \\
+WMSF seed & 31,535 & 5,118 & 59 & 1.96 \\
+DRMacIver/FAS & 53,173 & 5,649 & 56 & 21.14 \\
+igraph Eades & 64,438 & 6,120 & 38 & 28.97 \\
+Weighted Eades & 67,418 & 6,343 & 40 & 28.89 \\
+Borda net score & 270,430 & 12,394 & 25 & 54.67 \\
+Random multistart & 597,760 & 8,860 & 40 & 48.72 \\
+\midrule
+\multicolumn{5}{l}{\textbf{Panel B: completion on all 97 standard instances}}\\
+\midrule
+Method & Att. & Comp. & \multicolumn{2}{l}{Incompletion notes} \\
+\midrule
+IPSNS (ours) & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+LR-TA (ours) & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+WMSF seed & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+DRMacIver/FAS & 97 & 93/97 & \multicolumn{2}{@{}>{\raggedright\arraybackslash}X}{%
+\texttt{gr00}, \texttt{gr7}: interface failure on DAG inputs; \texttt{s38417}, \texttt{s38584}: timeout} \\
+igraph Eades & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+Weighted Eades & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+Borda net score & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+Random multistart & 97 & 97/97 & \multicolumn{2}{l}{---} \\
+\bottomrule
+\end{tabularx}
+\end{table}

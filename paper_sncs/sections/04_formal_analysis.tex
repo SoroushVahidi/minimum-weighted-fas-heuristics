@@ -1,0 +1,52 @@
+\subsection{Supporting correctness properties and complexity}
+\label{subsec:formal-analysis}
+
+The following properties formalize feasibility and monotonicity of the implemented framework; they are supporting guarantees rather than new approximation results. Detailed proofs are deferred to Online Resource~1 (\S S4). Throughout, \(n=|V|\), \(m=|A|\), \(T\) is the IPSNS iteration budget, and for a selected SCC \(S\) we write \(n_S=|V(S)|\) and \(m_S=|A(S)|\).
+
+\begin{proposition}[LR-TA feasibility and progress]
+\label{prop:lrta-feasibility}
+Assume nonnegative original weights and the active-graph representation used in the implementation. Each Phase-I cycle reduction subtracts \(\varepsilon(C)\) from every arc in a detected directed cycle \(C\), so at least one active arc becomes tight and is deactivated. Phase I therefore terminates after finitely many iterations and leaves an acyclic active graph. Phase II restores a removed arc only when the current topological order already places it forward or when a reachability test certifies that restoration preserves acyclicity. The final active graph is acyclic and induces a feasible ordering for the objective of Section~\ref{sec:problem-definition}.
+\end{proposition}
+
+\begin{proposition}[One-pass add-back minimality]
+\label{prop:addback-correctness}
+Let \(H_i=(V,A_i)\) be the active acyclic graph after Phase I and let \(H_f=(V,A_f)\) denote the final active graph after one-pass add-back. After every candidate removed arc has been processed once and reinserted whenever insertion preserves acyclicity, the remaining removed set \(F_f\) is inclusion-minimal in the feedback-arc-set sense:
+\begin{equation}
+    \forall e\in F_f,\quad (V,A_f\cup\{e\}) \text{ is cyclic}.
+    \label{eq:addback-minimality}
+\end{equation}
+Equivalently, for every \(e\in F_f\), restoring \(e\) to \(A_f\) creates a directed cycle.
+
+If inserting \(e=(u,v)\) is rejected, a directed path \(v\leadsto u\) already exists in the current active graph. Later accepted insertions only add arcs and cannot destroy that path, so \(e\) cannot become feasible later in the same pass. Heavy-first ordering therefore affects which inclusion-minimal feedback arc set is obtained, not whether inclusion-minimality holds. Inclusion-minimality does not imply minimum weight, and this statement applies to one-pass acyclicity-preserving add-back rather than to WMSF stabilization swaps.
+\end{proposition}
+
+\begin{proposition}[Incumbent non-worsening invariant]
+\label{prop:ipsns-monotonicity}
+Let \(\pi^{(0)}\) be the better of the LR-TA and WMSF-style seeds, and let \(\pi^{(t)}\) denote the incumbent after iteration \(t\) of IPSNS. Then every accepted candidate is feasible, every infeasible or non-improving candidate is rolled back exactly, and
+\begin{equation}
+    \operatorname{bw}\!\left(\pi^{(t+1)}\right)\le \operatorname{bw}\!\left(\pi^{(t)}\right)\le \operatorname{bw}\!\left(\pi^{(0)}\right)
+    \qquad \text{for all } t\ge 0.
+    \label{eq:ipsns-monotonicity}
+\end{equation}
+The outer loop executes at most \(T\) iterations and may terminate earlier when every eligible SCC has zero backward contribution.
+\end{proposition}
+
+The proof logic is straightforward. LR-TA progresses because each detected cycle reduction tightens at least one active arc. One-pass add-back is valid because rejected arcs remain blocked by an already existing reverse path. IPSNS is monotone because every failed or non-improving move is rolled back exactly before the next iteration.
+
+\paragraph{Complexity summary.}
+The implementation uses sparse edge-indexed storage, so space usage is \(O(n+m)\). LR-TA Phase I performs repeated cycle detection in the active graph and Phase II performs one-pass add-back, giving the conservative bound
+\begin{equation}
+    O\!\big(m(n+m)\big) + O\!\big(r\log r + r(n+m)\big),
+    \label{eq:lrta-complexity}
+\end{equation}
+where \(r\) is the number of removed arcs examined in add-back. The WMSF-style seed first decomposes the graph into SCCs and then performs ordered removals, add-back, and stabilization inside each nontrivial SCC, yielding the conservative aggregate bound
+\begin{equation}
+    O\!\left(n+m + \sum_{S}\big(m_S\log m_S + r_S(n_S+m_S)\big)\right),
+    \label{eq:wmsf-complexity}
+\end{equation}
+with \(r_S\) the number of add-back candidates processed in SCC \(S\). One IPSNS iteration scores SCCs in \(O(m)\), selects one SCC, performs SCC-restricted destroy-and-repair, and then recomputes the global objective, so a conservative per-iteration bound is
+\begin{equation}
+    O\!\left(m + s\log s + c_S(n_S+m_S) + r_S\log r_S + r_S(n_S+m_S)\right),
+    \label{eq:ipsns-iter-complexity}
+\end{equation}
+where \(s\) is the number of eligible SCCs and \(c_S\) is the number of restricted cycle-reduction rounds. These are conservative implementation-cost summaries; seed construction plus \(T\) IPSNS iterations compose the full practical cost. Expanded justification appears in Online Resource~1.

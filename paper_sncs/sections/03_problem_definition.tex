@@ -1,0 +1,46 @@
+\section{Problem definition}
+\label{sec:problem-definition}
+
+Let \(G=(V,A,w)\) be a directed graph with vertex set \(V\), arc set \(A\subseteq V\times V\), and nonnegative arc weights \(w:A\to \mathbb{R}_{\ge 0}\). A feedback arc set is a set \(F\subseteq A\) such that removing \(F\) makes the graph acyclic. The minimum weighted feedback arc set problem asks for a minimum-weight feedback arc set, i.e., a set \(F\) minimizing \(\sum_{a\in F}w(a)\).
+
+An ordering \(\pi\) assigns each vertex a distinct position. An arc \((u,v)\) is backward under \(\pi\) if \(u\) appears after \(v\). The ordering-induced backward weight is
+
+\begin{equation}
+    \operatorname{bw}(\pi)
+    =
+    \sum_{(u,v)\in A:\ \pi(u)>\pi(v)} w(u,v).
+    \label{eq:backward-weight}
+\end{equation}
+
+For any ordering \(\pi\), the set of backward arcs is a feedback arc set: all remaining forward arcs point from earlier to later positions and therefore form an acyclic graph. Conversely, every acyclic subgraph admits a topological order. The weighted feedback arc set problem can therefore be treated as the problem of finding an ordering with minimum backward weight \cite{F90,K72}.
+
+Many constructive heuristics in this study first build an acyclic \emph{active} subgraph \(H=(V,A\setminus F)\) by deleting a set \(F\subseteq A\), and then extract a linear extension \(\pi\) of \(H\). For such a pair \((F,\pi)\), define
+\begin{equation}
+    B_{\pi}
+    =
+    \{(u,v)\in A:\ \pi(v)<\pi(u)\}.
+    \label{eq:backward-set}
+\end{equation}
+Every active arc is forward under \(\pi\), so \(B_{\pi}\subseteq F\). For nonnegative weights,
+\begin{equation}
+    \operatorname{bw}(\pi)=w(B_{\pi})\le w(F).
+    \label{eq:fas-order-inequality}
+\end{equation}
+Equality need not hold: topological extraction is generally \emph{not} objective-neutral, because different linear extensions of the same active DAG can yield different values of \(\operatorname{bw}(\pi)\). The implementation therefore reports the ordering objective recomputed from the returned ranking, not the removed-set weight \(w(F)\) alone. Online Resource~1 records the detailed extraction discussion and calibration checks.
+
+Dense linear ordering problem benchmarks are often stated in terms of a complete weight matrix \(C\), where an ordering \(\pi=(\pi_1,\ldots,\pi_n)\) is evaluated by the forward weight. In that notation,
+
+\begin{equation}
+    \operatorname{fw}_{C}(\pi)
+    =
+    \sum_{1\le i<j\le n} C_{\pi_i,\pi_j},
+    \qquad
+    \operatorname{bw}_{C}(\pi)
+    =
+    \sum_{1\le i<j\le n} C_{\pi_j,\pi_i}
+    =
+    W_C-\operatorname{fw}_{C}(\pi),
+    \label{eq:lolib-forward-backward}
+\end{equation}
+
+where \(W_C=\sum_{i\ne j}C_{ij}\) is the total off-diagonal weight. Thus maximizing forward weight on a complete dense linear-ordering instance is equivalent to minimizing backward weight after converting the matrix to a complete weighted digraph. LOLIB results are reported as a transfer test. Those instances are dense complete ordering problems rather than sparse directed graph benchmarks.

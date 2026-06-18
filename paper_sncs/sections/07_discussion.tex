@@ -1,0 +1,19 @@
+\section{Discussion}
+\label{sec:discussion}
+
+The sparse-benchmark results fit the intended mechanism of IPSNS. LR-TA and the WMSF-style seed already produce strong feasible orderings, but they do so through different biases: LR-TA emphasizes cycle reduction and heavy-first repair, while the WMSF-style seed emphasizes ordered removals and stabilization. IPSNS inherits the better of those two constructions and then spends its search budget only where backward weight still remains concentrated.
+
+That focus matters on sparse graphs because the difficult part of the objective is often localized. Large acyclic or weakly cyclic regions do not justify broad perturbation. The ablation evidence is consistent with that interpretation: most of the gain comes from engineering a strong seed, and IPSNS then improves the harder residue without ever sacrificing the better seed. The gains can be numerically modest because the starting point is already strong, but consistency matters here more than large changes on every instance. The intended claim is therefore deliberately narrow: among the evaluated methods, component-local incumbent protection is useful for sparse nonnegative weighted digraphs, not universally superior across all MWFAS or FAS regimes.
+
+The repeated-run comparison sharpens this interpretation. The median outcomes are tie-heavy, so the typical common instance does not show a dramatic change between IPSNS and DRMacIver/FAS. But the non-tied outcomes are one-sided in favor of IPSNS, and the aggregate mean comparator-normalized reduction remains large. That is the profile one would expect from a protected refinement layer: many instances are already effectively solved by the seed or are insensitive to local refinement, while a smaller subset carries the material gains.
+
+Five limitations deserve emphasis.
+\begin{itemize}
+    \item \textbf{Nonnegative scope.} Negative-weight instances are excluded because the local-ratio and incumbent-protection statements are developed for nonnegative weights.
+    \item \textbf{Sparse-regime scope.} The method is designed for sparse nonnegative weighted digraphs in which cyclic structure is localized. Dense complete ordering and ranking instances are a different regime with a different input model.
+    \item \textbf{Dense transfer boundary.} The single-run LOLIB study shows that the selected complete-ordering benchmark and evaluated implementations favored DRMacIver/FAS; dense matrix-based ordering methods are therefore better aligned with that benchmark than the sparse-digraph refinement strategy studied here.
+    \item \textbf{Stochastic interpretation.} Zero observed IPSNS objective variance across 20 seeds documents stable final objective values for the tested configuration, not mathematical determinism or identical search trajectories.
+    \item \textbf{Comparator scope.} The comparison set is broad enough to support the present scoped claim but does not exhaust all modern FAS heuristics. Additional sparse comparators, with TIGHT-CUT* the closest candidate, would be useful future work.
+\end{itemize}
+
+Within those limits, the main conclusion remains intact: incumbent-protected SCC-local refinement is a useful algorithm-engineering strategy for sparse nonnegative weighted digraphs. It builds on attributed seed methods, improves them selectively, and reports clearly where that advantage does not transfer. Dense complete-ordering benchmarks remain better served by methods designed for that regime, and no universal superiority over all exact or heuristic FAS methods is claimed.
