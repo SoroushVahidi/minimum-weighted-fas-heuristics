@@ -17,7 +17,8 @@ Verify SHA-256 against `MANIFEST.sha256` before any upload.
 ## Editorial Manager initial-upload plan
 
 Recommended initial upload: upload `Vahidi_SNCS_Manuscript.pdf` as the main Manuscript file.
-`Vahidi_SNCS_Source.zip` is a backup LaTeX source package. It contains exactly one `.tex` file, `Vahidi_SNCS_Main.tex`, plus required bibliography/style/class/figure support files. Upload it only if Editorial Manager requests LaTeX source files.
+`Vahidi_SNCS_Source.zip` is a backup LaTeX source package. It contains exactly one `.tex` file, `Vahidi_SNCS_Main.tex`, plus required bibliography/style/class files and only figure files actually used by the manuscript. Upload it only if Editorial Manager requests LaTeX source files.
+Figure PDFs inside the source ZIP are manuscript figures, not supplementary material.
 
 ## Deliberately not included in this pass
 

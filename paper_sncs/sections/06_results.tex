@@ -7,7 +7,18 @@ The results are organized around the paper's main empirical questions. The prima
 
 Table~\ref{tab:sparse-external-baselines} reports the main comparison on the 97 standard nonnegative sparse instances.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.48\textwidth]{figures/exp4_win_counts.pdf}
+\hfill
+\includegraphics[width=0.48\textwidth]{figures/exp4_relative_bw.pdf}
+\caption{Primary sparse-benchmark comparison. Left: best-count summary with ties credited to every tied method. Right: relative backward-weight behavior on the sparse comparison set. The figure visualizes the same accounting rules reported in Table~\ref{tab:sparse-external-baselines}.}
+\label{fig:primary-sparse-summary}
+\end{figure}
+
 \input{tables/table_sparse_external_baselines}
+
+Figure~\ref{fig:primary-sparse-summary} gives a visual summary of the primary sparse-benchmark comparison.
 
 IPSNS attains the minimum observed BW among the evaluated methods on 96 of the 97 instances when ties are credited to every tied method, but only 14 of the 97 are strict IPSNS unique bests. LR-TA and the WMSF-style seed are the strongest internal comparators, yet both trail IPSNS on the common 93-instance subset in mean BW and best-count frequency. Among external methods, DRMacIver/FAS is the strongest comparator; on the common subset IPSNS reduces BW by 21.14\% relative to DRMacIver/FAS under the comparator-normalized convention. The incompletions remain explicit: DRMacIver/FAS completes 93 of the 97 instances because \texttt{gr00} and \texttt{gr7} are DAG inputs rejected by the evaluated binary through the conversion interface, and \texttt{s38417} and \texttt{s38584} time out in the external wrapper.
 
@@ -47,7 +58,16 @@ The ablation study on the 10-instance representative sparse subset supports two 
 
 Table~\ref{tab:lolib-scope} reports the dense transfer test.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\textwidth]{figures/exp5_lolib_scope.pdf}
+\caption{Dense LOLIB transfer study. The selected complete-ordering benchmark favors the evaluated matrix-based DRMacIver/FAS implementation, marking a scope boundary for the sparse-digraph refinement strategy studied in this paper.}
+\label{fig:lolib-boundary}
+\end{figure}
+
 \input{tables/table_lolib_scope}
+
+Figure~\ref{fig:lolib-boundary} illustrates the dense-complete-ordering boundary of the sparse-digraph claim.
 
 In this single-run transfer study, the evaluated DRMacIver/FAS implementation outperformed IPSNS on the selected 50 LOLIB instances: minimum observed BW on 45 of 50 instances. The mean instance-level IPSNS-normalized gap \((\mathrm{BW}_{\mathrm{DR}}-\mathrm{BW}_{\mathrm{IPSNS}})/\mathrm{BW}_{\mathrm{IPSNS}}\times 100\) was \(-3.88\%\), indicating lower DRMacIver/FAS backward weight under that per-instance convention; the corresponding ratio of aggregate mean BW values was \(571{,}687\) versus \(582{,}354\). IPSNS remains second overall, but the selected complete-ordering benchmark and evaluated implementations favored DRMacIver/FAS in this transfer experiment.
 

@@ -3,6 +3,10 @@
 
 The framework has three components: two attributed constructive seeds and one refinement layer. IPSNS is the central method. LR-TA and the WMSF-style routine are included because they provide complementary feasible starting points and because the IPSNS incumbent-protection guarantee is interpreted relative to the better of those two seeds. The same reported IPSNS defaults are used across benchmark instances once selected by holdout; repeated runs differ only through the explicit random seed used in SCC selection. Online Resource~1 provides a compact framework schematic.
 
+Figure~\ref{fig:framework-overview} summarizes the IPSNS workflow and the role of incumbent protection.
+
+\input{figures/framework_overview}
+
 All methods operate on the aggregated weighted digraph of Section~\ref{sec:problem-definition} and optimize backward weight.
 
 \subsection{Local-ratio topological add-back}
