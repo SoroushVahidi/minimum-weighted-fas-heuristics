@@ -1,4 +1,26 @@
-# Minimum Weighted Feedback Arc Set Heuristics
+# IPSNS: Incumbent-Protected SCC Neighborhood Search for Minimum Weighted Feedback Arc Set
+
+**In plain words.** The *minimum weighted feedback arc set* (MWFAS) problem asks for the cheapest set of edges to delete from a weighted directed graph so that no cycles remain. It is NP-hard and sits under ranking, scheduling and layout problems. This repository contains **IPSNS**, a heuristic for sparse graphs. It starts from the better of two known constructions (local-ratio and WMSF-style seeds), then repeatedly destroys and repairs the solution *inside one strongly connected component at a time*, never accepting anything worse than the current best ("incumbent-protected"). It includes the Python implementation (`src/mwfas/`), a pytest suite, benchmark runners, experiment outputs and the manuscript and supplementary material.
+
+## Paper
+
+- **Preprint:** S. Vahidi. *Incumbent-Protected SCC-Neighborhood Search for the Weighted Feedback Arc Set Problem.* SSRN, 2026. [ssrn.com/abstract=6281222](https://ssrn.com/abstract=6281222) · [doi:10.2139/ssrn.6281222](https://doi.org/10.2139/ssrn.6281222). Not yet peer-reviewed.
+
+```bibtex
+@misc{vahidi2026ipsns,
+  author = {Vahidi, Soroush},
+  title  = {Incumbent-Protected {SCC}-Neighborhood Search for the Weighted Feedback Arc Set Problem},
+  year   = {2026},
+  note   = {SSRN preprint},
+  doi    = {10.2139/ssrn.6281222}
+}
+```
+
+Related: audited benchmark metrics in [mwfas-heuristic-metrics](https://github.com/SoroushVahidi/mwfas-heuristic-metrics). Ranking application (published): [ranking-by-feedback-arc-set](https://github.com/SoroushVahidi/ranking-by-feedback-arc-set). Historical predecessor notebook: [weighted-minfas-codes](https://github.com/SoroushVahidi/weighted-minfas-codes).
+
+---
+
+> The detailed documentation below is kept from the previous README, with only small factual updates.
 
 ## Manuscript targets (active target: SN Computer Science — see status doc before acting on either)
 
